@@ -19,9 +19,35 @@ class User
         self.password = password
     }
     
-    func AddAccount(account:Account)
+    func AddAccount(account:Account) -> Bool
     {
+        for n in self.accounts
+        {
+            if n.name == account.name
+            {
+                return false
+            }
+        }
+        
         self.accounts.append(account)
+        return true
+    }
+    
+    func RemoveAcount(accountName: String) -> Bool
+    {
+        var i = 0
+        
+        while i < self.accounts.count
+        {
+            if self.accounts[i].name == accountName
+            {
+                self.accounts.remove(at: i)
+                return true
+            }
+            i = i + 1
+        }
+        
+        return false
     }
 }
 
@@ -41,8 +67,15 @@ class Account
     func AddTransaction(transaction: Transaction)
     {
         self.transactions.append(transaction)
-        balance = balance - transaction.amount
+        self.balance = self.balance + transaction.amount
     }
+    
+    func RemoveTransaction(index: Int)
+    {
+        self.balance = self.balance - self.transactions[index].amount
+        self.transactions.remove(at: index)
+    }
+    
 }
 
 class Transaction
