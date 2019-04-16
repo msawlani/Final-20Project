@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>642886909385-a47hu8jnkh3gtba8r4uooji8grlif7ac.apps.googleusercontent.com</string>
+	<string>648283900103-tj4jkucjafnf7pochdd33iklhuve129d.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.642886909385-a47hu8jnkh3gtba8r4uooji8grlif7ac</string>
+	<string>com.googleusercontent.apps.648283900103-tj4jkucjafnf7pochdd33iklhuve129d</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCY16ojDE-_XEnEudeP2252aPPaUBMRYt8</string>
+	<string>AIzaSyDBB_tXlvowSUfmBNctyvfcIq3mdBUa88I</string>
 	<key>GCM_SENDER_ID</key>
-	<string>642886909385</string>
+	<string>648283900103</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.fullsailteam.FinalProject</string>
 	<key>PROJECT_ID</key>
-	<string>finalproject-d5b01</string>
+	<string>finalp-20407</string>
 	<key>STORAGE_BUCKET</key>
-	<string>finalproject-d5b01.appspot.com</string>
+	<string>finalp-20407.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:642886909385:ios:a998a275d50b3c88</string>
+	<string>1:648283900103:ios:a998a275d50b3c88</string>
 	<key>DATABASE_URL</key>
-	<string>https://finalproject-d5b01.firebaseio.com</string>
+	<string>https://finalp-20407.firebaseio.com</string>
 </dict>
 </plist>

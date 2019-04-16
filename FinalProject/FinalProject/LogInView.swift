@@ -15,6 +15,17 @@ class LogInView: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func OnClick(_ sender: UIButton) {
+        
+        
+        //Get the default UI object
+        
+        //Set ourselves as delegates
+        
+        //Get a reference to the auth UI view controller
+        
+        //Show it
+    }
     
 }
 
