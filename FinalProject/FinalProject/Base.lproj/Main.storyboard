@@ -105,7 +105,8 @@
                                         <rect key="frame" x="28" y="82.5" width="38" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
-                                            <action selector="OnClick:" destination="JeT-Qh-sd8" eventType="touchUpInside" id="gtu-eL-XhI"/>
+                                            <action selector="OnCLick:" destination="JeT-Qh-sd8" eventType="touchUpInside" id="uat-o1-C9q"/>
+                                            <action selector="OnClick:" destination="JeT-Qh-sd8" eventType="touchUpInside" id="sEH-rJ-CPM"/>
                                         </connections>
                                     </button>
                                 </subviews>

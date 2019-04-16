@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 import FirebaseUI
 
 class LogInView: UIViewController {
@@ -16,11 +15,9 @@ class LogInView: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-    @IBAction func loginTapped(_ sender: UIButton) {
+    
+    @IBAction func OnCLick(_ sender: UIButton) {
         //Get the default UI object
         let authUI = FUIAuth.defaultAuthUI()
         
@@ -33,11 +30,12 @@ class LogInView: UIViewController {
         //Get a reference to the auth UI view controller
         let authViewController = authUI!.authViewController()
         //Show it
-        present(authViewController, animated: true, completion: nil)
-        }
+       present(authViewController, animated: true, completion: nil)
+        
+    }
 }
-extension UIViewController: FUIAuthDelegate{
-    private func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+extension LogInView: FUIAuthDelegate{
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         //check if there was an error
         if error != nil{
             //log error
@@ -46,4 +44,6 @@ extension UIViewController: FUIAuthDelegate{
         //to get user id : authDataResult?.user.uid
         performSegue(withIdentifier: "GoToMain", sender: self)
     }
+    
 }
+
