@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import Firebase
 
 class User
 {
     var username, password: String
     var accounts: [Account] = []
+    var ref:DatabaseReference?
     
     init(username:String, password:String = "")
     {
@@ -48,6 +50,22 @@ class User
         }
         
         return false
+    }
+    
+    func StoreInFirebase()
+    {
+        let ref = Database.database().reference()
+        ref.child("users").child(self.username).child("username").setValue(self.username)
+        ref.child("users").child(self.username).child("password").setValue(self.password)
+        
+        var i = 0
+        
+        while i < self.accounts.count
+        {
+            ref.child("users").child(self.username).child("accounts").child(self.accounts[i].name).child("accountName").setValue(self.accounts[i].name)
+            ref.child("users").child(self.username).child("accounts").child(self.accounts[i].name).child("balance").setValue(self.accounts[i].balance)
+            i = i + 1
+        }
     }
 }
 

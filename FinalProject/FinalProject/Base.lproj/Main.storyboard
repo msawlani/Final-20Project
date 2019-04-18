@@ -31,11 +31,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLh-WQ-9iN" userLabel="addToBalanceButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLh-WQ-9iN" userLabel="addToBalanceButton">
                                 <rect key="frame" x="119" y="426" width="137" height="30"/>
                                 <state key="normal" title="Add To Balance"/>
                                 <connections>
-                                    <action selector="addToBalance:" destination="9pv-A4-QxB" eventType="touchUpInside" id="iI2-He-OVr"/>
+                                    <action selector="addToBalance:" destination="9pv-A4-QxB" eventType="touchUpInside" id="leM-gQ-QbJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -46,6 +46,7 @@
                             <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="kLh-WQ-9iN" firstAttribute="firstBaseline" secondItem="A5M-7J-77L" secondAttribute="baseline" constant="20" symbolType="layoutAnchor" id="ybB-wZ-J4o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
