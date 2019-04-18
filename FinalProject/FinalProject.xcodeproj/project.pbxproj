@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422887C22268622800B6E651 /* ViewAccountViewControllerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422887C12268622800B6E651 /* ViewAccountViewControllerCollectionViewController.swift */; };
 		422A296E22566833008A2564 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A296D22566833008A2564 /* Classes.swift */; };
 		422A2970225F9109008A2564 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422A296F225F9109008A2564 /* GoogleService-Info.plist */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		422887C12268622800B6E651 /* ViewAccountViewControllerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAccountViewControllerCollectionViewController.swift; sourceTree = "<group>"; };
 		422A296D22566833008A2564 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		422A296F225F9109008A2564 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,7 +54,6 @@
 				F7540E5E015C3C0041FD0338 /* Pods-FinalProject.debug.xcconfig */,
 				ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -94,6 +95,7 @@
 				E15AE3C722565CE2007C345F /* Info.plist */,
 				422A296F225F9109008A2564 /* GoogleService-Info.plist */,
 				422A296D22566833008A2564 /* Classes.swift */,
+				422887C12268622800B6E651 /* ViewAccountViewControllerCollectionViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -224,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
+				422887C22268622800B6E651 /* ViewAccountViewControllerCollectionViewController.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 				E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */,
