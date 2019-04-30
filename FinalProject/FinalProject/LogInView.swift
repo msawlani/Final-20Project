@@ -8,32 +8,41 @@
 
 import UIKit
 import FirebaseUI
+import GoogleSignIn
 
-class LogInView: UIViewController {
+class LogInView: UIViewController,GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Add Signin Button
+        let googleButton = GIDSignInButton()
+        googleButton.frame =  CGRect(x:16,y:650,width: view.frame.width - 32,height:50)
+        view.addSubview(googleButton)
+        GIDSignIn.sharedInstance()?.uiDelegate = self
     }
     
-    
-    @IBAction func OnCLick(_ sender: UIButton) {
+    @IBAction func onClick(_ sender: UIButton) {
         //Get the default UI object
-        let authUI = FUIAuth.defaultAuthUI()
+                let authUI = FUIAuth.defaultAuthUI()
         
-        guard authUI != nil else{
-            //log error
-            return
-        }
-        //Set ourselves as delegates
-        authUI?.delegate = self
-        //Get a reference to the auth UI view controller
-        let authViewController = authUI!.authViewController()
-        //Show it
-       present(authViewController, animated: true, completion: nil)
-        
+                guard authUI != nil else{
+                    //log error
+                    return
+                }
+                //Set ourselves as delegates
+                authUI?.delegate = self
+                //Get a reference to the auth UI view controller
+                let authViewController = authUI!.authViewController()
+                //Show it
+               present(authViewController, animated: true, completion: nil)
     }
+    
 }
+
+//extention for email signin:
+
 extension LogInView: FUIAuthDelegate{
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         //check if there was an error
@@ -44,6 +53,6 @@ extension LogInView: FUIAuthDelegate{
         //to get user id : authDataResult?.user.uid
         performSegue(withIdentifier: "GoToMain", sender: self)
     }
-    
+
 }
 

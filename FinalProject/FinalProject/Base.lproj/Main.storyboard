@@ -84,38 +84,31 @@
             </objects>
             <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View-->
         <scene sceneID="oHa-Uv-DNZ">
             <objects>
-                <viewController id="7EZ-0f-uB9" sceneMemberID="viewController">
+                <viewController id="7EZ-0f-uB9" customClass="LogInView" customModule="FinalProject" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rj7-qd-0K9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="yoy-Pw-eMy">
-                                <rect key="frame" x="140.5" y="277.5" width="94.5" height="112.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-nh-xpB">
-                                        <rect key="frame" x="0.0" y="0.0" width="94.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDX-nh-eOB">
-                                        <rect key="frame" x="28" y="82.5" width="38" height="30"/>
-                                        <state key="normal" title="Login"/>
-                                        <connections>
-                                            <action selector="OnCLick:" destination="JeT-Qh-sd8" eventType="touchUpInside" id="uat-o1-C9q"/>
-                                            <action selector="OnClick:" destination="JeT-Qh-sd8" eventType="touchUpInside" id="sEH-rJ-CPM"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-v1-nFz">
+                                <rect key="frame" x="40" y="303" width="295" height="59"/>
+                                <state key="normal" title="Log In" image="ic_account_circle.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClick:" destination="7EZ-0f-uB9" eventType="touchUpInside" id="95X-Nz-IR8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <constraints>
-                            <constraint firstItem="yoy-Pw-eMy" firstAttribute="centerX" secondItem="rj7-qd-0K9" secondAttribute="centerX" id="6Eg-8t-cVK"/>
-                            <constraint firstItem="yoy-Pw-eMy" firstAttribute="centerY" secondItem="rj7-qd-0K9" secondAttribute="centerY" id="h7D-7q-nIK"/>
+                            <constraint firstItem="ddR-v1-nFz" firstAttribute="leading" secondItem="Czb-Oq-8dg" secondAttribute="leading" constant="40" id="QhU-VG-c29"/>
+                            <constraint firstItem="Czb-Oq-8dg" firstAttribute="bottom" secondItem="ddR-v1-nFz" secondAttribute="bottom" constant="305" id="WWW-JR-c88"/>
+                            <constraint firstItem="Czb-Oq-8dg" firstAttribute="trailing" secondItem="ddR-v1-nFz" secondAttribute="trailing" constant="40" id="grr-Yt-zJ6"/>
+                            <constraint firstItem="ddR-v1-nFz" firstAttribute="top" secondItem="Czb-Oq-8dg" secondAttribute="top" constant="283" id="o6E-ii-BPs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Czb-Oq-8dg"/>
                     </view>
@@ -125,9 +118,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7X-cp-eCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="JeT-Qh-sd8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-722" y="0.0"/>
+            <point key="canvasLocation" x="-722.39999999999998" y="-0.44977511244377816"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -150,6 +142,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="ic_account_circle.png" width="60" height="60"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
