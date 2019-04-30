@@ -21,6 +21,10 @@ class LogInView: UIViewController,GIDSignInUIDelegate {
         googleButton.frame =  CGRect(x:16,y:650,width: view.frame.width - 32,height:50)
         view.addSubview(googleButton)
         GIDSignIn.sharedInstance()?.uiDelegate = self
+        googleButton.addTarget(self, action: #selector(toMain), for: .touchUpInside)
+    }
+    @objc func toMain(){
+        performSegue(withIdentifier: "toMain", sender: self)
     }
     
     @IBAction func onClick(_ sender: UIButton) {
@@ -29,14 +33,17 @@ class LogInView: UIViewController,GIDSignInUIDelegate {
         
                 guard authUI != nil else{
                     //log error
+                    print("There was an authentication error")
                     return
                 }
+        
                 //Set ourselves as delegates
                 authUI?.delegate = self
                 //Get a reference to the auth UI view controller
                 let authViewController = authUI!.authViewController()
                 //Show it
                present(authViewController, animated: true, completion: nil)
+
     }
     
 }
@@ -51,7 +58,7 @@ extension LogInView: FUIAuthDelegate{
             return
         }
         //to get user id : authDataResult?.user.uid
-        performSegue(withIdentifier: "GoToMain", sender: self)
+        performSegue(withIdentifier: "toMain", sender: self)
     }
 
 }

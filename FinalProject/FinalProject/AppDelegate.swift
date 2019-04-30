@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             print("User is signed in to FireBase with Google",user.userID)
-            
         }
     }
     
