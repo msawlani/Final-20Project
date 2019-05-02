@@ -11,8 +11,9 @@
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132CC4A226615CC002EAD3D /* Assets.xcassets */; };
+		E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E154BC2B227B507900DACAC0 /* Default-568h@2x.png */; };
 		E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3B922565CE1007C345F /* AppDelegate.swift */; };
-		E15AE3BC22565CE1007C345F /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BB22565CE1007C345F /* TableVC.swift */; };
+		E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BB22565CE1007C345F /* FirstViewController.swift */; };
 		E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BD22565CE1007C345F /* SecondViewController.swift */; };
 		E15AE3C122565CE1007C345F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3BF22565CE1007C345F /* Main.storyboard */; };
 		E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */; };
@@ -25,9 +26,10 @@
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E132CC4A226615CC002EAD3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E154BC2B227B507900DACAC0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E15AE3B622565CE1007C345F /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15AE3B922565CE1007C345F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E15AE3BB22565CE1007C345F /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		E15AE3BB22565CE1007C345F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E15AE3BD22565CE1007C345F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E15AE3C022565CE1007C345F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E15AE3C522565CE2007C345F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		E15AE3AD22565CE1007C345F = {
 			isa = PBXGroup;
 			children = (
+				E154BC2B227B507900DACAC0 /* Default-568h@2x.png */,
 				E15AE3B822565CE1007C345F /* FinalProject */,
 				E15AE3B722565CE1007C345F /* Products */,
 				076DE8B4A9E7A712623EAFC7 /* Pods */,
@@ -88,7 +91,7 @@
 			children = (
 				E15AE3B922565CE1007C345F /* AppDelegate.swift */,
 				E1E067D6225FB566004A2EC9 /* LogInView.swift */,
-				E15AE3BB22565CE1007C345F /* TableVC.swift */,
+				E15AE3BB22565CE1007C345F /* FirstViewController.swift */,
 				E15AE3BD22565CE1007C345F /* SecondViewController.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
 				E132CC4A226615CC002EAD3D /* Assets.xcassets */,
@@ -164,6 +167,7 @@
 				E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */,
 				E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */,
 				E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */,
+				E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */,
 				E15AE3C122565CE1007C345F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +272,7 @@
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
-				E15AE3BC22565CE1007C345F /* TableVC.swift in Sources */,
+				E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

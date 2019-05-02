@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let err = error{
             print("Failed to Log In to Google",err)
-           
+            return
         }
         print("Logged Into Google",user)
         
@@ -45,9 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        
+        
         GIDSignIn.sharedInstance().handle(url,
                                           sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                          annotation: [:])
+                                          annotation: options[UIApplication.OpenURLOptionsKey.annotation])
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {

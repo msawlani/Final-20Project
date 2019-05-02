@@ -222,7 +222,7 @@ struct Date
 }
 
 func GetUser(username: String) -> User {
-    var user = User(username: username)
+    let user = User(username: username)
     //mRef = Database.database().reference()
     
 //    Database.database().reference().child("users").child(username).observe(.childAdded, with: {(snapshot) in
