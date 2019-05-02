@@ -6,8 +6,15 @@ target 'FinalProject' do
   use_frameworks!
 
   # Pods for FinalProject
+  
 
   pod 'Firebase/Core'
+
+  pod 'FirebaseUI/Auth'
+
   pod 'Firebase/Database'
+
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Facebook'
 
 end
