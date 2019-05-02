@@ -11,10 +11,6 @@
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132CC4A226615CC002EAD3D /* Assets.xcassets */; };
-		E154BC25227B2BEB00DACAC0 /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154BC23227B2BEB00DACAC0 /* TableViewCell1.swift */; };
-		E154BC26227B2BEB00DACAC0 /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = E154BC24227B2BEB00DACAC0 /* TableViewCell1.xib */; };
-		E154BC29227B31C900DACAC0 /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154BC27227B31C900DACAC0 /* TableViewCell2.swift */; };
-		E154BC2A227B31C900DACAC0 /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E154BC28227B31C900DACAC0 /* TableViewCell2.xib */; };
 		E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3B922565CE1007C345F /* AppDelegate.swift */; };
 		E15AE3BC22565CE1007C345F /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BB22565CE1007C345F /* TableVC.swift */; };
 		E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BD22565CE1007C345F /* SecondViewController.swift */; };
@@ -29,10 +25,6 @@
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E132CC4A226615CC002EAD3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E154BC23227B2BEB00DACAC0 /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
-		E154BC24227B2BEB00DACAC0 /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
-		E154BC27227B31C900DACAC0 /* TableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
-		E154BC28227B31C900DACAC0 /* TableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
 		E15AE3B622565CE1007C345F /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15AE3B922565CE1007C345F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E15AE3BB22565CE1007C345F /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
@@ -104,10 +96,6 @@
 				E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */,
 				E15AE3C722565CE2007C345F /* Info.plist */,
 				422A296D22566833008A2564 /* Classes.swift */,
-				E154BC23227B2BEB00DACAC0 /* TableViewCell1.swift */,
-				E154BC24227B2BEB00DACAC0 /* TableViewCell1.xib */,
-				E154BC27227B31C900DACAC0 /* TableViewCell2.swift */,
-				E154BC28227B31C900DACAC0 /* TableViewCell2.xib */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -173,11 +161,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E154BC26227B2BEB00DACAC0 /* TableViewCell1.xib in Resources */,
 				E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */,
 				E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */,
 				E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */,
-				E154BC2A227B31C900DACAC0 /* TableViewCell2.xib in Resources */,
 				E15AE3C122565CE1007C345F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,9 +266,7 @@
 			files = (
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
-				E154BC29227B31C900DACAC0 /* TableViewCell2.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
-				E154BC25227B2BEB00DACAC0 /* TableViewCell1.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 				E15AE3BC22565CE1007C345F /* TableVC.swift in Sources */,
 			);
