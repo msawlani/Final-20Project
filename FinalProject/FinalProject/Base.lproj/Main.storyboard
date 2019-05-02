@@ -70,25 +70,7 @@
                     <view key="view" contentMode="scaleToFill" id="rj7-qd-0K9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-v1-nFz">
-                                <rect key="frame" x="40" y="347" width="295" height="15"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="onClick:" destination="7EZ-0f-uB9" eventType="touchUpInside" id="95X-Nz-IR8"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                        <constraints>
-                            <constraint firstItem="ddR-v1-nFz" firstAttribute="leading" secondItem="Czb-Oq-8dg" secondAttribute="leading" constant="40" id="QhU-VG-c29"/>
-                            <constraint firstItem="Czb-Oq-8dg" firstAttribute="bottom" secondItem="ddR-v1-nFz" secondAttribute="bottom" constant="305" id="WWW-JR-c88"/>
-                            <constraint firstItem="Czb-Oq-8dg" firstAttribute="trailing" secondItem="ddR-v1-nFz" secondAttribute="trailing" constant="40" id="grr-Yt-zJ6"/>
-                            <constraint firstItem="ddR-v1-nFz" firstAttribute="top" secondItem="Czb-Oq-8dg" secondAttribute="top" constant="283" id="o6E-ii-BPs"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Czb-Oq-8dg"/>
                     </view>
                     <navigationItem key="navigationItem" id="HoA-jI-qnD"/>
@@ -98,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7X-cp-eCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="830" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -129,7 +111,8 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="7EZ-0f-uB9" kind="relationship" relationship="rootViewController" id="w6U-Ux-GCY"/>
+                        <segue destination="7EZ-0f-uB9" kind="relationship" relationship="rootViewController" id="YMZ-su-mcv"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="toMain" id="ldF-mR-ycC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVZ-xi-0ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,4 +124,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ldF-mR-ycC"/>
+    </inferredMetricsTieBreakers>
 </document>

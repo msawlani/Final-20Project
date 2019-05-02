@@ -12,6 +12,9 @@ class FirstViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if sigedIn == false{
+            performSegue(withIdentifier: "backToLogin", sender: self)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 

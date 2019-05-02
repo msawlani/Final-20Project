@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+var sigedIn = true
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             print("User is signed in to FireBase with Google",user.userID)
+            self.window?.rootViewController?.performSegue(withIdentifier: "toMain", sender: nil)
         }
     }
     
@@ -51,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().handle(url,
                                           sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                                           annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {
