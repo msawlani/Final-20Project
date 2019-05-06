@@ -17,4 +17,6 @@ target 'FinalProject' do
   pod 'FirebaseUI/Google'
   pod 'FirebaseUI/Facebook'
 
+pod'Parse'
+
 end
