@@ -29,39 +29,4 @@ class LogInView: UIViewController,GIDSignInUIDelegate {
         performSegue(withIdentifier: "toMain", sender: self)
     }
     
-//    @IBAction func onClick(_ sender: UIButton) {
-//        //Get the default UI object
-//                let authUI = FUIAuth.defaultAuthUI()
-//
-//                guard authUI != nil else{
-//                    //log error
-//                    print("There was an authentication error")
-//                    return
-//                }
-//
-//                //Set ourselves as delegates
-//                authUI?.delegate = self
-//                //Get a reference to the auth UI view controller
-//                let authViewController = authUI!.authViewController()
-//                //Show it
-//               present(authViewController, animated: true, completion: nil)
-//
-//    }
-    
-}
-
-//extention for email signin:
-
-//extension LogInView: FUIAuthDelegate{
-//    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-//        //check if there was an error
-//        if error != nil{
-//            //log error
-//            return
-//        }
-//        //to get user id : authDataResult?.user.uid
-//        performSegue(withIdentifier: "toMain", sender: self)
-//    }
-//
-//}
 

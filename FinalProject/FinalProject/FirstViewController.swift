@@ -8,16 +8,22 @@
 
 import UIKit
 
+struct cellData {
+    let cell: Int!
+    let text: String!
+    let imag: UIImage!
+}
 class FirstViewController: UITableViewController {
 
+    
+    var cellaDataArr = [cellData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if sigedIn == false{
             performSegue(withIdentifier: "backToLogin", sender: self)
         }
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
-
-
 }
 
