@@ -57,11 +57,11 @@ class UserLoginViewController: UIViewController {
     }
     
     @objc public func Signup(_ :UIButton){
-        //performSegue(withIdentifier: "Signup", sender: self)
+        performSegue(withIdentifier: "Signup", sender: self)
     }
     
     @objc public func ForgotPassword(_ :UIButton){
-        //performSegue(withIdentifier: "Signup", sender: self)
+        performSegue(withIdentifier: "ForgotPass", sender: self)
     }
 
     /*

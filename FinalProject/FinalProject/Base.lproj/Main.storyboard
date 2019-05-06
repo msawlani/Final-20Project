@@ -95,11 +95,46 @@
                     </view>
                     <connections>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="Main" id="v8B-T4-TqX"/>
+                        <segue destination="9RQ-Rp-SrH" kind="show" identifier="Signup" id="Z0L-mh-UZV"/>
+                        <segue destination="rBG-qD-tup" kind="show" identifier="ForgotPass" id="HZn-jO-H8w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dm2-lF-fVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1" y="-791"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hJ1-PE-Ul9">
+            <objects>
+                <viewController id="rBG-qD-tup" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qmW-JK-z6i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PBL-qK-xtk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrp-ye-0hJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="-504"/>
+        </scene>
+        <!--Signup View Controller-->
+        <scene sceneID="wF1-S3-TDC">
+            <objects>
+                <viewController id="9RQ-Rp-SrH" customClass="SignupViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D5f-jO-DD5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nvg-kN-fiu"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="Main" id="FZ2-LL-4zt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YLe-2p-8E7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882" y="-1224"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -144,6 +179,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v8B-T4-TqX"/>
+        <segue reference="FZ2-LL-4zt"/>
     </inferredMetricsTieBreakers>
 </document>
