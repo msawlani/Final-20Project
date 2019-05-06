@@ -76,11 +76,30 @@
                     <navigationItem key="navigationItem" id="HoA-jI-qnD"/>
                     <connections>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="toMain" id="BDU-sr-Zxf"/>
+                        <segue destination="Py8-Hx-gcU" kind="show" identifier="Login" id="4xK-wO-u77"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7X-cp-eCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="0.0"/>
+            <point key="canvasLocation" x="2" y="0.0"/>
+        </scene>
+        <!--User Login View Controller-->
+        <scene sceneID="cBb-Ta-agm">
+            <objects>
+                <viewController id="Py8-Hx-gcU" customClass="UserLoginViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4gg-tg-ph2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6kP-dV-lnG"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="Main" id="v8B-T4-TqX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dm2-lF-fVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1" y="-791"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -117,7 +136,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVZ-xi-0ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-135.19999999999999" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="-962" y="0.0"/>
         </scene>
     </scenes>
     <resources>
@@ -125,6 +144,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BDU-sr-Zxf"/>
+        <segue reference="v8B-T4-TqX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,14 +27,17 @@ class LogInView: UIViewController,GIDSignInUIDelegate {
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = UIColor.black
         loginButton.tintColor = UIColor.white
-        loginButton.addTarget(self, action: #selector(toMain(_:)), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(toLogin(_:)), for: .touchUpInside)
         view.addSubview(loginButton)
     //googleButton.addTarget(self, action: #selector(toMain), for: .touchUpInside)
         
     }
-    @objc public func toMain(_ :UIButton){
+    @objc public func toMain(){
         performSegue(withIdentifier: "toMain", sender: self)
     }
     
+    @objc public func toLogin(_ :UIButton){
+        performSegue(withIdentifier: "Login", sender: self)
+    }
 
 }
