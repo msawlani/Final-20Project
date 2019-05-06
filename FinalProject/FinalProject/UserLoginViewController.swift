@@ -29,8 +29,40 @@ class UserLoginViewController: UIViewController {
         passwordFieldText.isSecureTextEntry = true
         passwordFieldText.placeholder = "password..."
         view.addSubview(passwordFieldText)
+        
+        let loginButton = UIButton(frame: CGRect(x: 10, y: 250, width: view.frame.width - 32, height: 50))
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.backgroundColor = .black
+        loginButton.tintColor = .white
+        loginButton.addTarget(self, action: #selector(Login(_:)), for: .touchUpInside)
+        view.addSubview(loginButton)
+        
+        let signupButton = UIButton(frame: CGRect(x: 10, y: 310, width: view.frame.width - 32, height: 50))
+        signupButton.setTitle("Signup", for: .normal)
+        signupButton.backgroundColor = .black
+        signupButton.tintColor = .white
+        signupButton.addTarget(self, action: #selector(Signup(_:)), for: .touchUpInside)
+        view.addSubview(signupButton)
+        
+        let forgotpasswordButton = UIButton(frame: CGRect(x: 10, y: 370, width: view.frame.width - 32, height: 50))
+        forgotpasswordButton.setTitle("Forgot Password?", for: .normal)
+        forgotpasswordButton.backgroundColor = .black
+        forgotpasswordButton.tintColor = .white
+        forgotpasswordButton.addTarget(self, action: #selector(ForgotPassword(_:)), for: .touchUpInside)
+        view.addSubview(forgotpasswordButton)
     }
     
+    @objc public func Login(_ :UIButton){
+        performSegue(withIdentifier: "Main", sender: self)
+    }
+    
+    @objc public func Signup(_ :UIButton){
+        //performSegue(withIdentifier: "Signup", sender: self)
+    }
+    
+    @objc public func ForgotPassword(_ :UIButton){
+        //performSegue(withIdentifier: "Signup", sender: self)
+    }
 
     /*
     // MARK: - Navigation
