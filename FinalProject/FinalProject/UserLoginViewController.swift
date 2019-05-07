@@ -7,21 +7,25 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class UserLoginViewController: UIViewController {
+
+    let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 32, height: 50))
+
+    let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 32, height: 50))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 32, height: 50))
         emailFieldText.backgroundColor = .white
         emailFieldText.borderStyle = .line
         emailFieldText.keyboardAppearance = .dark
         emailFieldText.keyboardType = .emailAddress
+        emailFieldText.autocapitalizationType = .none
         emailFieldText.placeholder = "email..."
         view.addSubview(emailFieldText)
         
-        let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 32, height: 50))
         passwordFieldText.backgroundColor = .white
         passwordFieldText.borderStyle = .line
         passwordFieldText.keyboardAppearance = .dark
@@ -53,7 +57,22 @@ class UserLoginViewController: UIViewController {
     }
     
     @objc public func Login(_ :UIButton){
-        performSegue(withIdentifier: "Main", sender: self)
+        guard let email = emailFieldText.text else {return}
+        guard let password = passwordFieldText.text else {return}
+        
+        Auth.auth().signIn(withEmail: email, password: password) {user, error in
+            if error == nil && user != nil && self.passwordFieldText.text != nil
+            {
+                self.performSegue(withIdentifier: "Main", sender: self)
+            }else{
+                let alert = UIAlertController(title: "Failed to Login", message: "Email and/or password is incorrect", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+            }
+        }
+        
     }
     
     @objc public func Signup(_ :UIButton){
