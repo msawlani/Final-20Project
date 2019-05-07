@@ -24,6 +24,7 @@ class SignupViewController: UIViewController {
         emailFieldText.borderStyle = .line
         emailFieldText.keyboardAppearance = .dark
         emailFieldText.keyboardType = .emailAddress
+        emailFieldText.autocapitalizationType = .none
         emailFieldText.placeholder = "email..."
         view.addSubview(emailFieldText)
         
@@ -60,7 +61,7 @@ class SignupViewController: UIViewController {
         
         //creates the user using firebase
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
-            if  error == nil && self.emailFieldText.text != nil &&
+            if  error == nil && user != nil && self.emailFieldText.text != nil &&
                 self.passwordFieldText.text == self.reenterpasswordFieldText.text
             {
                 self.performSegue(withIdentifier: "Main", sender: self)
@@ -72,7 +73,7 @@ class SignupViewController: UIViewController {
                 self.present(alert, animated: true)
                 
             }else{
-                let alert = UIAlertController(title: "Failed to Register User", message: "Email or Password is Incorrect", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failed to Register User", message: "Passwords Don't Match!", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
