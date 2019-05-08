@@ -19,6 +19,7 @@
 		E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */; };
 		E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E067D6225FB566004A2EC9 /* LogInView.swift */; };
 		F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */; };
+		F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */; };
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
 		F259DB352280BB0900C76EC8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB342280BB0900C76EC8 /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		E15AE3C722565CE2007C345F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E067D6225FB566004A2EC9 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		F259DB342280BB0900C76EC8 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		F7540E5E015C3C0041FD0338 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */,
 				F259DB342280BB0900C76EC8 /* SignupViewController.swift */,
 				F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */,
+				F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,
 				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
+				F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */,
 				F259DB352280BB0900C76EC8 /* SignupViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
@@ -486,6 +490,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E15AE3AE22565CE1007C345F /* Project object */;
 }
