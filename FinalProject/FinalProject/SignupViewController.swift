@@ -65,21 +65,32 @@ class SignupViewController: UIViewController {
                 self.passwordFieldText.text == self.reenterpasswordFieldText.text
             {
                 self.performSegue(withIdentifier: "Main", sender: self)
-                let alert = UIAlertController(title: "Register Successful", message: "Successfully made an Acount with Firebase", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Register Successful", message: "Successfully made an Account with Firebase", preferredStyle: .alert)
         
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
                 self.present(alert, animated: true)
                 
-            }else{
+            }
+            else if self.passwordFieldText.text != self.reenterpasswordFieldText.text{
                 let alert = UIAlertController(title: "Failed to Register User", message: "Passwords Don't Match!", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
                 self.present(alert, animated: true)
+            }else{
+                let alert = UIAlertController(title: "Failed to Register User", message: "Please Fill out the Inforrmation Needed", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+
+            
+
             }
         }
+    
         
 
     }
