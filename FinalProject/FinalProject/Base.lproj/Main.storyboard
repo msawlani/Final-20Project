@@ -10,6 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item-->
+        <scene sceneID="MP7-mS-aTZ">
+            <objects>
+                <viewController id="Opz-d5-0tq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m4I-kw-See">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TAb-8T-197"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="E6L-AC-Dmp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1N-Gu-Yxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628" y="1117"/>
+        </scene>
         <!--Balance-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -148,6 +164,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="Opz-d5-0tq" kind="relationship" relationship="viewControllers" id="X8q-3H-Hf0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

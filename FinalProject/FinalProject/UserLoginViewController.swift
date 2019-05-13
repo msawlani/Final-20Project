@@ -14,6 +14,9 @@ class UserLoginViewController: UIViewController {
     let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 32, height: 50))
 
     let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 32, height: 50))
+    
+    let showpasswordButton = UIButton(frame: CGRect(x: 326, y: 165, width: 60, height: 40))
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,12 @@ class UserLoginViewController: UIViewController {
         loginButton.tintColor = .white
         loginButton.addTarget(self, action: #selector(Login(_:)), for: .touchUpInside)
         view.addSubview(loginButton)
+        
+        showpasswordButton.setTitle("Show", for: .normal)
+        showpasswordButton.backgroundColor = .black
+        showpasswordButton.tintColor = .white
+        showpasswordButton.addTarget(self, action: #selector(ShowPassword(_:)), for: .touchUpInside)
+        view.addSubview(showpasswordButton)
         
         let signupButton = UIButton(frame: CGRect(x: 10, y: 310, width: view.frame.width - 32, height: 50))
         signupButton.setTitle("Signup", for: .normal)
@@ -71,6 +80,14 @@ class UserLoginViewController: UIViewController {
                 
                 self.present(alert, animated: true)
             }
+            
+            if self.passwordFieldText.text == nil{
+                let alert = UIAlertController(title: "Password Needed!", message: "Please Enter Password", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+            }
         }
         
     }
@@ -81,6 +98,18 @@ class UserLoginViewController: UIViewController {
     
     @objc public func ForgotPassword(_ :UIButton){
         performSegue(withIdentifier: "ForgotPass", sender: self)
+    }
+    
+    @objc public func ShowPassword(_ :UIButton){
+        
+        if showpasswordButton.titleLabel?.text == "Show"{
+            passwordFieldText.isSecureTextEntry = false
+            showpasswordButton.setTitle("Hide", for: .normal)
+        }
+        else{
+            passwordFieldText.isSecureTextEntry = true
+            showpasswordButton.setTitle("Show", for: .normal)
+        }
     }
 
     /*

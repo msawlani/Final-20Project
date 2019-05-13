@@ -22,6 +22,7 @@
 		F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */; };
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
 		F259DB352280BB0900C76EC8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB342280BB0900C76EC8 /* SignupViewController.swift */; };
+		F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4C262284957A00072E8E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		F259DB342280BB0900C76EC8 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F2CA4C262284957A00072E8E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F7540E5E015C3C0041FD0338 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				F259DB342280BB0900C76EC8 /* SignupViewController.swift */,
 				F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */,
 				F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */,
+				F2CA4C262284957A00072E8E /* SettingsViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,
 				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
 				F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */,
+				F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */,
 				F259DB352280BB0900C76EC8 /* SignupViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
@@ -438,6 +442,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q7NNMD9CR7;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -456,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q7NNMD9CR7;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
