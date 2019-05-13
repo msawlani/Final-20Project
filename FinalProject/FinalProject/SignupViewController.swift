@@ -15,6 +15,10 @@ class SignupViewController: UIViewController {
     let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 32, height: 50))
     let reenterpasswordFieldText = UITextField(frame: CGRect(x: 10, y: 220, width: UIScreen.main.bounds.size.width - 32, height: 50))
 
+    let showpasswordButton = UIButton(frame: CGRect(x: 326, y: 165, width: 60, height: 40))
+    
+    let showpasswordButton2 = UIButton(frame: CGRect(x: 326, y: 226, width: 60, height: 40))
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,18 @@ class SignupViewController: UIViewController {
         reenterpasswordFieldText.isSecureTextEntry = true
         reenterpasswordFieldText.placeholder = "reenterpassword..."
         view.addSubview(reenterpasswordFieldText)
+        
+        showpasswordButton.setTitle("Show", for: .normal)
+        showpasswordButton.backgroundColor = .black
+        showpasswordButton.tintColor = .white
+        showpasswordButton.addTarget(self, action: #selector(ShowPassword(_:)), for: .touchUpInside)
+        view.addSubview(showpasswordButton)
+        
+        showpasswordButton2.setTitle("Show", for: .normal)
+        showpasswordButton2.backgroundColor = .black
+        showpasswordButton2.tintColor = .white
+        showpasswordButton2.addTarget(self, action: #selector(ShowPassword2(_:)), for: .touchUpInside)
+        view.addSubview(showpasswordButton2)
 
         let signupButton = UIButton.init(frame: CGRect(x: 10, y: 280, width: view.frame.width - 32, height: 50))
         signupButton.setTitle("Register", for: .normal)
@@ -98,6 +114,31 @@ class SignupViewController: UIViewController {
         
 
     }
+
+    @objc public func ShowPassword(_ :UIButton){
+        
+        if showpasswordButton.titleLabel?.text == "Show"{
+            passwordFieldText.isSecureTextEntry = false
+            showpasswordButton.setTitle("Hide", for: .normal)
+        }
+        else{
+            passwordFieldText.isSecureTextEntry = true
+            showpasswordButton.setTitle("Show", for: .normal)
+        }
+    }
+    
+    @objc public func ShowPassword2(_ :UIButton){
+        
+        if showpasswordButton2.titleLabel?.text == "Show"{
+            reenterpasswordFieldText.isSecureTextEntry = false
+            showpasswordButton2.setTitle("Hide", for: .normal)
+        }
+        else{
+            reenterpasswordFieldText.isSecureTextEntry = true
+            showpasswordButton2.setTitle("Show", for: .normal)
+        }
+    }
+
 
     /*
     // MARK: - Navigation
