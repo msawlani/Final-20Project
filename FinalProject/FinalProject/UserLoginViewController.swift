@@ -73,7 +73,15 @@ class UserLoginViewController: UIViewController {
             if error == nil && user != nil && self.passwordFieldText.text != nil
             {
                 self.performSegue(withIdentifier: "Main", sender: self)
-            }else{
+            }
+            else if self.passwordFieldText.text == nil{
+                let alert = UIAlertController(title: "Failed to Login", message: "Please Enter Password", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+            }
+            else{
                 let alert = UIAlertController(title: "Failed to Login", message: "Email and/or password is incorrect", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -81,13 +89,7 @@ class UserLoginViewController: UIViewController {
                 self.present(alert, animated: true)
             }
             
-            if self.passwordFieldText.text == nil{
-                let alert = UIAlertController(title: "Password Needed!", message: "Please Enter Password", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.present(alert, animated: true)
-            }
+
         }
         
     }

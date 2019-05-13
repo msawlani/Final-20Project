@@ -64,13 +64,17 @@ class SignupViewController: UIViewController {
             if  error == nil && user != nil && self.emailFieldText.text != nil &&
                 self.passwordFieldText.text == self.reenterpasswordFieldText.text
             {
-                self.performSegue(withIdentifier: "Main", sender: self)
+        
                 let alert = UIAlertController(title: "Register Successful", message: "Successfully made an Account with Firebase", preferredStyle: .alert)
         
                 
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
+                let regiAction = UIAlertAction(title: "OK", style: .default) { [unowned self] action in
+                            self.performSegue(withIdentifier: "Main", sender: self)
+                    
+                }
+                alert.addAction(regiAction)
                 self.present(alert, animated: true)
+                
                 
             }
             else if self.passwordFieldText.text != self.reenterpasswordFieldText.text{
@@ -80,7 +84,7 @@ class SignupViewController: UIViewController {
                 
                 self.present(alert, animated: true)
             }else{
-                let alert = UIAlertController(title: "Failed to Register User", message: "Please Fill out the Inforrmation Needed", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failed to Register User", message: "Please Fill out the Information Needed", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
