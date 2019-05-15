@@ -11,13 +11,13 @@ import FirebaseAuth
 
 class SignupViewController: UIViewController {
 
-    let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 32, height: 50))
-    let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 32, height: 50))
-    let reenterpasswordFieldText = UITextField(frame: CGRect(x: 10, y: 220, width: UIScreen.main.bounds.size.width - 32, height: 50))
+    let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 20, height: 50))
+    let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 60, height: 50))
+    let reenterpasswordFieldText = UITextField(frame: CGRect(x: 10, y: 220, width: UIScreen.main.bounds.size.width - 60, height: 50))
 
-    let showpasswordButton = UIButton(frame: CGRect(x: 326, y: 165, width: 60, height: 40))
+    let showpasswordButton = UIButton(frame: CGRect(x: 300, y: 165, width: 60, height: 40))
     
-    let showpasswordButton2 = UIButton(frame: CGRect(x: 326, y: 226, width: 60, height: 40))
+    let showpasswordButton2 = UIButton(frame: CGRect(x: 300, y: 226, width: 60, height: 40))
 
     
     override func viewDidLoad() {
@@ -60,7 +60,7 @@ class SignupViewController: UIViewController {
         showpasswordButton2.addTarget(self, action: #selector(ShowPassword2(_:)), for: .touchUpInside)
         view.addSubview(showpasswordButton2)
 
-        let signupButton = UIButton.init(frame: CGRect(x: 10, y: 280, width: view.frame.width - 32, height: 50))
+        let signupButton = UIButton.init(frame: CGRect(x: 10, y: 280, width: view.frame.width - 20, height: 50))
         signupButton.setTitle("Register", for: .normal)
         signupButton.backgroundColor = .black
         signupButton.tintColor = .white
