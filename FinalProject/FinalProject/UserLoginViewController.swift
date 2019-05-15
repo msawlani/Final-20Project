@@ -11,11 +11,11 @@ import FirebaseAuth
 
 class UserLoginViewController: UIViewController {
 
-    let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 32, height: 50))
+    let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 20, height: 50))
 
-    let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 32, height: 50))
+    let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 60, height: 50))
     
-    let showpasswordButton = UIButton(frame: CGRect(x: 326, y: 165, width: 60, height: 40))
+    let showpasswordButton = UIButton(frame: CGRect(x: 300, y: 165, width: 60, height: 40))
 
 
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class UserLoginViewController: UIViewController {
         passwordFieldText.placeholder = "password..."
         view.addSubview(passwordFieldText)
         
-        let loginButton = UIButton(frame: CGRect(x: 10, y: 250, width: view.frame.width - 32, height: 50))
+        let loginButton = UIButton(frame: CGRect(x: 10, y: 250, width: view.frame.width - 20, height: 50))
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .black
         loginButton.tintColor = .white
@@ -50,14 +50,19 @@ class UserLoginViewController: UIViewController {
         showpasswordButton.addTarget(self, action: #selector(ShowPassword(_:)), for: .touchUpInside)
         view.addSubview(showpasswordButton)
         
-        let signupButton = UIButton(frame: CGRect(x: 10, y: 310, width: view.frame.width - 32, height: 50))
+        let signupButton = UIButton(frame: CGRect(x: 10, y: 310, width: view.frame.width - 20, height: 50))
         signupButton.setTitle("Signup", for: .normal)
         signupButton.backgroundColor = .black
         signupButton.tintColor = .white
         signupButton.addTarget(self, action: #selector(Signup(_:)), for: .touchUpInside)
         view.addSubview(signupButton)
         
-        let forgotpasswordButton = UIButton(frame: CGRect(x: 10, y: 370, width: view.frame.width - 32, height: 50))
+        let hintButton = UIButton(frame: CGRect(x: 366, y: 165, width: 40, height: 40))
+        hintButton.setBackgroundImage(UIImage(named: "Information_Icon_Button.png"), for: .normal)
+        hintButton.addTarget(self, action: #selector(PasswordHint(_:)), for: .touchUpInside)
+        view.addSubview(hintButton)
+        
+        let forgotpasswordButton = UIButton(frame: CGRect(x: 10, y: 370, width: view.frame.width - 20, height: 50))
         forgotpasswordButton.setTitle("Forgot Password?", for: .normal)
         forgotpasswordButton.backgroundColor = .black
         forgotpasswordButton.tintColor = .white
@@ -113,7 +118,13 @@ class UserLoginViewController: UIViewController {
             showpasswordButton.setTitle("Show", for: .normal)
         }
     }
-
+    @objc public func PasswordHint(_ :UIButton){
+        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 5 - 16 characters", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
     /*
     // MARK: - Navigation
 
