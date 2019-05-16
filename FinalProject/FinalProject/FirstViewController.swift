@@ -7,22 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
-struct cellData {
-    let cell: Int!
-    let text: String!
-    let imag: UIImage!
-}
 class FirstViewController: UITableViewController {
 
     
-    var cellaDataArr = [cellData]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if sigedIn == false{
-            performSegue(withIdentifier: "backToLogin", sender: self)
-        }
+        
         
     }
 }
