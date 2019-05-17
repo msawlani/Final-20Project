@@ -36,10 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print("User is signed in to FireBase with Google",_user.userID)
             self.window?.rootViewController?.performSegue(withIdentifier: "toMain", sender: nil)
         }
+        
         //Retrieve user data from Firebase and store it in user variable
         user.userId = _user.userID
         
         GetUser(userId: user.userId, callback: { user in
+            user.userId = _user.userID
             user.email = _user.profile.email
             user.imageURL = _user.profile.imageURL(withDimension: 720)
             user.firstName = _user.profile.givenName

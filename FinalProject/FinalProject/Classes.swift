@@ -16,9 +16,10 @@ class User: NSObject
     var userId, password: String
     var email, firstName, lastName: String?
     var imageURL: URL?
-    var numAccounts, numBills: Int
+    var numAccounts, numBills, numCategories: Int
     var accounts: [Account] = []
     var bills: [Bill] = []
+    var categories: [String] = ["Bills", "Rent", "Utilities", "Income", "Groceries"]
     var ref:DatabaseReference?
     
     init(userId:String, password:String = "")
@@ -27,6 +28,7 @@ class User: NSObject
         self.password = password
         self.numAccounts = 0
         self.numBills = 0
+        self.numCategories = 0
     }
     
     func PayBill(bill:Bill) -> Bool
@@ -117,6 +119,23 @@ class User: NSObject
         return false
     }
     
+    func AddCategory(category: String) -> Bool
+    {
+        var i = 0
+        
+        for n in self.categories
+        {
+            if n == category
+            {
+                return false
+            }
+        }
+        categories.append(category)
+        self.numCategories+=1
+        StoreInFirebase()
+        return true
+    }
+    
     func StoreInFirebase()
     {
         let ref = Database.database().reference()
@@ -124,6 +143,7 @@ class User: NSObject
         ref.child("users").child(self.userId).child("password").setValue(self.password)
         ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
         ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
+        ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - 5)
         
         var i = 0
         
@@ -171,6 +191,13 @@ class User: NSObject
             let date = self.bills[i].date
             let dateString = "\(date.month)" + "/" + "\(date.day)" + "/" + "\(date.year)"
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("date").setValue(dateString)
+            i+=1
+        }
+        
+        i=5
+        while i < (self.categories.count)
+        {
+            ref.child("users").child(self.userId).child("categories").child("categoryNum" + "\(i-5)").setValue(categories[i])
             i+=1
         }
     }
@@ -286,6 +313,9 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                     if let temp = dictionary["numBills"] as? Int{
                         tempUser.numBills = temp
                     }
+                    if let temp = dictionary["numCategories"] as? Int{
+                        tempUser.numCategories = temp
+                    }
                     if let temp = dictionary["password"] as? String{
                         tempUser.password = temp
                     }
@@ -340,6 +370,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                                 j+=1
                             }
                             
+                            tempUser.numAccounts-=1
                             result = tempUser.AddAccount(account: account)
                         }
                         
@@ -383,10 +414,22 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                                 bill.date = date
                             }
                             
+                            tempUser.numBills-=1
                             result = tempUser.AddBill(bill: bill)
                         }
                         i+=1
                     }
+                    
+                    i = 0
+                    while i < tempUser.numCategories
+                    {
+                        if let temp = dictionary["categories"]?["categoryNum" + "\(i)"] as? String {
+                            tempUser.numCategories-=1
+                            result = tempUser.AddCategory(category: temp)
+                        }
+                        i+=1
+                    }
+                    
                     callback(tempUser)
                 }
             }
