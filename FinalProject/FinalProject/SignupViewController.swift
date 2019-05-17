@@ -10,66 +10,26 @@ import UIKit
 import FirebaseAuth
 
 class SignupViewController: UIViewController {
-
-    let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 20, height: 50))
-    let passwordFieldText = UITextField(frame: CGRect(x: 10, y: 160, width: UIScreen.main.bounds.size.width - 60, height: 50))
-    let reenterpasswordFieldText = UITextField(frame: CGRect(x: 10, y: 220, width: UIScreen.main.bounds.size.width - 60, height: 50))
-
-    let showpasswordButton = UIButton(frame: CGRect(x: 300, y: 165, width: 60, height: 40))
     
-    let showpasswordButton2 = UIButton(frame: CGRect(x: 300, y: 226, width: 60, height: 40))
-
+    
+    @IBOutlet weak var emailFieldText: UITextField!
+    
+    @IBOutlet weak var passwordFieldText: UITextField!
+    
+    @IBOutlet weak var reenterpasswordFieldText: UITextField!
+    
+    @IBOutlet weak var showpasswordButton: UIButton!
+    
+    @IBOutlet weak var showpasswordButton2: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailFieldText.backgroundColor = .white
-        emailFieldText.borderStyle = .line
-        emailFieldText.keyboardAppearance = .dark
-        emailFieldText.keyboardType = .emailAddress
-        emailFieldText.autocapitalizationType = .none
-        emailFieldText.placeholder = "email..."
-        view.addSubview(emailFieldText)
-        
-        passwordFieldText.backgroundColor = .white
-        passwordFieldText.borderStyle = .line
-        passwordFieldText.keyboardAppearance = .dark
-        passwordFieldText.keyboardType = .default
-        passwordFieldText.isSecureTextEntry = true
-        passwordFieldText.placeholder = "password..."
-        view.addSubview(passwordFieldText)
-        
-        reenterpasswordFieldText.backgroundColor = .white
-        reenterpasswordFieldText.borderStyle = .line
-        reenterpasswordFieldText.keyboardAppearance = .dark
-        reenterpasswordFieldText.keyboardType = .default
-        reenterpasswordFieldText.isSecureTextEntry = true
-        reenterpasswordFieldText.placeholder = "reenterpassword..."
-        view.addSubview(reenterpasswordFieldText)
-        
-        showpasswordButton.setTitle("Show", for: .normal)
-        showpasswordButton.backgroundColor = .black
-        showpasswordButton.tintColor = .white
-        showpasswordButton.addTarget(self, action: #selector(ShowPassword(_:)), for: .touchUpInside)
-        view.addSubview(showpasswordButton)
-        
-        showpasswordButton2.setTitle("Show", for: .normal)
-        showpasswordButton2.backgroundColor = .black
-        showpasswordButton2.tintColor = .white
-        showpasswordButton2.addTarget(self, action: #selector(ShowPassword2(_:)), for: .touchUpInside)
-        view.addSubview(showpasswordButton2)
-
-        let signupButton = UIButton.init(frame: CGRect(x: 10, y: 280, width: view.frame.width - 20, height: 50))
-        signupButton.setTitle("Register", for: .normal)
-        signupButton.backgroundColor = .black
-        signupButton.tintColor = .white
-        signupButton.addTarget(self, action: #selector(Regi(_:)), for: .touchUpInside)
-        view.addSubview(signupButton)
-
-        // Do any additional setup after loading the view.
+       
     }
     
-    @objc public func Regi(_ :UIButton){
+    @IBAction func Regi(_ sender: Any){
         
         guard let email = emailFieldText.text else {return}
         guard let password = passwordFieldText.text else {return}
@@ -79,12 +39,12 @@ class SignupViewController: UIViewController {
             if  error == nil && user != nil && self.emailFieldText.text != nil &&
                 self.passwordFieldText.text == self.reenterpasswordFieldText.text
             {
-        
+                
                 let alert = UIAlertController(title: "Register Successful", message: "Successfully made an Account with Firebase", preferredStyle: .alert)
-        
+                
                 
                 let regiAction = UIAlertAction(title: "OK", style: .default) { [unowned self] action in
-                            self.performSegue(withIdentifier: "Main", sender: self)
+                    self.performSegue(withIdentifier: "Main", sender: self)
                     
                 }
                 alert.addAction(regiAction)
@@ -104,17 +64,17 @@ class SignupViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
                 self.present(alert, animated: true)
-
-            
-
+                
+                
+                
             }
         }
-    
         
-
+        
+        
     }
-
-    @objc public func ShowPassword(_ :UIButton){
+    
+    @IBAction func ShowPassword(_ sender:Any){
         
         if showpasswordButton.titleLabel?.text == "Show"{
             passwordFieldText.isSecureTextEntry = false
@@ -126,7 +86,7 @@ class SignupViewController: UIViewController {
         }
     }
     
-    @objc public func ShowPassword2(_ :UIButton){
+    @IBAction func ShowPassword2(_ sender:Any){
         
         if showpasswordButton2.titleLabel?.text == "Show"{
             reenterpasswordFieldText.isSecureTextEntry = false
@@ -137,16 +97,23 @@ class SignupViewController: UIViewController {
             showpasswordButton2.setTitle("Show", for: .normal)
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func PasswordHint(_ sender: Any) {
+        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 5 - 16 characters", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
