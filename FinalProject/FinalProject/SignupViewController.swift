@@ -23,7 +23,6 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         emailFieldText.backgroundColor = .white
         emailFieldText.borderStyle = .line
         emailFieldText.keyboardAppearance = .dark
