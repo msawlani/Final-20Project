@@ -11,20 +11,20 @@ import Firebase
 import GoogleSignIn
 import CoreData
 
-
+var user = User(userId: "")
 var sigedIn = true
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     //Checking if thers is a log in error
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor _user: GIDGoogleUser!, withError error: Error!) {
         if let err = error{
             print("Failed to Log In to Google",err)
             return
         }
-        print("Logged Into Google",user)
+        print("Logged Into Google",_user)
         
-        guard let authentication = user.authentication else { return }
+        guard let authentication = _user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         
@@ -33,9 +33,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("Failed To log in With Google",err)
                 return
             }
-            print("User is signed in to FireBase with Google",user.userID)
+            print("User is signed in to FireBase with Google",_user.userID)
             self.window?.rootViewController?.performSegue(withIdentifier: "toMain", sender: nil)
         }
+        //Retrieve user data from Firebase and store it in user variable
+        user.userId = _user.userID
+        
+        GetUser(userId: user.userId, callback: { user in
+            user.email = _user.profile.email
+            user.imageURL = _user.profile.imageURL(withDimension: 720)
+            user.firstName = _user.profile.givenName
+            user.lastName = _user.profile.familyName
+            user.StoreInFirebase()
+        })
+        //Justin
     }
     
 
