@@ -11,29 +11,14 @@ import FirebaseAuth
 
 class ForgotPasswordViewController: UIViewController {
 
-    let emailFieldText = UITextField(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.size.width - 32, height: 50))
+    @IBOutlet weak var emailFieldText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emailFieldText.backgroundColor = .white
-        emailFieldText.borderStyle = .line
-        emailFieldText.keyboardAppearance = .dark
-        emailFieldText.keyboardType = .emailAddress
-        emailFieldText.autocapitalizationType = .none
-        emailFieldText.placeholder = "email..."
-        view.addSubview(emailFieldText)
-        
-        let resetButton = UIButton(frame: CGRect(x: 10, y: 160, width: view.frame.width - 32, height: 50))
-        resetButton.setTitle("Reset", for: .normal)
-        resetButton.backgroundColor = .black
-        resetButton.tintColor = .white
-        resetButton.addTarget(self, action: #selector(Reset(_:)), for: .touchUpInside)
-        view.addSubview(resetButton)
-        // Do any additional setup after loading the view.
     }
     
-    @objc public func Reset(_ :UIButton){
+    @IBAction func Reset(_ sender:Any){
         guard let email = emailFieldText.text else {return}
         Auth.auth().sendPasswordReset(withEmail: email) {error in
             if let error = error{
