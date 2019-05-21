@@ -29,12 +29,13 @@ class SignupViewController: UIViewController {
        
     }
     
+    //registers the user with firebase  and checks for errors - Michael Sawlani
     @IBAction func Regi(_ sender: Any){
         
         guard let email = emailFieldText.text else {return}
         guard let password = passwordFieldText.text else {return}
         
-        //creates the user using firebase
+        //creates the user using firebase - Michael Sawlani
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if  error == nil && user != nil && self.emailFieldText.text != nil &&
                 self.passwordFieldText.text == self.reenterpasswordFieldText.text
@@ -74,6 +75,7 @@ class SignupViewController: UIViewController {
         
     }
     
+    //shows and hides the password that user enters - Michael Sawlani
     @IBAction func ShowPassword(_ sender:Any){
         
         if showpasswordButton.titleLabel?.text == "Show"{
@@ -91,6 +93,7 @@ class SignupViewController: UIViewController {
         }
     }
     
+    //shows and hides the password that user enters - Michael Sawlani
     @IBAction func ShowPassword2(_ sender:Any){
         
         if showpasswordButton2.titleLabel?.text == "Show"{
@@ -108,8 +111,9 @@ class SignupViewController: UIViewController {
         }
     }
     
+    //shows the recommended passwowrd length - Michael Sawlani
     @IBAction func PasswordHint(_ sender: Any) {
-        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 5 - 16 characters", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 8 - 16 characters", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         

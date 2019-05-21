@@ -36,6 +36,7 @@ class LogInView: UIViewController,GIDSignInUIDelegate {
         performSegue(withIdentifier: "toMain", sender: self)
     }
     
+    //sends the user to the firebase login screen - Michael Sawlani
     @objc public func toLogin(_ :UIButton){
         performSegue(withIdentifier: "Login", sender: self)
     }
