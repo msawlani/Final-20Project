@@ -78,11 +78,16 @@ class SignupViewController: UIViewController {
         
         if showpasswordButton.titleLabel?.text == "Show"{
             passwordFieldText.isSecureTextEntry = false
+            reenterpasswordFieldText.isSecureTextEntry = false
             showpasswordButton.setTitle("Hide", for: .normal)
+            showpasswordButton2.setTitle("Hide", for: .normal)
+
         }
         else{
             passwordFieldText.isSecureTextEntry = true
             showpasswordButton.setTitle("Show", for: .normal)
+            reenterpasswordFieldText.isSecureTextEntry = true
+            showpasswordButton2.setTitle("Show", for: .normal)
         }
     }
     
@@ -90,11 +95,16 @@ class SignupViewController: UIViewController {
         
         if showpasswordButton2.titleLabel?.text == "Show"{
             reenterpasswordFieldText.isSecureTextEntry = false
+            passwordFieldText.isSecureTextEntry = false
             showpasswordButton2.setTitle("Hide", for: .normal)
+            showpasswordButton.setTitle("Hide", for: .normal)
+
         }
         else{
             reenterpasswordFieldText.isSecureTextEntry = true
             showpasswordButton2.setTitle("Show", for: .normal)
+            passwordFieldText.isSecureTextEntry = true
+            showpasswordButton.setTitle("Show", for: .normal)
         }
     }
     
