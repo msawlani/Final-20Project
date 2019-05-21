@@ -68,7 +68,7 @@ class UserLoginViewController: UIViewController {
         }
     }
     @IBAction func PasswordHint(_ sender: Any) {
-        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 5 - 16 characters", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 8 - 16 characters", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
