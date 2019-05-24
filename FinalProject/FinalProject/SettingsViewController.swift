@@ -37,7 +37,13 @@ class SettingsViewController: UIViewController {
         self.performSegue(withIdentifier: "Login", sender: self)
         
     }
-
+    @IBAction func ChangeEmail(_ sender: Any) {
+        self.performSegue(withIdentifier: "ChangeEmail", sender: self)
+    }
+    @IBAction func ChangePass(_ sender: Any) {
+        self.performSegue(withIdentifier: "ChangePass", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
