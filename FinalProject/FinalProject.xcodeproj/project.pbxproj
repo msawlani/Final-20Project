@@ -22,6 +22,8 @@
 		F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */; };
 		F21364ED228F046F00800435 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21364EC228F046F00800435 /* SignupViewController.swift */; };
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
+		F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */; };
+		F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864D22976FAE001BEC17 /* ChangePassViewController.swift */; };
 		F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4C262284957A00072E8E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		F21364EC228F046F00800435 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		F295864D22976FAE001BEC17 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
 		F2CA4C262284957A00072E8E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F7540E5E015C3C0041FD0338 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +118,8 @@
 				F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */,
 				F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */,
 				F2CA4C262284957A00072E8E /* SettingsViewController.swift */,
+				F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */,
+				F295864D22976FAE001BEC17 /* ChangePassViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -289,10 +295,12 @@
 				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
 				F21364ED228F046F00800435 /* SignupViewController.swift in Sources */,
 				F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */,
+				F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */,
 				F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
+				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 				E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */,
 			);
