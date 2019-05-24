@@ -164,6 +164,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Change Password"/>
+                                <connections>
+                                    <action selector="ChangPass:" destination="rPu-DM-GH9" eventType="touchUpInside" id="1z6-kf-fjz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIY-SW-yc5">
                                 <rect key="frame" x="364" y="405" width="30" height="30"/>
@@ -174,6 +177,7 @@
                                 <state key="normal" backgroundImage="Information_Icon_Button"/>
                                 <connections>
                                     <action selector="PasswordHint:" destination="9RQ-Rp-SrH" eventType="touchUpInside" id="QNF-8h-0m4"/>
+                                    <action selector="PasswordHint:" destination="rPu-DM-GH9" eventType="touchUpInside" id="jzD-Ci-YMe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeJ-g9-Amv">
@@ -182,6 +186,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Show"/>
                                 <connections>
+                                    <action selector="ShowPassword1:" destination="rPu-DM-GH9" eventType="touchUpInside" id="nww-0D-1O7"/>
                                     <action selector="ShowPassword:" destination="9RQ-Rp-SrH" eventType="touchUpInside" id="iEj-XV-OHE"/>
                                 </connections>
                             </button>
@@ -192,6 +197,7 @@
                                 <state key="normal" title="Show"/>
                                 <connections>
                                     <action selector="ShowPassword2:" destination="9RQ-Rp-SrH" eventType="touchUpInside" id="MTx-9V-hSY"/>
+                                    <action selector="ShowPassword2:" destination="rPu-DM-GH9" eventType="touchUpInside" id="cR5-s9-y2K"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -222,6 +228,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wtB-by-vy0"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordFieldText" destination="EAK-xM-Vc1" id="5c7-3I-EFg"/>
+                        <outlet property="reenterpasswordFieldText" destination="dwo-de-7uC" id="3jQ-k2-JE3"/>
+                        <outlet property="showPassword1" destination="QeJ-g9-Amv" id="fyJ-6P-1dH"/>
+                        <outlet property="showPassword2" destination="Whw-SL-ovM" id="R5E-zi-4pn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QwU-Xt-rlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -542,8 +554,8 @@
                                     <action selector="ShowPassword2:" destination="9RQ-Rp-SrH" eventType="touchUpInside" id="84A-KU-P6Z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN1-jh-psX">
-                                <rect key="frame" x="20" y="477" width="374" height="94"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN1-jh-psX">
+                                <rect key="frame" x="20" y="477" width="374" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="374" id="Cbb-iA-DGH"/>
@@ -578,9 +590,9 @@
                             <constraint firstItem="BIT-lz-6tZ" firstAttribute="leading" secondItem="Rem-cx-JL1" secondAttribute="trailing" constant="53" id="iQc-vD-SWl"/>
                             <constraint firstItem="zN1-jh-psX" firstAttribute="top" secondItem="BIT-lz-6tZ" secondAttribute="bottom" constant="68" id="jKl-xV-RIQ"/>
                             <constraint firstItem="Rem-cx-JL1" firstAttribute="top" secondItem="a6m-0B-YwW" secondAttribute="bottom" constant="8" symbolic="YES" id="nO0-ux-Lhn"/>
-                            <constraint firstItem="BIT-lz-6tZ" firstAttribute="centerY" secondItem="D5f-jO-DD5" secondAttribute="centerY" constant="-10" id="rQ1-A1-ITL"/>
+                            <constraint firstItem="BIT-lz-6tZ" firstAttribute="centerY" secondItem="D5f-jO-DD5" secondAttribute="centerY" constant="-54" id="rQ1-A1-ITL"/>
                             <constraint firstItem="zQo-AD-dhC" firstAttribute="top" secondItem="nvg-kN-fiu" secondAttribute="top" constant="237" id="vfF-Q8-nJI"/>
-                            <constraint firstItem="nvg-kN-fiu" firstAttribute="bottom" secondItem="zN1-jh-psX" secondAttribute="bottom" constant="291" id="wRV-TJ-KAv"/>
+                            <constraint firstItem="nvg-kN-fiu" firstAttribute="bottom" secondItem="zN1-jh-psX" secondAttribute="bottom" constant="285" id="wRV-TJ-KAv"/>
                             <constraint firstItem="tcs-gd-U4Z" firstAttribute="trailing" secondItem="sdd-Wb-6Np" secondAttribute="trailing" id="wbx-D7-rSd"/>
                             <constraint firstItem="BIT-lz-6tZ" firstAttribute="top" secondItem="zQo-AD-dhC" secondAttribute="bottom" constant="48" id="yMO-eZ-9gY"/>
                             <constraint firstItem="zQo-AD-dhC" firstAttribute="trailing" secondItem="D5f-jO-DD5" secondAttribute="trailingMargin" id="yik-fH-5Um"/>
@@ -649,9 +661,9 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v8B-T4-TqX"/>
+        <segue reference="FZ2-LL-4zt"/>
         <segue reference="IVH-pg-OeT"/>
-        <segue reference="YMZ-su-mcv"/>
+        <segue reference="6wf-aa-agg"/>
         <segue reference="qJ9-ao-6R9"/>
     </inferredMetricsTieBreakers>
 </document>
