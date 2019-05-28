@@ -96,7 +96,11 @@ class ChangePassViewController: UIViewController {
         }
     }
     
-
+    @IBAction func Back(_ sender: Any) {
+        self.performSegue(withIdentifier: "Back", sender: self)
+        
+    }
+    
     /*
     // MARK: - Navigation
 
