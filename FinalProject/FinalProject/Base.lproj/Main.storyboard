@@ -10,23 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="hwa-Yv-2wR">
-            <objects>
-                <navigationController id="lzQ-zP-g4A" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fuf-x3-FlQ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Opz-d5-0tq" kind="relationship" relationship="rootViewController" id="PJ0-8C-atd"/>
-                        <segue destination="Opz-d5-0tq" kind="showDetail" id="qJ9-ao-6R9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ec4-LM-WR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1093" y="1156"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="MP7-mS-aTZ">
             <objects>
@@ -79,7 +62,7 @@
                     <connections>
                         <outlet property="ChangeEmailAddress" destination="HO2-AF-hEp" id="zb6-gr-86L"/>
                         <outlet property="ChangePass" destination="KqJ-fJ-DPz" id="HAW-fa-Y6V"/>
-                        <segue destination="7EZ-0f-uB9" kind="show" identifier="Login" id="6wf-aa-agg"/>
+                        <segue destination="7EZ-0f-uB9" kind="presentation" identifier="Login" modalPresentationStyle="currentContext" modalTransitionStyle="flipHorizontal" id="6wf-aa-agg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1N-Gu-Yxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -115,6 +98,27 @@
                                     <segue destination="Py8-Hx-gcU" kind="show" identifier="Login" id="IVH-pg-OeT"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHe-sR-Mhl">
+                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-KB-WLD">
+                                        <rect key="frame" x="8" y="11" width="75" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="rPu-DM-GH9" eventType="touchUpInside" id="RIn-9a-N6T"/>
+                                            <action selector="Back:" destination="mXe-9N-yhu" eventType="touchUpInside" id="sVM-tb-cfE"/>
+                                            <action selector="ChangeEmail:" destination="mXe-9N-yhu" eventType="touchUpInside" id="C7R-3g-DHI"/>
+                                            <segue destination="Opz-d5-0tq" kind="show" identifier="Back" id="QMm-yk-c0K"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27947726960000002" green="0.90861474320000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -166,6 +170,7 @@
                                 <state key="normal" title="Change Password"/>
                                 <connections>
                                     <action selector="ChangPass:" destination="rPu-DM-GH9" eventType="touchUpInside" id="1z6-kf-fjz"/>
+                                    <segue destination="Py8-Hx-gcU" kind="show" identifier="Login" id="l9r-D7-xG4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIY-SW-yc5">
@@ -200,6 +205,25 @@
                                     <action selector="ShowPassword2:" destination="rPu-DM-GH9" eventType="touchUpInside" id="cR5-s9-y2K"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sj7-Uh-PTy">
+                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dV-Lx-c75">
+                                        <rect key="frame" x="8" y="11" width="75" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="rPu-DM-GH9" eventType="touchUpInside" id="D04-8I-uyI"/>
+                                            <segue destination="Opz-d5-0tq" kind="show" identifier="Back" id="qci-hn-d8o"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27947726960000002" green="0.90861474320000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -237,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QwU-Xt-rlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3812" y="1557"/>
+            <point key="canvasLocation" x="3811.594202898551" y="1556.9196428571429"/>
         </scene>
         <!--Balance-->
         <scene sceneID="hNz-n2-bh7">
@@ -616,6 +640,7 @@
         <!--Navigation Controller-->
         <scene sceneID="2gb-oK-Nlh">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVZ-xi-0ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nSd-fa-RfD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="MOC-Ck-oGf">
@@ -631,7 +656,6 @@
                         <segue destination="49e-Tb-3d3" kind="show" identifier="toMain" id="ldF-mR-ycC"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVZ-xi-0ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-962" y="0.0"/>
         </scene>
@@ -642,9 +666,9 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FZ2-LL-4zt"/>
+        <segue reference="BDU-sr-Zxf"/>
         <segue reference="IVH-pg-OeT"/>
         <segue reference="6wf-aa-agg"/>
-        <segue reference="qJ9-ao-6R9"/>
+        <segue reference="QMm-yk-c0K"/>
     </inferredMetricsTieBreakers>
 </document>
