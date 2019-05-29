@@ -53,6 +53,27 @@
                                     <segue destination="rPu-DM-GH9" kind="show" identifier="ChangePass" id="Jlg-jq-S4C"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5H-mE-cSu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bg-3B-202">
+                                        <rect key="frame" x="8" y="11" width="75" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="rPu-DM-GH9" eventType="touchUpInside" id="Ofn-0U-rEC"/>
+                                            <action selector="Back:" destination="mXe-9N-yhu" eventType="touchUpInside" id="VK5-ue-wpS"/>
+                                            <action selector="Back:" destination="Opz-d5-0tq" eventType="touchUpInside" id="mW9-Gy-VzW"/>
+                                            <action selector="ChangeEmail:" destination="mXe-9N-yhu" eventType="touchUpInside" id="FrH-Sy-J9f"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27947726960000002" green="0.90861474320000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TAb-8T-197"/>
@@ -62,7 +83,7 @@
                     <connections>
                         <outlet property="ChangeEmailAddress" destination="HO2-AF-hEp" id="zb6-gr-86L"/>
                         <outlet property="ChangePass" destination="KqJ-fJ-DPz" id="HAW-fa-Y6V"/>
-                        <segue destination="7EZ-0f-uB9" kind="presentation" identifier="Login" modalPresentationStyle="currentContext" modalTransitionStyle="flipHorizontal" id="6wf-aa-agg"/>
+                        <segue destination="7EZ-0f-uB9" kind="show" identifier="Login" id="6wf-aa-agg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1N-Gu-Yxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -328,7 +349,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HoA-jI-qnD"/>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="toMain" id="BDU-sr-Zxf"/>
+                        <segue destination="49e-Tb-3d3" kind="showDetail" identifier="toMain" id="BDU-sr-Zxf"/>
                         <segue destination="Py8-Hx-gcU" kind="show" identifier="Login" id="4xK-wO-u77"/>
                     </connections>
                 </viewController>
@@ -640,7 +661,6 @@
         <!--Navigation Controller-->
         <scene sceneID="2gb-oK-Nlh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVZ-xi-0ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nSd-fa-RfD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="MOC-Ck-oGf">
@@ -653,9 +673,10 @@
                     </toolbar>
                     <connections>
                         <segue destination="7EZ-0f-uB9" kind="relationship" relationship="rootViewController" id="YMZ-su-mcv"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="toMain" id="ldF-mR-ycC"/>
+                        <segue destination="49e-Tb-3d3" kind="showDetail" identifier="toMain" id="ldF-mR-ycC"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVZ-xi-0ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-962" y="0.0"/>
         </scene>
@@ -666,6 +687,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lZG-qZ-T02"/>
         <segue reference="BDU-sr-Zxf"/>
         <segue reference="IVH-pg-OeT"/>
         <segue reference="6wf-aa-agg"/>
