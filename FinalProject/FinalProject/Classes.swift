@@ -437,6 +437,8 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
         }
         else {
             let tempUser = User(userId: userId)
+            let tempAccount = Account(name: "Main Account")
+            tempUser.AddAccount(account: tempAccount)
             tempUser.StoreInFirebase()
             GetUser(userId: mainUser.userId, callback: { mainUser in
                 mainUser.StoreInFirebase()

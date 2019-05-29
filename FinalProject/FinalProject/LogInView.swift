@@ -55,17 +55,19 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
             }
             else{
                 print("User is signed in to FireBase with Google",_user.userID)
-                
+                googleUser = _user
+                signedInWithGoogle = true
                 //Retrieve user data from Firebase and store it in user variable
                 mainUser.userId = Auth.auth().currentUser!.uid
-                
-                GetUser(userId: mainUser.userId, callback: { mainUser in
-                    mainUser.email = _user.profile.email
-                    mainUser.imageURL = _user.profile.imageURL(withDimension: 720)
-                    mainUser.firstName = _user.profile.givenName
-                    mainUser.lastName = _user.profile.familyName
-                    mainUser.StoreInFirebase()
-                })
+//
+//                GetUser(userId: mainUser.userId, callback: { mainUser in
+//                    mainUser.email = _user.profile.email
+//                    mainUser.imageURL = _user.profile.imageURL(withDimension: 720)
+//                    mainUser.firstName = _user.profile.givenName
+//                    mainUser.lastName = _user.profile.familyName
+//                    userLoaded = true
+//                    mainUser.StoreInFirebase()
+//                })
                 //Justin
                 
                 self.performSegue(withIdentifier: "toMain", sender: nil)

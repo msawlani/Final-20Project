@@ -13,6 +13,10 @@ import CoreData
 
 var mainUser = User(userId: "")
 var sigedIn = true
+var signedInWithGoogle = false
+var googleUser: GIDGoogleUser!
+var userEmail: String!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
 
