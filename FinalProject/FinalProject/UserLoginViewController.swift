@@ -21,7 +21,7 @@ class UserLoginViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
+//logs the user in on pressed using the firebase account - Michael Sawlani
     @IBAction func Login(_ sender: Any) {
         guard let email = emailFieldText.text else {return}
         guard let password = passwordFieldText.text else {return}
@@ -50,13 +50,17 @@ class UserLoginViewController: UIViewController {
         }
     }
     
+    //takes the user to signup page on pressed - Michael Sawlani
     @IBAction func Signup(_ sender: Any) {
         performSegue(withIdentifier: "Signup", sender: self)
     }
     
+    //takes the user to fogot password on pressed - Michael Sawlani
     @IBAction func ForgotPassword(_ sender: Any) {
          performSegue(withIdentifier: "ForgotPass", sender: self)
     }
+    
+    //shows and hides the password on pressed - Michael Sawlani
     @IBAction func ShowPassword(_ sender: Any) {
         if showPasswordButton.titleLabel?.text == "Show"{
             passwordFieldText.isSecureTextEntry = false
@@ -67,8 +71,10 @@ class UserLoginViewController: UIViewController {
             showPasswordButton.setTitle("Show", for: .normal)
         }
     }
+    
+    
     @IBAction func PasswordHint(_ sender: Any) {
-        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 5 - 16 characters", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Password Hint", message: "Password has to be 8 - 16 characters", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         

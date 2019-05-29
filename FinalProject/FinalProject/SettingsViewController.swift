@@ -7,16 +7,61 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
-
+    @IBOutlet weak var ChangeEmailAddress: UIButton!
+    
+    @IBOutlet weak var ChangePass: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        if GIDSignIn.sharedInstance()?.currentUser == nil{
+            ChangeEmailAddress.isEnabled = true
+            ChangePass.isEnabled = true
+        }else{
+            ChangeEmailAddress.isEnabled = false
+            ChangePass.isEnabled = false
+        }
+    }
+    @IBAction func Logout(_ sender: Any) {
+        do{
+            try
+                Auth.auth().signOut()
+            GIDSignIn.sharedInstance()?.signOut()
+        }catch let logouterror{
+            print(logouterror)
+        }
+        self.performSegue(withIdentifier: "Login", sender: self)
+        
+    }
+    @IBAction func ChangeEmail(_ sender: Any) {
+        self.performSegue(withIdentifier: "ChangeEmail", sender: self)
+    }
+    @IBAction func ChangePass(_ sender: Any) {
+        self.performSegue(withIdentifier: "ChangePass", sender: self)
+    }
+    @IBAction func Back(_ sender: Any) {
+        let alert = UIAlertController(title: "Logging Out? ", message: "Are you Sure you Want to Logout?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
+            do{
+                try Auth.auth().signOut()
+                GIDSignIn.sharedInstance()?.signOut()
+            }catch let Logouterror{
+                print(Logouterror)
+            }
+            self.performSegue(withIdentifier: "Login", sender: self)
 
-        // Do any additional setup after loading the view.
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
-
     /*
     // MARK: - Navigation
 
