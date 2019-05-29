@@ -350,7 +350,7 @@
                     <navigationItem key="navigationItem" id="HoA-jI-qnD"/>
                     <connections>
                         <segue destination="49e-Tb-3d3" kind="showDetail" identifier="toMain" id="BDU-sr-Zxf"/>
-                        <segue destination="Py8-Hx-gcU" kind="show" identifier="Login" id="4xK-wO-u77"/>
+                        <segue destination="Py8-Hx-gcU" kind="showDetail" identifier="Login" id="4xK-wO-u77"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7X-cp-eCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -442,6 +442,29 @@
                                     <action selector="ForgotPassword:" destination="Py8-Hx-gcU" eventType="touchUpInside" id="M6t-RT-RVO"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyy-1Y-paN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXu-nc-zB0">
+                                        <rect key="frame" x="8" y="11" width="75" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="rPu-DM-GH9" eventType="touchUpInside" id="Zt6-ef-SoE"/>
+                                            <action selector="Back:" destination="Py8-Hx-gcU" eventType="touchUpInside" id="c9f-YH-WLZ"/>
+                                            <action selector="Back:" destination="Opz-d5-0tq" eventType="touchUpInside" id="juC-Nl-GHV"/>
+                                            <action selector="Back:" destination="mXe-9N-yhu" eventType="touchUpInside" id="lP7-vS-X3w"/>
+                                            <action selector="ChangeEmail:" destination="mXe-9N-yhu" eventType="touchUpInside" id="7Dy-KM-Kku"/>
+                                            <segue destination="7EZ-0f-uB9" kind="showDetail" identifier="Login" id="2BQ-H9-NoU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27947726960000002" green="0.90861474320000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -510,6 +533,29 @@
                                     <action selector="Reset:" destination="rBG-qD-tup" eventType="touchUpInside" id="mI2-9x-ek4"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-ba-fEj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qN2-oc-RB9">
+                                        <rect key="frame" x="8" y="11" width="75" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="mXe-9N-yhu" eventType="touchUpInside" id="7dh-1X-mt9"/>
+                                            <action selector="Back:" destination="Opz-d5-0tq" eventType="touchUpInside" id="Lpx-OI-bY2"/>
+                                            <action selector="Back:" destination="rBG-qD-tup" eventType="touchUpInside" id="RZP-p0-AEk"/>
+                                            <action selector="Back:" destination="rPu-DM-GH9" eventType="touchUpInside" id="r4P-6p-HBS"/>
+                                            <action selector="ChangeEmail:" destination="mXe-9N-yhu" eventType="touchUpInside" id="eLq-Vl-7aB"/>
+                                            <segue destination="Py8-Hx-gcU" kind="showDetail" identifier="Login" id="hTZ-DZ-Ot8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27947726960000002" green="0.90861474320000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PBL-qK-xtk"/>
@@ -597,6 +643,29 @@
                                     <action selector="Regi:" destination="9RQ-Rp-SrH" eventType="touchUpInside" id="1gs-mC-blw"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXz-Ge-Z4v">
+                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-xl-EBP">
+                                        <rect key="frame" x="8" y="11" width="75" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="9RQ-Rp-SrH" eventType="touchUpInside" id="hI3-f9-EbQ"/>
+                                            <action selector="Back:" destination="Opz-d5-0tq" eventType="touchUpInside" id="qhH-9W-CGc"/>
+                                            <action selector="Back:" destination="mXe-9N-yhu" eventType="touchUpInside" id="sbo-q5-LDF"/>
+                                            <action selector="Back:" destination="rPu-DM-GH9" eventType="touchUpInside" id="zI9-HH-Nwt"/>
+                                            <action selector="ChangeEmail:" destination="mXe-9N-yhu" eventType="touchUpInside" id="f16-yF-s3o"/>
+                                            <segue destination="Py8-Hx-gcU" kind="showDetail" identifier="Login" id="DYc-En-P61"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27947726960000002" green="0.90861474320000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -687,10 +756,9 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lZG-qZ-T02"/>
-        <segue reference="BDU-sr-Zxf"/>
-        <segue reference="IVH-pg-OeT"/>
-        <segue reference="6wf-aa-agg"/>
+        <segue reference="FZ2-LL-4zt"/>
+        <segue reference="hTZ-DZ-Ot8"/>
+        <segue reference="2BQ-H9-NoU"/>
         <segue reference="QMm-yk-c0K"/>
     </inferredMetricsTieBreakers>
 </document>

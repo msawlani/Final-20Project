@@ -40,4 +40,9 @@ class ForgotPasswordViewController: UIViewController {
         }
 
     }
+    @IBAction func Back(_ sender: Any) {
+        self.performSegue(withIdentifier: "Login", sender: self)
+    }
+    
+    
 }

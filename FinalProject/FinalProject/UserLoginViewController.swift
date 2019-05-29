@@ -80,6 +80,9 @@ class UserLoginViewController: UIViewController {
         
         self.present(alert, animated: true)
     }
+    @IBAction func Back(_ sender: Any) {
+        self.performSegue(withIdentifier: "Login", sender: self)
+    }
     /*
     // MARK: - Navigation
 
