@@ -438,8 +438,8 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
         else {
             let tempUser = User(userId: userId)
             tempUser.StoreInFirebase()
-            GetUser(userId: user.userId, callback: { user in
-                user.StoreInFirebase()
+            GetUser(userId: mainUser.userId, callback: { mainUser in
+                mainUser.StoreInFirebase()
             })
         }
     })

@@ -10,7 +10,10 @@ import UIKit
 import CoreData
 
 class FirstViewController: UIViewController {
-
+    @IBOutlet weak var balanceText: UILabel!
+    @IBOutlet weak var usernameText: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
     
    
 }

@@ -11,7 +11,7 @@ import Firebase
 import GoogleSignIn
 import CoreData
 
-var user = User(userId: "")
+var mainUser = User(userId: "")
 var sigedIn = true
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{

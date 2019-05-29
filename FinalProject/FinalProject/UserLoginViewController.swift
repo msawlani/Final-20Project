@@ -29,6 +29,14 @@ class UserLoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) {user, error in
             if error == nil && user != nil && self.passwordFieldText.text != nil
             {
+                //Retrieve user data from Firebase and store it in user variable
+                mainUser.userId = Auth.auth().currentUser!.uid
+                
+                GetUser(userId: mainUser.userId, callback: { mainUser in
+                    mainUser.StoreInFirebase()
+                })
+                //Justin
+                
                 self.performSegue(withIdentifier: "Main", sender: self)
             }
             else if self.passwordFieldText.text == nil{
