@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 var mRef:DatabaseReference?
+var NUMDEFAULTCATS = 5
 
 class User: NSObject
 {
@@ -143,7 +144,7 @@ class User: NSObject
         ref.child("users").child(self.userId).child("password").setValue(self.password)
         ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
         ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
-        ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - 5)
+        ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - NUMDEFAULTCATS)
         
         var i = 0
         
@@ -197,7 +198,7 @@ class User: NSObject
         i=5
         while i < (self.categories.count)
         {
-            ref.child("users").child(self.userId).child("categories").child("categoryNum" + "\(i-5)").setValue(categories[i])
+            ref.child("users").child(self.userId).child("categories").child("categoryNum" + "\(i-NUMDEFAULTCATS)").setValue(categories[i])
             i+=1
         }
     }
