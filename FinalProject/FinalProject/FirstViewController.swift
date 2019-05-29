@@ -9,13 +9,9 @@
 import UIKit
 import CoreData
 
-class FirstViewController: UITableViewController {
+class FirstViewController: UIViewController {
 
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
+   
 }
 
