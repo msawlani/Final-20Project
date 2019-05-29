@@ -14,29 +14,29 @@ import CoreData
 
 var sigedIn = true
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
     
-    //Checking if thers is a log in error
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let err = error{
-            print("Failed to Log In to Google",err)
-            return
-        }
-        print("Logged Into Google",user)
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let err = error {
-                print("Failed To log in With Google",err)
-                return
-            }
-            print("User is signed in to FireBase with Google",user.userID)
-            self.window?.rootViewController?.performSegue(withIdentifier: "toMain", sender: nil)
-        }
-    }
+//    //Checking if thers is a log in error
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        if let err = error{
+//            print("Failed to Log In to Google",err)
+//            return
+//        }
+//        print("Logged Into Google",user)
+//        
+//        guard let authentication = user.authentication else { return }
+//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+//                                                       accessToken: authentication.accessToken)
+//        
+//        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+//            if let err = error {
+//                print("Failed To log in With Google",err)
+//                return
+//            }
+//            print("User is signed in to FireBase with Google",user.userID)
+//            self.performSegue(withIdentifier: "toMain", sender: nil)
+//        }
+//    }
     
 
     var window: UIWindow?
@@ -45,8 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-         GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+         //GIDSignIn.sharedInstance().delegate = self
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
