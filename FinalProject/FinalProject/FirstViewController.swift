@@ -45,23 +45,23 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillListViewCell
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
             let alert = UIAlertController(title: "Update", message: "Update a Bill", preferredStyle: .alert)
-            
+
             alert.addTextField(configurationHandler: self.updateName)
             guard let name = self.updateName?.text else {return}
 
-            
+
             alert.addAction(UIAlertAction(title: "Save", style: .default, handler: {(action) in
                 cell.Name.text = name
                 self.Table.reloadData()
             }))
-            
+
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-            
+
             self.present(alert, animated: true)
 
         })
-        
-        
+
+
         return[editAction]
     }
     
@@ -77,6 +77,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             BillList.append(bill)
             PriceList.append(price)
+            
+            print(bill)
             
             self.Table.reloadData()
         }))
