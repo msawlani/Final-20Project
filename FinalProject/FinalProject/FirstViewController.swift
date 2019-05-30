@@ -12,6 +12,7 @@ import CoreData
 
 var BillList = [String]()
 var PriceList = [String]()
+var BillListCell: BillListViewCell?
 
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -20,6 +21,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var Table: UITableView!
     var nameTextField: UITextField?
     var priceTextField: UITextField?
+    var updateName:UITextField?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,31 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.Price.text = price
         return (cell)
     }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillListViewCell
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
+            let alert = UIAlertController(title: "Update", message: "Update a Bill", preferredStyle: .alert)
+            
+            alert.addTextField(configurationHandler: self.updateName)
+            guard let name = self.updateName?.text else {return}
+
+            
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: {(action) in
+                cell.Name.text = name
+                self.Table.reloadData()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+
+        })
+        
+        
+        return[editAction]
+    }
+    
+    
     @IBAction func AddBill(_ sender: Any) {
         let alert = UIAlertController(title: "Add Bill to List", message: "Enter the Information Below to Add Bill", preferredStyle: .alert)
         
@@ -66,6 +94,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     func priceTextField(textField: UITextField){
         priceTextField = textField
         priceTextField?.placeholder = "price..."
+    }
+    
+    func updateName(textField: UITextField){
+        updateName = textField
+        updateName?.placeholder = "name..."
     }
 }
 
