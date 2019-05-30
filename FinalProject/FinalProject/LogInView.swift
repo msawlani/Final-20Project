@@ -30,3 +30,4 @@ class LogInView: UIViewController,GIDSignInUIDelegate {
     }
     
 
+}

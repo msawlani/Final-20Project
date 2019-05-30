@@ -197,19 +197,27 @@ class Bill
     var name, account: String
     var amount: Float
     var recurring: Bool
-    var date: Date
-
-    init(name: String, amount: Float, account:String, recurring: Bool = false, date:Date)
+    var date: CustomDate
+    let autoPay: Bool
+    let category: String
+    let paymentRepeat: String
+    
+    init(name: String, amount: Float, account:String, recurring: Bool = false, date: CustomDate, autoPay: Bool, category: String, paymentRepeat: String)
     {
         self.name = name
         self.amount = amount
         self.account = account
         self.recurring = recurring
         self.date = date
+        self.autoPay = autoPay
+        self.category = category
+        self.paymentRepeat = paymentRepeat
     }
+    
+      
 }
 
-struct Date
+struct CustomDate
 {
     var month, day, year: Int
     
@@ -218,6 +226,18 @@ struct Date
         self.month = month
         self.day = day
         self.year = year
+    }
+    
+    func createDate() -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        
+        // Create date from components
+        let userCalendar = Calendar.current // user calendar
+        let someDateTime = userCalendar.date(from: dateComponents)
+        return someDateTime ?? Date()
     }
 }
 

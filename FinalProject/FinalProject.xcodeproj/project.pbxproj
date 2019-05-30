@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		422A296E22566833008A2564 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A296D22566833008A2564 /* Classes.swift */; };
+		A8808DA8229F598A00164624 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8808DA6229F598A00164624 /* CheckBox.swift */; };
+		A8808DAC229F599500164624 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8808DAA229F599500164624 /* BillTableViewCell.swift */; };
+		A8808DAD229F599500164624 /* BillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8808DAB229F599500164624 /* BillTableViewCell.xib */; };
+		A8808DAF229F59A700164624 /* AddBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8808DAE229F59A700164624 /* AddBillViewController.swift */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132CC4A226615CC002EAD3D /* Assets.xcassets */; };
@@ -22,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		422A296D22566833008A2564 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		A8808DA6229F598A00164624 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		A8808DAA229F599500164624 /* BillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
+		A8808DAB229F599500164624 /* BillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableViewCell.xib; sourceTree = "<group>"; };
+		A8808DAE229F59A700164624 /* AddBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBillViewController.swift; sourceTree = "<group>"; };
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -59,6 +67,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A8808DA9229F599500164624 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A8808DAA229F599500164624 /* BillTableViewCell.swift */,
+				A8808DAB229F599500164624 /* BillTableViewCell.xib */,
+			);
+			name = Cells;
+			path = "../../../../../Volumes/Evelyn/Documentos/Full Sail/PP4/BudgetApp/BillApp/Cells";
+			sourceTree = "<group>";
+		};
 		D8AC60B45E7C9F04D3E287CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +91,7 @@
 				E154BC2B227B507900DACAC0 /* Default-568h@2x.png */,
 				E15AE3B822565CE1007C345F /* FinalProject */,
 				E15AE3B722565CE1007C345F /* Products */,
+				A8808DA9229F599500164624 /* Cells */,
 				076DE8B4A9E7A712623EAFC7 /* Pods */,
 				D8AC60B45E7C9F04D3E287CB /* Frameworks */,
 			);
@@ -94,11 +113,13 @@
 				E15AE3BB22565CE1007C345F /* FirstViewController.swift */,
 				E15AE3BD22565CE1007C345F /* SecondViewController.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
+				A8808DAE229F59A700164624 /* AddBillViewController.swift */,
 				E132CC4A226615CC002EAD3D /* Assets.xcassets */,
 				E132CC48226611E0002EAD3D /* GoogleService-Info.plist */,
 				E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */,
 				E15AE3C722565CE2007C345F /* Info.plist */,
 				422A296D22566833008A2564 /* Classes.swift */,
+				A8808DA6229F598A00164624 /* CheckBox.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -166,6 +187,7 @@
 			files = (
 				E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */,
 				E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */,
+				A8808DAD229F599500164624 /* BillTableViewCell.xib in Resources */,
 				E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */,
 				E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */,
 				E15AE3C122565CE1007C345F /* Main.storyboard in Resources */,
@@ -268,11 +290,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8808DAC229F599500164624 /* BillTableViewCell.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
+				A8808DA8229F598A00164624 /* CheckBox.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 				E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */,
+				A8808DAF229F59A700164624 /* AddBillViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
