@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 
-var BillList = [String]()
-var PriceList = [String]()
+var BillList = [NSManagedObject]()
+var PriceList = [NSManagedObject]()
 var BillListCell: BillListViewCell?
 
 
@@ -22,16 +22,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     var nameTextField: UITextField?
     var priceTextField: UITextField?
     var updateName:UITextField?
-<<<<<<< HEAD
     var updatePrice:UITextField?
-    
-=======
-
 
     @IBOutlet weak var balanceText: UILabel!
     @IBOutlet weak var usernameText: UILabel!
     @IBOutlet weak var imageView: UIImageView!
->>>>>>> Master
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,20 +64,42 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         })
         //Justin
+        
+        
+        //allows to get the data from core data - michael
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
+        
+        request.returnsObjectsAsFaults = false
 }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Bills")
+        do{
+            BillList = try context.fetch(fetchRequest)
+        }catch let err as NSError{
+            print("failed to fetch items", err)
+        }
+    }
+    
+    //Gets the bills for the table view - Michael
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (BillList.count)
     }
 
+    //populates the cells using the data - Michael
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillListViewCell
         let bill = BillList[indexPath.row]
         let price = PriceList[indexPath.row]
-        cell.Name.text = bill
-        cell.Price.text = price
+        cell.Name.text = bill.value(forKey: "name") as? String
+        cell.Price.text = price.value(forKey: "price") as? String
         return (cell)
     }
+    
+    //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
             let alert = UIAlertController(title: "Update", message: "Update a Bill", preferredStyle: .alert)
@@ -91,32 +109,34 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
             alert.addAction(UIAlertAction(title: "Save", style: .default, handler: {(action) in
+                
                 guard let name = self.updateName?.text else {return}
                 guard let price = self.updatePrice?.text else {return}
+                
 
                 if name.count == 0
                 {
                     return
                 }
                 else{
-                    BillList[indexPath.row] = name
+                    self.updateBill(name, indexPath: indexPath)
                     self.Table.reloadRows(at: [indexPath], with: .automatic)
                 }
-                
+
                 if price.count == 0{
                     return
                 }
                 else{
-                    PriceList[indexPath.row] = price
+                    self.updatePriceBill(price, indexPath: indexPath)
                     self.Table.reloadRows(at: [indexPath], with: .automatic)
 
                 }
-                
+
             }))
 
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
 
-            
+
             self.present(alert, animated: true)
 
         })
@@ -127,11 +147,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 BillList.remove(at: indexPath.row)
                 PriceList.remove(at: indexPath.row)
                 self.Table.deleteRows(at: [indexPath], with: .automatic)
-                
+
             }))
-        
+
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-            
+
             self.present(alert, animated: true)
         })
 
@@ -140,7 +160,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         return[deleteAction, editAction]
     }
 
-
+//Function for add button to add bills to list - michael
     @IBAction func AddBill(_ sender: Any) {
         let alert = UIAlertController(title: "Add Bill to List", message: "Enter the Information Below to Add Bill", preferredStyle: .alert)
 
@@ -149,23 +169,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: {(action) in
             guard let bill = self.nameTextField?.text else {return}
             guard let price = self.priceTextField?.text else {return}
-<<<<<<< HEAD
-            
+
             if bill.count == 0
             {
                 return
             }
-            
-            
+
+
             if price.count == 0{
                 return
             }
-            
-=======
 
->>>>>>> Master
-            BillList.append(bill)
-            PriceList.append(price)
+            self.addBill(bill)
+            self.addPriceBill(price)
 
             print(bill)
 
@@ -177,22 +193,87 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.present(alert, animated: true)
     }
 
+    
     func nameTextField(textField: UITextField){
         nameTextField = textField
         nameTextField?.placeholder = "Bill Name..."
+
     }
 
     func priceTextField(textField: UITextField){
         priceTextField = textField
         priceTextField?.placeholder = "Bill Price..."
+        
     }
 
     func updateName(textField: UITextField){
         updateName = textField
-        updateName?.placeholder = "Change Bil Name..."
+        updateName?.placeholder = "Change Bill Name..."
+        
+
     }
     func updatePrice(textField: UITextField){
         updatePrice = textField
         updatePrice?.placeholder = "Change Bill Price..."
+    }
+    
+    func updateBill(_ billName: String, indexPath: IndexPath){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Bills", in: context)!
+        let bill = NSManagedObject(entity: entity, insertInto: context)
+        bill.setValue(billName, forKey: "name")
+        
+        do{
+            try context.save()
+            BillList[indexPath.row] = bill
+        }catch let err as NSError{
+            print("Failed to Update Bill Name", err)
+        }
+    }
+    
+    func updatePriceBill(_ billPrice: String, indexPath: IndexPath){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Bills", in: context)!
+        let price = NSManagedObject(entity: entity, insertInto: context)
+        price.setValue(billPrice, forKey: "price")
+        
+        do{
+            try context.save()
+            PriceList[indexPath.row] = price
+        }catch let err as NSError{
+            print("Failed to Update Price of Bill", err)
+        }
+    }
+    
+    func addBill(_ billName: String){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Bills", in: context)!
+        let bill = NSManagedObject(entity: entity, insertInto: context)
+        bill.setValue(billName, forKey: "name")
+        
+        do{
+            try context.save()
+            BillList.append(bill)
+        }catch let err as NSError{
+            print("Failed to Update Bill Name", err)
+        }
+    }
+    
+    func addPriceBill(_ billPrice: String){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Bills", in: context)!
+        let price = NSManagedObject(entity: entity, insertInto: context)
+        price.setValue(billPrice, forKey: "price")
+        
+        do{
+            try context.save()
+            PriceList.append(price)
+        }catch let err as NSError{
+            print("Failed to Update Price of Bill", err)
+        }
     }
 }
