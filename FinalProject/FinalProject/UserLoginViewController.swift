@@ -29,6 +29,9 @@ class UserLoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) {user, error in
             if error == nil && user != nil && self.passwordFieldText.text != nil
             {
+                mainUser.userId = Auth.auth().currentUser!.uid
+                userEmail = email
+
                 self.performSegue(withIdentifier: "Main", sender: self)
             }
             else if self.passwordFieldText.text == nil{

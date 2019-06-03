@@ -295,7 +295,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnd-FB-uNH">
                                 <rect key="frame" x="0.0" y="44" width="414" height="128"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5yk-ZP-6Nt">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="useimgplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="5yk-ZP-6Nt">
                                         <rect key="frame" x="8" y="8" width="112" height="112"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5yk-ZP-6Nt" secondAttribute="height" multiplier="1:1" id="X3H-6C-ltF"/>
@@ -449,6 +449,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Balance" image="first" selectedImage="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="balanceText" destination="DzM-AJ-dmM" id="aZ6-Ga-Y4Z"/>
+                        <outlet property="imageView" destination="5yk-ZP-6Nt" id="NNn-IF-tLu"/>
+                        <outlet property="usernameText" destination="Qo4-R3-7tb" id="zTs-Si-Siz"/>
                         <outlet property="Table" destination="haK-Vc-d8i" id="kQJ-5N-NNP"/>
                     </connections>
                 </viewController>
@@ -910,6 +913,7 @@
         <image name="Information_Icon_Button" width="512" height="512"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="useimgplaceholder" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FZ2-LL-4zt"/>

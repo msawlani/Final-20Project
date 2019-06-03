@@ -11,11 +11,15 @@ import Firebase
 import GoogleSignIn
 import CoreData
 
-
+var mainUser = User(userId: "")
 var sigedIn = true
+var signedInWithGoogle = false
+var googleUser: GIDGoogleUser!
+var userEmail: String!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
-    
+
 //    //Checking if thers is a log in error
 //    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 //        if let err = error{
@@ -23,11 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 //            return
 //        }
 //        print("Logged Into Google",user)
-//        
+//
 //        guard let authentication = user.authentication else { return }
 //        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
 //                                                       accessToken: authentication.accessToken)
-//        
+//
 //        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
 //            if let err = error {
 //                print("Failed To log in With Google",err)
@@ -37,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 //            self.performSegue(withIdentifier: "toMain", sender: nil)
 //        }
 //    }
-    
+
 
     var window: UIWindow?
 
@@ -50,13 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        
-        
+
+
+
         GIDSignIn.sharedInstance().handle(url,
                                           sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                                           annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-        
+
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {
@@ -90,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         })
         return container
     }()
-    
+
     func saveContext(){
         let context = persistentContainer.viewContext
         if context.hasChanges{
@@ -99,9 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             }catch{
                 let nserror = error as NSError
                 fatalError("Unresolved \(nserror), \(nserror.userInfo)")
-                
+
             }
         }
     }
 }
-

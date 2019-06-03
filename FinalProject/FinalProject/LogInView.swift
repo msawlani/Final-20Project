@@ -37,14 +37,14 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     //Checking if thers is a log in error
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor _user: GIDGoogleUser!, withError error: Error!) {
         if let err = error{
             print("Failed to Log In to Google",err)
             return
         }
-        print("Logged Into Google",user)
+        print("Logged Into Google",_user)
         
-        guard let authentication = user.authentication else { return }
+        guard let authentication = _user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         
@@ -54,8 +54,23 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
                 return
             }
             else{
-            print("User is signed in to FireBase with Google",user.userID)
-            self.performSegue(withIdentifier: "toMain", sender: nil)
+                print("User is signed in to FireBase with Google",_user.userID)
+                googleUser = _user
+                signedInWithGoogle = true
+                //Retrieve user data from Firebase and store it in user variable
+                mainUser.userId = Auth.auth().currentUser!.uid
+//
+//                GetUser(userId: mainUser.userId, callback: { mainUser in
+//                    mainUser.email = _user.profile.email
+//                    mainUser.imageURL = _user.profile.imageURL(withDimension: 720)
+//                    mainUser.firstName = _user.profile.givenName
+//                    mainUser.lastName = _user.profile.familyName
+//                    userLoaded = true
+//                    mainUser.StoreInFirebase()
+//                })
+                //Justin
+                
+                self.performSegue(withIdentifier: "toMain", sender: nil)
             }
         }
     }

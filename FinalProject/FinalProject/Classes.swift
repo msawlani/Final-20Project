@@ -10,33 +10,59 @@ import Foundation
 import Firebase
 
 var mRef:DatabaseReference?
+var NUMDEFAULTCATS = 5
 
 class User: NSObject
 {
-    var username, password: String
-    var numAccounts: Int
+    var userId, password: String
+    var email, firstName, lastName: String?
+    var imageURL: URL?
+    var numAccounts, numBills, numCategories: Int
     var accounts: [Account] = []
+    var bills: [Bill] = []
+    var categories: [String] = ["Bills", "Rent", "Utilities", "Income", "Groceries"]
     var ref:DatabaseReference?
     
-    init(username:String, password:String = "")
+    init(userId:String, password:String = "")
     {
-        self.username = username
+        self.userId = userId
         self.password = password
         self.numAccounts = 0
+        self.numBills = 0
+        self.numCategories = 0
+    }
+    
+    func PayBill(bill:Bill) -> Bool
+    {
+        for n in self.accounts
+        {
+            if n.accountName == bill.accountName
+            {
+                let transaction = Transaction()
+                transaction.vendorName = bill.company
+                transaction.category = "Bills"
+                transaction.description = "Bill: " + bill.billName
+                transaction.amount = -(bill.amount)
+                n.AddTransaction(transaction: transaction)
+                return true
+            }
+        }
+        return false
     }
     
     func AddAccount(account:Account) -> Bool
     {
         for n in self.accounts
         {
-            if n.name == account.name
+            if n.accountName == account.accountName
             {
                 return false
             }
         }
-        
+        account.accountNum = "accountNum" + "\(self.accounts.count)"
         self.accounts.append(account)
         self.numAccounts+=1
+        StoreInFirebase()
         return true
     }
     
@@ -46,10 +72,11 @@ class User: NSObject
         
         while i < self.accounts.count
         {
-            if self.accounts[i].name == accountName
+            if self.accounts[i].accountName == accountName
             {
                 self.accounts.remove(at: i)
                 self.numAccounts-=1
+                StoreInFirebase()
                 return true
             }
             i+=1
@@ -58,107 +85,139 @@ class User: NSObject
         return false
     }
     
+    func AddBill(bill:Bill) -> Bool
+    {
+        for n in self.bills
+        {
+            if n.billName == bill.billName
+            {
+                return false
+            }
+        }
+        bill.billNum = "billNum" + "\(self.bills.count)"
+        self.bills.append(bill)
+        self.numBills+=1
+        StoreInFirebase()
+        return true
+    }
+    
+    func RemoveBill(billName: String) -> Bool
+    {
+        var i = 0
+        
+        while i < self.bills.count
+        {
+            if self.bills[i].billName == billName
+            {
+                self.bills.remove(at: i)
+                self.numBills-=1
+                StoreInFirebase()
+                return true
+            }
+            i+=1
+        }
+        
+        return false
+    }
+    
+    func AddCategory(category: String) -> Bool
+    {
+        var i = 0
+        
+        for n in self.categories
+        {
+            if n == category
+            {
+                return false
+            }
+        }
+        categories.append(category)
+        self.numCategories+=1
+        StoreInFirebase()
+        return true
+    }
+    
     func StoreInFirebase()
     {
         let ref = Database.database().reference()
-        ref.child("users").child(self.username).child("username").setValue(self.username)
-        ref.child("users").child(self.username).child("password").setValue(self.password)
-        ref.child("users").child(self.username).child("numAccounts").setValue(self.accounts.count)
+        ref.child("users").child(self.userId).child("userId").setValue(self.userId)
+        ref.child("users").child(self.userId).child("password").setValue(self.password)
+        ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
+        ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
+        ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - NUMDEFAULTCATS)
         
         var i = 0
         
         while i < self.accounts.count
         {
-                ref.child("users").child(self.username).child("accounts").child("accountNum" + "\(i)").child("accountNum").setValue("account" + "\(i)")
-                ref.child("users").child(self.username).child("accounts").child("accountNum" + "\(i)").child("accountName").setValue(self.accounts[i].name)
-                ref.child("users").child(self.username).child("accounts").child("accountNum" + "\(i)").child("balance").setValue(self.accounts[i].balance)
-                ref.child("users").child(self.username).child("accounts").child("accountNum" + "\(i)").child("bankName").setValue(self.accounts[i].bankName)
-                ref.child("users").child(self.username).child("accounts").child("accountNum" + "\(i)").child("numTransactions").setValue(self.accounts[i].transactions.count)
+                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("accountNum").setValue("accountNum" + "\(i)")
+                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("accountName").setValue(self.accounts[i].accountName)
+                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("balance").setValue(self.accounts[i].balance)
+                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("bankName").setValue(self.accounts[i].bankName)
+                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("numTransactions").setValue(self.accounts[i].transactions.count)
             
             var j = 0
             
             while j < self.accounts[i].transactions.count
             {
-                ref.child("users").child(self.username).child("accounts").child(self.accounts[i].name).child("transactions").child("transaction" + "\(j)").child("name").setValue(self.accounts[i].transactions[j].name)
+                ref.child("users").child(self.userId).child("accounts").child(self.accounts[i].accountNum).child("transactions").child("transactionNum" + "\(j)").child("vendorName").setValue(self.accounts[i].transactions[j].vendorName)
                 
-                ref.child("users").child(self.username).child("accounts").child(self.accounts[i].name).child("transactions").child("transaction" + "\(j)").child("category").setValue(self.accounts[i].transactions[j].category)
+                ref.child("users").child(self.userId).child("accounts").child(self.accounts[i].accountNum).child("transactions").child("transactionNum" + "\(j)").child("category").setValue(self.accounts[i].transactions[j].category)
                 
-                ref.child("users").child(self.username).child("accounts").child(self.accounts[i].name).child("transactions").child("transaction" + "\(j)").child("description").setValue(self.accounts[i].transactions[j].description)
+                ref.child("users").child(self.userId).child("accounts").child(self.accounts[i].accountNum).child("transactions").child("transactionNum" + "\(j)").child("description").setValue(self.accounts[i].transactions[j].description)
                 
-                ref.child("users").child(self.username).child("accounts").child(self.accounts[i].name).child("transactions").child("transaction" + "\(j)").child("amount").setValue(self.accounts[i].transactions[j].amount)
+                ref.child("users").child(self.userId).child("accounts").child(self.accounts[i].accountNum).child("transactions").child("transactionNum" + "\(j)").child("amount").setValue(self.accounts[i].transactions[j].amount)
+                
+                
+                let date = self.accounts[i].transactions[j].date
+                let dateString = "\(date.month)" + "/" + "\(date.day)" + "/" + "\(date.year)"
+                ref.child("users").child(self.userId).child("accounts").child(self.accounts[i].accountNum).child("transactions").child("transactionNum" + "\(j)").child("date").setValue(dateString)
                 
                 j+=1
             }
             i+=1
         }
-    }
-    
-    func ReadFromFirebase()
-    {
-        self.ref = Database.database().reference()
         
-        ref?.child("users").child("testUser2").observe(.value, with: { (snapshot) in
-
-            do {
-                self.numAccounts = snapshot.childSnapshot(forPath: "numAccounts").value! as! Int
-            }
-            catch {
-                
-            }
+        i=0
+        while i < self.bills.count{
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("billNum").setValue("billNum" + "\(i)")
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("billName").setValue(self.bills[i].billName)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("company").setValue(self.bills[i].company)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("accountName").setValue(self.bills[i].accountName)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("amount").setValue(self.bills[i].amount)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("recurring").setValue(self.bills[i].recurring)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("monthly").setValue(self.bills[i].monthly)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("yearly").setValue(self.bills[i].yearly)
             
-        })
-//        var dataRead = false
-//
-//        ref?.child("users").child("testUser2")
-//            .observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//                let userDict = snapshot.value as! [String: Any]
-//
-//                self.numAccounts = userDict["numAccounts"] as! Int
-//                self.password = userDict["password"] as! String
-//                dataRead = true
-//            })
-//
-//        if dataRead
-//        {
-//            var i = 0
-//
-//            while i < self.numAccounts
-//            {
-//                ref?.child("users").child("testUser2").child("accountNum" + "\(i)")
-//                    .observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//                        let userDict = snapshot.value as! [String: Any]
-//
-//                        let tempName = userDict["accountName"] as! String
-//                        var tempAccount = Account(name: tempName)
-//                        tempAccount.balance = userDict["balance"] as! Float
-//                        tempAccount.bankName = userDict["bankName"] as! String
-//                        tempAccount.numTransactions = userDict["numTransactions"] as! Int
-//
-//                        self.AddAccount(account: tempAccount)
-//                    })
-//
-//                i+=1
-//            }
-//        }
+            let date = self.bills[i].date
+            let dateString = "\(date.month)" + "/" + "\(date.day)" + "/" + "\(date.year)"
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("date").setValue(dateString)
+            i+=1
+        }
+        
+        i=5
+        while i < (self.categories.count)
+        {
+            ref.child("users").child(self.userId).child("categories").child("categoryNum" + "\(i-NUMDEFAULTCATS)").setValue(categories[i])
+            i+=1
+        }
     }
 }
 
 class Account
 {
-    var name, bankName, accountNum:String
+    var accountName, bankName, accountNum: String
     var numTransactions: Int
     var balance: Float
     var transactions: [Transaction] = []
     
-    init(name:String = "", accountNumber: Int = 0, bankName:String = "", balance:Float = 0.0)
+    init(name:String = "", bankName:String = "", balance:Float = 0.0)
     {
-        self.name = name
-        self.accountNum = "account" + "\(accountNumber)"
+        self.accountName = name
         self.bankName = bankName
         self.balance = balance
         self.numTransactions = 0
+        self.accountNum = ""
     }
     
     func AddTransaction(transaction: Transaction)
@@ -178,38 +237,48 @@ class Account
 
 class Transaction
 {
-    var name, category, description:String
+    var vendorName, category, description, transactionNum:String
     var amount: Float
-    var date: Date
+    var date: DateStruct
     
-    init(name:String, category:String, description:String = "", amount:Float, date:Date)
+    init(vendorName:String = "", category:String = "", description:String = "", amount:Float = 0.0, date: DateStruct = DateStruct())
     {
-        self.name = name
+        self.vendorName = vendorName
         self.category = category
         self.description = description
         self.amount = amount
+        self.transactionNum = ""
         self.date = date
     }
 }
 
 class Bill
 {
-    var name, account: String
+    var billName, company, accountName, billNum: String
     var amount: Float
-    var recurring: Bool
-    var date: Date
+    var recurring, monthly, yearly: Bool
+    var date: DateStruct
 
-    init(name: String, amount: Float, account:String, recurring: Bool = false, date:Date)
+    init(billName: String = "", company: String = "", amount: Float = 0.0, accountName:String = "", recurring: Bool = false, monthly: Bool = false, yearly: Bool = false, date:DateStruct = DateStruct())
     {
-        self.name = name
+        self.billName = billName
+        self.company = company
         self.amount = amount
-        self.account = account
+        self.accountName = accountName
         self.recurring = recurring
+        self.date = date
+        self.monthly = monthly
+        self.yearly = yearly
+        self.billNum = ""
+    }
+    
+    func setDate(date: DateStruct)
+    {
         self.date = date
     }
 }
 
-struct Date
+struct DateStruct
 {
     var month, day, year: Int
     
@@ -219,51 +288,170 @@ struct Date
         self.day = day
         self.year = year
     }
+    init()
+    {
+        let dateString = Date().asString(style: .short)
+        let dateArr = dateString.components(separatedBy: "/")
+        self.month = Int(dateArr[0]) ?? 0
+        self.day = Int(dateArr[1]) ?? 0
+        self.year = Int(dateArr[2]) ?? 0
+    }
 }
 
-func GetUser(username: String) -> User {
-    let user = User(username: username)
-    //mRef = Database.database().reference()
-    
-//    Database.database().reference().child("users").child(username).observe(.childAdded, with: {(snapshot) in
-//
-//        print(snapshot)
-//
-//    }, withCancel: nil)
-    
-    Database.database().reference().child("users").child(username).observeSingleEvent(of: .value, with: { (snapshot) in
-        //print(snapshot.value)
-        if let dictionary = snapshot.value as? [String: AnyObject] {
-            let user = User(username: username)
-            //user.setValuesForKeys(dictionary)
-            //print(snapshot)
-            //print(dictionary)
-            //print(dictionary["accountNum0"]?["balance"])
-            if let temp = dictionary["numAccounts"] as? Int{
-                //print(temp)
-                user.numAccounts = temp
+func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
+    Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        if snapshot.hasChild(userId)
+        {
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                if let dictionary = dictionary[userId] as? [String: AnyObject] {
+                    var result: Bool
+                    let tempUser = User(userId: userId)
+                    
+                    if let temp = dictionary["numAccounts"] as? Int{
+                        tempUser.numAccounts = temp
+                    }
+                    if let temp = dictionary["numBills"] as? Int{
+                        tempUser.numBills = temp
+                    }
+                    if let temp = dictionary["numCategories"] as? Int{
+                        tempUser.numCategories = temp
+                    }
+                    if let temp = dictionary["password"] as? String{
+                        tempUser.password = temp
+                    }
+                    var i = 0
+                    while i < tempUser.numAccounts
+                    {
+                        if let temp = dictionary["accounts"]?["accountNum" + "\(i)"] as? [String: AnyObject] {
+                            var accountDict = temp
+                            
+                            let account = Account()
+                            account.accountNum = "account" + "\(i)"
+                            if let temp = accountDict["accountName"] as? String {
+                                account.accountName = temp
+                            }
+                            if let temp = accountDict["balance"] as? Float{
+                                account.balance = temp
+                            }
+                            if let temp = accountDict["bankName"] as? String{
+                                account.bankName = temp
+                            }
+                            if let temp = accountDict["numTransactions"] as? Int{
+                                account.numTransactions = temp
+                            }
+                            
+                            var j = 0
+                            while j < account.numTransactions
+                            {
+                                if let temp = accountDict["transactions"]?["transactionNum" + "\(j)"] as? [String: AnyObject] {
+                                    var transactionDict = temp
+                                    let transaction = Transaction(date:DateStruct(month:0,day:0,year:0))
+                                    transaction.transactionNum = "transaction" + "\(j)"
+                                    if let temp = transactionDict["vendorName"] as? String{
+                                        transaction.vendorName = temp
+                                    }
+                                    if let temp = transactionDict["category"] as? String{
+                                        transaction.category = temp
+                                    }
+                                    if let temp = transactionDict["description"] as? String{
+                                        transaction.description = temp
+                                    }
+                                    if let temp = transactionDict["amount"] as? Float{
+                                        transaction.amount = temp
+                                    }
+                                    if let temp = transactionDict["date"] as? String{
+                                        let dateArr = temp.components(separatedBy: "/")
+                                        let date = DateStruct(month:Int(dateArr[0]) ?? 0, day:Int(dateArr[1]) ?? 0, year:Int(dateArr[2]) ?? 0)
+                                        transaction.date = date
+                                    }
+                                    account.transactions.append(transaction)
+                                    account.numTransactions+=1
+                                }
+                                j+=1
+                            }
+                            
+                            tempUser.numAccounts-=1
+                            result = tempUser.AddAccount(account: account)
+                        }
+                        
+                        i+=1
+                    }
+                    
+                    i = 0
+                    
+                    while i < tempUser.numBills
+                    {
+                        if let temp = dictionary["bills"]?["billNum" + "\(i)"] as? [String: AnyObject] {
+                            var billDict = temp
+                            
+                            let bill = Bill()
+                            bill.billNum = "bill" + "\(i)"
+                            
+                            if let temp = billDict["billName"] as? String {
+                                bill.billName = temp
+                            }
+                            if let temp = billDict["company"] as? String {
+                                bill.company = temp
+                            }
+                            if let temp = billDict["accountName"] as? String {
+                                bill.accountName = temp
+                            }
+                            if let temp = billDict["amount"] as? Float {
+                                bill.amount = temp
+                            }
+                            if let temp = billDict["recurring"] as? Bool {
+                                bill.recurring = temp
+                            }
+                            if let temp = billDict["monthly"] as? Bool {
+                                bill.monthly = temp
+                            }
+                            if let temp = billDict["yearly"] as? Bool {
+                                bill.yearly = temp
+                            }
+                            if let temp = billDict["date"] as? String {
+                                let dateArr = temp.components(separatedBy: "/")
+                                let date = DateStruct(month:Int(dateArr[0]) ?? 0, day:Int(dateArr[1]) ?? 0, year:Int(dateArr[2]) ?? 0)
+                                bill.date = date
+                            }
+                            
+                            tempUser.numBills-=1
+                            result = tempUser.AddBill(bill: bill)
+                        }
+                        i+=1
+                    }
+                    
+                    i = 0
+                    while i < tempUser.numCategories
+                    {
+                        if let temp = dictionary["categories"]?["categoryNum" + "\(i)"] as? String {
+                            tempUser.numCategories-=1
+                            result = tempUser.AddCategory(category: temp)
+                        }
+                        i+=1
+                    }
+                    
+                    callback(tempUser)
+                }
             }
-            if let temp = dictionary["password"] as? String{
-                user.password = temp
-            }
-            //print(user)
-//            user.numAccounts = snapshot.childSnapshot(forPath: "numAccounts").value! as! Int
-//            user.password = snapshot.childSnapshot(forPath: "password").value! as! String
-//
-//            var i = 0
-//            while i < user.numAccounts
-//            {
-//                var accountSnapshot = snapshot.childSnapshot(forPath:"accounts").childSnapshot(forPath: "accountNum" + "\(i)")
-//                var account = Account()
-//                account.name = accountSnapshot.childSnapshot(forPath: "accountName").value! as! String
-//                account.balance = accountSnapshot.childSnapshot(forPath: "balance").value! as! Float
-//                account.bankName = accountSnapshot.childSnapshot(forPath: "bankName").value! as! String
-//                account.numTransactions = accountSnapshot.childSnapshot(forPath: "numTransactions").value! as! Int
-//                user.AddAccount(account: account)
-//            }
+        }
+        else {
+            let tempUser = User(userId: userId)
+            let tempAccount = Account(name: "Main Account")
+            tempUser.AddAccount(account: tempAccount)
+            tempUser.StoreInFirebase()
+            GetUser(userId: mainUser.userId, callback: { mainUser in
+                mainUser.StoreInFirebase()
+            })
         }
     })
-    //print(user.numAccounts)
-    return user
+}
+
+extension Date {
+    func asString(style: DateFormatter.Style) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = style
+        return dateFormatter.string(from: self)
+    }
 }
 
