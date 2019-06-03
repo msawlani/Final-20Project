@@ -67,9 +67,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
         //allows to get the data from core data - michael
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
+        let requestName = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
         
-        request.returnsObjectsAsFaults = false
+        requestName.returnsObjectsAsFaults = false
+        
+        let requestPrice = NSFetchRequest<NSFetchRequestResult>(entityName: "price")
+        
+        requestPrice.returnsObjectsAsFaults = false
 }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +83,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Bills")
         do{
             BillList = try context.fetch(fetchRequest)
+            PriceList = try context.fetch(fetchRequest)
+
         }catch let err as NSError{
             print("failed to fetch items", err)
         }
@@ -144,9 +150,18 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) in
             let alert = UIAlertController(title: "Delete", message: "Delete a Bill", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
-                BillList.remove(at: indexPath.row)
-                PriceList.remove(at: indexPath.row)
-                self.Table.deleteRows(at: [indexPath], with: .automatic)
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+                let context = appDelegate.persistentContainer.viewContext
+                context.delete(BillList[indexPath.row])
+                context.delete(PriceList[indexPath.row])
+                do{
+                    try context.save()
+                    BillList.remove(at: indexPath.row)
+                    PriceList.remove(at: indexPath.row)
+                    self.Table.reloadData()
+                }catch{
+                    
+                }
 
             }))
 
