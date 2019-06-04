@@ -8,28 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		422A296E22566833008A2564 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A296D22566833008A2564 /* Classes.swift */; };
-		A8808DA8229F598A00164624 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8808DA6229F598A00164624 /* CheckBox.swift */; };
-		A8808DAC229F599500164624 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8808DAA229F599500164624 /* BillTableViewCell.swift */; };
-		A8808DAD229F599500164624 /* BillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8808DAB229F599500164624 /* BillTableViewCell.xib */; };
-		A8808DAF229F59A700164624 /* AddBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8808DAE229F59A700164624 /* AddBillViewController.swift */; };
+		A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B4922A6C288004E2372 /* AddBillViewController.swift */; };
+		A85E9B5722A6C61A004E2372 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5522A6C619004E2372 /* BillTableViewCell.swift */; };
+		A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */; };
+		A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5922A6C68F004E2372 /* CheckBox.swift */; };
+		A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132CC4A226615CC002EAD3D /* Assets.xcassets */; };
 		E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E154BC2B227B507900DACAC0 /* Default-568h@2x.png */; };
 		E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3B922565CE1007C345F /* AppDelegate.swift */; };
 		E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BB22565CE1007C345F /* FirstViewController.swift */; };
-		E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BD22565CE1007C345F /* SecondViewController.swift */; };
 		E15AE3C122565CE1007C345F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3BF22565CE1007C345F /* Main.storyboard */; };
 		E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */; };
 		E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E067D6225FB566004A2EC9 /* LogInView.swift */; };
+		F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */; };
+		F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */; };
+		F21364ED228F046F00800435 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21364EC228F046F00800435 /* SignupViewController.swift */; };
+		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
+		F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */; };
+		F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864D22976FAE001BEC17 /* ChangePassViewController.swift */; };
+		F2A47856229F173100CFB1A3 /* BillListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A47855229F173100CFB1A3 /* BillListViewCell.swift */; };
+		F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4C262284957A00072E8E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		422A296D22566833008A2564 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
-		A8808DA6229F598A00164624 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
-		A8808DAA229F599500164624 /* BillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
-		A8808DAB229F599500164624 /* BillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableViewCell.xib; sourceTree = "<group>"; };
-		A8808DAE229F59A700164624 /* AddBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBillViewController.swift; sourceTree = "<group>"; };
+		A85E9B4922A6C288004E2372 /* AddBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBillViewController.swift; sourceTree = "<group>"; };
+		A85E9B5522A6C619004E2372 /* BillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
+		A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableViewCell.xib; sourceTree = "<group>"; };
+		A85E9B5922A6C68F004E2372 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -38,11 +47,18 @@
 		E15AE3B622565CE1007C345F /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15AE3B922565CE1007C345F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E15AE3BB22565CE1007C345F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E15AE3BD22565CE1007C345F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E15AE3C022565CE1007C345F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E15AE3C522565CE2007C345F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15AE3C722565CE2007C345F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E067D6225FB566004A2EC9 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		F21364EC228F046F00800435 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		F295864D22976FAE001BEC17 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
+		F2A47855229F173100CFB1A3 /* BillListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListViewCell.swift; sourceTree = "<group>"; };
+		F2CA4C262284957A00072E8E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F7540E5E015C3C0041FD0338 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,14 +83,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A8808DA9229F599500164624 /* Cells */ = {
+		A85E9B5422A6C5D9004E2372 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A8808DAA229F599500164624 /* BillTableViewCell.swift */,
-				A8808DAB229F599500164624 /* BillTableViewCell.xib */,
+				A85E9B5522A6C619004E2372 /* BillTableViewCell.swift */,
+				A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */,
 			);
 			name = Cells;
-			path = "../../../../../Volumes/Evelyn/Documentos/Full Sail/PP4/BudgetApp/BillApp/Cells";
+			path = FinalProject/Cells;
 			sourceTree = "<group>";
 		};
 		D8AC60B45E7C9F04D3E287CB /* Frameworks */ = {
@@ -90,6 +106,7 @@
 			children = (
 				E154BC2B227B507900DACAC0 /* Default-568h@2x.png */,
 				E15AE3B822565CE1007C345F /* FinalProject */,
+				A85E9B5422A6C5D9004E2372 /* Cells */,
 				E15AE3B722565CE1007C345F /* Products */,
 				A8808DA9229F599500164624 /* Cells */,
 				076DE8B4A9E7A712623EAFC7 /* Pods */,
@@ -108,10 +125,12 @@
 		E15AE3B822565CE1007C345F /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				F21364EC228F046F00800435 /* SignupViewController.swift */,
 				E15AE3B922565CE1007C345F /* AppDelegate.swift */,
 				E1E067D6225FB566004A2EC9 /* LogInView.swift */,
 				E15AE3BB22565CE1007C345F /* FirstViewController.swift */,
-				E15AE3BD22565CE1007C345F /* SecondViewController.swift */,
+				A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */,
+				A85E9B4922A6C288004E2372 /* AddBillViewController.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
 				A8808DAE229F59A700164624 /* AddBillViewController.swift */,
 				E132CC4A226615CC002EAD3D /* Assets.xcassets */,
@@ -119,7 +138,14 @@
 				E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */,
 				E15AE3C722565CE2007C345F /* Info.plist */,
 				422A296D22566833008A2564 /* Classes.swift */,
-				A8808DA6229F598A00164624 /* CheckBox.swift */,
+				F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */,
+				F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */,
+				F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */,
+				F2CA4C262284957A00072E8E /* SettingsViewController.swift */,
+				F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */,
+				F295864D22976FAE001BEC17 /* ChangePassViewController.swift */,
+				F2A47855229F173100CFB1A3 /* BillListViewCell.swift */,
+				A85E9B5922A6C68F004E2372 /* CheckBox.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -187,7 +213,7 @@
 			files = (
 				E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */,
 				E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */,
-				A8808DAD229F599500164624 /* BillTableViewCell.xib in Resources */,
+				A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */,
 				E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */,
 				E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */,
 				E15AE3C122565CE1007C345F /* Main.storyboard in Resources */,
@@ -212,6 +238,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -225,6 +252,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -290,11 +318,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8808DAC229F599500164624 /* BillTableViewCell.swift in Sources */,
+				A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */,
+				A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */,
+				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,
+				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
+				F21364ED228F046F00800435 /* SignupViewController.swift in Sources */,
+				F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */,
+				A85E9B5722A6C61A004E2372 /* BillTableViewCell.swift in Sources */,
+				F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */,
+				F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
-				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
+				A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */,
+				F2A47856229F173100CFB1A3 /* BillListViewCell.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
-				A8808DA8229F598A00164624 /* CheckBox.swift in Sources */,
+				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 				E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */,
 				A8808DAF229F59A700164624 /* AddBillViewController.swift in Sources */,
@@ -445,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q7NNMD9CR7;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,6 +501,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q7NNMD9CR7;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,6 +536,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E15AE3AE22565CE1007C345F /* Project object */;
 }

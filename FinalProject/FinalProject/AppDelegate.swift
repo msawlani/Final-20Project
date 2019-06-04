@@ -9,32 +9,39 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import CoreData
+
+var mainUser = User(userId: "")
 var sigedIn = true
+var signedInWithGoogle = false
+var googleUser: GIDGoogleUser!
+var userEmail: String!
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    
-    //Checking if thers is a log in error
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let err = error{
-            print("Failed to Log In to Google",err)
-            return
-        }
-        print("Logged Into Google",user)
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let err = error {
-                print("Failed To log in With Google",err)
-                return
-            }
-            print("User is signed in to FireBase with Google",user.userID)
-            self.window?.rootViewController?.performSegue(withIdentifier: "toMain", sender: nil)
-        }
-    }
-    
+class AppDelegate: UIResponder, UIApplicationDelegate{
+
+//    //Checking if thers is a log in error
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        if let err = error{
+//            print("Failed to Log In to Google",err)
+//            return
+//        }
+//        print("Logged Into Google",user)
+//
+//        guard let authentication = user.authentication else { return }
+//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+//                                                       accessToken: authentication.accessToken)
+//
+//        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+//            if let err = error {
+//                print("Failed To log in With Google",err)
+//                return
+//            }
+//            print("User is signed in to FireBase with Google",user.userID)
+//            self.performSegue(withIdentifier: "toMain", sender: nil)
+//        }
+//    }
+
 
     var window: UIWindow?
 
@@ -42,18 +49,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-         GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+         //GIDSignIn.sharedInstance().delegate = self
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        
-        
+
+
+
         GIDSignIn.sharedInstance().handle(url,
                                           sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                                           annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-        
+
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {
@@ -78,6 +85,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    lazy var persistentContainer: NSPersistentContainer =  {
+        let container = NSPersistentContainer(name: "CoreData")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError?{
+                fatalError("Unresolved \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
 
+    func saveContext(){
+        let context = persistentContainer.viewContext
+        if context.hasChanges{
+            do {
+                try context.save()
+            }catch{
+                let nserror = error as NSError
+                fatalError("Unresolved \(nserror), \(nserror.userInfo)")
+
+            }
+        }
+    }
 }
-
