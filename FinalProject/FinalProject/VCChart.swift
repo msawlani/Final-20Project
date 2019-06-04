@@ -29,7 +29,11 @@ class VCChart: UIViewController {
         pieChart.chartDescription?.text = ""
        //setting values of the data entries to match default value of steppers
         dataEntryOne.value = stepperOne.value
+        dataEntryTwo.value = steppertTwo.value
         
+        dataEntriesArray = [dataEntryOne,dataEntryTwo]
+        
+        updateChartData()
     }
     
     @IBAction func changeStepperOne(_ sender: UIStepper){
@@ -41,7 +45,8 @@ class VCChart: UIViewController {
     }
     
     func updateChartData(){
-        
+        //set up chart
+        let chartDataSet = PieChartDataSet(entries:dataEntriesArray,label:nil)
     }
 
 }
