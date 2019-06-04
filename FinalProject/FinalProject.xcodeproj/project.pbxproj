@@ -18,6 +18,7 @@
 		E15AE3C122565CE1007C345F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3BF22565CE1007C345F /* Main.storyboard */; };
 		E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */; };
 		E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E067D6225FB566004A2EC9 /* LogInView.swift */; };
+		E1FF954022A6D0B4006AFB14 /* VCChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF953F22A6D0B4006AFB14 /* VCChart.swift */; };
 		F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */; };
 		F2049A05228342EE00A275E0 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2049A03228342EE00A275E0 /* CoreData.xcdatamodeld */; };
 		F21364ED228F046F00800435 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21364EC228F046F00800435 /* SignupViewController.swift */; };
@@ -43,6 +44,7 @@
 		E15AE3C522565CE2007C345F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15AE3C722565CE2007C345F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E067D6225FB566004A2EC9 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		E1FF953F22A6D0B4006AFB14 /* VCChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCChart.swift; sourceTree = "<group>"; };
 		F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F2049A04228342EE00A275E0 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		F21364EC228F046F00800435 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				E15AE3B922565CE1007C345F /* AppDelegate.swift */,
 				E1E067D6225FB566004A2EC9 /* LogInView.swift */,
 				E15AE3BB22565CE1007C345F /* FirstViewController.swift */,
+				E1FF953F22A6D0B4006AFB14 /* VCChart.swift */,
 				E15AE3BD22565CE1007C345F /* SecondViewController.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
 				E132CC4A226615CC002EAD3D /* Assets.xcassets */,
@@ -307,6 +310,7 @@
 				E15AE3BE22565CE1007C345F /* SecondViewController.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
 				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
+				E1FF954022A6D0B4006AFB14 /* VCChart.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 				E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */,
 			);
