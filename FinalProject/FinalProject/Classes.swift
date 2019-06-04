@@ -122,7 +122,7 @@ class User: NSObject
     
     func AddCategory(category: String) -> Bool
     {
-        var i = 0
+        _ = 0
         
         for n in self.categories
         {
@@ -258,8 +258,13 @@ class Bill
     var amount: Float
     var recurring, monthly, yearly: Bool
     var date: DateStruct
+    var autoPay: Bool
+    var category: String
+    var paymentRepeat: String
 
-    init(billName: String = "", company: String = "", amount: Float = 0.0, accountName:String = "", recurring: Bool = false, monthly: Bool = false, yearly: Bool = false, date:DateStruct = DateStruct())
+    init(billName: String = "", company: String = "", amount: Float = 0.0, accountName:String = "",
+         recurring: Bool = false, monthly: Bool = false, yearly: Bool = false,
+         date:DateStruct = DateStruct(), autoPay: Bool, category:String, paymentRepeat: String  )
     {
         self.billName = billName
         self.company = company
@@ -270,6 +275,9 @@ class Bill
         self.monthly = monthly
         self.yearly = yearly
         self.billNum = ""
+        self.autoPay = autoPay
+        self.category = category
+        self.paymentRepeat = paymentRepeat
     }
     
     func setDate(date: DateStruct)
@@ -277,6 +285,7 @@ class Bill
         self.date = date
     }
 }
+
 
 struct DateStruct
 {
@@ -295,6 +304,17 @@ struct DateStruct
         self.month = Int(dateArr[0]) ?? 0
         self.day = Int(dateArr[1]) ?? 0
         self.year = Int(dateArr[2]) ?? 0
+    }
+    func createDate() -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        
+        // Create date from components
+        let userCalendar = Calendar.current // user calendar
+        let someDateTime = userCalendar.date(from: dateComponents)
+        return someDateTime ?? Date()
     }
 }
 
@@ -385,7 +405,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                         if let temp = dictionary["bills"]?["billNum" + "\(i)"] as? [String: AnyObject] {
                             var billDict = temp
                             
-                            let bill = Bill()
+                            let bill = Bill(autoPay: false, category: "", paymentRepeat: "")
                             bill.billNum = "bill" + "\(i)"
                             
                             if let temp = billDict["billName"] as? String {
