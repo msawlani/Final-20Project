@@ -59,14 +59,14 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
                 signedInWithGoogle = true
                 //Retrieve user data from Firebase and store it in user variable
                 mainUser.userId = Auth.auth().currentUser!.uid
-//
+
 //                GetUser(userId: mainUser.userId, callback: { mainUser in
-//                    mainUser.email = _user.profile.email
-//                    mainUser.imageURL = _user.profile.imageURL(withDimension: 720)
-//                    mainUser.firstName = _user.profile.givenName
-//                    mainUser.lastName = _user.profile.familyName
-//                    userLoaded = true
+//                    mainUser.email = googleUser.profile.email
+//                    mainUser.imageURL = googleUser.profile.imageURL(withDimension: 112)
+//                    mainUser.firstName = googleUser.profile.givenName
+//                    mainUser.lastName = googleUser.profile.familyName
 //                    mainUser.StoreInFirebase()
+//                    self.performSegue(withIdentifier: "toMain", sender: nil)
 //                })
                 //Justin
                 

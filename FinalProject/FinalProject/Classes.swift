@@ -62,7 +62,7 @@ class User: NSObject
         account.accountNum = "accountNum" + "\(self.accounts.count)"
         self.accounts.append(account)
         self.numAccounts+=1
-        StoreInFirebase()
+        self.StoreInFirebase()
         return true
     }
     
@@ -76,7 +76,7 @@ class User: NSObject
             {
                 self.accounts.remove(at: i)
                 self.numAccounts-=1
-                StoreInFirebase()
+                self.StoreInFirebase()
                 return true
             }
             i+=1
@@ -85,7 +85,7 @@ class User: NSObject
         return false
     }
     
-    func AddBill(bill:Bill) -> Bool
+    func AddBill(bill: Bill) -> Bool
     {
         for n in self.bills
         {
@@ -97,7 +97,7 @@ class User: NSObject
         bill.billNum = "billNum" + "\(self.bills.count)"
         self.bills.append(bill)
         self.numBills+=1
-        StoreInFirebase()
+        self.StoreInFirebase()
         return true
     }
     
@@ -111,7 +111,7 @@ class User: NSObject
             {
                 self.bills.remove(at: i)
                 self.numBills-=1
-                StoreInFirebase()
+                self.StoreInFirebase()
                 return true
             }
             i+=1
@@ -133,7 +133,7 @@ class User: NSObject
         }
         categories.append(category)
         self.numCategories+=1
-        StoreInFirebase()
+        self.StoreInFirebase()
         return true
     }
     
@@ -145,6 +145,7 @@ class User: NSObject
         ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
         ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
         ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - NUMDEFAULTCATS)
+        ref.child("users").child(self.userId).child("email").setValue(self.email)
         
         var i = 0
         
@@ -223,15 +224,33 @@ class Account
     func AddTransaction(transaction: Transaction)
     {
         self.transactions.append(transaction)
-        self.balance = self.balance + transaction.amount
+        self.balance = self.balance - transaction.amount
         self.numTransactions+=1
+        mainUser.StoreInFirebase()
     }
     
     func RemoveTransaction(index: Int)
     {
+        self.balance = self.balance + self.transactions[index].amount
+        self.transactions.remove(at: index)
+        self.numTransactions-=1
+        mainUser.StoreInFirebase()
+    }
+    
+    func AddIncome(transaction: Transaction)
+    {
+        self.transactions.append(transaction)
+        self.balance = self.balance + transaction.amount
+        self.numTransactions+=1
+        mainUser.StoreInFirebase()
+    }
+    
+    func RemoveIncome(index: Int)
+    {
         self.balance = self.balance - self.transactions[index].amount
         self.transactions.remove(at: index)
         self.numTransactions-=1
+        mainUser.StoreInFirebase()
     }
 }
 
@@ -440,9 +459,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
             let tempAccount = Account(name: "Main Account")
             tempUser.AddAccount(account: tempAccount)
             tempUser.StoreInFirebase()
-            GetUser(userId: mainUser.userId, callback: { mainUser in
-                mainUser.StoreInFirebase()
-            })
+            callback(tempUser)
         }
     })
 }
