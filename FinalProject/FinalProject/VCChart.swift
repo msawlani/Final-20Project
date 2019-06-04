@@ -16,11 +16,20 @@ class VCChart: UIViewController {
     
     @IBOutlet weak var steppertTwo: UIStepper!
     
+    //Temporary data sets to test pieChart
+    var dataEntryOne = PieChartDataEntry(value: 0)
+    var dataEntryTwo = PieChartDataEntry(value: 0)
+    
+    var dataEntriesArray = [PieChartDataEntry]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+//Pie Chart Configuration
+        pieChart.chartDescription?.text = ""
+       //setting values of the data entries to match default value of steppers
+        dataEntryOne.value = stepperOne.value
+        
     }
     
     @IBAction func changeStepperOne(_ sender: UIStepper){
