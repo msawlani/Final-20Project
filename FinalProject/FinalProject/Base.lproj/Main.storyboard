@@ -284,7 +284,7 @@
             </objects>
             <point key="canvasLocation" x="3811.594202898551" y="1556.9196428571429"/>
         </scene>
-        <!--Chart-->
+        <!--Item-->
         <scene sceneID="VtR-AO-8b4">
             <objects>
                 <viewController id="QMq-cc-rQb" customClass="VCChart" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,7 +293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDb-a1-opd" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="353" width="374" height="374"/>
+                                <rect key="frame" x="20" y="304" width="374" height="374"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LDb-a1-opd" secondAttribute="height" multiplier="1:1" id="BaE-hD-gD3"/>
@@ -308,11 +308,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="42" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MwQ-5e-F6i">
-                                <rect key="frame" x="300" y="770" width="94" height="29"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vfg-0S-zCt">
+                                <rect key="frame" x="20" y="721" width="94" height="29"/>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="58" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vfg-0S-zCt">
-                                <rect key="frame" x="20" y="770" width="94" height="29"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="27" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O4H-IL-3VC">
+                                <rect key="frame" x="300" y="721" width="94" height="29"/>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -320,23 +320,24 @@
                             <constraint firstItem="6eY-Cs-QnD" firstAttribute="leading" secondItem="Wmj-D9-gAf" secondAttribute="leading" constant="84" id="1de-qP-B9T"/>
                             <constraint firstItem="Vfg-0S-zCt" firstAttribute="top" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="43" id="2fd-33-Zo3"/>
                             <constraint firstItem="Wmj-D9-gAf" firstAttribute="bottom" secondItem="Vfg-0S-zCt" secondAttribute="bottom" constant="63" id="3U5-kn-EXo"/>
-                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="bottom" secondItem="MwQ-5e-F6i" secondAttribute="bottom" constant="63" id="CIz-2p-tKw"/>
+                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="bottom" secondItem="O4H-IL-3VC" secondAttribute="bottom" constant="63" id="DCj-NA-ykn"/>
+                            <constraint firstItem="O4H-IL-3VC" firstAttribute="leading" secondItem="Vfg-0S-zCt" secondAttribute="trailing" constant="186" id="Nbf-qg-H2s"/>
+                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="O4H-IL-3VC" secondAttribute="trailing" constant="20" id="RpO-W6-cQs"/>
                             <constraint firstItem="Wmj-D9-gAf" firstAttribute="bottom" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="135" id="Uk8-rh-7Ra"/>
                             <constraint firstItem="Vfg-0S-zCt" firstAttribute="leading" secondItem="Wmj-D9-gAf" secondAttribute="leading" constant="20" id="cYU-cr-J3w"/>
-                            <constraint firstItem="MwQ-5e-F6i" firstAttribute="leading" secondItem="Vfg-0S-zCt" secondAttribute="trailing" constant="186" id="en6-38-bof"/>
+                            <constraint firstItem="O4H-IL-3VC" firstAttribute="top" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="43" id="lEy-7s-S9C"/>
                             <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="6eY-Cs-QnD" secondAttribute="trailing" constant="82.670000000000002" id="oYb-Y8-2Nn"/>
-                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="MwQ-5e-F6i" secondAttribute="trailing" constant="20" id="qQY-by-yOT"/>
                             <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="LDb-a1-opd" secondAttribute="trailing" constant="20" id="shl-bt-WgZ"/>
                             <constraint firstItem="6eY-Cs-QnD" firstAttribute="top" secondItem="Wmj-D9-gAf" secondAttribute="top" constant="171" id="wTp-55-Yrl"/>
-                            <constraint firstItem="MwQ-5e-F6i" firstAttribute="top" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="43" id="y8E-ab-Udb"/>
                             <constraint firstItem="LDb-a1-opd" firstAttribute="leading" secondItem="Wmj-D9-gAf" secondAttribute="leading" constant="20" id="zvo-ja-mBM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wmj-D9-gAf"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="a8a-tF-sSB"/>
                     <connections>
                         <outlet property="pieChart" destination="LDb-a1-opd" id="aTq-MO-SVA"/>
                         <outlet property="stepperOne" destination="Vfg-0S-zCt" id="XQJ-um-4nG"/>
-                        <outlet property="steppert2" destination="MwQ-5e-F6i" id="ZnL-CR-nxH"/>
+                        <outlet property="stepperTwo" destination="O4H-IL-3VC" id="Iao-VP-4yk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hry-Ri-h11" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -939,6 +940,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Opz-d5-0tq" kind="relationship" relationship="viewControllers" id="X8q-3H-Hf0"/>
+                        <segue destination="QMq-cc-rQb" kind="relationship" relationship="viewControllers" id="8Eg-O5-A5J"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -978,6 +980,6 @@
         <segue reference="FZ2-LL-4zt"/>
         <segue reference="DYc-En-P61"/>
         <segue reference="6wf-aa-agg"/>
-        <segue reference="QMm-yk-c0K"/>
+        <segue reference="X8q-3H-Hf0"/>
     </inferredMetricsTieBreakers>
 </document>
