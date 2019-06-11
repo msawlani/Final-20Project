@@ -361,6 +361,10 @@ struct DateStruct
         let someDateTime = userCalendar.date(from: dateComponents)
         return someDateTime ?? Date()
     }
+    func asString() -> String
+    {
+        return "\(self.month)" + "/" + "\(self.day)" + "/" + "\(self.year)"
+    }
 }
 
 func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
