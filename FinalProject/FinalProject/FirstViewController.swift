@@ -60,23 +60,17 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.usernameText.text = mainUser.email
         })
         //Justin
-        
-<<<<<<< HEAD
-        
 
-        
-=======
->>>>>>> MasterBranch
         //allows to get the data from core data - michael
         let requestName = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
-        
+
         requestName.returnsObjectsAsFaults = false
-        
+
 }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.Table.reloadData()
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
@@ -90,29 +84,29 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             print("failed to fetch items", err)
         }
     }
-    
+
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let label = UILabel()
 //        label.text = "Header"
 //        label.backgroundColor = .cyan
 //        return label
 //    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return Sections.count
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Sections[section]
     }
-    
+
     //Gets the bills for the table view - Michael
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BillList.count
     }
 
 
-    
+
     //populates the cells using the data - Michael
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillListViewCell
@@ -123,7 +117,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.Price.text = price
         return (cell)
     }
-    
+
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
@@ -132,8 +126,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             vc?.existingBill = bill
             self.navigationController?.pushViewController(vc!, animated: true)
 
-            
-            
+
+
         })
 
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) in
@@ -142,13 +136,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
                 let context = appDelegate.persistentContainer.viewContext
                 context.delete(BillList[indexPath.row])
-                
+
                 do{
                     try context.save()
                     BillList.remove(at: indexPath.row)
                     self.Table.reloadData()
                 }catch{
-                    
+
                 }
 
             }))
