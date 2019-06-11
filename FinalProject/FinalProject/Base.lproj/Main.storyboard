@@ -310,9 +310,15 @@
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vfg-0S-zCt">
                                 <rect key="frame" x="20" y="721" width="94" height="29"/>
+                                <connections>
+                                    <action selector="changeStepperOne:" destination="QMq-cc-rQb" eventType="valueChanged" id="Elx-UV-9YT"/>
+                                </connections>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="27" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O4H-IL-3VC">
                                 <rect key="frame" x="300" y="721" width="94" height="29"/>
+                                <connections>
+                                    <action selector="changeStepperTwo:" destination="QMq-cc-rQb" eventType="valueChanged" id="mMu-tz-3DJ"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

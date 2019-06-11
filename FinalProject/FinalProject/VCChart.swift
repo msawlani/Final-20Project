@@ -40,11 +40,13 @@ class VCChart: UIViewController {
     }
     
     @IBAction func changeStepperOne(_ sender: UIStepper){
-        
+        dataEntryOne.value = sender.value
+        updateChartData()
     }
     
     @IBAction func changeStepperTwo(_ sender: UIStepper){
-        
+        dataEntryTwo.value = sender.value
+        updateChartData()
     }
     
     func updateChartData(){
