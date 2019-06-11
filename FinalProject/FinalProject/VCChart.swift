@@ -27,7 +27,7 @@ class VCChart: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //Pie Chart Configuration
-        pieChart.chartDescription?.text = ""
+        pieChart.chartDescription?.text = "Income vs Expenses"
        //setting values of the data entries to match default value of steppers
         dataEntryOne.value = stepperOne.value
         dataEntryOne.label = "Income"
