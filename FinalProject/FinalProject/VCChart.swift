@@ -17,22 +17,32 @@ class VCChart: UIViewController {
     @IBOutlet weak var stepperTwo: UIStepper!
     
     
-    //Temporary data sets to test pieChart
+    //Create Data entry variables
     var dataEntryOne = PieChartDataEntry(value: 0)
     var dataEntryTwo = PieChartDataEntry(value: 0)
-    
+    var dataEntryThree = PieChartDataEntry(value: 0)
+    var dataEntryFour = PieChartDataEntry(value: 0)
+
+
     var dataEntriesArray = [PieChartDataEntry]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//Pie Chart Configuration
+        //Pie Chart Configuration
         pieChart.chartDescription?.text = "Income vs Expenses"
-       //setting values of the data entries to match default value of steppers
+       //setting values of the data entries
         dataEntryOne.value = stepperOne.value
-        dataEntryOne.label = "Income"
+        dataEntryOne.label = ""
+        
         dataEntryTwo.value = stepperTwo.value
-        dataEntryTwo.label = "Expense"
+        dataEntryTwo.label = ""
+        
+        dataEntryThree.value = 0
+        dataEntryThree.label = ""
+        
+        dataEntryFour.value = 0
+        dataEntryTwo.label = ""
         
         dataEntriesArray = [dataEntryOne,dataEntryTwo]
         
