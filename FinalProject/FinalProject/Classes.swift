@@ -186,7 +186,7 @@ class User: NSObject
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("company").setValue(self.bills[i].company)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("accountName").setValue(self.bills[i].accountName)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("amount").setValue(self.bills[i].amount)
-            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("category").setValue(self.bills[i].amount)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("category").setValue(self.bills[i].category)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("recurring").setValue(self.bills[i].recurring)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("monthly").setValue(self.bills[i].monthly)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("yearly").setValue(self.bills[i].yearly)
