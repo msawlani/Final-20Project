@@ -14,7 +14,7 @@ var NUMDEFAULTCATS = 5
 
 class User: NSObject
 {
-    var userId, password: String
+    var userId: String
     var email, firstName, lastName: String?
     var imageURL: URL?
     var numAccounts, numBills, numCategories: Int
@@ -26,7 +26,6 @@ class User: NSObject
     init(userId:String, password:String = "")
     {
         self.userId = userId
-        self.password = password
         self.numAccounts = 0
         self.numBills = 0
         self.numCategories = 0
@@ -141,7 +140,6 @@ class User: NSObject
     {
         let ref = Database.database().reference()
         ref.child("users").child(self.userId).child("userId").setValue(self.userId)
-        ref.child("users").child(self.userId).child("password").setValue(self.password)
         ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
         ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
         ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - NUMDEFAULTCATS)
@@ -211,10 +209,10 @@ class Account
 {
     var accountName, bankName, accountNum: String
     var numTransactions: Int
-    var balance, totalIncome, totalExpenses: Float
+    var balance, totalIncome, totalExpenses: Double
     var transactions: [Transaction] = []
 
-    init(name:String = "", bankName:String = "", balance:Float = 0.0)
+    init(name:String = "", bankName:String = "", balance:Double = 0.0)
     {
         self.accountName = name
         self.bankName = bankName
@@ -260,15 +258,32 @@ class Account
         
         mainUser.StoreInFirebase()
     }
+    
+    func getCategoryTotal(categoryNum: Int) -> Double
+    {
+        var total = 0.0
+        var i = 0
+        
+        while i < transactions.count
+        {
+            if transactions[i].category == mainUser.categories[categoryNum]
+            {
+                total+=transactions[i].amount
+            }
+            i+=1
+        }
+        
+        return total
+    }
 }
 
 class Transaction
 {
     var vendorName, category, description, transactionNum:String
-    var amount: Float
+    var amount: Double
     var date: DateStruct
 
-    init(vendorName:String = "", category:String = "", description:String = "", amount:Float = 0.0, date: DateStruct = DateStruct())
+    init(vendorName:String = "", category:String = "", description:String = "", amount:Double = 0.0, date: DateStruct = DateStruct())
     {
         self.vendorName = vendorName
         self.category = category
@@ -282,14 +297,14 @@ class Transaction
 class Bill
 {
     var billName, company, accountName, billNum: String
-    var amount: Float
+    var amount: Double
     var recurring, monthly, yearly: Bool
     var date: DateStruct
     var autoPay: Bool
     var category: String
     var paymentRepeat: String
 
-    init(billName: String = "", company: String = "", amount: Float = 0.0, accountName:String = "",
+    init(billName: String = "", company: String = "", amount: Double = 0.0, accountName:String = "",
          recurring: Bool = false, monthly: Bool = false, yearly: Bool = false,
          date:DateStruct = DateStruct(), autoPay: Bool, category:String, paymentRepeat: String  )
     {
@@ -366,9 +381,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                     if let temp = dictionary["numCategories"] as? Int{
                         tempUser.numCategories = temp
                     }
-                    if let temp = dictionary["password"] as? String{
-                        tempUser.password = temp
-                    }
+
                     var i = 0
                     while i < tempUser.numAccounts
                     {
@@ -380,7 +393,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                             if let temp = accountDict["accountName"] as? String {
                                 account.accountName = temp
                             }
-                            if let temp = accountDict["balance"] as? Float{
+                            if let temp = accountDict["balance"] as? Double{
                                 account.balance = temp
                             }
                             if let temp = accountDict["bankName"] as? String{
@@ -412,7 +425,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                                     if let temp = transactionDict["description"] as? String{
                                         transaction.description = temp
                                     }
-                                    if let temp = transactionDict["amount"] as? Float{
+                                    if let temp = transactionDict["amount"] as? Double{
                                         transaction.amount = temp
                                     }
                                     if let temp = transactionDict["date"] as? String{
@@ -452,7 +465,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                             if let temp = billDict["accountName"] as? String {
                                 bill.accountName = temp
                             }
-                            if let temp = billDict["amount"] as? Float {
+                            if let temp = billDict["amount"] as? Double {
                                 bill.amount = temp
                             }
                             if let temp = billDict["recurring"] as? Bool {
