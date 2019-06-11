@@ -186,6 +186,7 @@ class User: NSObject
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("company").setValue(self.bills[i].company)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("accountName").setValue(self.bills[i].accountName)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("amount").setValue(self.bills[i].amount)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("category").setValue(self.bills[i].amount)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("recurring").setValue(self.bills[i].recurring)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("monthly").setValue(self.bills[i].monthly)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("yearly").setValue(self.bills[i].yearly)
@@ -402,11 +403,11 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                             if let temp = accountDict["numTransactions"] as? Int{
                                 account.numTransactions = temp
                             }
-                            if let temp = accountDict["totalIncome"] as? Int{
-                                account.numTransactions = temp
+                            if let temp = accountDict["totalIncome"] as? Double{
+                                account.totalIncome = temp
                             }
-                            if let temp = accountDict["totalExpenses"] as? Int{
-                                account.numTransactions = temp
+                            if let temp = accountDict["totalExpenses"] as? Double{
+                                account.totalExpenses = temp
                             }
 
                             var j = 0
@@ -467,6 +468,9 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                             }
                             if let temp = billDict["amount"] as? Double {
                                 bill.amount = temp
+                            }
+                            if let temp = billDict["category"] as? String {
+                                bill.category = temp
                             }
                             if let temp = billDict["recurring"] as? Bool {
                                 bill.recurring = temp

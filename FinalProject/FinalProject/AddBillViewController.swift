@@ -96,6 +96,7 @@ class AddBillViewController: UIViewController {
         }
 
         home.billsContainer.append(bill)
+        mainUser.AddBill(bill: bill)
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -112,7 +113,7 @@ class AddBillViewController: UIViewController {
         amountTextField.text?.removeFirst()
 
         let bill = Bill(billName:"test",
-                        company: "test", amount: Float(amountTextField.text!) ?? 0,
+                        company: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
                         autoPay: autoPaySwitch.isOn,
                         category: categoryTextField.text!,
