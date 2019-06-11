@@ -348,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hry-Ri-h11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2628.985507246377" y="-1070.0892857142856"/>
+            <point key="canvasLocation" x="2638" y="-1280"/>
         </scene>
         <!--Balance-->
         <scene sceneID="hNz-n2-bh7">
@@ -940,7 +940,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Dqv-Br-ERQ" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Opz-d5-0tq" kind="relationship" relationship="viewControllers" id="X8q-3H-Hf0"/>
-                        <segue destination="QMq-cc-rQb" kind="relationship" relationship="viewControllers" id="8Eg-O5-A5J"/>
+                        <segue destination="QMq-cc-rQb" kind="relationship" relationship="viewControllers" id="gpJ-4J-JXJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -1196,7 +1196,7 @@
     </scenes>
     <resources>
         <image name="Camera" width="16" height="16"/>
-        <image name="Information_Icon_Button" width="18.90461540222168" height="18.90461540222168"/>
+        <image name="Information_Icon_Button" width="512" height="512"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="useimgplaceholder" width="160" height="160"/>

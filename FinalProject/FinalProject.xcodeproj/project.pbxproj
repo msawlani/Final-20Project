@@ -16,6 +16,7 @@
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132CC4A226615CC002EAD3D /* Assets.xcassets */; };
+		E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BFB7222AFF809008AFE79 /* VCChart.swift */; };
 		E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E154BC2B227B507900DACAC0 /* Default-568h@2x.png */; };
 		E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3B922565CE1007C345F /* AppDelegate.swift */; };
 		E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3BB22565CE1007C345F /* FirstViewController.swift */; };
@@ -43,6 +44,7 @@
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E132CC4A226615CC002EAD3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E13BFB7222AFF809008AFE79 /* VCChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCChart.swift; sourceTree = "<group>"; };
 		E154BC2B227B507900DACAC0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E15AE3B622565CE1007C345F /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15AE3B922565CE1007C345F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +110,6 @@
 				E15AE3B822565CE1007C345F /* FinalProject */,
 				A85E9B5422A6C5D9004E2372 /* Cells */,
 				E15AE3B722565CE1007C345F /* Products */,
-				A8808DA9229F599500164624 /* Cells */,
 				076DE8B4A9E7A712623EAFC7 /* Pods */,
 				D8AC60B45E7C9F04D3E287CB /* Frameworks */,
 			);
@@ -131,8 +132,8 @@
 				E15AE3BB22565CE1007C345F /* FirstViewController.swift */,
 				A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */,
 				A85E9B4922A6C288004E2372 /* AddBillViewController.swift */,
+				E13BFB7222AFF809008AFE79 /* VCChart.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
-				A8808DAE229F59A700164624 /* AddBillViewController.swift */,
 				E132CC4A226615CC002EAD3D /* Assets.xcassets */,
 				E132CC48226611E0002EAD3D /* GoogleService-Info.plist */,
 				E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */,
@@ -331,10 +332,10 @@
 				A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */,
 				F2A47856229F173100CFB1A3 /* BillListViewCell.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
+				E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */,
 				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 				E15AE3BC22565CE1007C345F /* FirstViewController.swift in Sources */,
-				A8808DAF229F59A700164624 /* AddBillViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
