@@ -26,17 +26,17 @@ class SettingsViewController: UIViewController {
             ChangePass.isEnabled = false
         }
         
-        //Example income
-        let tempIncome = Transaction()
-        tempIncome.amount = 100
-        tempIncome.category = mainUser.categories[3]
-        mainUser.accounts[0].AddTransaction(transaction: tempIncome)
-        
-        let tempExpense = Transaction()
-        tempExpense.amount = -40
-        tempExpense.category = mainUser.categories[4]
-        mainUser.accounts[0].AddTransaction(transaction: tempExpense)
-        //Justin 
+//        //Example income
+//        let tempIncome = Transaction()
+//        tempIncome.amount = 100
+//        tempIncome.category = mainUser.categories[3]
+//        mainUser.accounts[0].AddTransaction(transaction: tempIncome)
+//
+//        let tempExpense = Transaction()
+//        tempExpense.amount = -40
+//        tempExpense.category = mainUser.categories[4]
+//        mainUser.accounts[0].AddTransaction(transaction: tempExpense)
+//        //Justin 
     }
     @IBAction func Logout(_ sender: Any) {
         do{
