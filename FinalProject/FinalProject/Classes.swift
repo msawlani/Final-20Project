@@ -150,11 +150,14 @@ class User: NSObject
 
         while i < self.accounts.count
         {
-                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("accountNum").setValue("accountNum" + "\(i)")
-                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("accountName").setValue(self.accounts[i].accountName)
-                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("balance").setValue(self.accounts[i].balance)
-                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("bankName").setValue(self.accounts[i].bankName)
-                ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("numTransactions").setValue(self.accounts[i].transactions.count)
+            ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("accountNum").setValue("accountNum" + "\(i)")
+            ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("accountName").setValue(self.accounts[i].accountName)
+            ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("balance").setValue(self.accounts[i].balance)
+            ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("bankName").setValue(self.accounts[i].bankName)
+            ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("numTransactions").setValue(self.accounts[i].transactions.count)
+            ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("totalIncome").setValue(self.accounts[i].totalIncome)
+            ref.child("users").child(self.userId).child("accounts").child("accountNum" + "\(i)").child("totalExpenses").setValue(self.accounts[i].totalExpenses)
+
 
             var j = 0
 
@@ -208,7 +211,7 @@ class Account
 {
     var accountName, bankName, accountNum: String
     var numTransactions: Int
-    var balance: Float
+    var balance, totalIncome, totalExpenses: Float
     var transactions: [Transaction] = []
 
     init(name:String = "", bankName:String = "", balance:Float = 0.0)
@@ -216,6 +219,8 @@ class Account
         self.accountName = name
         self.bankName = bankName
         self.balance = balance
+        self.totalIncome = 0
+        self.totalExpenses = 0
         self.numTransactions = 0
         self.accountNum = ""
     }
@@ -225,6 +230,17 @@ class Account
         self.transactions.append(transaction)
         self.balance = self.balance + transaction.amount
         self.numTransactions+=1
+        
+        if(transaction.amount > 0)
+        {
+            self.totalIncome += transaction.amount
+        }
+        else if(transaction.amount < 0)
+        {
+            self.totalExpenses += transaction.amount
+        }
+        
+        mainUser.StoreInFirebase()
     }
 
     func RemoveTransaction(index: Int)
@@ -232,6 +248,17 @@ class Account
         self.balance = self.balance - self.transactions[index].amount
         self.transactions.remove(at: index)
         self.numTransactions-=1
+        
+        if(self.transactions[index].amount > 0)
+        {
+            self.totalIncome -= self.transactions[index].amount
+        }
+        else if(self.transactions[index].amount < 0)
+        {
+            self.totalExpenses -= self.transactions[index].amount
+        }
+        
+        mainUser.StoreInFirebase()
     }
 }
 
@@ -362,6 +389,12 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                             if let temp = accountDict["numTransactions"] as? Int{
                                 account.numTransactions = temp
                             }
+                            if let temp = accountDict["totalIncome"] as? Int{
+                                account.numTransactions = temp
+                            }
+                            if let temp = accountDict["totalExpenses"] as? Int{
+                                account.numTransactions = temp
+                            }
 
                             var j = 0
                             while j < account.numTransactions
@@ -462,9 +495,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
             let tempAccount = Account(name: "Main Account")
             tempUser.AddAccount(account: tempAccount)
             tempUser.StoreInFirebase()
-            GetUser(userId: mainUser.userId, callback: { mainUser in
-                mainUser.StoreInFirebase()
-            })
+            callback(tempUser)
         }
     })
 }

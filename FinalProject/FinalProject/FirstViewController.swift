@@ -33,7 +33,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //Retrieve user data from Firebase and store it in user variable
-        GetUser(userId: mainUser.userId, callback: { mainUser in
+        GetUser(userId: mainUser.userId, callback: { tempUser in
+            mainUser = tempUser
             if signedInWithGoogle
             {
                 mainUser.email = googleUser.profile.email
@@ -61,10 +62,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             mainUser.StoreInFirebase()
             self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
             self.usernameText.text = mainUser.email
-
         })
         //Justin
-        
         
         //allows to get the data from core data - michael
         let requestName = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
