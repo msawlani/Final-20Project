@@ -16,7 +16,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var paymentPrice: UITextField!
     @IBOutlet weak var section: UITextField!
     
-    var existingBill: Bills?
+    var existingBill: Transaction?
     var index = Int()
     var selectedSection: String = ""
     var Sections: [String] = ["Immediate Obligations", "True Expenses", "Debt Payments", "Quality of Life Goals",
@@ -25,9 +25,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        paymentName.text = existingBill?.name
-        paymentPrice.text = existingBill?.price
-        section.text = existingBill?.section
+       
+        paymentName.text = existingBill?.vendorName
+        paymentPrice.text = "\(existingBill?.amount)" as String
         createPickerView()
         
         
@@ -69,16 +69,16 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         guard let price = self.paymentPrice.text else {return}
         guard let sect = self.section.text else {return}
         
-        var bills: Bills?
+        
         
     
         
         if let existingBill = existingBill{
             if name.count != 0 && price.count != 0 && sect.count != 0{
-            existingBill.name = name
-            existingBill.price = price
-            existingBill.section = sect
-            bills = existingBill
+            existingBill.vendorName = name
+            existingBill.amount = Double(price) ?? 0
+            
+            
             }
             else{
                 let alert = UIAlertController(title: "Failed to update Bill", message: "Please Fill out the Information", preferredStyle: .alert)
@@ -87,31 +87,35 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 self.present(alert, animated: true)
             }
         }else{
+//            if name.count != 0 && price.count != 0 && sect.count != 0{
+//
+//                bills = Bills(name: name, price: price, section: sect)
+//            }
             if name.count != 0 && price.count != 0 && sect.count != 0{
+
+            let transaction = Transaction(vendorName: name, amount: Double(price) ?? 0)
+                    mainUser.accounts[0].AddTransaction(transaction: transaction)
+                    TransactionList.append(transaction)
+            }
+            else{
+                let alert = UIAlertController(title: "Failed to add Bill", message: "Please Fill out the Information", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
-                bills = Bills(name: name, price: price, section: sect)
+                self.present(alert, animated: true)
             }
         }
         
-        if let bills = bills{
-            do{
-                let context = bills.managedObjectContext
-            try context?.save()
-                
-            }catch{
-                print("Failed to save bill")
-            }
-            
-        }
-        else{
-            let alert = UIAlertController(title: "Failed to add Bill", message: "Please Fill out the Information", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
-            self.present(alert, animated: true)
-        }
-        
+    
+//            do{
+//                let context = bills.managedObjectContext
+//            try context?.save()
+//
+//            }catch{
+//                print("Failed to save bill")
+//            }
         
     }
+
     @IBAction func Cancel(_ sender: Any) {
         
     }

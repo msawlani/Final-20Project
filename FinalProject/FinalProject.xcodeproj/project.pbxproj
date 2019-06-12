@@ -32,7 +32,7 @@
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
 		F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */; };
 		F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864D22976FAE001BEC17 /* ChangePassViewController.swift */; };
-		F2A47856229F173100CFB1A3 /* BillListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A47855229F173100CFB1A3 /* BillListViewCell.swift */; };
+		F2C6B60322B160E700E02FD4 /* TransactionListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */; };
 		F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4C262284957A00072E8E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,7 @@
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		F295864D22976FAE001BEC17 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
-		F2A47855229F173100CFB1A3 /* BillListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListViewCell.swift; sourceTree = "<group>"; };
+		F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewCell.swift; sourceTree = "<group>"; };
 		F2CA4C262284957A00072E8E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F7540E5E015C3C0041FD0338 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +96,7 @@
 			children = (
 				A85E9B5522A6C619004E2372 /* BillTableViewCell.swift */,
 				A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */,
+				F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */,
 			);
 			name = Cells;
 			path = FinalProject/Cells;
@@ -154,7 +155,6 @@
 				F2CA4C262284957A00072E8E /* SettingsViewController.swift */,
 				F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */,
 				F295864D22976FAE001BEC17 /* ChangePassViewController.swift */,
-				F2A47855229F173100CFB1A3 /* BillListViewCell.swift */,
 				A85E9B5922A6C68F004E2372 /* CheckBox.swift */,
 			);
 			path = FinalProject;
@@ -340,8 +340,8 @@
 				F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */,
-				F2A47856229F173100CFB1A3 /* BillListViewCell.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
+				F2C6B60322B160E700E02FD4 /* TransactionListViewCell.swift in Sources */,
 				E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */,
 				F204D84F22B01481002E541E /* FirstViewController.swift in Sources */,
 				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
