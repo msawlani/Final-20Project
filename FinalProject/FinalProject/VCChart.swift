@@ -29,20 +29,37 @@ class VCChart: UIViewController {
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
         
-        dataEntryHousing.value = 25
-        dataEntryHousing.label = "Housing"
+        let housing = 78.0 //mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+        let food = 68.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+        let lifeStyle = 39.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+        let debts = 34.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+        let misc = 47.0 //mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
         
-        dataEntryFood.value = 78
-        dataEntryFood.label = "Food"
         
-        dataEntryLifeS.value = 84
-        dataEntryLifeS.label = "Life Style"
+        if housing > 0 {
+            dataEntryHousing.value = housing
+            dataEntryHousing.label = "Housing"
+        }
+        if food > 0{
+            dataEntryFood.value = food
+            dataEntryFood.label = "Food"
+        }
         
-        dataEntryDebts.value = 56
-        dataEntryDebts.label = "Debts"
+        if lifeStyle > 0 {
+            dataEntryLifeS.value = lifeStyle
+            dataEntryLifeS.label = "Life Style"
+        }
+       
+        if debts > 0{
+            dataEntryDebts.value = debts
+            dataEntryDebts.label = "Debts"
+        }
         
-        dataEntryMiscellaneous.value = 29
-        dataEntryMiscellaneous.label = "Misc"
+        if misc > 0{
+            dataEntryMiscellaneous.value = misc
+            dataEntryMiscellaneous.label = "Misc"
+        }
+        
         
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
         
