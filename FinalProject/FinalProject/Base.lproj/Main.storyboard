@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nSd-fa-RfD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nSd-fa-RfD">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -284,7 +284,7 @@
             </objects>
             <point key="canvasLocation" x="3811.594202898551" y="1556.9196428571429"/>
         </scene>
-        <!--Item-->
+        <!--Graphs-->
         <scene sceneID="VtR-AO-8b4">
             <objects>
                 <viewController id="QMq-cc-rQb" customClass="VCChart" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -299,7 +299,7 @@
                                     <constraint firstAttribute="width" secondItem="LDb-a1-opd" secondAttribute="height" multiplier="1:1" id="BaE-hD-gD3"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incomes and Expenses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eY-Cs-QnD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transactions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eY-Cs-QnD">
                                 <rect key="frame" x="84.000000000000014" y="215" width="247.33333333333337" height="34.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6eY-Cs-QnD" secondAttribute="height" multiplier="36:5" id="N3C-qT-fEM"/>
@@ -308,30 +308,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vfg-0S-zCt">
-                                <rect key="frame" x="20" y="721" width="94" height="29"/>
-                                <connections>
-                                    <action selector="changeStepperOne:" destination="QMq-cc-rQb" eventType="valueChanged" id="Elx-UV-9YT"/>
-                                </connections>
-                            </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="27" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O4H-IL-3VC">
-                                <rect key="frame" x="300" y="721" width="94" height="29"/>
-                                <connections>
-                                    <action selector="changeStepperTwo:" destination="QMq-cc-rQb" eventType="valueChanged" id="mMu-tz-3DJ"/>
-                                </connections>
-                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6eY-Cs-QnD" firstAttribute="leading" secondItem="Wmj-D9-gAf" secondAttribute="leading" constant="84" id="1de-qP-B9T"/>
-                            <constraint firstItem="Vfg-0S-zCt" firstAttribute="top" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="43" id="2fd-33-Zo3"/>
-                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="bottom" secondItem="Vfg-0S-zCt" secondAttribute="bottom" constant="63" id="3U5-kn-EXo"/>
-                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="bottom" secondItem="O4H-IL-3VC" secondAttribute="bottom" constant="63" id="DCj-NA-ykn"/>
-                            <constraint firstItem="O4H-IL-3VC" firstAttribute="leading" secondItem="Vfg-0S-zCt" secondAttribute="trailing" constant="186" id="Nbf-qg-H2s"/>
-                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="O4H-IL-3VC" secondAttribute="trailing" constant="20" id="RpO-W6-cQs"/>
                             <constraint firstItem="Wmj-D9-gAf" firstAttribute="bottom" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="135" id="Uk8-rh-7Ra"/>
-                            <constraint firstItem="Vfg-0S-zCt" firstAttribute="leading" secondItem="Wmj-D9-gAf" secondAttribute="leading" constant="20" id="cYU-cr-J3w"/>
-                            <constraint firstItem="O4H-IL-3VC" firstAttribute="top" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="43" id="lEy-7s-S9C"/>
                             <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="6eY-Cs-QnD" secondAttribute="trailing" constant="82.670000000000002" id="oYb-Y8-2Nn"/>
                             <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="LDb-a1-opd" secondAttribute="trailing" constant="20" id="shl-bt-WgZ"/>
                             <constraint firstItem="6eY-Cs-QnD" firstAttribute="top" secondItem="Wmj-D9-gAf" secondAttribute="top" constant="171" id="wTp-55-Yrl"/>
@@ -339,11 +320,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wmj-D9-gAf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="a8a-tF-sSB"/>
+                    <tabBarItem key="tabBarItem" title="Graphs" id="a8a-tF-sSB"/>
                     <connections>
                         <outlet property="pieChart" destination="LDb-a1-opd" id="aTq-MO-SVA"/>
-                        <outlet property="stepperOne" destination="Vfg-0S-zCt" id="XQJ-um-4nG"/>
-                        <outlet property="stepperTwo" destination="O4H-IL-3VC" id="Iao-VP-4yk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hry-Ri-h11" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -370,7 +349,6 @@
         <!--Balance-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -488,6 +466,7 @@
                         <segue destination="3gw-or-OEe" kind="show" identifier="Add" id="wYk-EX-8ma"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3463.7681159420295" y="-376.33928571428572"/>
         </scene>

@@ -16,9 +16,9 @@ public class Bills: NSManagedObject {
         self.init()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        guard let context = appDelegate?.persistentContainer.viewContext else {return}
+        guard (appDelegate?.persistentContainer.viewContext) != nil else {return}
         
-        self.init(entity: Bills.entity(), insertInto: context)
+        //self.init(entity: Bills.entity(), insertInto: context)
         self.name = name
         self.price = price
         self.section = section

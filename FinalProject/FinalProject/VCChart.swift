@@ -12,16 +12,12 @@ class VCChart: UIViewController {
 
     @IBOutlet weak var pieChart: PieChartView!
     
-    @IBOutlet weak var stepperOne: UIStepper!
-    
-    @IBOutlet weak var stepperTwo: UIStepper!
-    
-    
     //Create Data entry variables
-    var dataEntryOne = PieChartDataEntry(value: 0)
-    var dataEntryTwo = PieChartDataEntry(value: 0)
-    var dataEntryThree = PieChartDataEntry(value: 0)
-    var dataEntryFour = PieChartDataEntry(value: 0)
+    var dataEntryHousing = PieChartDataEntry(value: 0)
+    var dataEntryFood = PieChartDataEntry(value: 0)
+    var dataEntryLifeS = PieChartDataEntry(value: 0)
+    var dataEntryDebts = PieChartDataEntry(value: 0)
+    var dataEntryMiscellaneous = PieChartDataEntry(value: 0)
 
 
     var dataEntriesArray = [PieChartDataEntry]()
@@ -30,34 +26,29 @@ class VCChart: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Pie Chart Configuration
-        pieChart.chartDescription?.text = "Income vs Expenses"
+        pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
-        dataEntryOne.value = stepperOne.value
-        dataEntryOne.label = ""
         
-        dataEntryTwo.value = stepperTwo.value
-        dataEntryTwo.label = ""
+        dataEntryHousing.value = 25
+        dataEntryHousing.label = "Housing"
         
-        dataEntryThree.value = 0
-        dataEntryThree.label = ""
+        dataEntryFood.value = 78
+        dataEntryFood.label = "Food"
         
-        dataEntryFour.value = 0
-        dataEntryTwo.label = ""
+        dataEntryLifeS.value = 84
+        dataEntryLifeS.label = "Life Style"
         
-        dataEntriesArray = [dataEntryOne,dataEntryTwo]
+        dataEntryDebts.value = 56
+        dataEntryDebts.label = "Debts"
+        
+        dataEntryMiscellaneous.value = 29
+        dataEntryMiscellaneous.label = "Misc"
+        
+        dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
         
         updateChartData()
     }
     
-    @IBAction func changeStepperOne(_ sender: UIStepper){
-        dataEntryOne.value = sender.value
-        updateChartData()
-    }
-    
-    @IBAction func changeStepperTwo(_ sender: UIStepper){
-        dataEntryTwo.value = sender.value
-        updateChartData()
-    }
     
     func updateChartData(){
         //set up chart
@@ -65,8 +56,9 @@ class VCChart: UIViewController {
         let chartData = PieChartData(dataSet: chartDataSet)
         
         //color array for the different sections of the pie chart
-        let colors = [UIColor(named:"income"),UIColor(named:"expense")]
+        let colors = [UIColor(named:"Housing"),UIColor(named:"Food"),UIColor(named:"LifeS"),UIColor(named:"Debt"),UIColor(named:"Miscellaneous")]
         
+        //Sets Colors and Data of Pie Chart
         chartDataSet.colors = colors as! [NSUIColor]
         pieChart.data = chartData
     }
