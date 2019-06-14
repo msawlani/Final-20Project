@@ -58,6 +58,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             mainUser.StoreInFirebase()
             self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
             self.usernameText.text = mainUser.email
+            
+            var i = 0
+            while i < mainUser.accounts[0].transactions.count
+            {
+                self.TransactionList.append(mainUser.accounts[0].transactions[i])
+                i+=1
+            }
         })
         //Justin
 
@@ -65,14 +72,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 //        let requestName = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
 //
 //        requestName.returnsObjectsAsFaults = false
-        
-        
-//        var i = 0
-//        while i < mainUser.accounts[0].transactions.count
-//        {
-//            TransactionList.append(mainUser.accounts[0].transactions[i])
-//            i+=1
-//        }
+    
 }
 
     override func viewWillAppear(_ animated: Bool) {
