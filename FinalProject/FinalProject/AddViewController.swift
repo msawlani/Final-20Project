@@ -16,8 +16,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var paymentPrice: UITextField!
     @IBOutlet weak var section: UITextField!
     
-    var existingBill: Bills?
-    var index = Int()
+    public var existingPayment: Transaction?
+    public var index: Int?
     var selectedSection: String = ""
     var Sections: [String] = ["Immediate Obligations", "True Expenses", "Debt Payments", "Quality of Life Goals",
                               "Just for Fun"]
@@ -25,9 +25,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        paymentName.text = existingBill?.name
-        paymentPrice.text = existingBill?.price
-        section.text = existingBill?.section
+       
+        if let payment = existingPayment{
+        paymentName.text = payment.vendorName
+        paymentPrice.text = "\(payment.amount)" as String
+        }
         createPickerView()
         
         
@@ -65,55 +67,69 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     @IBAction func Add(_ sender: Any) {
-        guard let name = self.paymentName.text else {return}
-        guard let price = self.paymentPrice.text else {return}
-        guard let sect = self.section.text else {return}
         
-        var bills: Bills?
         
-    
-        
-        if let existingBill = existingBill{
-            if name.count != 0 && price.count != 0 && sect.count != 0{
-            existingBill.name = name
-            existingBill.price = price
-            existingBill.section = sect
-            bills = existingBill
-            }
-            else{
-                let alert = UIAlertController(title: "Failed to update Bill", message: "Please Fill out the Information", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.present(alert, animated: true)
-            }
-        }else{
-            if name.count != 0 && price.count != 0 && sect.count != 0{
-                
-                bills = Bills(name: name, price: price, section: sect)
-            }
+        if checkInputFields() == false{
+            return
         }
         
-        if let bills = bills{
-            do{
-                let context = bills.managedObjectContext
-            try context?.save()
-                
-            }catch{
-                print("Failed to save bill")
-            }
-            
-        }
-        else{
-            let alert = UIAlertController(title: "Failed to add Bill", message: "Please Fill out the Information", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
-            self.present(alert, animated: true)
+        let transaction = createTransaction()
+        
+        guard let home = self.navigationController?.viewControllers.first as? FirstViewController else {
+            return
         }
         
+        if let indexPathRow = index {
+            home.TransactionList.remove(at: indexPathRow)
+        }
+        
+        home.TransactionList.append(transaction)
+        mainUser.accounts[0].AddTransaction(transaction: transaction)
+        self.navigationController?.popViewController(animated: true)
         
     }
+
+    func checkInputFields() -> Bool {
+        let alert = UIAlertView()
+        var check = true
+        if paymentPrice.text?.isEmpty ?? true {
+            alert.title = "Price is Empty"
+            alert.message = "Please Fill the Price to Add Transaction"
+            check = false
+        }
+        else if paymentName.text?.isEmpty ?? true {
+            alert.title = "Name is Empty"
+            alert.message = "Please Fill in the Name of Transaction"
+            check = false
+        }
+        if check == false {
+            alert.addButton(withTitle: "OK")
+            alert.show()
+        }
+        return check
+    }
+    
+    
+    func createTransaction() -> Transaction {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let calendar = Calendar.current
+        let date = dateFormatter.date(from: "03/03/1994") ?? Date()
+        let customDate = DateStruct(month: calendar.component(.month, from: date),
+                                    day: calendar.component(.day, from: date),
+                                    year: calendar.component(.year, from: date))
+        //paymentPrice.text?.removeFirst()
+        
+        let transaction = Transaction(vendorName: paymentName.text!, category: "test", description: "test", amount: Double(paymentPrice.text!) ?? 0, date: customDate)
+        
+        
+        return transaction
+    }
+    
     @IBAction func Cancel(_ sender: Any) {
         
+        self.navigationController?.popViewController(animated: true)
+
     }
 
 }

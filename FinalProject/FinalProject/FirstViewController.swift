@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 
 
-var BillList: [Bills] = []
 var Sections: [String] = []
-var BillListCell: BillListViewCell?
+var TransactionListCell: TransactionListViewCell?
 
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var TransactionList: [Transaction] = []
 
 
     @IBOutlet weak var Table: UITableView!
@@ -62,10 +62,17 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         //Justin
 
         //allows to get the data from core data - michael
-        let requestName = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
-
-        requestName.returnsObjectsAsFaults = false
-
+//        let requestName = NSFetchRequest<NSFetchRequestResult>(entityName: "name")
+//
+//        requestName.returnsObjectsAsFaults = false
+        
+        
+//        var i = 0
+//        while i < mainUser.accounts[0].transactions.count
+//        {
+//            TransactionList.append(mainUser.accounts[0].transactions[i])
+//            i+=1
+//        }
 }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,16 +80,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.Table.reloadData()
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<Bills>(entityName: "Bills")
-        do{
-            BillList = try context.fetch(fetchRequest)
-
-
-        }catch let err as NSError{
-            print("failed to fetch items", err)
-        }
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+//        let context = appDelegate.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<Bills>(entityName: "Bills")
+//        do{
+//            BillList = try context.fetch(fetchRequest)
+//
+//
+//        }catch let err as NSError{
+//            print("failed to fetch items", err)
+//        }
     }
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -102,28 +109,27 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     //Gets the bills for the table view - Michael
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BillList.count
+        return TransactionList.count
     }
 
 
 
     //populates the cells using the data - Michael
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillListViewCell
-        let bill = BillList[indexPath.row]
-        //let price = PriceList[indexPath.row]
-        let price = bill.value(forKey: "price") as? String
-        cell.Name.text = bill.value(forKey: "name") as? String
-        cell.Price.text = price
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TransactionListViewCell
+        let transaction = TransactionList[indexPath.row]
+        cell.name.text = transaction.vendorName
+        cell.price.text = "\(transaction.amount)" as String
         return (cell)
     }
 
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
-            let bill = BillList[indexPath.row]
+            let transaction = self.TransactionList[indexPath.row]
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController
-            vc?.existingBill = bill
+            vc?.existingPayment = transaction
+            vc?.index = indexPath.row
             self.navigationController?.pushViewController(vc!, animated: true)
 
 
@@ -133,17 +139,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) in
             let alert = UIAlertController(title: "Delete", message: "Delete a Bill", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-                let context = appDelegate.persistentContainer.viewContext
-                context.delete(BillList[indexPath.row])
+//                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+//                let context = appDelegate.persistentContainer.viewContext
+                mainUser.accounts[0].RemoveTransaction(index: indexPath.row)
 
-                do{
-                    try context.save()
-                    BillList.remove(at: indexPath.row)
-                    self.Table.reloadData()
-                }catch{
 
-                }
+                self.TransactionList.remove(at: indexPath.row)
+                self.Table.reloadData()
 
             }))
 
@@ -159,6 +161,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 //Function for add button to add bills to list - michael
     @IBAction func AddBill(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+            return
+        }
+        
+        //self.push(viewController, animated: false, completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 

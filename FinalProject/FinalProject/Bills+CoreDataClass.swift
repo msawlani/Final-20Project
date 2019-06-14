@@ -12,8 +12,10 @@ import CoreData
 
 
 public class Bills: NSManagedObject {
+
     convenience init(name: String?, price: String?, section: String?) {
         self.init()
+        
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         guard let context = appDelegate?.persistentContainer.viewContext else {return}
