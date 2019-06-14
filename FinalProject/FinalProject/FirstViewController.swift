@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 
 
-var TransactionList: [Transaction] = []
 var Sections: [String] = []
 var TransactionListCell: TransactionListViewCell?
 
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var TransactionList: [Transaction] = []
 
 
     @IBOutlet weak var Table: UITableView!
@@ -78,8 +78,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-//        self.navigationController?.setNavigationBarHidden(true, animated: false)
-//        self.Table.reloadData()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.Table.reloadData()
 //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
 //        let context = appDelegate.persistentContainer.viewContext
 //        let fetchRequest = NSFetchRequest<Bills>(entityName: "Bills")
@@ -126,9 +126,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
-            let transaction = TransactionList[indexPath.row]
+            let transaction = self.TransactionList[indexPath.row]
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController
-            vc?.existingBill = transaction
+            vc?.existingPayment = transaction
+            vc?.index = indexPath.row
             self.navigationController?.pushViewController(vc!, animated: true)
 
 
@@ -143,7 +144,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 mainUser.accounts[0].RemoveTransaction(index: indexPath.row)
 
 
-                TransactionList.remove(at: indexPath.row)
+                self.TransactionList.remove(at: indexPath.row)
                 self.Table.reloadData()
 
             }))
@@ -160,6 +161,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 //Function for add button to add bills to list - michael
     @IBAction func AddBill(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+            return
+        }
+        
+        //self.push(viewController, animated: false, completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 

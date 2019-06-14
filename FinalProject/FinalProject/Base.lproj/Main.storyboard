@@ -370,7 +370,7 @@
         <!--Balance-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstViewController" id="9pv-A4-QxB" customClass="FirstViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,7 +467,6 @@
                                         </state>
                                         <connections>
                                             <action selector="AddBill:" destination="9pv-A4-QxB" eventType="touchUpInside" id="1iu-qy-0H8"/>
-                                            <segue destination="3gw-or-OEe" kind="show" identifier="Add" id="PVV-eG-zaX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -484,7 +483,6 @@
                         <outlet property="balanceText" destination="DzM-AJ-dmM" id="aZ6-Ga-Y4Z"/>
                         <outlet property="imageView" destination="5yk-ZP-6Nt" id="NNn-IF-tLu"/>
                         <outlet property="usernameText" destination="Qo4-R3-7tb" id="zTs-Si-Siz"/>
-                        <segue destination="3gw-or-OEe" kind="show" identifier="Add" id="wYk-EX-8ma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -494,7 +492,7 @@
         <!--Add View Controller-->
         <scene sceneID="55u-fD-Rxm">
             <objects>
-                <viewController id="3gw-or-OEe" customClass="AddViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addViewController" id="3gw-or-OEe" customClass="AddViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xKl-rq-Wl5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,7 +526,6 @@
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="Add:" destination="3gw-or-OEe" eventType="touchUpInside" id="YZM-Th-wQy"/>
-                                    <segue destination="9pv-A4-QxB" kind="show" id="Nac-uC-GeX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-N1-FAc">
@@ -539,7 +536,6 @@
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="Cancel:" destination="3gw-or-OEe" eventType="touchUpInside" id="d0c-1e-CGO"/>
-                                    <segue destination="9pv-A4-QxB" kind="show" identifier="Cancel" id="kra-2i-s7i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1236,8 +1232,6 @@
         <segue reference="ldF-mR-ycC"/>
         <segue reference="IVH-pg-OeT"/>
         <segue reference="6wf-aa-agg"/>
-        <segue reference="wYk-EX-8ma"/>
-        <segue reference="kra-2i-s7i"/>
         <segue reference="nlJ-aZ-EVp"/>
     </inferredMetricsTieBreakers>
 </document>
