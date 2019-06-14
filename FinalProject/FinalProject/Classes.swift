@@ -439,7 +439,6 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                                         transaction.date = date
                                     }
                                     account.transactions.append(transaction)
-                                    account.numTransactions+=1
                                 }
                                 j+=1
                             }
