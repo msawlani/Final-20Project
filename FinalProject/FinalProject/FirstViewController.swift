@@ -11,6 +11,7 @@ import CoreData
 
 
 var Sections: [String] = []
+//var testList: [String] = ["test"]
 var TransactionListCell: TransactionListViewCell?
 
 
@@ -29,6 +30,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //Retrieve user data from Firebase and store it in user variable
+        
+
         GetUser(userId: mainUser.userId, callback: { tempUser in
             mainUser = tempUser
             if signedInWithGoogle
@@ -58,6 +61,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             mainUser.StoreInFirebase()
             self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
             self.usernameText.text = mainUser.email
+            self.Table.delegate = self
+            self.Table.dataSource = self
             
             var i = 0
             while i < mainUser.accounts[0].transactions.count
@@ -80,16 +85,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.Table.reloadData()
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-//        let context = appDelegate.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<Bills>(entityName: "Bills")
-//        do{
-//            BillList = try context.fetch(fetchRequest)
-//
-//
-//        }catch let err as NSError{
-//            print("failed to fetch items", err)
-//        }
+
     }
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -98,14 +94,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 //        label.backgroundColor = .cyan
 //        return label
 //    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.count
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Sections[section]
-    }
 
     //Gets the bills for the table view - Michael
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,11 +104,14 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     //populates the cells using the data - Michael
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TransactionListViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TransactionListViewCell
+        
         let transaction = TransactionList[indexPath.row]
-        cell.name.text = transaction.vendorName
-        cell.price.text = "\(transaction.amount)" as String
-        return (cell)
+        //let test = testList[indexPath.row]
+        cell!.name.text = transaction.vendorName
+        cell!.price.text = "\(transaction.amount)" as String
+
+        return cell!
     }
 
     //allows to swipe left on cells to edit and delete them - michael
