@@ -21,6 +21,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var selectedSection: String = ""
     var Sections: [String] = ["Immediate Obligations", "True Expenses", "Debt Payments", "Quality of Life Goals",
                               "Just for Fun"]
+    let sectionPicker = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,16 +62,22 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
     func createPickerView(){
-        let pickerView = UIPickerView()
-        pickerView.delegate = self
         
+        
+        sectionPicker.delegate = self
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
+        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(Done))
         toolbar.setItems([donePickerButton], animated: true)
         
-        section.inputView = pickerView
+        section.inputAccessoryView = toolbar
+        section.inputView = sectionPicker
+    }
+    
+    @objc func Done(){
+        section.text = selectedSection
+        self.view.endEditing(true)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
