@@ -51,7 +51,7 @@ class SecondViewController: UIViewController {
     
     private func customizeView() {
         
-        tableView.delegate = self
+        tableView.delegate = self as! UITableViewDelegate
         tableView.dataSource = self
         
         let billNib = UINib(nibName: BillTableViewCell.reuseIdentifier, bundle: nil)
@@ -72,6 +72,7 @@ class SecondViewController: UIViewController {
         
     }
     
+
 }
 
 extension SecondViewController: UITableViewDataSource {
@@ -92,24 +93,54 @@ extension SecondViewController: UITableViewDataSource {
 }
 
 extension SecondViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            billsContainer.remove(at: indexPath.row)
-            tableView.reloadData()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedBill = billsContainer[indexPath.row]
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "addBillController") as! AddBillViewController
-        nextViewController.editBill = selectedBill
-        nextViewController.editIndexPathRow = indexPath.row
-        
-        self.navigationController?.pushViewController(nextViewController, animated: true)
-    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        if editingStyle == .delete {
+//            billsContainer.remove(at: indexPath.row)
+//            tableView.reloadData()
+//        }
+//    }
 
-}
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedBill = billsContainer[indexPath.row]
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "addBillController") as! AddBillViewController
+//        nextViewController.editBill = selectedBill
+//        nextViewController.editIndexPathRow = indexPath.row
+//
+//        self.navigationController?.pushViewController(nextViewController, animated: true)
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = editAction(at: indexPath)
+        let delete =  deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
+    
+    func editAction(at indexPath: IndexPath) -> UIContextualAction{
+        let action = UIContextualAction(style: .destructive, title: "Edit") { (action, view, completion) in
+            
+            self.billsContainer.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            completion(true)
+        }
+        
+        action.backgroundColor = .gray
+        return action
+    }
+    
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            
+            
+            self.billsContainer.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            completion(true)
+        }
+        
+        return action
+    }
+   }
+
+
