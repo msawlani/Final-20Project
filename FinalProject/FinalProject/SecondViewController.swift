@@ -19,6 +19,13 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         createNavigationButton()
         customizeView()
+        
+        var i = 0
+        while i < mainUser.bills.count
+        {
+            billsContainer.append(mainUser.bills[i])
+            i+=1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
