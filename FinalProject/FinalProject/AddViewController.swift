@@ -32,6 +32,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneButton))
+        self.navigationItem.rightBarButtonItem = doneButton
+        
         createPickerView()
         
         
@@ -61,7 +64,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let pickerView = UIPickerView()
         pickerView.delegate = self
         
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
         
+        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
+        toolbar.setItems([donePickerButton], animated: true)
         
         section.inputView = pickerView
     }
@@ -70,29 +77,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let allowChars = CharacterSet.decimalDigits
         let charSet = CharacterSet(charactersIn: string)
         return allowChars.isSuperset(of: charSet)
-    }
-    
-    @IBAction func Add(_ sender: Any) {
-        
-        
-        if checkInputFields() == false{
-            return
-        }
-        
-        let transaction = createTransaction()
-        
-        guard let home = self.navigationController?.viewControllers.first as? FirstViewController else {
-            return
-        }
-        
-        if let indexPathRow = index {
-            home.TransactionList.remove(at: indexPathRow)
-        }
-        
-        home.TransactionList.append(transaction)
-        mainUser.accounts[0].AddTransaction(transaction: transaction)
-        self.navigationController?.popViewController(animated: true)
-        
     }
     
     @objc func myTextFieldDidChange(_ textField: UITextField) {
@@ -122,7 +106,25 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return check
     }
     
-    
+    @objc func DoneButton(){
+        if checkInputFields() == false{
+            return
+        }
+        
+        let transaction = createTransaction()
+        
+        guard let home = self.navigationController?.viewControllers.first as? FirstViewController else {
+            return
+        }
+        
+        if let indexPathRow = index {
+            home.TransactionList.remove(at: indexPathRow)
+        }
+        
+        home.TransactionList.append(transaction)
+        mainUser.accounts[0].AddTransaction(transaction: transaction)
+        self.navigationController?.popViewController(animated: true)
+    }
     
     func createTransaction() -> Transaction {
         let dateFormatter = DateFormatter()
@@ -138,12 +140,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         
         return transaction
-    }
-    
-    @IBAction func Cancel(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: true)
-
     }
 
 }

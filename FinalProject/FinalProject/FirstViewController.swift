@@ -80,7 +80,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        //self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.Table.reloadData()
 
     }
