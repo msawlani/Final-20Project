@@ -15,7 +15,6 @@
 		A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
-		E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132CC4A226615CC002EAD3D /* Assets.xcassets */; };
 		E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BFB7222AFF809008AFE79 /* VCChart.swift */; };
 		E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E154BC2B227B507900DACAC0 /* Default-568h@2x.png */; };
 		E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3B922565CE1007C345F /* AppDelegate.swift */; };
@@ -27,6 +26,7 @@
 		F204D84F22B01481002E541E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84E22B01481002E541E /* FirstViewController.swift */; };
 		F21364ED228F046F00800435 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21364EC228F046F00800435 /* SignupViewController.swift */; };
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
+		F2816D1822B725580083C2C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2816D1722B725580083C2C0 /* Assets.xcassets */; };
 		F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */; };
 		F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864D22976FAE001BEC17 /* ChangePassViewController.swift */; };
 		F2C6B60322B160E700E02FD4 /* TransactionListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */; };
@@ -43,7 +43,6 @@
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E132CC4A226615CC002EAD3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E13BFB7222AFF809008AFE79 /* VCChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCChart.swift; sourceTree = "<group>"; };
 		E154BC2B227B507900DACAC0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E15AE3B622565CE1007C345F /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +56,7 @@
 		F204D84E22B01481002E541E /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		F21364EC228F046F00800435 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		F2816D1722B725580083C2C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		F295864D22976FAE001BEC17 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
 		F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +126,7 @@
 		E15AE3B822565CE1007C345F /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				F2816D1722B725580083C2C0 /* Assets.xcassets */,
 				F21364EC228F046F00800435 /* SignupViewController.swift */,
 				E15AE3B922565CE1007C345F /* AppDelegate.swift */,
 				E1E067D6225FB566004A2EC9 /* LogInView.swift */,
@@ -133,7 +134,6 @@
 				A85E9B4922A6C288004E2372 /* AddBillViewController.swift */,
 				E13BFB7222AFF809008AFE79 /* VCChart.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
-				E132CC4A226615CC002EAD3D /* Assets.xcassets */,
 				F204D84C22B01479002E541E /* AddViewController.swift */,
 				E132CC48226611E0002EAD3D /* GoogleService-Info.plist */,
 				E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */,
@@ -215,8 +215,8 @@
 				E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */,
 				E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */,
 				A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */,
-				E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */,
 				E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */,
+				F2816D1822B725580083C2C0 /* Assets.xcassets in Resources */,
 				E15AE3C122565CE1007C345F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

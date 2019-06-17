@@ -120,7 +120,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                                     year: calendar.component(.year, from: date))
         //paymentPrice.text?.removeFirst()
         
-        let transaction = Transaction(vendorName: paymentName.text!, category: "test", description: "test", amount: Double(paymentPrice.text!) ?? 0, date: customDate)
+        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: Double(paymentPrice.text!) ?? 0, date: customDate)
         
         
         return transaction
