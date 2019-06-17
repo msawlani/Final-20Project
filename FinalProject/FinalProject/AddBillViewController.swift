@@ -70,7 +70,7 @@ class AddBillViewController: UIViewController {
 
     @objc func myTextFieldDidChange(_ textField: UITextField) {
 
-        if let amountString = textField.text?.currencyInputFormatting() {
+        if let amountString = textField.text?.CurrencyInputFormatting() {
             textField.text = amountString
         }
     }
@@ -211,7 +211,7 @@ extension AddBillViewController: UITextFieldDelegate {
 extension String {
 
     // formatting text for currency textField
-    func currencyInputFormatting() -> String {
+    func CurrencyInputFormatting() -> String {
 
         var number: NSNumber!
         let formatter = NumberFormatter()
