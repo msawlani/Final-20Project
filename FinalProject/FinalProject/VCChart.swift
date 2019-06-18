@@ -24,8 +24,8 @@ class VCChart: UIViewController {
     var dataEntriesArray = [PieChartDataEntry]()
 
 
-    override func viewDidAppear(_ animated: Bool){
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         //Pie Chart Configuration
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
