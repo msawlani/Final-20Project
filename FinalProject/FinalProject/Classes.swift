@@ -86,13 +86,13 @@ class User: NSObject
 
     func AddBill(bill:Bill) -> Bool
     {
-        for n in self.bills
-        {
-            if n.billName == bill.billName
-            {
-                return false
-            }
-        }
+//        for n in self.bills
+//        {
+//            if n.billName == bill.billName
+//            {
+//                return false
+//            }
+//        }
         bill.billNum = "billNum" + "\(self.bills.count)"
         self.bills.append(bill)
         self.numBills+=1
@@ -139,6 +139,7 @@ class User: NSObject
     func StoreInFirebase()
     {
         let ref = Database.database().reference()
+        ref.child("users").child(self.userId).removeValue()
         ref.child("users").child(self.userId).child("userId").setValue(self.userId)
         ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
         ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
@@ -244,10 +245,6 @@ class Account
 
     func RemoveTransaction(index: Int)
     {
-        self.balance = self.balance - self.transactions[index].amount
-        self.transactions.remove(at: index)
-        self.numTransactions-=1
-        
         if(self.transactions[index].amount > 0)
         {
             self.totalIncome -= self.transactions[index].amount
@@ -256,6 +253,10 @@ class Account
         {
             self.totalExpenses -= self.transactions[index].amount
         }
+        
+        self.balance = self.balance - self.transactions[index].amount
+        self.transactions.remove(at: index)
+        self.numTransactions-=1
         
         mainUser.StoreInFirebase()
     }

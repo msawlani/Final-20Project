@@ -125,16 +125,10 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
     func createTransaction() -> Transaction {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let calendar = Calendar.current
-        let date = dateFormatter.date(from: "03/03/1994") ?? Date()
-        let customDate = DateStruct(month: calendar.component(.month, from: date),
-                                    day: calendar.component(.day, from: date),
-                                    year: calendar.component(.year, from: date))
+        let date = DateStruct()
         //paymentPrice.text?.removeFirst()
         
-        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: Double(paymentPrice.text!) ?? 0, date: customDate)
+        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: Double(paymentPrice.text!) ?? 0, date: date)
         
         
         return transaction
