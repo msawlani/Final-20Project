@@ -15,6 +15,7 @@ class VCChart: UIViewController {
     //Create Data entry variables
     var dataEntryHousing = PieChartDataEntry(value: 0)
     var dataEntryFood = PieChartDataEntry(value: 0)
+    var dataEntryTransportation = PieChartDataEntry(value: 0)
     var dataEntryLifeS = PieChartDataEntry(value: 0)
     var dataEntryDebts = PieChartDataEntry(value: 0)
     var dataEntryMiscellaneous = PieChartDataEntry(value: 0)
@@ -22,18 +23,19 @@ class VCChart: UIViewController {
 
     var dataEntriesArray = [PieChartDataEntry]()
     
-    
-    override func viewDidLoad() {
+   
+    override func viewDidAppear(_ animated: Bool){
         super.viewDidLoad()
         //Pie Chart Configuration
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
         
-        let housing = 78.0 //mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
-        let food = 68.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
-        let lifeStyle = 39.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
-        let debts = 34.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
-        let misc = 47.0 //mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+        let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+        let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+        let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+        let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+        let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+        let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
         
         
         if housing > 0 {
@@ -44,7 +46,10 @@ class VCChart: UIViewController {
             dataEntryFood.value = food
             dataEntryFood.label = "Food"
         }
-        
+        if transportation > 0{
+            dataEntryTransportation.value = transportation
+            dataEntryTransportation.label = "Transportation"
+        }
         if lifeStyle > 0 {
             dataEntryLifeS.value = lifeStyle
             dataEntryLifeS.label = "Life Style"
@@ -61,9 +66,9 @@ class VCChart: UIViewController {
         }
         
         
-        dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
+        dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
         
-        updateChartData()
+         updateChartData()
     }
     
     
@@ -73,16 +78,13 @@ class VCChart: UIViewController {
         let chartData = PieChartData(dataSet: chartDataSet)
         
         //color array for the different sections of the pie chart
-        let colors = [UIColor(named:"Housing"),UIColor(named:"Food"),UIColor(named:"LifeS"),UIColor(named:"Debt"),UIColor(named:"Miscellaneous")]
+        let colors = [UIColor(named:"Housing"),UIColor(named:"Food"),UIColor(named:"Transportation"),UIColor(named:"LifeS"),UIColor(named:"Debt"),UIColor(named:"Miscellaneous")]
         
         //Sets Colors and Data of Pie Chart
         chartDataSet.colors = colors as! [NSUIColor]
         pieChart.data = chartData
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        //dispose of any resources that can be recreated
-    }
+  
 
 }
