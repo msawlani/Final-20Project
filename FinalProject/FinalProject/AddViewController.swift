@@ -19,8 +19,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     public var existingPayment: Transaction?
     public var index: Int?
     var selectedSection: String = ""
-    var Sections: [String] = ["Immediate Obligations", "True Expenses", "Debt Payments", "Quality of Life Goals",
-                              "Just for Fun"]
+    let Sections = mainUser.categories
     
     override func viewDidLoad() {
         super.viewDidLoad()

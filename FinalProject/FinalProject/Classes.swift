@@ -34,7 +34,7 @@ class User: NSObject
     func PayBill(bill:Bill)
     {
         let transaction = Transaction()
-        transaction.vendorName = "Bill: " + bill.category
+        transaction.vendorName = bill.category
         transaction.category = bill.category
         //transaction.description = "Bill: " + bill.billName
         transaction.amount = -(bill.amount)
@@ -125,6 +125,7 @@ class User: NSObject
         ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
         ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
         ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - NUMDEFAULTCATS)
+        ref.child("users").child(self.userId).child("email").setValue(self.email)
 
         var i = 0
 
@@ -179,7 +180,7 @@ class User: NSObject
             i+=1
         }
 
-        i=5
+        i=NUMDEFAULTCATS
         while i < (self.categories.count)
         {
             ref.child("users").child(self.userId).child("categories").child("categoryNum" + "\(i-NUMDEFAULTCATS)").setValue(categories[i])
@@ -256,7 +257,7 @@ class Account
             i+=1
         }
         
-        return total
+        return -(total)
     }
 }
 
