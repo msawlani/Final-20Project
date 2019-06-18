@@ -72,6 +72,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.TransactionList.append(mainUser.accounts[0].transactions[i])
                 i+=1
             }
+            self.Table.reloadData()
         })
         //Justin
     
@@ -83,6 +84,46 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.Table.reloadData()
 
+        GetUser(userId: mainUser.userId, callback: { tempUser in
+            mainUser = tempUser
+            if signedInWithGoogle
+            {
+                mainUser.email = googleUser.profile.email
+                mainUser.imageURL = googleUser.profile.imageURL(withDimension: 112)
+                mainUser.firstName = googleUser.profile.givenName
+                mainUser.lastName = googleUser.profile.familyName
+                
+                // Start background thread so that image loading does not make app unresponsive
+                DispatchQueue.global(qos: .userInitiated).async {
+                    
+                    let imageData:NSData = NSData(contentsOf: mainUser.imageURL!)!
+                    
+                    // When from background thread, UI needs to be updated on main_queue
+                    DispatchQueue.main.async {
+                        let image = UIImage(data: imageData as Data)
+                        self.imageView.image = image
+                        //self.imageView.contentMode = UIView.ContentMode.scaleAspectFit
+                        //self.view.addSubview(self.imageView)
+                    }
+                }
+            }
+            else{
+                mainUser.email = userEmail
+            }
+            mainUser.StoreInFirebase()
+            self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
+            self.usernameText.text = mainUser.email
+            
+            
+            var i = 0
+            while i < mainUser.accounts[0].transactions.count
+            {
+                self.TransactionList.append(mainUser.accounts[0].transactions[i])
+                i+=1
+            }
+            self.Table.reloadData()
+        })
+        //Justin
     }
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
