@@ -105,6 +105,7 @@ extension SecondViewController: UITableViewDelegate {
         
         if editingStyle == .delete {
             billsContainer.remove(at: indexPath.row)
+            mainUser.RemoveBill(index: indexPath.row)
             tableView.reloadData()
         }
     }

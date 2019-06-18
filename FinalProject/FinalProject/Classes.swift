@@ -39,7 +39,7 @@ class User: NSObject
             {
                 let transaction = Transaction()
                 transaction.vendorName = bill.description
-                transaction.category = "Bills"
+                transaction.category = bill.category
                 transaction.description = "Bill: " + bill.billName
                 transaction.amount = -(bill.amount)
                 n.AddTransaction(transaction: transaction)
@@ -100,23 +100,12 @@ class User: NSObject
         return true
     }
 
-    func RemoveBill(billName: String) -> Bool
+    func RemoveBill(index: Int) -> Bool
     {
-        var i = 0
-
-        while i < self.bills.count
-        {
-            if self.bills[i].billName == billName
-            {
-                self.bills.remove(at: i)
-                self.numBills-=1
-                StoreInFirebase()
-                return true
-            }
-            i+=1
-        }
-
-        return false
+        self.bills.remove(at: index)
+        self.numBills-=1
+        StoreInFirebase()
+        return true
     }
 
     func AddCategory(category: String) -> Bool
