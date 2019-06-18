@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+var selectedSection: String = ""
 
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -18,9 +19,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     public var existingPayment: Transaction?
     public var index: Int?
-    var selectedSection: String = ""
-    var Sections: [String] = ["Immediate Obligations", "True Expenses", "Debt Payments", "Quality of Life Goals",
-                              "Just for Fun"]
+
     let sectionPicker = UIPickerView()
     
     override func viewDidLoad() {
@@ -47,16 +46,16 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Sections.count
+        return mainUser.categories.count
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedSection = Sections[row]
+        selectedSection = mainUser.categories[row]
         section.text = selectedSection
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Sections[row]
+        return mainUser.categories[row]
     }
     
     
@@ -128,7 +127,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             home.TransactionList.remove(at: indexPathRow)
         }
         
-        home.TransactionList.append(transaction)
+        home.TransactionList.append([transaction])
         mainUser.accounts[0].AddTransaction(transaction: transaction)
         self.navigationController?.popViewController(animated: true)
     }
