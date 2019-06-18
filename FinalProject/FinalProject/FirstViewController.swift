@@ -17,12 +17,10 @@ var TransactionListCell: TransactionListViewCell?
 
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-<<<<<<< HEAD
+
     var TransactionList: [[Transaction]] = [[]]
-=======
-    var TransactionList: [Transaction] = []
-    let MainSections = mainUser.categories
->>>>>>> MasterBranch
+
+
 
     @IBOutlet weak var Table: UITableView!
 
@@ -87,19 +85,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.Table.reloadData()
         })
         //Justin
-<<<<<<< HEAD
+
     
 }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        //self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.Table.reloadData()
-
-=======
->>>>>>> MasterBranch
-    }
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let label = UILabel()
