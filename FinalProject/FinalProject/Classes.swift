@@ -31,22 +31,14 @@ class User: NSObject
         self.numCategories = 0
     }
 
-    func PayBill(bill:Bill) -> Bool
+    func PayBill(bill:Bill)
     {
-        for n in self.accounts
-        {
-            if n.accountName == bill.accountName
-            {
-                let transaction = Transaction()
-                transaction.vendorName = bill.description
-                transaction.category = "Bills"
-                transaction.description = "Bill: " + bill.billName
-                transaction.amount = -(bill.amount)
-                n.AddTransaction(transaction: transaction)
-                return true
-            }
-        }
-        return false
+        let transaction = Transaction()
+        transaction.vendorName = bill.category
+        transaction.category = bill.category
+        //transaction.description = "Bill: " + bill.billName
+        transaction.amount = -(bill.amount)
+        self.accounts[0].AddTransaction(transaction: transaction)
     }
 
     func AddAccount(account:Account) -> Bool
@@ -86,13 +78,13 @@ class User: NSObject
 
     func AddBill(bill:Bill) -> Bool
     {
-        for n in self.bills
-        {
-            if n.billName == bill.billName
-            {
-                return false
-            }
-        }
+//        for n in self.bills
+//        {
+//            if n.billName == bill.billName
+//            {
+//                return false
+//            }
+//        }
         bill.billNum = "billNum" + "\(self.bills.count)"
         self.bills.append(bill)
         self.numBills+=1
@@ -100,23 +92,12 @@ class User: NSObject
         return true
     }
 
-    func RemoveBill(billName: String) -> Bool
+    func RemoveBill(index: Int) -> Bool
     {
-        var i = 0
-
-        while i < self.bills.count
-        {
-            if self.bills[i].billName == billName
-            {
-                self.bills.remove(at: i)
-                self.numBills-=1
-                StoreInFirebase()
-                return true
-            }
-            i+=1
-        }
-
-        return false
+        self.bills.remove(at: index)
+        self.numBills-=1
+        StoreInFirebase()
+        return true
     }
 
     func AddCategory(category: String) -> Bool
@@ -139,10 +120,12 @@ class User: NSObject
     func StoreInFirebase()
     {
         let ref = Database.database().reference()
+        ref.child("users").child(self.userId).removeValue()
         ref.child("users").child(self.userId).child("userId").setValue(self.userId)
         ref.child("users").child(self.userId).child("numAccounts").setValue(self.accounts.count)
         ref.child("users").child(self.userId).child("numBills").setValue(self.bills.count)
         ref.child("users").child(self.userId).child("numCategories").setValue(self.categories.count - NUMDEFAULTCATS)
+        ref.child("users").child(self.userId).child("email").setValue(self.email)
 
         var i = 0
 
@@ -197,7 +180,7 @@ class User: NSObject
             i+=1
         }
 
-        i=5
+        i=NUMDEFAULTCATS
         while i < (self.categories.count)
         {
             ref.child("users").child(self.userId).child("categories").child("categoryNum" + "\(i-NUMDEFAULTCATS)").setValue(categories[i])
@@ -244,10 +227,6 @@ class Account
 
     func RemoveTransaction(index: Int)
     {
-        self.balance = self.balance - self.transactions[index].amount
-        self.transactions.remove(at: index)
-        self.numTransactions-=1
-        
         if(self.transactions[index].amount > 0)
         {
             self.totalIncome -= self.transactions[index].amount
@@ -256,6 +235,10 @@ class Account
         {
             self.totalExpenses -= self.transactions[index].amount
         }
+        
+        self.balance = self.balance - self.transactions[index].amount
+        self.transactions.remove(at: index)
+        self.numTransactions-=1
         
         mainUser.StoreInFirebase()
     }
@@ -274,7 +257,7 @@ class Account
             i+=1
         }
         
-        return total
+        return -(total)
     }
 }
 

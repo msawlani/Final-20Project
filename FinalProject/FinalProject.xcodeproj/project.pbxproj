@@ -483,13 +483,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q7NNMD9CR7;
+				DEVELOPMENT_TEAM = 2VQN5Q7Y77;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fullsailteam.FinalProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thefullsailteam.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -502,13 +502,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q7NNMD9CR7;
+				DEVELOPMENT_TEAM = 2VQN5Q7Y77;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fullsailteam.FinalProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thefullsailteam.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

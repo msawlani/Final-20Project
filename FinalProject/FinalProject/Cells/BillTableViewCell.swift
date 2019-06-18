@@ -17,29 +17,27 @@ class BillTableViewCell: UITableViewCell {
     @IBOutlet weak var imageCategory: UIImageView!
     
     let autoImage =  UIImage(named: "Auto")
-    let cableImage =  UIImage(named: "Cable")
-    let cellImage =  UIImage(named: "Cell")
-    let childImage =  UIImage(named: "Child")
+    let childImage =  UIImage(named: "ChildCare")
+    let clothingImage =  UIImage(named: "Clothing")
     let cardImage =  UIImage(named: "Card")
+    let diningImage =  UIImage(named: "Dining")
     let educationImage =  UIImage(named: "Education")
-    let electricityImage =  UIImage(named: "Energy")
+    let electricityImage =  UIImage(named: "Electricity")
     let entertainmentImage =  UIImage(named: "Entertainment")
+    let fitnessImage =  UIImage(named: "Fitness")
     let gasImage =  UIImage(named: "Gas")
-    let giftsImage =  UIImage(named: "Gifts")
-    let homeImage =  UIImage(named: "Home")
-    let insuranceImage =  UIImage(named: "Insurance")
+    let giftsImage =  UIImage(named: "Gift")
+    let groceriesImage =  UIImage(named: "Groceries")
+    let homeImage =  UIImage(named: "Housing")
     let internetImage =  UIImage(named: "Internet")
     let medicalImage =  UIImage(named: "Medical")
-    let mortgageImage =  UIImage(named: "Mortgage")
-    let parkingImage =  UIImage(named: "Parking")
+    let mortgageImage =  UIImage(named: "Mortgage/Rent")
     let petsImage =  UIImage(named: "Pets")
-    let rentImage =  UIImage(named: "Rent")
-    let securityImage =  UIImage(named: "Security")
-    let taxImage =  UIImage(named: "Tax")
-    let telephoneImage =  UIImage(named: "Telephone")
+    let phoneImage =  UIImage(named: "Phone")
     let transportationImage =  UIImage(named: "Transportation")
+    let vacationImage =  UIImage(named: "Vacation")
     let waterImage =  UIImage(named: "Water")
-    let otherImage =  UIImage(named: "Camera")
+    let otherImage =  UIImage(named: "Other")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,17 +60,17 @@ class BillTableViewCell: UITableViewCell {
         if bill.category == "Auto"{
           imageCategory.image = autoImage
         }
-       else if bill.category == "Cable Tv"{
-            imageCategory.image = cableImage
-        }
-        else if bill.category == "CellPhone"{
-            imageCategory.image = cellImage
-        }
         else if bill.category == "ChildCare"{
             imageCategory.image = childImage
         }
+       else if bill.category == "Clothing"{
+            imageCategory.image = clothingImage
+        }
         else if bill.category == "Credit Card"{
             imageCategory.image = cardImage
+        }
+        else if bill.category == "Dining Out"{
+            imageCategory.image = diningImage
         }
         else if bill.category == "Education"{
             imageCategory.image = educationImage
@@ -83,47 +81,42 @@ class BillTableViewCell: UITableViewCell {
         else if bill.category == "Entertainment"{
             imageCategory.image = entertainmentImage
         }
+        else if bill.category == "Fitness"{
+            imageCategory.image = fitnessImage
+        }
         else if bill.category == "Gas"{
             imageCategory.image = gasImage
         }
         else if bill.category == "Gifts"{
             imageCategory.image = giftsImage
         }
-        else if bill.category == "Home"{
+        else if bill.category == "Groceries"{
+            imageCategory.image = groceriesImage
+        }
+        else if bill.category == "Housing"{
             imageCategory.image = homeImage
         }
-        else if bill.category == "Insurance"{
-            imageCategory.image = insuranceImage
-        }
-        else if bill.category == "Internet"{
+        else if bill.category == "Internet/Cable"{
             imageCategory.image = internetImage
         }
         else if bill.category == "Medical"{
             imageCategory.image = medicalImage
         }
-        else if bill.category == "Mortgage"{
+        else if bill.category == "Mortgage/Rent"{
             imageCategory.image = mortgageImage
-        }
-        else if bill.category == "Parking"{
-            imageCategory.image = parkingImage
         }
         else if bill.category == "Pets"{
             imageCategory.image = petsImage
         }
-        else if bill.category == "Rents"{
-            imageCategory.image = rentImage
+        else if bill.category == "Phone"{
+            imageCategory.image = phoneImage
         }
-        else if bill.category == "Security"{
-            imageCategory.image = securityImage
-        }
-        else if bill.category == "Tax"{
-            imageCategory.image = taxImage
-        }
-        else if bill.category == "Telephone"{
-            imageCategory.image = telephoneImage
-        }
+       
         else if bill.category == "Transportation"{
             imageCategory.image = transportationImage
+        }
+        else if bill.category == "Vacation"{
+            imageCategory.image = vacationImage
         }
         else if bill.category == "Water"{
             imageCategory.image = waterImage
@@ -134,3 +127,4 @@ class BillTableViewCell: UITableViewCell {
     }
     
 }
+

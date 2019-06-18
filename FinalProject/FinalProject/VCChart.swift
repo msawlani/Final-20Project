@@ -11,69 +11,80 @@ import Charts
 class VCChart: UIViewController {
 
     @IBOutlet weak var pieChart: PieChartView!
-    
-    @IBOutlet weak var stepperOne: UIStepper!
-    
-    @IBOutlet weak var stepperTwo: UIStepper!
-    
-    
+
     //Create Data entry variables
-    var dataEntryOne = PieChartDataEntry(value: 0)
-    var dataEntryTwo = PieChartDataEntry(value: 0)
-    var dataEntryThree = PieChartDataEntry(value: 0)
-    var dataEntryFour = PieChartDataEntry(value: 0)
+    var dataEntryHousing = PieChartDataEntry(value: 0)
+    var dataEntryFood = PieChartDataEntry(value: 0)
+    var dataEntryTransportation = PieChartDataEntry(value: 0)
+    var dataEntryLifeS = PieChartDataEntry(value: 0)
+    var dataEntryDebts = PieChartDataEntry(value: 0)
+    var dataEntryMiscellaneous = PieChartDataEntry(value: 0)
 
 
     var dataEntriesArray = [PieChartDataEntry]()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         //Pie Chart Configuration
-        pieChart.chartDescription?.text = "Income vs Expenses"
+        pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
-        dataEntryOne.value = stepperOne.value
-        dataEntryOne.label = ""
-        
-        dataEntryTwo.value = stepperTwo.value
-        dataEntryTwo.label = ""
-        
-        dataEntryThree.value = 0
-        dataEntryThree.label = ""
-        
-        dataEntryFour.value = 0
-        dataEntryTwo.label = ""
-        
-        dataEntriesArray = [dataEntryOne,dataEntryTwo]
-        
-        updateChartData()
+
+        let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+        let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+        let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+        let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+        let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+        let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
+
+
+        if housing > 0 {
+            dataEntryHousing.value = housing
+            dataEntryHousing.label = "Housing"
+        }
+        if food > 0{
+            dataEntryFood.value = food
+            dataEntryFood.label = "Food"
+        }
+        if transportation > 0{
+            dataEntryTransportation.value = transportation
+            dataEntryTransportation.label = "Transportation"
+        }
+        if lifeStyle > 0 {
+            dataEntryLifeS.value = lifeStyle
+            dataEntryLifeS.label = "Life Style"
+        }
+
+        if debts > 0{
+            dataEntryDebts.value = debts
+            dataEntryDebts.label = "Debts"
+        }
+
+        if misc > 0{
+            dataEntryMiscellaneous.value = misc
+            dataEntryMiscellaneous.label = "Misc"
+        }
+
+
+        dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
+
+         updateChartData()
     }
-    
-    @IBAction func changeStepperOne(_ sender: UIStepper){
-        dataEntryOne.value = sender.value
-        updateChartData()
-    }
-    
-    @IBAction func changeStepperTwo(_ sender: UIStepper){
-        dataEntryTwo.value = sender.value
-        updateChartData()
-    }
-    
+
+
     func updateChartData(){
         //set up chart
         let chartDataSet = PieChartDataSet(entries:dataEntriesArray,label:nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        
+
         //color array for the different sections of the pie chart
-        let colors = [UIColor(named:"income"),UIColor(named:"expense")]
-        
+        let colors = [UIColor(named:"Housing"),UIColor(named:"Food"),UIColor(named:"Transportation"),UIColor(named:"LifeS"),UIColor(named:"Debt"),UIColor(named:"Miscellaneous")]
+
+        //Sets Colors and Data of Pie Chart
         chartDataSet.colors = colors as! [NSUIColor]
         pieChart.data = chartData
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        //dispose of any resources that can be recreated
-    }
+
+
 
 }

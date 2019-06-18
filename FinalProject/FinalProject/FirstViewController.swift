@@ -17,7 +17,12 @@ var TransactionListCell: TransactionListViewCell?
 
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+<<<<<<< HEAD
     var TransactionList: [[Transaction]] = [[]]
+=======
+    var TransactionList: [Transaction] = []
+    let MainSections = mainUser.categories
+>>>>>>> MasterBranch
 
     @IBOutlet weak var Table: UITableView!
 
@@ -33,7 +38,15 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.delegate = self
         self.Table.dataSource = self
         self.Table.reloadData()
-        
+    
+}
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.Table.reloadData()
+
         GetUser(userId: mainUser.userId, callback: { tempUser in
             mainUser = tempUser
             if signedInWithGoogle
@@ -42,12 +55,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 mainUser.imageURL = googleUser.profile.imageURL(withDimension: 112)
                 mainUser.firstName = googleUser.profile.givenName
                 mainUser.lastName = googleUser.profile.familyName
-
+                
                 // Start background thread so that image loading does not make app unresponsive
                 DispatchQueue.global(qos: .userInitiated).async {
-
+                    
                     let imageData:NSData = NSData(contentsOf: mainUser.imageURL!)!
-
+                    
                     // When from background thread, UI needs to be updated on main_queue
                     DispatchQueue.main.async {
                         let image = UIImage(data: imageData as Data)
@@ -63,16 +76,18 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             mainUser.StoreInFirebase()
             self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
             self.usernameText.text = mainUser.email
-
             
+            self.TransactionList.removeAll()
             var i = 0
             while i < mainUser.accounts[0].transactions.count
             {
                 self.TransactionList.append([mainUser.accounts[0].transactions[i]])
                 i+=1
             }
+            self.Table.reloadData()
         })
         //Justin
+<<<<<<< HEAD
     
 }
 
@@ -82,6 +97,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.Table.reloadData()
 
+=======
+>>>>>>> MasterBranch
     }
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
