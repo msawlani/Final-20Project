@@ -127,8 +127,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func createTransaction() -> Transaction {
         let date = DateStruct()
         //paymentPrice.text?.removeFirst()
+        let priceString = String((paymentPrice.text?.dropFirst())!)
         
-        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: Double(paymentPrice.text!) ?? 0, date: date)
+        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: ((Double(priceString) ?? 0) * -1), date: date)
         
         
         return transaction
