@@ -18,7 +18,7 @@ var TransactionListCell: TransactionListViewCell?
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var TransactionList: [Transaction] = []
-    var MainSections: [String] = ["Food", "Housing", "Life Style", "Miscellaneous", "Transportation"]
+    let MainSections = mainUser.categories
 
     @IBOutlet weak var Table: UITableView!
 

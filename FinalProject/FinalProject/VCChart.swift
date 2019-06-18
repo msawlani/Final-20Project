@@ -29,11 +29,11 @@ class VCChart: UIViewController {
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
         
-        let housing = 78.0 //mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
-        let food = 68.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
-        let lifeStyle = 39.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
-        let debts = 34.0//mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
-        let misc = 47.0 //mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+        let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+        let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+        let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+        let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+        let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
         
         
         if housing > 0 {
