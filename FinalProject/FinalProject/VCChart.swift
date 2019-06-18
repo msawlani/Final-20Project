@@ -22,13 +22,7 @@ class VCChart: UIViewController {
 
 
     var dataEntriesArray = [PieChartDataEntry]()
-<<<<<<< HEAD
-    
-   
-=======
 
-
->>>>>>> MasterBranch
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         //Pie Chart Configuration
