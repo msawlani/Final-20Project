@@ -31,22 +31,14 @@ class User: NSObject
         self.numCategories = 0
     }
 
-    func PayBill(bill:Bill) -> Bool
+    func PayBill(bill:Bill)
     {
-        for n in self.accounts
-        {
-            if n.accountName == bill.accountName
-            {
-                let transaction = Transaction()
-                transaction.vendorName = bill.description
-                transaction.category = bill.category
-                transaction.description = "Bill: " + bill.billName
-                transaction.amount = -(bill.amount)
-                n.AddTransaction(transaction: transaction)
-                return true
-            }
-        }
-        return false
+        let transaction = Transaction()
+        transaction.vendorName = "Bill: " + bill.category
+        transaction.category = bill.category
+        //transaction.description = "Bill: " + bill.billName
+        transaction.amount = -(bill.amount)
+        self.accounts[0].AddTransaction(transaction: transaction)
     }
 
     func AddAccount(account:Account) -> Bool
