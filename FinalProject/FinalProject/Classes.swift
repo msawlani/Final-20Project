@@ -34,7 +34,7 @@ class User: NSObject
     func PayBill(bill:Bill)
     {
         let transaction = Transaction()
-        transaction.vendorName = "Bill: " + bill.category
+        transaction.vendorName = bill.category
         transaction.category = bill.category
         //transaction.description = "Bill: " + bill.billName
         transaction.amount = -(bill.amount)
