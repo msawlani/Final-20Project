@@ -37,7 +37,6 @@ class SettingsViewController: UIViewController {
 //        tempExpense.category = mainUser.categories[4]
 //        mainUser.accounts[0].AddTransaction(transaction: tempExpense)
 //        //Justin 
-        mainUser.accounts[0].RemoveTransaction(index: 0)
     }
     @IBAction func Logout(_ sender: Any) {
         do{
