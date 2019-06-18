@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 var mRef:DatabaseReference?
-var NUMDEFAULTCATS = 5
+var NUMDEFAULTCATS = 6
 
 class User: NSObject
 {
@@ -20,7 +20,7 @@ class User: NSObject
     var numAccounts, numBills, numCategories: Int
     var accounts: [Account] = []
     var bills: [Bill] = []
-    var categories: [String] = ["Bills", "Rent", "Utilities", "Income", "Groceries"]
+    var categories: [String] = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous"]
     var ref:DatabaseReference?
 
     init(userId:String, password:String = "")
@@ -38,7 +38,7 @@ class User: NSObject
             if n.accountName == bill.accountName
             {
                 let transaction = Transaction()
-                transaction.vendorName = bill.company
+                transaction.vendorName = bill.description
                 transaction.category = "Bills"
                 transaction.description = "Bill: " + bill.billName
                 transaction.amount = -(bill.amount)
@@ -183,7 +183,7 @@ class User: NSObject
         while i < self.bills.count{
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("billNum").setValue("billNum" + "\(i)")
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("billName").setValue(self.bills[i].billName)
-            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("company").setValue(self.bills[i].company)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("description").setValue(self.bills[i].description)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("accountName").setValue(self.bills[i].accountName)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("amount").setValue(self.bills[i].amount)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("category").setValue(self.bills[i].category)
@@ -297,7 +297,7 @@ class Transaction
 
 class Bill
 {
-    var billName, company, accountName, billNum: String
+    var billName, description, accountName, billNum: String
     var amount: Double
     var recurring, monthly, yearly: Bool
     var date: DateStruct
@@ -305,12 +305,12 @@ class Bill
     var category: String
     var paymentRepeat: String
 
-    init(billName: String = "", company: String = "", amount: Double = 0.0, accountName:String = "",
+    init(billName: String = "", description: String = "", amount: Double = 0.0, accountName:String = "",
          recurring: Bool = false, monthly: Bool = false, yearly: Bool = false,
          date:DateStruct = DateStruct(), autoPay: Bool, category:String, paymentRepeat: String  )
     {
         self.billName = billName
-        self.company = company
+        self.description = description
         self.amount = amount
         self.accountName = accountName
         self.recurring = recurring
@@ -360,6 +360,10 @@ struct DateStruct
         let userCalendar = Calendar.current // user calendar
         let someDateTime = userCalendar.date(from: dateComponents)
         return someDateTime ?? Date()
+    }
+    func asString() -> String
+    {
+        return "\(self.month)" + "/" + "\(self.day)" + "/" + "\(self.year)"
     }
 }
 
@@ -435,7 +439,6 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                                         transaction.date = date
                                     }
                                     account.transactions.append(transaction)
-                                    account.numTransactions+=1
                                 }
                                 j+=1
                             }
@@ -460,8 +463,8 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                             if let temp = billDict["billName"] as? String {
                                 bill.billName = temp
                             }
-                            if let temp = billDict["company"] as? String {
-                                bill.company = temp
+                            if let temp = billDict["description"] as? String {
+                                bill.description = temp
                             }
                             if let temp = billDict["accountName"] as? String {
                                 bill.accountName = temp

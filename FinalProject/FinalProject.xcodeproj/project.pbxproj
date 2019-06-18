@@ -15,7 +15,6 @@
 		A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
-		E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132CC4A226615CC002EAD3D /* Assets.xcassets */; };
 		E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BFB7222AFF809008AFE79 /* VCChart.swift */; };
 		E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E154BC2B227B507900DACAC0 /* Default-568h@2x.png */; };
 		E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AE3B922565CE1007C345F /* AppDelegate.swift */; };
@@ -23,16 +22,14 @@
 		E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */; };
 		E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E067D6225FB566004A2EC9 /* LogInView.swift */; };
 		F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */; };
-		F204D84722B01468002E541E /* Bills+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84522B01467002E541E /* Bills+CoreDataClass.swift */; };
-		F204D84822B01468002E541E /* Bills+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84622B01468002E541E /* Bills+CoreDataProperties.swift */; };
-		F204D84B22B01471002E541E /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F204D84922B01471002E541E /* CoreData.xcdatamodeld */; };
 		F204D84D22B01479002E541E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84C22B01479002E541E /* AddViewController.swift */; };
 		F204D84F22B01481002E541E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84E22B01481002E541E /* FirstViewController.swift */; };
 		F21364ED228F046F00800435 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21364EC228F046F00800435 /* SignupViewController.swift */; };
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
+		F2816D1822B725580083C2C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2816D1722B725580083C2C0 /* Assets.xcassets */; };
 		F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */; };
 		F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864D22976FAE001BEC17 /* ChangePassViewController.swift */; };
-		F2A47856229F173100CFB1A3 /* BillListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A47855229F173100CFB1A3 /* BillListViewCell.swift */; };
+		F2C6B60322B160E700E02FD4 /* TransactionListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */; };
 		F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4C262284957A00072E8E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +43,6 @@
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E132CC4A226615CC002EAD3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E13BFB7222AFF809008AFE79 /* VCChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCChart.swift; sourceTree = "<group>"; };
 		E154BC2B227B507900DACAC0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E15AE3B622565CE1007C345F /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,16 +52,14 @@
 		E15AE3C722565CE2007C345F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E067D6225FB566004A2EC9 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		F204D84522B01467002E541E /* Bills+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bills+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F204D84622B01468002E541E /* Bills+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bills+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F204D84A22B01471002E541E /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		F204D84C22B01479002E541E /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F204D84E22B01481002E541E /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		F21364EC228F046F00800435 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		F2816D1722B725580083C2C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		F295864D22976FAE001BEC17 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
-		F2A47855229F173100CFB1A3 /* BillListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListViewCell.swift; sourceTree = "<group>"; };
+		F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewCell.swift; sourceTree = "<group>"; };
 		F2CA4C262284957A00072E8E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F7540E5E015C3C0041FD0338 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +126,7 @@
 		E15AE3B822565CE1007C345F /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				F2816D1722B725580083C2C0 /* Assets.xcassets */,
 				F21364EC228F046F00800435 /* SignupViewController.swift */,
 				E15AE3B922565CE1007C345F /* AppDelegate.swift */,
 				E1E067D6225FB566004A2EC9 /* LogInView.swift */,
@@ -139,22 +134,18 @@
 				A85E9B4922A6C288004E2372 /* AddBillViewController.swift */,
 				E13BFB7222AFF809008AFE79 /* VCChart.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
-				E132CC4A226615CC002EAD3D /* Assets.xcassets */,
-				F204D84522B01467002E541E /* Bills+CoreDataClass.swift */,
 				F204D84C22B01479002E541E /* AddViewController.swift */,
-				F204D84622B01468002E541E /* Bills+CoreDataProperties.swift */,
 				E132CC48226611E0002EAD3D /* GoogleService-Info.plist */,
 				E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */,
 				E15AE3C722565CE2007C345F /* Info.plist */,
 				F204D84E22B01481002E541E /* FirstViewController.swift */,
-				F204D84922B01471002E541E /* CoreData.xcdatamodeld */,
 				422A296D22566833008A2564 /* Classes.swift */,
 				F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */,
 				F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */,
 				F2CA4C262284957A00072E8E /* SettingsViewController.swift */,
 				F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */,
 				F295864D22976FAE001BEC17 /* ChangePassViewController.swift */,
-				F2A47855229F173100CFB1A3 /* BillListViewCell.swift */,
+				F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */,
 				A85E9B5922A6C68F004E2372 /* CheckBox.swift */,
 			);
 			path = FinalProject;
@@ -224,8 +215,8 @@
 				E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */,
 				E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */,
 				A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */,
-				E132CC4B226615CC002EAD3D /* Assets.xcassets in Resources */,
 				E154BC2C227B507900DACAC0 /* Default-568h@2x.png in Resources */,
+				F2816D1822B725580083C2C0 /* Assets.xcassets in Resources */,
 				E15AE3C122565CE1007C345F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,7 +321,6 @@
 			files = (
 				A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */,
 				A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */,
-				F204D84B22B01471002E541E /* CoreData.xcdatamodeld in Sources */,
 				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,
 				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
 				F21364ED228F046F00800435 /* SignupViewController.swift in Sources */,
@@ -340,13 +330,11 @@
 				F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */,
-				F2A47856229F173100CFB1A3 /* BillListViewCell.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
+				F2C6B60322B160E700E02FD4 /* TransactionListViewCell.swift in Sources */,
 				E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */,
 				F204D84F22B01481002E541E /* FirstViewController.swift in Sources */,
 				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
-				F204D84822B01468002E541E /* Bills+CoreDataProperties.swift in Sources */,
-				F204D84722B01468002E541E /* Bills+CoreDataClass.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,19 +537,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F204D84922B01471002E541E /* CoreData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F204D84A22B01471002E541E /* CoreData.xcdatamodel */,
-			);
-			currentVersion = F204D84A22B01471002E541E /* CoreData.xcdatamodel */;
-			path = CoreData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E15AE3AE22565CE1007C345F /* Project object */;
 }

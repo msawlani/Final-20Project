@@ -1,21 +1,23 @@
 //
-//  BillListViewCell.swift
+//  TransactionListViewCell.swift
 //  FinalProject
 //
-//  Created by Michael Sawlani on 5/29/19.
+//  Created by Michael Sawlani on 6/12/19.
 //  Copyright © 2019 FullSailUniversity. All rights reserved.
 //
 
 import UIKit
 
-class BillListViewCell: UITableViewCell {
+class TransactionListViewCell: UITableViewCell {
 
-    @IBOutlet weak var Name: UILabel!
-    @IBOutlet weak var Price: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var price: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,5 +25,6 @@ class BillListViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 
 }
