@@ -88,6 +88,7 @@
 		A85E9B5422A6C5D9004E2372 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */,
 				A85E9B5522A6C619004E2372 /* BillTableViewCell.swift */,
 				A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */,
 			);
@@ -145,7 +146,6 @@
 				F2CA4C262284957A00072E8E /* SettingsViewController.swift */,
 				F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */,
 				F295864D22976FAE001BEC17 /* ChangePassViewController.swift */,
-				F2C6B60122B160E700E02FD4 /* TransactionListViewCell.swift */,
 				A85E9B5922A6C68F004E2372 /* CheckBox.swift */,
 			);
 			path = FinalProject;

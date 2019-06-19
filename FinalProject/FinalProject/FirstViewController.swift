@@ -42,7 +42,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.Table.reloadData()
 
         GetUser(userId: mainUser.userId, callback: { tempUser in
@@ -102,11 +101,17 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return mainUser.categories[section]
+        
+        if section < mainUser.categories.count {
+            return mainUser.categories[section]
+
+        }
+        return nil
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return mainUser.categories.count
+
+        return TransactionList.count
     }
 
     //populates the cells using the data - Michael
@@ -122,6 +127,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         return cell!
     }
+    
 
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
