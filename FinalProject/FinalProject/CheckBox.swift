@@ -13,11 +13,18 @@ import UIKit
 class CheckBox: UIButton {
     // Images
     let checkImage = UIImage(named: "Check")
+    let uncheckedImage = UIImage(named: "Uncheck")
    
     // Bool property
     var isChecked: Bool = false {
-        didSet{
-            self.tintColor = isChecked ? UIColor.green : UIColor.gray
+        didSet {
+            if isChecked {
+                self.setImage(checkImage, for: UIControl.State.normal)
+                self.tintColor = UIColor(named: "Food")
+            } else {
+                self.setImage(uncheckedImage, for: UIControl.State.normal)
+                self.tintColor = UIColor.black
+            }
         }
     }
     
