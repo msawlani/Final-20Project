@@ -59,6 +59,9 @@ class AddBillViewController: UIViewController {
     func editBillInicialData() {
         if let bill = editBill {
             amountTextField.text = String(describing: bill.amount)
+            if let amountString = amountTextField.text?.CurrencyInputFormatting() {
+                amountTextField.text = amountString
+            }
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
