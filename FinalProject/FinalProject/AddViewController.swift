@@ -31,6 +31,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         if let payment = existingPayment{
         paymentName.text = payment.vendorName
         paymentPrice.text = "\(payment.amount)" as String
+        section.text = payment.category
         }
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 
@@ -136,7 +137,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     func createTransaction() -> Transaction {
         let date = DateStruct()
-        //paymentPrice.text?.removeFirst()
+        paymentPrice.text?.removeFirst()
         let priceString = String((paymentPrice.text?.dropFirst())!)
 
         let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: ((Double(priceString) ?? 0) * -1), date: date)
