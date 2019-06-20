@@ -19,10 +19,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     public var existingPayment: Transaction?
     public var index: Int?
+    public var indexSection: Int?
 
     let sectionPicker = UIPickerView()
     var selectedSection: String = ""
-    let Sections = mainUser.categories
+    var Sections = mainUser.categories
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,11 +127,12 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         }
 
-        if let indexPathRow = index {
-            home.TransactionList.remove(at: indexPathRow)
+        if let indexPathRow = index, let indexPathSection = indexSection{
+            home.transactionArray[indexPathSection].TransactionList.remove(at: indexPathRow)
         }
 
-        home.TransactionList.append([transaction])
+        
+        home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
         mainUser.accounts[0].AddTransaction(transaction: transaction)
         self.navigationController?.popViewController(animated: true)
     }

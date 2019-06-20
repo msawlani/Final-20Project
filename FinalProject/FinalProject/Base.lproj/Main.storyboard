@@ -495,7 +495,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="veU-jv-KyV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="385"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="384.66666666666669"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-r7-xVG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
@@ -510,8 +510,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD2-fl-ewy">
-                                                <rect key="frame" x="292" y="49" width="114" height="30"/>
+                                                <rect key="frame" x="292" y="48.999999999999993" width="114" height="30.000000000000007"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="CD2-fl-ewy" secondAttribute="height" multiplier="19:5" id="GYN-Ke-9dZ"/>
                                                     <constraint firstAttribute="width" constant="114" id="uEF-E3-By9"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
@@ -531,10 +532,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J11-Mc-f6b">
-                                        <rect key="frame" x="0.0" y="128.33333333333331" width="414" height="128.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="128.33333333333331" width="414" height="128"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-jt-xo9">
-                                                <rect key="frame" x="8" y="7.9999999999999929" width="99" height="112.33333333333331"/>
+                                                <rect key="frame" x="8" y="8" width="99" height="112"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="99" id="8m7-aK-IEH"/>
                                                 </constraints>
@@ -543,8 +544,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8j7-Sy-ikZ">
-                                                <rect key="frame" x="286" y="49.000000000000007" width="120" height="30.333333333333336"/>
+                                                <rect key="frame" x="286" y="49" width="120" height="30"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8j7-Sy-ikZ" secondAttribute="height" multiplier="4:1" id="Ne8-Zm-R1w"/>
                                                     <constraint firstAttribute="width" constant="120" id="yqq-ZT-YTN"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
@@ -563,7 +565,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFP-Se-b8p">
-                                        <rect key="frame" x="0.0" y="257" width="414" height="128"/>
+                                        <rect key="frame" x="0.0" y="256.66666666666669" width="414" height="128"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uy-RN-ViM">
                                                 <rect key="frame" x="8" y="8" width="99" height="112"/>
@@ -578,6 +580,7 @@
                                                 <rect key="frame" x="286" y="49" width="120" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="gZj-j9-68M"/>
+                                                    <constraint firstAttribute="width" secondItem="Adw-9J-SBH" secondAttribute="height" multiplier="4:1" id="oqb-wX-kEI"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
