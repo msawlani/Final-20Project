@@ -58,7 +58,10 @@ class AddBillViewController: UIViewController {
 
     func editBillInicialData() {
         if let bill = editBill {
-            amountTextField.text = String(describing: bill.amount)
+            amountTextField.text = String(describing: (bill.amount) * 10)
+            if let amountString = amountTextField.text?.CurrencyInputFormatting() {
+                amountTextField.text = amountString
+            }
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
@@ -92,12 +95,15 @@ class AddBillViewController: UIViewController {
         }
 
         if let indexPathRow = editIndexPathRow {
-           home.billsContainer.remove(at: indexPathRow)
+            home.billsContainer[editIndexPathRow!] = bill
+            mainUser.bills[editIndexPathRow!] = bill
+            mainUser.StoreInFirebase()
         }
-
-        home.billsContainer.append(bill)
-        mainUser.AddBill(bill: bill)
-        self.navigationController?.popViewController(animated: true)
+        else {
+            home.billsContainer.append(bill)
+            mainUser.AddBill(bill: bill)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     func createBill() -> Bill {
