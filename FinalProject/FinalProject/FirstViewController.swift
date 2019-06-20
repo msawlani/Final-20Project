@@ -99,6 +99,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             while i < mainUser.accounts[0].transactions.count
             {
+                j = 0
                 while j < NUMDEFAULTCATS{
                     if mainUser.accounts[0].transactions[i].category == self.transactionArray[j].sectionName{
                         self.transactionArray[j].TransactionList.append(mainUser.accounts[0].transactions[i])
