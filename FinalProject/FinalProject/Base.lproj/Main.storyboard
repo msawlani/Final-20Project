@@ -788,6 +788,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="&lt; Main Screen"/>
                             </button>
+                            <connections>
+                                <action selector="Back:" destination="Py8-Hx-gcU" id="J2Q-XI-coo"/>
+                                <segue destination="7EZ-0f-uB9" kind="show" identifier="Login" id="7xn-wn-O17"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -797,6 +801,7 @@
                         <segue destination="49e-Tb-3d3" kind="showDetail" identifier="Main" id="v8B-T4-TqX"/>
                         <segue destination="9RQ-Rp-SrH" kind="show" identifier="Signup" id="Z0L-mh-UZV"/>
                         <segue destination="rBG-qD-tup" kind="show" identifier="ForgotPass" id="HZn-jO-H8w"/>
+                        <segue destination="7EZ-0f-uB9" kind="show" identifier="Login" id="HOD-kh-EzZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dm2-lF-fVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1239,5 +1244,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="v8B-T4-TqX"/>
         <segue reference="gUK-VQ-dnK"/>
+        <segue reference="7xn-wn-O17"/>
     </inferredMetricsTieBreakers>
 </document>
