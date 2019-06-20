@@ -27,8 +27,7 @@ class AddBillViewController: UIViewController {
 
     enum Constants {
         static let categories = mainUser.categories
-        static let repeatCategories = ["Never", "Every Week", "Every 2 Weeks", "Every Month", "Every 2 Months",
-                                       "Every 3 Months","Every 4 Months", "Every 6 Months", "Every Year"]
+        static let repeatCategories = ["On the day", "1 day Bbefore", "2 days before", "1 week before"]
     }
 
     override func viewDidLoad() {
@@ -58,10 +57,9 @@ class AddBillViewController: UIViewController {
 
     func editBillInicialData() {
         if let bill = editBill {
-            amountTextField.text = String(describing: (bill.amount) * 10)
-            if let amountString = amountTextField.text?.CurrencyInputFormatting() {
-                amountTextField.text = amountString
-            }
+            let amount = String(describing: (bill.amount))
+            let amountString = amount.CurrencyInputFormatting()
+            amountTextField.text = amountString
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
@@ -102,8 +100,8 @@ class AddBillViewController: UIViewController {
         else {
             home.billsContainer.append(bill)
             mainUser.AddBill(bill: bill)
-            self.navigationController?.popViewController(animated: true)
         }
+        self.navigationController?.popViewController(animated: true)
     }
 
     func createBill() -> Bill {
@@ -148,7 +146,7 @@ class AddBillViewController: UIViewController {
             check = false
         }
         else if repeatCategoryTextField.text?.isEmpty ?? true {
-            alert.title = "Repeat is not Selected"
+            alert.title = "Reminder is not Selected"
             alert.message = "Please Select a Repeat Option to add a Bill"
             check = false
         }

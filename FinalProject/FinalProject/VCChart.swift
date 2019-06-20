@@ -36,7 +36,19 @@ class VCChart: UIViewController {
         let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
         let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
         let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
-
+        
+        dataEntryHousing.value = 0
+        dataEntryHousing.label = ""
+        dataEntryFood.value = 0
+        dataEntryFood.label = ""
+        dataEntryTransportation.value = 0
+        dataEntryTransportation.label = ""
+        dataEntryLifeS.value = 0
+        dataEntryLifeS.label = ""
+        dataEntryDebts.value = 0
+        dataEntryDebts.label = ""
+        dataEntryMiscellaneous.value = 0
+        dataEntryMiscellaneous.label = ""
 
         if housing > 0 {
             dataEntryHousing.value = housing
