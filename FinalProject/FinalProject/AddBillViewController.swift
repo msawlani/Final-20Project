@@ -58,10 +58,9 @@ class AddBillViewController: UIViewController {
 
     func editBillInicialData() {
         if let bill = editBill {
-            amountTextField.text = String(describing: (bill.amount) * 10)
-            if let amountString = amountTextField.text?.CurrencyInputFormatting() {
-                amountTextField.text = amountString
-            }
+            let amount = String(describing: (bill.amount))
+            let amountString = amount.CurrencyInputFormatting()
+            amountTextField.text = amountString
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
@@ -102,8 +101,8 @@ class AddBillViewController: UIViewController {
         else {
             home.billsContainer.append(bill)
             mainUser.AddBill(bill: bill)
-            self.navigationController?.popViewController(animated: true)
         }
+        self.navigationController?.popViewController(animated: true)
     }
 
     func createBill() -> Bill {
