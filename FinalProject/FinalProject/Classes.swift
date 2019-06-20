@@ -318,15 +318,25 @@ class Bill
 struct DateStruct
 {
     var month, day, year: Int
+    var date: Date
 
     init(month: Int, day: Int, year: Int)
     {
         self.month = month
         self.day = day
         self.year = year
+        var dateComponents = DateComponents()
+        dateComponents.year = self.year
+        dateComponents.month = self.month
+        dateComponents.day = self.day
+        
+        // Create date from components
+        let userCalendar = Calendar.current // user calendar
+        self.date = userCalendar.date(from: dateComponents)!
     }
     init()
     {
+        self.date = Date()
         let dateString = Date().asString(style: .short)
         let dateArr = dateString.components(separatedBy: "/")
         self.month = Int(dateArr[0]) ?? 0
@@ -508,5 +518,18 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = style
         return dateFormatter.string(from: self)
+    }
+}
+
+extension Date {
+    
+    func interval(ofComponent comp: Calendar.Component, fromDate date: Date) -> Int {
+        
+        let currentCalendar = Calendar.current
+        
+        guard let start = currentCalendar.ordinality(of: comp, in: .era, for: date) else { return 0 }
+        guard let end = currentCalendar.ordinality(of: comp, in: .era, for: self) else { return 0 }
+        
+        return end - start
     }
 }
