@@ -84,7 +84,15 @@ class UserLoginViewController: UIViewController {
         self.present(alert, animated: true)
     }
     @IBAction func Back(_ sender: Any) {
-        self.performSegue(withIdentifier: "Login", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as? LogInView else {
+            return
+        }
+        
+        
+        //self.push(viewController, animated: false, completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
     
     /*
