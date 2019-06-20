@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="ahK-8G-NZh">
             <objects>
                 <navigationController id="VBT-5z-Bkw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="H88-ZC-hJR"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="H88-ZC-hJR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="3pt-5c-CyX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -305,11 +305,11 @@
             </objects>
             <point key="canvasLocation" x="2638" y="-1280"/>
         </scene>
-        <!--Item-->
+        <!--Balance-->
         <scene sceneID="okU-af-J3y">
             <objects>
                 <navigationController id="Gvv-aX-feW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="oNe-Bz-w0R"/>
+                    <tabBarItem key="tabBarItem" title="Balance" id="oNe-Bz-w0R"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="MbQ-CL-5Ax">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -787,7 +787,7 @@
                     <navigationItem key="navigationItem" id="L2s-6Q-qdf">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="GzS-WX-5MQ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gjl-Vk-qiD">
-                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <rect key="frame" x="20" y="4" width="113" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="&lt; Main Login"/>
