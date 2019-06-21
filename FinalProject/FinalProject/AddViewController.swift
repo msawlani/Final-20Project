@@ -16,7 +16,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var paymentName: UITextField!
     @IBOutlet weak var paymentPrice: UITextField!
     @IBOutlet weak var section: UITextField!
-
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     public var existingPayment: Transaction?
     public var index: Int?
     public var indexSection: Int?
@@ -115,8 +116,21 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
         return check
     }
-
+    @IBAction func Expense(_ sender: Any) {
+//        switch segmentedControl.selectedSegmentIndex {
+//        case 0:
+//
+//            print("Income")
+//
+//        case 1:
+//            print("Expense")
+//        default:
+//            break
+//        }
+    }
+    
     @objc func DoneButton(){
+        let priceString = String((paymentPrice.text?.dropFirst())!)
         if checkInputFields() == false{
             return
         }
@@ -131,7 +145,17 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             home.transactionArray[indexPathSection].TransactionList.remove(at: indexPathRow)
         }
 
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
         
+            mainUser.accounts[0].balance += ((Double(priceString) ?? 0) * -1)
+            
+        case 1:
+            mainUser.accounts[0].balance -= ((Double(priceString) ?? 0) * -1)
+
+        default:
+            break
+        }
         home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
         mainUser.accounts[0].AddTransaction(transaction: transaction)
         self.navigationController?.popViewController(animated: true)
