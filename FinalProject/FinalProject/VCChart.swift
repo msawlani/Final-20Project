@@ -29,72 +29,32 @@ class VCChart: UIViewController {
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
 
-<<<<<<< HEAD
         
-        if(mainUser.accounts[0].transactions.count == 0){
+     
+    let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+    let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+    let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+    let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+    let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+    let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
             
-           // let text = "You have no Transactions"
             
-          
-            
-            
-=======
-        let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
-        let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
-        let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
-        let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
-        let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
-        let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
+    if housing > 0 {
+        dataEntryHousing.value = housing
         
-        dataEntryHousing.value = 0
-        dataEntryHousing.label = ""
-        dataEntryFood.value = 0
-        dataEntryFood.label = ""
-        dataEntryTransportation.value = 0
-        dataEntryTransportation.label = ""
-        dataEntryLifeS.value = 0
-        dataEntryLifeS.label = ""
-        dataEntryDebts.value = 0
-        dataEntryDebts.label = ""
-        dataEntryMiscellaneous.value = 0
-        dataEntryMiscellaneous.label = ""
-
-        if housing > 0 {
-            dataEntryHousing.value = housing
-            dataEntryHousing.label = "Housing"
->>>>>>> MasterBranch
         }
-        else{
-            
-            let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
-            let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
-            let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
-            let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
-            let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
-            let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
-            
-            
-            if housing > 0 {
-            dataEntryHousing.value = housing
-            //dataEntryHousing.label = "Housing"
-            }
-            if food > 0{
-            dataEntryFood.value = food
-            //dataEntryFood.label = "Food"
-            }
-            if transportation > 0{
-            dataEntryTransportation.value = transportation
-            //dataEntryTransportation.label = "Transportation"
-            }
-            if lifeStyle > 0 {
-            dataEntryLifeS.value = lifeStyle
-            //dataEntryLifeS.label = "Life Style"
-            }
-
-            if debts > 0{
-            dataEntryDebts.value = debts
-            //dataEntryDebts.label = "Debts"
-            }
+    if food > 0{
+        dataEntryFood.value = food
+        }
+    if transportation > 0{
+        dataEntryTransportation.value = transportation
+        }
+    if lifeStyle > 0 {
+        dataEntryLifeS.value = lifeStyle
+        }
+    if debts > 0{
+        dataEntryDebts.value = debts
+        }
 
             if misc > 0{
             dataEntryMiscellaneous.value = misc
@@ -135,19 +95,3 @@ class VCChart: UIViewController {
 }
 
 
-//class ChartValueFormatter: NSObject, IValueFormatter {
-//    fileprivate var numberFormatter: NumberFormatter?
-//
-//    convenience init(numberFormatter: NumberFormatter) {
-//        self.init()
-//        self.numberFormatter = numberFormatter
-//    }
-//
-//    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-//        guard let numberFormatter = numberFormatter
-//            else {
-//                return ""
-//        }
-//        return numberFormatter.string(for: value)!
-//    }
-//}
