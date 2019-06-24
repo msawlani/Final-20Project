@@ -29,12 +29,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        editBillInicialData()
 
-        if let payment = existingPayment{
-        paymentName.text = payment.vendorName
-        paymentPrice.text = "\(payment.amount)" as String
-        section.text = payment.category
-        }
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneButton))
@@ -96,6 +92,18 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             textField.text = amountString
         }
     }
+    
+    func editBillInicialData() {
+        if let transaction = existingPayment {
+            
+            let amount = String(describing: (transaction.amount))
+            let amountString = amount.CurrencyInputFormatting()
+            paymentName.text = transaction.vendorName
+            paymentPrice.text = amountString
+            section.text = transaction.category
+        }
+    }
+
 
     func checkInputFields() -> Bool {
         let alert = UIAlertView()
@@ -135,7 +143,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         }
 
-        let transaction = createTransaction()
+        var transaction = createTransaction()
+        
 
         guard let home = self.navigationController?.viewControllers.first as? FirstViewController else {
             return
@@ -148,16 +157,28 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         switch segmentedControl.selectedSegmentIndex {
         case 0:
         
-            mainUser.accounts[0].balance += ((Double(priceString) ?? 0) * -1)
+             transaction.amount = Double(priceString) ?? 0
+            
             
         case 1:
-            mainUser.accounts[0].balance -= ((Double(priceString) ?? 0) * -1)
+            
+            transaction.amount = ((Double(priceString) ?? 0) * -1)
 
+            
         default:
             break
         }
-        home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
-        mainUser.accounts[0].AddTransaction(transaction: transaction)
+       
+        if  let existingTransaction = existingPayment{
+            existingTransaction.vendorName = paymentName.text!
+            existingTransaction.amount = ((Double(paymentPrice.text!) ?? 0 ) * -1)
+            existingTransaction.category = section.text!
+            transaction = existingTransaction
+        }
+        else{
+            home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+            mainUser.accounts[0].AddTransaction(transaction: transaction)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -166,7 +187,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         paymentPrice.text?.removeFirst()
         let priceString = String((paymentPrice.text?.dropFirst())!)
 
-        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: ((Double(priceString) ?? 0) * -1), date: date)
+        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: date)
 
 
         return transaction
