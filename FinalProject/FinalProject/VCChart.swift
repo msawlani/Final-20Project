@@ -21,7 +21,7 @@ class VCChart: UIViewController {
     @IBOutlet weak var MiscVal: UILabel!
     
 
-
+//Initialize data entries
     var dataEntryHousing = PieChartDataEntry(value: 0)
     var dataEntryFood = PieChartDataEntry(value: 0)
     var dataEntryTransportation = PieChartDataEntry(value: 0)
@@ -30,6 +30,8 @@ class VCChart: UIViewController {
     var dataEntryMiscellaneous = PieChartDataEntry(value: 0)
     var dataEntriesArray = [PieChartDataEntry]()
 
+    
+    
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         //Pie Chart Configuration
