@@ -47,7 +47,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                             Transactions(sectionName: "Transportation", TransactionList: []),
                             Transactions(sectionName: "Lifestyle", TransactionList: []),
                             Transactions(sectionName: "Debts", TransactionList: []),
-                            Transactions(sectionName: "Miscellaneous", TransactionList: [])]
+                            Transactions(sectionName: "Miscellaneous", TransactionList: []),
+                            Transactions(sectionName: "Income", TransactionList: [])]
 
 }
 
