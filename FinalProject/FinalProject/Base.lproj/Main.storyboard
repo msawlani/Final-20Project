@@ -672,11 +672,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="veU-jv-KyV">
-<<<<<<< HEAD
-                                <rect key="frame" x="0.0" y="44" width="414" height="384.66666666666669"/>
-=======
+
+
                                 <rect key="frame" x="0.0" y="44" width="414" height="513"/>
->>>>>>> MasterBranch
+
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-r7-xVG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
@@ -692,11 +691,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD2-fl-ewy">
-<<<<<<< HEAD
-                                                <rect key="frame" x="292" y="48.999999999999993" width="114" height="30.000000000000007"/>
-=======
+
                                                 <rect key="frame" x="292" y="49" width="114" height="30"/>
->>>>>>> MasterBranch
+
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="114" id="6Vu-4P-ACk"/>
                                                     <constraint firstAttribute="width" secondItem="CD2-fl-ewy" secondAttribute="height" multiplier="19:5" id="9F1-VX-UUW"/>
@@ -717,11 +714,8 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J11-Mc-f6b">
-<<<<<<< HEAD
-                                        <rect key="frame" x="0.0" y="128.33333333333331" width="414" height="128"/>
-=======
+
                                         <rect key="frame" x="0.0" y="128.33333333333334" width="414" height="128.00000000000003"/>
->>>>>>> MasterBranch
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-jt-xo9">
                                                 <rect key="frame" x="8" y="8" width="99" height="112"/>
