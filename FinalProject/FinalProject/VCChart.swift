@@ -23,7 +23,6 @@ class VCChart: UIViewController {
 
     var dataEntriesArray = [PieChartDataEntry]()
 
-
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         //Pie Chart Configuration
@@ -52,29 +51,29 @@ class VCChart: UIViewController {
 
         if housing > 0 {
             dataEntryHousing.value = housing
-            dataEntryHousing.label = "Housing"
+            //dataEntryHousing.label = "Housing"
         }
         if food > 0{
             dataEntryFood.value = food
-            dataEntryFood.label = "Food"
+            //dataEntryFood.label = "Food"
         }
         if transportation > 0{
             dataEntryTransportation.value = transportation
-            dataEntryTransportation.label = "Transportation"
+            //dataEntryTransportation.label = "Transportation"
         }
         if lifeStyle > 0 {
             dataEntryLifeS.value = lifeStyle
-            dataEntryLifeS.label = "Life Style"
+            //dataEntryLifeS.label = "Life Style"
         }
 
         if debts > 0{
             dataEntryDebts.value = debts
-            dataEntryDebts.label = "Debts"
+            //dataEntryDebts.label = "Debts"
         }
 
         if misc > 0{
             dataEntryMiscellaneous.value = misc
-            dataEntryMiscellaneous.label = "Misc"
+            //dataEntryMiscellaneous.label = "Misc"
         }
 
 
