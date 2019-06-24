@@ -16,7 +16,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var paymentName: UITextField!
     @IBOutlet weak var paymentPrice: UITextField!
     @IBOutlet weak var section: UITextField!
-
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     public var existingPayment: Transaction?
     public var index: Int?
     public var indexSection: Int?
@@ -28,12 +29,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        editBillInicialData()
 
-        if let payment = existingPayment{
-        paymentName.text = payment.vendorName
-        paymentPrice.text = "\(payment.amount)" as String
-        section.text = payment.category
-        }
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneButton))
@@ -95,6 +92,18 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             textField.text = amountString
         }
     }
+    
+    func editBillInicialData() {
+        if let transaction = existingPayment {
+            
+            let amount = String(describing: (transaction.amount))
+            let amountString = amount.CurrencyInputFormatting()
+            paymentName.text = transaction.vendorName
+            paymentPrice.text = amountString
+            section.text = transaction.category
+        }
+    }
+
 
     func checkInputFields() -> Bool {
         let alert = UIAlertView()
@@ -115,13 +124,27 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
         return check
     }
-
+    @IBAction func Expense(_ sender: Any) {
+//        switch segmentedControl.selectedSegmentIndex {
+//        case 0:
+//
+//            print("Income")
+//
+//        case 1:
+//            print("Expense")
+//        default:
+//            break
+//        }
+    }
+    
     @objc func DoneButton(){
+        let priceString = String((paymentPrice.text?.dropFirst())!)
         if checkInputFields() == false{
             return
         }
 
-        let transaction = createTransaction()
+        var transaction = createTransaction()
+        
 
         guard let home = self.navigationController?.viewControllers.first as? FirstViewController else {
             return
@@ -131,9 +154,31 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             home.transactionArray[indexPathSection].TransactionList.remove(at: indexPathRow)
         }
 
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
         
-        home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
-        mainUser.accounts[0].AddTransaction(transaction: transaction)
+             transaction.amount = Double(priceString) ?? 0
+            
+            
+        case 1:
+            
+            transaction.amount = ((Double(priceString) ?? 0) * -1)
+
+            
+        default:
+            break
+        }
+       
+        if  let existingTransaction = existingPayment{
+            existingTransaction.vendorName = paymentName.text!
+            existingTransaction.amount = ((Double(paymentPrice.text!) ?? 0 ) * -1)
+            existingTransaction.category = section.text!
+            transaction = existingTransaction
+        }
+        else{
+            home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+            mainUser.accounts[0].AddTransaction(transaction: transaction)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -142,7 +187,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         paymentPrice.text?.removeFirst()
         let priceString = String((paymentPrice.text?.dropFirst())!)
 
-        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: ((Double(priceString) ?? 0) * -1), date: date)
+        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: date)
 
 
         return transaction

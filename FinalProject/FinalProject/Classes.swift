@@ -193,7 +193,7 @@ class Account
 {
     var accountName, bankName, accountNum: String
     var numTransactions: Int
-    var balance, totalIncome, totalExpenses: Double
+    var balance, totalIncome,  totalExpenses: Double
     var transactions: [Transaction] = []
 
     init(name:String = "", bankName:String = "", balance:Double = 0.0)
