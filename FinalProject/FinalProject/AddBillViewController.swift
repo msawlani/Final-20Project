@@ -11,6 +11,7 @@ import UIKit
 
 class AddBillViewController: UIViewController {
 
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
@@ -26,8 +27,8 @@ class AddBillViewController: UIViewController {
     private let repeatCategoryPickerView = UIPickerView()
 
     enum Constants {
-        static let categories = mainUser.categories
-        static let repeatCategories = ["On the day", "1 day Bbefore", "2 days before", "1 week before"]
+        static let categories = mainUser.categories.dropLast()
+        static let repeatCategories = ["On the day", "1 day before", "2 days before", "1 week before"]
     }
 
     override func viewDidLoad() {
@@ -57,6 +58,7 @@ class AddBillViewController: UIViewController {
 
     func editBillInicialData() {
         if let bill = editBill {
+            nameTextField.text = bill.billName
             let amount = String(describing: (bill.amount))
             let amountString = amount.CurrencyInputFormatting()
             amountTextField.text = amountString
@@ -116,7 +118,7 @@ class AddBillViewController: UIViewController {
 
         amountTextField.text?.removeFirst()
 
-        let bill = Bill(billName:"test",
+        let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
                         autoPay: autoPaySwitch.isOn,
@@ -133,6 +135,11 @@ class AddBillViewController: UIViewController {
         if amountTextField.text?.isEmpty ?? true {
             alert.title = "Amount is Empty"
             alert.message = "Please Fill the Amount to add a Bill"
+            check = false
+        }
+        else if nameTextField.text?.isEmpty ?? true{
+            alert.title = "Name is Empty"
+            alert.message = "Please Fill the Name to add a Bill"
             check = false
         }
         else if dateTextField.text?.isEmpty ?? true {
