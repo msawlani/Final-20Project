@@ -11,6 +11,7 @@ import UIKit
 
 class AddBillViewController: UIViewController {
 
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
@@ -27,8 +28,7 @@ class AddBillViewController: UIViewController {
 
     enum Constants {
         static let categories = mainUser.categories
-        static let repeatCategories = ["Never", "Every Week", "Every 2 Weeks", "Every Month", "Every 2 Months",
-                                       "Every 3 Months","Every 4 Months", "Every 6 Months", "Every Year"]
+        static let repeatCategories = ["On the day", "1 day before", "2 days before", "1 week before"]
     }
 
     override func viewDidLoad() {
@@ -58,7 +58,10 @@ class AddBillViewController: UIViewController {
 
     func editBillInicialData() {
         if let bill = editBill {
-            amountTextField.text = String(describing: bill.amount)
+            nameTextField.text = bill.billName
+            let amount = String(describing: (bill.amount))
+            let amountString = amount.CurrencyInputFormatting()
+            amountTextField.text = amountString
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
@@ -92,11 +95,14 @@ class AddBillViewController: UIViewController {
         }
 
         if let indexPathRow = editIndexPathRow {
-           home.billsContainer.remove(at: indexPathRow)
+            home.billsContainer[editIndexPathRow!] = bill
+            mainUser.bills[editIndexPathRow!] = bill
+            mainUser.StoreInFirebase()
         }
-
-        home.billsContainer.append(bill)
-        mainUser.AddBill(bill: bill)
+        else {
+            home.billsContainer.append(bill)
+            mainUser.AddBill(bill: bill)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -112,7 +118,7 @@ class AddBillViewController: UIViewController {
 
         amountTextField.text?.removeFirst()
 
-        let bill = Bill(billName:"test",
+        let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
                         autoPay: autoPaySwitch.isOn,
@@ -131,6 +137,11 @@ class AddBillViewController: UIViewController {
             alert.message = "Please Fill the Amount to add a Bill"
             check = false
         }
+        else if nameTextField.text?.isEmpty ?? true{
+            alert.title = "Name is Empty"
+            alert.message = "Please Fill the Name to add a Bill"
+            check = false
+        }
         else if dateTextField.text?.isEmpty ?? true {
             alert.title = "Date is Empty"
             alert.message = "Please Fill the Due Date to add a Bill"
@@ -142,7 +153,7 @@ class AddBillViewController: UIViewController {
             check = false
         }
         else if repeatCategoryTextField.text?.isEmpty ?? true {
-            alert.title = "Repeat is not Selected"
+            alert.title = "Reminder is not Selected"
             alert.message = "Please Select a Repeat Option to add a Bill"
             check = false
         }

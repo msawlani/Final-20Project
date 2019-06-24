@@ -19,13 +19,7 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         createNavigationButton()
         customizeView()
-
-        var i = 0
-        while i < mainUser.bills.count
-        {
-            billsContainer.append(mainUser.bills[i])
-            i+=1
-        }
+        filterByDate()
     }
 
 
@@ -33,6 +27,19 @@ class SecondViewController: UIViewController {
         super.viewWillAppear(animated)
 
         tableView.reloadData()
+    }
+    
+    func filterByDate() {
+        
+        billsContainer = mainUser.bills
+        
+        billsContainer.sort {
+            if $0.date.date == $1.date.date {
+                return $0.amount < $1.amount
+            }
+            
+            return $0.date.date < $1.date.date
+        }
     }
 
     func createNavigationButton() {
@@ -129,8 +136,16 @@ extension SecondViewController: UITableViewDelegate {
     func editAction(at indexPath: IndexPath) -> UIContextualAction{
         let action = UIContextualAction(style: .destructive, title: "Edit") { (action, view, completion) in
 
-            self.billsContainer.remove(at: indexPath.row)
-            self.tableView.reloadData()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let viewController = storyboard.instantiateViewController(withIdentifier: "addBillViewController") as? AddBillViewController else {
+                return
+            }
+            
+            viewController.editBill = self.billsContainer[indexPath.row]
+            viewController.editIndexPathRow = indexPath.row
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+
             completion(true)
         }
 

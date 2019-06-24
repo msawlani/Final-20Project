@@ -29,6 +29,7 @@ class VCChart: UIViewController {
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
 
+<<<<<<< HEAD
         
         if(mainUser.accounts[0].transactions.count == 0){
             
@@ -37,6 +38,31 @@ class VCChart: UIViewController {
           
             
             
+=======
+        let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+        let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+        let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+        let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+        let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+        let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
+        
+        dataEntryHousing.value = 0
+        dataEntryHousing.label = ""
+        dataEntryFood.value = 0
+        dataEntryFood.label = ""
+        dataEntryTransportation.value = 0
+        dataEntryTransportation.label = ""
+        dataEntryLifeS.value = 0
+        dataEntryLifeS.label = ""
+        dataEntryDebts.value = 0
+        dataEntryDebts.label = ""
+        dataEntryMiscellaneous.value = 0
+        dataEntryMiscellaneous.label = ""
+
+        if housing > 0 {
+            dataEntryHousing.value = housing
+            dataEntryHousing.label = "Housing"
+>>>>>>> MasterBranch
         }
         else{
             

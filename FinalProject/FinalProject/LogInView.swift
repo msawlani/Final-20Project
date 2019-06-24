@@ -17,6 +17,9 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        
         //Add Signin Button
         let googleButton = GIDSignInButton()
         googleButton.frame =  CGRect(x:16,y:650,width: view.frame.width - 32,height:50)
@@ -36,6 +39,19 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
     //googleButton.addTarget(self, action: #selector(toMain), for: .touchUpInside)
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+
+    }
+    
     //Checking if thers is a log in error
     func sign(_ signIn: GIDSignIn!, didSignInFor _user: GIDGoogleUser!, withError error: Error!) {
         if let err = error{
