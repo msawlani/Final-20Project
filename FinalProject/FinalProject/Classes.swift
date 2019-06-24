@@ -257,7 +257,7 @@ class Account
             i+=1
         }
         
-        return -(total)
+        return total
     }
 }
 
