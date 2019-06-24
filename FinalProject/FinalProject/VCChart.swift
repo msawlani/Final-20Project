@@ -12,15 +12,22 @@ class VCChart: UIViewController {
 
     @IBOutlet weak var pieChart: PieChartView!
 
-    //Create Data entry variables
+//Label values for legend
+    @IBOutlet weak var HousingVal: UILabel!
+    @IBOutlet weak var FoodVal: UILabel!
+    @IBOutlet weak var TransportVal: UILabel!
+    @IBOutlet weak var LifeStyleVal: UILabel!
+    @IBOutlet weak var DebtsVal: UILabel!
+    @IBOutlet weak var MiscVal: UILabel!
+    
+
+
     var dataEntryHousing = PieChartDataEntry(value: 0)
     var dataEntryFood = PieChartDataEntry(value: 0)
     var dataEntryTransportation = PieChartDataEntry(value: 0)
     var dataEntryLifeS = PieChartDataEntry(value: 0)
     var dataEntryDebts = PieChartDataEntry(value: 0)
     var dataEntryMiscellaneous = PieChartDataEntry(value: 0)
-
-
     var dataEntriesArray = [PieChartDataEntry]()
 
     override func viewWillAppear(_ animated: Bool){
@@ -32,30 +39,30 @@ class VCChart: UIViewController {
         
      
     let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+        HousingVal.text = String(housing)
     let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+        FoodVal.text = String(food)
     let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+        TransportVal.text = String(transportation)
     let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+        LifeStyleVal.text = String(lifeStyle)
     let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+        DebtsVal.text = String(debts)
     let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
+        MiscVal.text = String(misc)
             
             
         dataEntryHousing.value = housing
-       // dataEntryHousing.label = "Housing"
         
         dataEntryFood.value = food
-        // dataEntryFood.label = "Food"
    
         dataEntryTransportation.value = transportation
-         //dataEntryTransportation.label = "Transportation"
-  
+        
         dataEntryLifeS.value = lifeStyle
-        // dataEntryLifeS.label = "LifeStyle"
  
         dataEntryDebts.value = debts
-       //  dataEntryDebts.label = "Debts"
   
         dataEntryMiscellaneous.value = misc
-        // dataEntryMiscellaneous.label = "Misc"
         
 
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
