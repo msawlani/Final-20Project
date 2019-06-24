@@ -583,7 +583,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjQ-Kh-3Mp">
-<<<<<<< HEAD
                                                     <rect key="frame" x="397.66666666666669" y="19" width="16.333333333333314" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -594,9 +593,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="mTK-kB-QiO" secondAttribute="height" multiplier="115:21" id="CVe-Je-pb5"/>
                                                     </constraints>
-=======
-                                                    <rect key="frame" x="339.66666666666669" y="19" width="11" height="20"/>
->>>>>>> MasterBranch
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -678,84 +674,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFP-Se-b8p">
                                 <rect key="frame" x="0.0" y="404" width="414" height="172"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uy-RN-ViM">
                                         <rect key="frame" x="8" y="52" width="137" height="68"/>
-=======
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="veU-jv-KyV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="513"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-r7-xVG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="170.66666666666666"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndW-0H-Khk">
-                                                <rect key="frame" x="8" y="8" width="136.66666666666666" height="154.66666666666666"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="99" id="B5t-uV-CHH"/>
-                                                    <constraint firstAttribute="width" secondItem="ndW-0H-Khk" secondAttribute="height" multiplier="99:112" id="BGA-pU-CTi"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD2-fl-ewy">
-                                                <rect key="frame" x="292" y="49" width="114" height="30"/>
-
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="114" id="6Vu-4P-ACk"/>
-                                                    <constraint firstAttribute="width" secondItem="CD2-fl-ewy" secondAttribute="height" multiplier="19:5" id="9F1-VX-UUW"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
->>>>>>> MasterBranch
                                         <constraints>
                                             <constraint firstAttribute="width" constant="137" id="HQL-ff-eab"/>
                                             <constraint firstAttribute="width" secondItem="8uy-RN-ViM" secondAttribute="height" multiplier="137:68" id="SAD-62-IbQ"/>
                                         </constraints>
-<<<<<<< HEAD
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Adw-9J-SBH">
                                         <rect key="frame" x="278" y="70" width="128" height="32"/>
-=======
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J11-Mc-f6b">
-
-                                        <rect key="frame" x="0.0" y="171" width="414" height="171"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-jt-xo9">
-                                                <rect key="frame" x="8" y="8" width="136.66666666666666" height="155"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="99" id="6BG-46-eGn"/>
-                                                    <constraint firstAttribute="width" secondItem="B7U-jt-xo9" secondAttribute="height" multiplier="99:112" id="F7Q-bO-mDu"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8j7-Sy-ikZ">
-                                                <rect key="frame" x="286" y="70.666666666666686" width="120" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="8j7-Sy-ikZ" secondAttribute="height" multiplier="4:1" id="DWq-qm-Pyw"/>
-                                                    <constraint firstAttribute="width" constant="120" id="jvF-kS-Gsc"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
->>>>>>> MasterBranch
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Adw-9J-SBH" secondAttribute="height" multiplier="4:1" id="oKP-Ex-CRn"/>
                                             <constraint firstAttribute="width" constant="128" id="ral-hb-sxf"/>
