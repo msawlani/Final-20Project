@@ -39,30 +39,26 @@ class VCChart: UIViewController {
     let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
             
             
-    if housing > 0 {
         dataEntryHousing.value = housing
+       // dataEntryHousing.label = "Housing"
         
-        }
-    if food > 0{
         dataEntryFood.value = food
-        }
-    if transportation > 0{
+        // dataEntryFood.label = "Food"
+   
         dataEntryTransportation.value = transportation
-        }
-    if lifeStyle > 0 {
+         //dataEntryTransportation.label = "Transportation"
+  
         dataEntryLifeS.value = lifeStyle
-        }
-    if debts > 0{
+        // dataEntryLifeS.label = "LifeStyle"
+ 
         dataEntryDebts.value = debts
-        }
-
-            if misc > 0{
-            dataEntryMiscellaneous.value = misc
-            //dataEntryMiscellaneous.label = "Misc"
-            }
+       //  dataEntryDebts.label = "Debts"
+  
+        dataEntryMiscellaneous.value = misc
+        // dataEntryMiscellaneous.label = "Misc"
+        
 
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
-
         updateChartData()
     }
 
@@ -83,6 +79,8 @@ class VCChart: UIViewController {
         chartDataSet.colors = colors as! [NSUIColor]
         pieChart.data = chartData
         pieChart.data?.setDrawValues(false)
+        pieChart.legend.enabled = false
+        pieChart.drawHoleEnabled = true
         
         
         
