@@ -677,11 +677,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD2-fl-ewy">
-<<<<<<< HEAD
                                                 <rect key="frame" x="292" y="49" width="114" height="30"/>
-=======
-                                                <rect key="frame" x="292" y="70.333333333333329" width="114" height="30"/>
->>>>>>> 03efdc3e01aa1870e569c00614348c05b1e10706
+
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="114" id="6Vu-4P-ACk"/>
                                                     <constraint firstAttribute="width" secondItem="CD2-fl-ewy" secondAttribute="height" multiplier="19:5" id="9F1-VX-UUW"/>
@@ -702,11 +699,8 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J11-Mc-f6b">
-<<<<<<< HEAD
-                                        <rect key="frame" x="0.0" y="128.33333333333334" width="414" height="128.00000000000003"/>
-=======
+
                                         <rect key="frame" x="0.0" y="171" width="414" height="171"/>
->>>>>>> 03efdc3e01aa1870e569c00614348c05b1e10706
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-jt-xo9">
                                                 <rect key="frame" x="8" y="8" width="136.66666666666666" height="155"/>
