@@ -178,12 +178,17 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
 //                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
 //                let context = appDelegate.persistentContainer.viewContext
-                mainUser.accounts[0].RemoveTransaction(index: indexPath.row)
+                
+                var indexString = self.transactionArray[indexPath.section].TransactionList[indexPath.row].transactionNum
+                indexString = String(indexString.dropFirst(11))
+                let index = Int(indexString)
+                mainUser.accounts[0].RemoveTransaction(index: index!)
 
 
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
+                self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
                 self.Table.reloadData()
-
+                
             }))
 
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
