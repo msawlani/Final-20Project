@@ -34,6 +34,28 @@ class VCChart: UIViewController {
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
+        
+        //draw circle
+        let shapeLayer = CAShapeLayer()
+        var center = view.center
+        center.y = 250
+        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
+        
+        shapeLayer.path = circularPath.cgPath
+            
+        
+        
+        view.layer.addSublayer(shapeLayer)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         //Pie Chart Configuration
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
