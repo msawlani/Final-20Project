@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 var mRef:DatabaseReference?
-var NUMDEFAULTCATS = 6
+var NUMDEFAULTCATS = 7
 
 class User: NSObject
 {
@@ -20,7 +20,7 @@ class User: NSObject
     var numAccounts, numBills, numCategories: Int
     var accounts: [Account] = []
     var bills: [Bill] = []
-    var categories: [String] = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous"]
+    var categories: [String] = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous", "Income"]
     var ref:DatabaseReference?
 
     init(userId:String, password:String = "")
