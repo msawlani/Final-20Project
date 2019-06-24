@@ -39,17 +39,17 @@ class VCChart: UIViewController {
         
      
     let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
-        HousingVal.text = String(housing)
+        HousingVal.text = String(format: "$%.02f", housing)
     let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
-        FoodVal.text = String(food)
+        FoodVal.text = String(format: "$%.02f", food)
     let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
-        TransportVal.text = String(transportation)
+        TransportVal.text = String(format: "$%.02f", transportation)
     let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
-        LifeStyleVal.text = String(lifeStyle)
+        LifeStyleVal.text = String(format: "$%.02f", lifeStyle)
     let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
-        DebtsVal.text = String(debts)
+        DebtsVal.text = String(format: "$%.02f", debts)
     let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
-        MiscVal.text = String(misc)
+        MiscVal.text = String(format: "$%.02f", misc)
             
             
         dataEntryHousing.value = housing
