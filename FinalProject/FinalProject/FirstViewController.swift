@@ -153,6 +153,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell!.name.text = transaction.vendorName
         cell!.price.text = "$\(String(describing: transaction.amount))"
+        cell!.date.text = transaction.date.asString()
 
         return cell!
     }
