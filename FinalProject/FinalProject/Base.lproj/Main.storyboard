@@ -786,7 +786,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="L2s-6Q-qdf">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="GzS-WX-5MQ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gjl-Vk-qiD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gjl-Vk-qiD">
                                 <rect key="frame" x="20" y="4" width="113" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1235,7 +1235,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Information_Icon_Button" width="18.90461540222168" height="18.90461540222168"/>
+        <image name="Information_Icon_Button" width="512" height="512"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="useimgplaceholder" width="160" height="160"/>

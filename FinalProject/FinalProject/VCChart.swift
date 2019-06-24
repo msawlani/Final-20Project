@@ -61,10 +61,6 @@ class VCChart: UIViewController {
             //dataEntryMiscellaneous.label = "Misc"
             }
 
-        }
-        
-        
-
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
 
         updateChartData()
@@ -73,7 +69,8 @@ class VCChart: UIViewController {
 
     func updateChartData(){
         
-        
+        pieChart.data?.clearValues()
+    
         //set up chart
         let chartDataSet = PieChartDataSet(entries:dataEntriesArray,label:nil)
         
@@ -86,6 +83,7 @@ class VCChart: UIViewController {
         chartDataSet.colors = colors as! [NSUIColor]
         pieChart.data = chartData
         pieChart.data?.setDrawValues(false)
+        
         
         
     }
