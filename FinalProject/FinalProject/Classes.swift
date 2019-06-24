@@ -257,6 +257,11 @@ class Account
             i+=1
         }
         
+        if total != 0
+        {
+            total *= -1
+        }
+        
         return total
     }
 }
