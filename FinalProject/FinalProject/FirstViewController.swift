@@ -189,8 +189,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
                 self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
                 self.Table.reloadData()
-                self.viewDidAppear(true)
-                
+                self.viewDidLoad()
+                self.viewWillAppear(true)
             }))
 
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
