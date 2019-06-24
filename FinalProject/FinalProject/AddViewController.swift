@@ -126,7 +126,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     @objc func DoneButton(){
-        let priceString = String((paymentPrice.text?.dropFirst())!)
+        var priceString = String((paymentPrice.text?.dropFirst())!)
+        priceString = priceString.replacingOccurrences(of: ",", with: "")
         if checkInputFields() == false{
             return
         }
@@ -165,7 +166,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func createTransaction() -> Transaction {
         let date = DateStruct()
         paymentPrice.text?.removeFirst()
-        let priceString = String((paymentPrice.text?.dropFirst())!)
+        var priceString = String((paymentPrice.text?.dropFirst())!)
+        priceString = priceString.replacingOccurrences(of: ",", with: "")
         
         if section.isEnabled == false {
             section.text = "Income"
