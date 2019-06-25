@@ -31,11 +31,18 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         
         editBillInicialData()
+        
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        newBackButton.tintColor = UIColor.white
 
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneButton))
         self.navigationItem.rightBarButtonItem = doneButton
+        
+        doneButton.tintColor = UIColor.white
 
         createPickerView()
 
@@ -60,7 +67,18 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return mainUser.categories[row]
     }
 
-
+    @objc func back(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+            
+        self.present(alertController, animated: true)
+    }
 
     func createPickerView(){
 
