@@ -587,16 +587,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-<<<<<<< HEAD
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjQ-Kh-3Mp">
                                                     <rect key="frame" x="403" y="19" width="11" height="20"/>
-=======
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTK-kB-QiO">
-                                                    <rect key="frame" x="266" y="17" width="109.66666666666669" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="mTK-kB-QiO" secondAttribute="height" multiplier="115:21" id="CVe-Je-pb5"/>
-                                                    </constraints>
->>>>>>> MasterBranch
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -677,7 +669,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFP-Se-b8p">
                                 <rect key="frame" x="0.0" y="404" width="414" height="172"/>
                                 <subviews>
-<<<<<<< HEAD
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-r7-xVG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="170.66666666666666"/>
                                         <subviews>
@@ -704,15 +695,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uy-RN-ViM">
-                                        <rect key="frame" x="8" y="52" width="137" height="68"/>
->>>>>>> MasterBranch
                                         <constraints>
                                             <constraint firstAttribute="width" constant="137" id="HQL-ff-eab"/>
                                             <constraint firstAttribute="width" secondItem="8uy-RN-ViM" secondAttribute="height" multiplier="137:68" id="SAD-62-IbQ"/>
                                         </constraints>
-<<<<<<< HEAD
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J11-Mc-f6b">
                                         <rect key="frame" x="0.0" y="171" width="414" height="171"/>
@@ -739,14 +725,6 @@
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Adw-9J-SBH">
-                                        <rect key="frame" x="278" y="70" width="128" height="32"/>
->>>>>>> MasterBranch
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Adw-9J-SBH" secondAttribute="height" multiplier="4:1" id="oKP-Ex-CRn"/>
                                             <constraint firstAttribute="width" constant="128" id="ral-hb-sxf"/>
