@@ -582,12 +582,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjQ-Kh-3Mp">
-                                                    <rect key="frame" x="397.66666666666669" y="19" width="16.333333333333314" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTK-kB-QiO">
                                                     <rect key="frame" x="266" y="17" width="109.66666666666669" height="20"/>
                                                     <constraints>
@@ -601,17 +595,13 @@
                                             <constraints>
                                                 <constraint firstItem="Gj6-hf-78J" firstAttribute="leading" secondItem="bcr-s2-OKS" secondAttribute="trailing" constant="8" id="3MR-xh-BiP"/>
                                                 <constraint firstItem="bcr-s2-OKS" firstAttribute="leading" secondItem="lqY-3N-uyQ" secondAttribute="leadingMargin" id="4Q9-M8-sgn"/>
-                                                <constraint firstItem="Gj6-hf-78J" firstAttribute="firstBaseline" secondItem="XjQ-Kh-3Mp" secondAttribute="firstBaseline" constant="-2" id="8Np-u8-adD"/>
                                                 <constraint firstItem="mTK-kB-QiO" firstAttribute="centerY" secondItem="Gj6-hf-78J" secondAttribute="centerY" id="Bls-T7-Hs6"/>
                                                 <constraint firstItem="bcr-s2-OKS" firstAttribute="top" secondItem="lqY-3N-uyQ" secondAttribute="topMargin" constant="8" id="HPM-dY-pwI"/>
                                                 <constraint firstItem="mTK-kB-QiO" firstAttribute="leading" secondItem="Gj6-hf-78J" secondAttribute="trailing" constant="8" symbolic="YES" id="S7E-8H-aP9"/>
                                                 <constraint firstItem="mTK-kB-QiO" firstAttribute="firstBaseline" secondItem="Gj6-hf-78J" secondAttribute="firstBaseline" id="ZY0-Lg-jg0"/>
                                                 <constraint firstItem="bcr-s2-OKS" firstAttribute="firstBaseline" secondItem="Gj6-hf-78J" secondAttribute="firstBaseline" constant="2" id="e88-GN-Rsp"/>
-                                                <constraint firstItem="XjQ-Kh-3Mp" firstAttribute="leading" secondItem="mTK-kB-QiO" secondAttribute="trailing" constant="22" id="gjj-cw-p7W"/>
                                                 <constraint firstItem="bcr-s2-OKS" firstAttribute="centerY" secondItem="lqY-3N-uyQ" secondAttribute="centerY" id="k6m-n2-zg4"/>
-                                                <constraint firstAttribute="trailing" secondItem="XjQ-Kh-3Mp" secondAttribute="trailing" id="kiC-gd-AYH"/>
                                                 <constraint firstItem="bcr-s2-OKS" firstAttribute="baseline" secondItem="Gj6-hf-78J" secondAttribute="baseline" constant="2" id="mVo-ts-3QJ"/>
-                                                <constraint firstItem="Gj6-hf-78J" firstAttribute="baseline" secondItem="XjQ-Kh-3Mp" secondAttribute="baseline" constant="-2" id="z6r-lD-GGO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
