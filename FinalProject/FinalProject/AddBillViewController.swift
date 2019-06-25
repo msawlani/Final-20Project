@@ -131,7 +131,7 @@ class AddBillViewController: UIViewController {
 
 
     func checkInputFields() -> Bool {
-         let alert = UIAlertView()
+         let alert = UIAlertController()
         var check = true
         if amountTextField.text?.isEmpty ?? true {
             alert.title = "Amount is Empty"
@@ -159,8 +159,8 @@ class AddBillViewController: UIViewController {
             check = false
         }
         if check == false {
-        alert.addButton(withTitle: "OK")
-            alert.show()
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
         return check
     }

@@ -30,7 +30,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         super.viewDidLoad()
 
         
-        section.text = "Housing"
         editBillInicialData()
 
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
