@@ -153,7 +153,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell!.name.text = transaction.vendorName
         cell!.price.text = "$\(String(describing: transaction.amount))"
-        cell!.date.text = transaction.date.asString()
 
         return cell!
     }
@@ -190,8 +189,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
                 self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
                 self.Table.reloadData()
-                self.viewDidLoad()
-                self.viewWillAppear(true)
+                self.viewDidAppear(true)
+                
             }))
 
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
