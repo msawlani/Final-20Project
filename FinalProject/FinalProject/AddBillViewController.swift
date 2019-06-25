@@ -204,7 +204,7 @@ class AddBillViewController: UIViewController {
     @objc func doneDatePicker() {
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         dateTextField.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }

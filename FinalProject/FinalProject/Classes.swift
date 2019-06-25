@@ -175,7 +175,7 @@ class User: NSObject
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("yearly").setValue(self.bills[i].yearly)
 
             let date = self.bills[i].date
-            let dateString = "\(date.month)" + "/" + "\(date.day)" + "/" + "\(date.year)"
+            let dateString = date.asString()
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("date").setValue(dateString)
             i+=1
         }
