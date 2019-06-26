@@ -45,13 +45,14 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.reloadData()
         
         
-        transactionArray = [Transactions(sectionName: "Housing", TransactionList: []),
+        transactionArray = [Transactions(sectionName: "Income", TransactionList: []),
+                            Transactions(sectionName: "Housing", TransactionList: []),
                             Transactions(sectionName: "Food", TransactionList: []),
                             Transactions(sectionName: "Transportation", TransactionList: []),
                             Transactions(sectionName: "Lifestyle", TransactionList: []),
                             Transactions(sectionName: "Debts", TransactionList: []),
-                            Transactions(sectionName: "Miscellaneous", TransactionList: []),
-                            Transactions(sectionName: "Income", TransactionList: [])]
+                            Transactions(sectionName: "Miscellaneous", TransactionList: [])
+                            ]
 
 }
 

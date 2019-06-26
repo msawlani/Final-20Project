@@ -76,7 +76,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             self.navigationController?.popViewController(animated: true)
         }))
         
-            
+        
         self.present(alertController, animated: true)
     }
 
@@ -175,16 +175,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             transaction.amount = ((Double(priceString) ?? 0) * -1)
         }
        
-        if  let existingTransaction = existingPayment{
-            existingTransaction.vendorName = paymentName.text!
-            existingTransaction.amount = ((Double(paymentPrice.text!) ?? 0 ) * -1)
-            existingTransaction.category = section.text!
-            transaction = existingTransaction
-        }
-        else{
+
+    
             home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
             mainUser.accounts[0].AddTransaction(transaction: transaction)
-        }
+        
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -198,10 +193,21 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             section.text = "Income"
         }
 
-        let transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: date)
+        
+        
+        var transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: date)
 
+        if  let existingTransaction = existingPayment{
+            existingTransaction.vendorName = paymentName.text!
+            existingTransaction.amount = (Double(paymentPrice.text!) ?? 0 )
+            existingTransaction.category = section.text!
+            transaction = existingTransaction
+            return transaction
+        }
+        else{
 
         return transaction
+        }
     }
 
 }
