@@ -34,7 +34,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var usernameText: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
-
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -42,6 +43,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.delegate = self
         self.Table.dataSource = self
         self.Table.reloadData()
+        
+        
         transactionArray = [Transactions(sectionName: "Housing", TransactionList: []),
                             Transactions(sectionName: "Food", TransactionList: []),
                             Transactions(sectionName: "Transportation", TransactionList: []),
@@ -56,6 +59,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidAppear(animated)
 
         self.Table.reloadData()
+        addButton.tintColor = UIColor.white
+
 
         GetUser(userId: mainUser.userId, callback: { tempUser in
             mainUser = tempUser
@@ -177,6 +182,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) in
             let alert = UIAlertController(title: "Delete", message: "Delete a Transaction?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+
+            
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
 //                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
 //                let context = appDelegate.persistentContainer.viewContext
@@ -194,7 +202,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.viewWillAppear(true)
             }))
 
-            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
 
             self.present(alert, animated: true)
         })
