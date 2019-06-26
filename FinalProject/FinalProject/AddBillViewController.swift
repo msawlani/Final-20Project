@@ -63,7 +63,7 @@ class AddBillViewController: UIViewController {
             let amountString = amount.CurrencyInputFormatting()
             amountTextField.text = amountString
             let formatter = DateFormatter()
-            formatter.dateFormat = "MM/dd/yyyy"
+            formatter.dateFormat = "dd/MM/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
             autoPaySwitch.isOn = bill.autoPay
             categoryTextField.text = bill.category
@@ -108,7 +108,7 @@ class AddBillViewController: UIViewController {
 
     func createBill() -> Bill {
        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         let date = dateFormatter.date(from: dateTextField.text ?? "") ?? Date()
 
         let calendar = Calendar.current
@@ -117,7 +117,6 @@ class AddBillViewController: UIViewController {
                               year: calendar.component(.year, from: date))
 
         amountTextField.text?.removeFirst()
-        amountTextField.text = amountTextField.text?.replacingOccurrences(of: ",", with: "")
 
         let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
@@ -205,7 +204,7 @@ class AddBillViewController: UIViewController {
     @objc func doneDatePicker() {
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         dateTextField.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }

@@ -24,12 +24,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     let sectionPicker = UIPickerView()
     var selectedSection: String = ""
     var Sections = mainUser.categories
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+<<<<<<< HEAD
         
+=======
+>>>>>>> MasterBranch
         editBillInicialData()
         
         self.navigationItem.hidesBackButton = true
@@ -126,33 +128,27 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
 
     func checkInputFields() -> Bool {
-        let alert = UIAlertController()
+        let alert = UIAlertView()
         var check = true
         if paymentPrice.text?.isEmpty ?? true {
             alert.title = "Price is Empty"
             alert.message = "Please Fill the Price to Add Transaction"
             check = false
-        }else if paymentName.text?.isEmpty ?? true {
+        }
+        else if paymentName.text?.isEmpty ?? true {
             alert.title = "Name is Empty"
             alert.message = "Please Fill in the Name of Transaction"
             check = false
-        }else if section.text != "Housing" && section.text != "Food" && section.text != "Transportation" &&
-            section.text != "Lifestyle" && section.text != "Debts" && section.text != "Miscellanous" && section.text != "Income"{
-            alert.title = "Section not Correct"
-            alert.message = "Please Pick a Section that is listed"
-            check = false
         }
-    
         if check == false {
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
+            alert.addButton(withTitle: "OK")
+            alert.show()
         }
         return check
     }
     
     @objc func DoneButton(){
-        var priceString = String((paymentPrice.text?.dropFirst())!)
-        priceString = priceString.replacingOccurrences(of: ",", with: "")
+        let priceString = String((paymentPrice.text?.dropFirst())!)
         if checkInputFields() == false{
             return
         }
@@ -186,8 +182,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func createTransaction() -> Transaction {
         let date = DateStruct()
         paymentPrice.text?.removeFirst()
-        var priceString = String((paymentPrice.text?.dropFirst())!)
-        priceString = priceString.replacingOccurrences(of: ",", with: "")
+        let priceString = String((paymentPrice.text?.dropFirst())!)
         
         if section.isEnabled == false {
             section.text = "Income"
