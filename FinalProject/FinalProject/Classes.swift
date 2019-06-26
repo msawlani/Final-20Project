@@ -20,7 +20,7 @@ class User: NSObject
     var numAccounts, numBills, numCategories: Int
     var accounts: [Account] = []
     var bills: [Bill] = []
-    var categories: [String] = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous", "Income"]
+    var categories: [String] = ["Income", "Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous"]
     var ref:DatabaseReference?
 
     init(userId:String, password:String = "")

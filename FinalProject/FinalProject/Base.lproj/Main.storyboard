@@ -638,7 +638,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" red="0.0" green="0.40531929100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="AddBill:" destination="9pv-A4-QxB" eventType="touchUpInside" id="yhS-c5-Tu8"/>
                                 </connections>
@@ -647,6 +649,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="Table" destination="haK-Vc-d8i" id="kQJ-5N-NNP"/>
+                        <outlet property="addButton" destination="3Y9-CG-5Yr" id="Mqu-Zw-apx"/>
                         <outlet property="balanceText" destination="DzM-AJ-dmM" id="aZ6-Ga-Y4Z"/>
                         <outlet property="imageView" destination="5yk-ZP-6Nt" id="NNn-IF-tLu"/>
                         <outlet property="usernameText" destination="Qo4-R3-7tb" id="zTs-Si-Siz"/>
@@ -964,7 +967,9 @@
                                 <rect key="frame" x="20" y="4" width="113" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="&lt; Main Login"/>
+                                <state key="normal" title="&lt; Main Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="Back:" destination="Py8-Hx-gcU" eventType="touchUpInside" id="hg7-L0-xMY"/>
                                 </connections>
@@ -1415,7 +1420,7 @@
         <image name="useimgplaceholder" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FZ2-LL-4zt"/>
+        <segue reference="v8B-T4-TqX"/>
         <segue reference="gUK-VQ-dnK"/>
     </inferredMetricsTieBreakers>
 </document>
