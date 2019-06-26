@@ -16,7 +16,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var paymentName: UITextField!
     @IBOutlet weak var paymentPrice: UITextField!
     @IBOutlet weak var section: UITextField!
-    
+
     public var existingPayment: Transaction?
     public var index: Int?
     public var indexSection: Int?
@@ -28,12 +28,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-<<<<<<< HEAD
-        
-=======
->>>>>>> MasterBranch
+
         editBillInicialData()
-        
+
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -43,7 +40,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneButton))
         self.navigationItem.rightBarButtonItem = doneButton
-        
+
         doneButton.tintColor = UIColor.white
 
         createPickerView()
@@ -71,14 +68,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     @objc func back(sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
-        
+
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-        
+
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
             self.navigationController?.popViewController(animated: true)
         }))
-        
-        
+
+
         self.present(alertController, animated: true)
     }
 
@@ -113,15 +110,15 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             textField.text = amountString
         }
     }
-    
+
     func editBillInicialData() {
         if let transaction = existingPayment {
-            
+
             let amount = String(describing: (transaction.amount * 10))
             let amountString = amount.CurrencyInputFormatting()
             paymentName.text = transaction.vendorName
             paymentPrice.text = amountString
-            
+
             section.text = transaction.category
         }
     }
@@ -146,7 +143,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
         return check
     }
-    
+
     @objc func DoneButton(){
         let priceString = String((paymentPrice.text?.dropFirst())!)
         if checkInputFields() == false{
@@ -154,7 +151,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
 
         var transaction = createTransaction()
-        
+
 
         guard let home = self.navigationController?.viewControllers.first as? FirstViewController else {
             return
@@ -163,19 +160,19 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         if let indexPathRow = index, let indexPathSection = indexSection{
             home.transactionArray[indexPathSection].TransactionList.remove(at: indexPathRow)
         }
-        
+
         if  section.text == "Income"{
             transaction.amount = (Double(priceString) ?? 0)
         }
         else{
             transaction.amount = ((Double(priceString) ?? 0) * -1)
         }
-       
 
-    
+
+
             home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
             mainUser.accounts[0].AddTransaction(transaction: transaction)
-        
+
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -183,13 +180,13 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let date = DateStruct()
         paymentPrice.text?.removeFirst()
         let priceString = String((paymentPrice.text?.dropFirst())!)
-        
+
         if section.isEnabled == false {
             section.text = "Income"
         }
 
-        
-        
+
+
         var transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: date)
 
         if  let existingTransaction = existingPayment{
