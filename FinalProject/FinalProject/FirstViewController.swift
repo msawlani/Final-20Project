@@ -168,8 +168,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
         cell!.name.text = transaction.vendorName
-        //cell!.price.text = "$\(String(describing: transaction.amount))"
-        cell!.date.text = transaction.date.asString()
+        //cell!.date.text = transaction.date.asString()
 
         var amountString = String(format: "$%.02f", transaction.amount)
         if (transaction.amount < 0)
