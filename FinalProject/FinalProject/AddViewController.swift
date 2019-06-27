@@ -122,7 +122,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             let amountString = amount.CurrencyInputFormatting()
             paymentName.text = transaction.vendorName
             paymentPrice.text = amountString
-
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/yyyy"
+            dateTextField.text = formatter.string(from: transaction.date.createDate())
             section.text = transaction.category
         }
     }
