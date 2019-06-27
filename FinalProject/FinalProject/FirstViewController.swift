@@ -17,16 +17,16 @@ var TransactionListCell: TransactionListViewCell?
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
 
-    
+
+
     struct Transactions {
         var sectionName: String!
         var TransactionList: [Transaction] = []
     }
 
     var transactionArray = [Transactions]()
-    
+
 
     @IBOutlet weak var Table: UITableView!
 
@@ -35,7 +35,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var addButton: UIBarButtonItem!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,8 +43,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.delegate = self
         self.Table.dataSource = self
         self.Table.reloadData()
-        
-        
+
+
         transactionArray = [Transactions(sectionName: "Income", TransactionList: []),
                             Transactions(sectionName: "Housing", TransactionList: []),
                             Transactions(sectionName: "Food", TransactionList: []),
@@ -71,12 +71,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 mainUser.imageURL = googleUser.profile.imageURL(withDimension: 112)
                 mainUser.firstName = googleUser.profile.givenName
                 mainUser.lastName = googleUser.profile.familyName
-                
+
                 // Start background thread so that image loading does not make app unresponsive
                 DispatchQueue.global(qos: .userInitiated).async {
-                    
+
                     let imageData:NSData = NSData(contentsOf: mainUser.imageURL!)!
-                    
+
                     // When from background thread, UI needs to be updated on main_queue
                     DispatchQueue.main.async {
                         let image = UIImage(data: imageData as Data)
@@ -90,20 +90,30 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 mainUser.email = userEmail
             }
             mainUser.StoreInFirebase()
-            self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
+
+            var balanceString = String(format: "$%.02f", mainUser.accounts[0].balance)
+            if (mainUser.accounts[0].balance < 0)
+            {
+                var stringArray = Array(balanceString)
+                stringArray[0] = "-"
+                stringArray[1] = "$"
+                balanceString = String(stringArray)
+            }
+
+            self.balanceText.text = String(balanceString)
             self.usernameText.text = mainUser.email
-        
-            
-            
+
+
+
             var i = 0
             var j = 0
             while i < NUMDEFAULTCATS{
                 self.transactionArray[i].TransactionList.removeAll()
                 i+=1
-                
+
             }
             i = 0
-            
+
             while i < mainUser.accounts[0].transactions.count
             {
                 j = 0
@@ -119,7 +129,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         })
         //Justin
 
-    
+
 }
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -135,15 +145,15 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+
         if section < transactionArray.count {
             return transactionArray[section].sectionName
 
         }
         return nil
-        
+
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
 
         return transactionArray.count
@@ -152,22 +162,34 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     //populates the cells using the data - Michael
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TransactionListViewCell
-        
+
         let transaction = transactionArray[indexPath.section].TransactionList[indexPath.row]
         //let test = testList[indexPath.row]
-        
-        
+
+
         cell!.name.text = transaction.vendorName
-        cell!.price.text = "$\(String(describing: transaction.amount))"
+        //cell!.price.text = "$\(String(describing: transaction.amount))"
+        cell!.date.text = transaction.date.asString()
+
+        var amountString = String(format: "$%.02f", transaction.amount)
+        if (transaction.amount < 0)
+        {
+            var stringArray = Array(amountString)
+            stringArray[0] = "-"
+            stringArray[1] = "$"
+            amountString = String(stringArray)
+        }
+
+        cell!.price.text = String(amountString)
 
         return cell!
     }
-    
+
 
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
-            
+
             let transaction = self.transactionArray[indexPath.section].TransactionList[indexPath.row]
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "addViewController") as? AddViewController
             vc?.existingPayment = transaction
@@ -178,17 +200,17 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
         })
-        
+
 
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) in
             let alert = UIAlertController(title: "Delete", message: "Delete a Transaction?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
 
-            
+
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
 //                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
 //                let context = appDelegate.persistentContainer.viewContext
-                
+
                 var indexString = self.transactionArray[indexPath.section].TransactionList[indexPath.row].transactionNum
                 indexString = String(indexString.dropFirst(11))
                 let index = Int(indexString)
@@ -196,17 +218,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
-                self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
                 self.Table.reloadData()
                 self.viewDidAppear(true)
-                
+
             }))
 
 
             self.present(alert, animated: true)
         })
 
-        
+
         deleteAction.backgroundColor = .red
         editAction.backgroundColor = .blue
         return[deleteAction, editAction]
@@ -218,11 +239,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
             return
         }
-        
-        
+
+
         //self.push(viewController, animated: false, completion: nil)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
-  
+
+
 }
