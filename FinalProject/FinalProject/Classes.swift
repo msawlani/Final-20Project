@@ -243,6 +243,14 @@ class Account
         mainUser.StoreInFirebase()
     }
     
+    func EditTransaction(newTransaction: Transaction)
+    {
+        var indexString = newTransaction.transactionNum
+        indexString = String(indexString.dropFirst(11))
+        let index = Int(indexString)
+        
+    }
+    
     func getCategoryTotal(categoryNum: Int) -> Double
     {
         var total = 0.0
