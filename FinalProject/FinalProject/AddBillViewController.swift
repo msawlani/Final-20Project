@@ -27,7 +27,7 @@ class AddBillViewController: UIViewController {
     private let repeatCategoryPickerView = UIPickerView()
 
     enum Constants {
-        static let categories = mainUser.categories.dropLast()
+        static let categories = mainUser.categories.dropFirst()
         static let repeatCategories = ["On the day", "1 day before", "2 days before", "1 week before"]
     }
 
