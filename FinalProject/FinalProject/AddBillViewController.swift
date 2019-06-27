@@ -59,11 +59,11 @@ class AddBillViewController: UIViewController {
     func editBillInicialData() {
         if let bill = editBill {
             nameTextField.text = bill.billName
-            let amount = String(describing: (bill.amount))
+            let amount = String(describing: (bill.amount * 10))
             let amountString = amount.CurrencyInputFormatting()
             amountTextField.text = amountString
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
+            formatter.dateFormat = "MM/dd/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
             autoPaySwitch.isOn = bill.autoPay
             categoryTextField.text = bill.category
@@ -108,7 +108,7 @@ class AddBillViewController: UIViewController {
 
     func createBill() -> Bill {
        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         let date = dateFormatter.date(from: dateTextField.text ?? "") ?? Date()
 
         let calendar = Calendar.current

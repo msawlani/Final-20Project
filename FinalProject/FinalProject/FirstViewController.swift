@@ -218,8 +218,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
                 self.Table.reloadData()
-                self.viewDidAppear(true)
-
+                
+                self.viewWillAppear(true)
+                self.viewDidLoad()
             }))
 
 
