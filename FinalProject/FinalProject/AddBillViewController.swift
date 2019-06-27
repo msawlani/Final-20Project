@@ -117,7 +117,8 @@ class AddBillViewController: UIViewController {
                               year: calendar.component(.year, from: date))
 
         amountTextField.text?.removeFirst()
-
+        amountTextField.text = amountTextField.text?.replacingOccurrences(of: ",", with: "")
+        
         let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
