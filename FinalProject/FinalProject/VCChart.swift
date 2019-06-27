@@ -21,7 +21,7 @@ class VCChart: UIViewController {
     @IBOutlet weak var MiscVal: UILabel!
     
 
-
+//Initialize data entries
     var dataEntryHousing = PieChartDataEntry(value: 0)
     var dataEntryFood = PieChartDataEntry(value: 0)
     var dataEntryTransportation = PieChartDataEntry(value: 0)
@@ -30,8 +30,47 @@ class VCChart: UIViewController {
     var dataEntryMiscellaneous = PieChartDataEntry(value: 0)
     var dataEntriesArray = [PieChartDataEntry]()
 
+    let shapeLayer = CAShapeLayer()
+    let trackLayer = CAShapeLayer()
+    
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
+        
+        //draw circle
+        var center = view.center
+        center.y = 250
+      
+        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
+        
+        trackLayer.path = circularPath.cgPath
+        
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 10
+        trackLayer.lineCap = CAShapeLayerLineCap.round
+        trackLayer.fillColor = UIColor.clear.cgColor
+        
+        view.layer.addSublayer(trackLayer)
+        
+        
+        
+        
+        
+       // let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
+        
+        shapeLayer.path = circularPath.cgPath
+            
+        shapeLayer.strokeColor = UIColor.red.cgColor
+        shapeLayer.lineWidth = 10
+        shapeLayer.strokeEnd = 0
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        
+        view.layer.addSublayer(shapeLayer)
+        
+        
+        
+        
+        
         //Pie Chart Configuration
         pieChart.chartDescription?.text = "Expenses Overview"
        //setting values of the data entries
@@ -71,6 +110,22 @@ class VCChart: UIViewController {
 
 
     func updateChartData(){
+        
+        //animation for percentage progress bar
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.toValue = 1
+        basicAnimation.duration = 2
+        
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+        basicAnimation.isRemovedOnCompletion = false
+        
+        shapeLayer.add(basicAnimation, forKey: "aniBasic")
+        
+        
+        
+        
+        
+        
         
         pieChart.data?.clearValues()
     

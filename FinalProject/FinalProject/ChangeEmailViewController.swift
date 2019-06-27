@@ -18,8 +18,23 @@ class ChangeEmailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ChangeEmailViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        newBackButton.tintColor = UIColor.white
     }
-    
+    @objc func back(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        
+        self.present(alertController, animated: true)
+    }
     @IBAction func ChangeEmail(_ sender: Any) {
         guard let email = emailFieldText.text else {return}
         

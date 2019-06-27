@@ -40,7 +40,10 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func Logout(_ sender: Any) {
             let alert = UIAlertController(title: "Logging Out? ", message: "Are you Sure you Want to Logout?", preferredStyle: .alert)
-            
+        
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+
+        
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
                 do{
                     try Auth.auth().signOut()
@@ -52,8 +55,7 @@ class SettingsViewController: UIViewController {
                 
             }))
             
-            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-            
+        
             self.present(alert, animated: true)
         
     }
