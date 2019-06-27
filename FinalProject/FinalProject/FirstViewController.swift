@@ -53,7 +53,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                             Transactions(sectionName: "Debts", TransactionList: []),
                             Transactions(sectionName: "Miscellaneous", TransactionList: [])
                             ]
-
+        
+        
 }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +62,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         self.Table.reloadData()
         addButton.tintColor = UIColor.white
-
+        
 
         GetUser(userId: mainUser.userId, callback: { tempUser in
             mainUser = tempUser
