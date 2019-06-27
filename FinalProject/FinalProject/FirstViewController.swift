@@ -144,10 +144,34 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactionArray[section].TransactionList.count
     }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            if section == 0{
+            header.backgroundView?.backgroundColor = UIColor.green
+            }else if section == 1{
+                header.backgroundView?.backgroundColor = UIColor(red:0.45, green:0.73, blue:1.00, alpha:1.0)
+            }else if section == 2{
+                header.backgroundView?.backgroundColor = UIColor(red:0.33, green:0.94, blue:0.77, alpha:1.0)
+            }else if section == 3{
+                header.backgroundView?.backgroundColor = UIColor(red:0.63, green:0.50, blue:0.23, alpha:1.0)
+            }else if section == 4{
+                header.backgroundView?.backgroundColor = UIColor(red:0.99, green:0.47, blue:0.66, alpha:1.0)
+            }else if section == 5{
+                header.backgroundView?.backgroundColor = UIColor(red:0.84, green:0.19, blue:0.19, alpha:1.0)
+            }else if section == 6{
+                header.backgroundView?.backgroundColor = UIColor(red:0.70, green:0.75, blue:0.76, alpha:1.0)
+            }
+            
+        }
+    }
 
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 
         if section < transactionArray.count {
+
+            
+            
             return transactionArray[section].sectionName
 
         }
