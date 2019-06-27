@@ -28,7 +28,7 @@ class AddBillViewController: UIViewController {
 
     enum Constants {
         static let categories = mainUser.categories.dropLast()
-        static let repeatCategories = ["On the day", "1 day before", "2 days before", "1 week before"]
+        static let repeatCategories = ["None","On the day", "1 day before", "2 days before", "1 week before"]
     }
 
     override func viewDidLoad() {
