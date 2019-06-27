@@ -34,7 +34,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var usernameText: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
-
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -42,13 +43,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.delegate = self
         self.Table.dataSource = self
         self.Table.reloadData()
-        transactionArray = [Transactions(sectionName: "Housing", TransactionList: []),
+        
+        
+        transactionArray = [Transactions(sectionName: "Income", TransactionList: []),
+                            Transactions(sectionName: "Housing", TransactionList: []),
                             Transactions(sectionName: "Food", TransactionList: []),
                             Transactions(sectionName: "Transportation", TransactionList: []),
                             Transactions(sectionName: "Lifestyle", TransactionList: []),
                             Transactions(sectionName: "Debts", TransactionList: []),
-                            Transactions(sectionName: "Miscellaneous", TransactionList: []),
-                            Transactions(sectionName: "Income", TransactionList: [])]
+                            Transactions(sectionName: "Miscellaneous", TransactionList: [])
+                            ]
 
 }
 
@@ -56,6 +60,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidAppear(animated)
 
         self.Table.reloadData()
+        addButton.tintColor = UIColor.white
+
 
         GetUser(userId: mainUser.userId, callback: { tempUser in
             mainUser = tempUser
@@ -153,7 +159,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell!.name.text = transaction.vendorName
         cell!.price.text = "$\(String(describing: transaction.amount))"
-        cell!.date.text = transaction.date.asString()
 
         return cell!
     }
@@ -177,6 +182,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) in
             let alert = UIAlertController(title: "Delete", message: "Delete a Transaction?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+
+            
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
 //                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
 //                let context = appDelegate.persistentContainer.viewContext
@@ -190,11 +198,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
                 self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
                 self.Table.reloadData()
-                self.viewDidLoad()
-                self.viewWillAppear(true)
+                self.viewDidAppear(true)
+                
             }))
 
-            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
 
             self.present(alert, animated: true)
         })
