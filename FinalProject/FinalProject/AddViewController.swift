@@ -25,6 +25,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     let sectionPicker = UIPickerView()
     private let datePicker = UIDatePicker()
     var selectedSection: String = ""
+    var oldAmount: Double?
     var Sections = mainUser.categories
 
     override func viewDidLoad() {
@@ -117,7 +118,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     func editBillInicialData() {
         if let transaction = existingPayment {
-
+            
+            oldAmount = transaction.amount
             let amount = String(describing: (transaction.amount * 10))
             let amountString = amount.CurrencyInputFormatting()
             paymentName.text = transaction.vendorName
@@ -178,7 +180,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
 
         if  transaction.transactionNum != ""{
-            mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: existingPayment!.amount)
+            mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: oldAmount!)
         }
         else {
         mainUser.accounts[0].AddTransaction(transaction: transaction)
