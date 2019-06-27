@@ -16,17 +16,21 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var paymentName: UITextField!
     @IBOutlet weak var paymentPrice: UITextField!
     @IBOutlet weak var section: UITextField!
-
+    @IBOutlet weak var dateTextField: UITextField!
+    
     public var existingPayment: Transaction?
     public var index: Int?
     public var indexSection: Int?
 
     let sectionPicker = UIPickerView()
+    private let datePicker = UIDatePicker()
     var selectedSection: String = ""
     var Sections = mainUser.categories
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        showDatePicker()
 
 
         editBillInicialData()
@@ -175,11 +179,39 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func showDatePicker() {
+        
+        datePicker.datePickerMode = .date
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneDatePicker))
+        toolbar.setItems([donePickerButton], animated: true)
+        
+        dateTextField.inputView = datePicker
+        dateTextField.inputAccessoryView = toolbar
+    }
+
+    @objc func doneDatePicker() {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        dateTextField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
 
     func createTransaction() -> Transaction {
-        let date = DateStruct()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: dateTextField.text ?? "") ?? Date()
+        let calendar = Calendar.current
         paymentPrice.text?.removeFirst()
         let priceString = String((paymentPrice.text?.dropFirst())!)
+        let customDate = DateStruct(month: calendar.component(.month, from: date),
+                                    day: calendar.component(.day, from: date),
+                                    year: calendar.component(.year, from: date))
 
         if section.isEnabled == false {
             section.text = "Income"
@@ -187,7 +219,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
 
 
-        var transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: date)
+        var transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: customDate)
 
         if  let existingTransaction = existingPayment{
             existingTransaction.vendorName = paymentName.text!
