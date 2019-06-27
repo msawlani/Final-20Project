@@ -84,7 +84,17 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 mainUser.email = userEmail
             }
             mainUser.StoreInFirebase()
-            self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
+            
+            var balanceString = String(format: "$%.02f", mainUser.accounts[0].balance)
+            if (mainUser.accounts[0].balance < 0)
+            {
+                var stringArray = Array(balanceString)
+                stringArray[0] = "-"
+                stringArray[1] = "$"
+                balanceString = String(stringArray)
+            }
+
+            self.balanceText.text = String(balanceString)
             self.usernameText.text = mainUser.email
         
             
@@ -152,8 +162,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
         cell!.name.text = transaction.vendorName
-        cell!.price.text = "$\(String(describing: transaction.amount))"
+        //cell!.price.text = "$\(String(describing: transaction.amount))"
         cell!.date.text = transaction.date.asString()
+        
+        var amountString = String(format: "$%.02f", transaction.amount)
+        if (transaction.amount < 0)
+        {
+            var stringArray = Array(amountString)
+            stringArray[0] = "-"
+            stringArray[1] = "$"
+            amountString = String(stringArray)
+        }
+        
+        cell!.price.text = String(amountString)
 
         return cell!
     }
@@ -188,7 +209,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
-                self.balanceText.text = String(format: "$%.02f", mainUser.accounts[0].balance)
                 self.Table.reloadData()
                 self.viewDidLoad()
                 self.viewWillAppear(true)
