@@ -17,7 +17,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var paymentPrice: UITextField!
     @IBOutlet weak var section: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
-    
+
     public var existingPayment: Transaction?
     public var index: Int?
     public var indexSection: Int?
@@ -176,7 +176,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
 
         home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
-        
+
         if  transaction.transactionNum != ""{
             mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: existingPayment!.amount)
         }
@@ -186,23 +186,23 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         self.navigationController?.popViewController(animated: true)
     }
-    
+
     func showDatePicker() {
-        
+
         datePicker.datePickerMode = .date
-        
+
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        
+
         let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneDatePicker))
         toolbar.setItems([donePickerButton], animated: true)
-        
+
         dateTextField.inputView = datePicker
         dateTextField.inputAccessoryView = toolbar
     }
 
     @objc func doneDatePicker() {
-        
+
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         dateTextField.text = formatter.string(from: datePicker.date)
@@ -215,15 +215,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let date = dateFormatter.date(from: dateTextField.text ?? "") ?? Date()
         let calendar = Calendar.current
         paymentPrice.text?.removeFirst()
-<<<<<<< HEAD
         var priceString = String((paymentPrice.text?.dropFirst())!)
         priceString = priceString.replacingOccurrences(of: ",", with: "")
-=======
-        let priceString = String((paymentPrice.text?.dropFirst())!)
         let customDate = DateStruct(month: calendar.component(.month, from: date),
                                     day: calendar.component(.day, from: date),
                                     year: calendar.component(.year, from: date))
->>>>>>> Michael
 
         if section.isEnabled == false {
             section.text = "Income"

@@ -673,111 +673,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="veU-jv-KyV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="514"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-r7-xVG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndW-0H-Khk">
-                                                <rect key="frame" x="8" y="8" width="137" height="155"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="137" id="NYg-hE-gza"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD2-fl-ewy">
-                                                <rect key="frame" x="287.66666666666669" y="70" width="118.33333333333331" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="CD2-fl-ewy" secondAttribute="height" multiplier="19:5" id="8B3-Ov-SED"/>
-                                                    <constraint firstAttribute="width" constant="114" id="JSS-Qh-Jfy"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
+
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-r7-xVG">
                                 <rect key="frame" x="0.0" y="44" width="414" height="171"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndW-0H-Khk">
                                         <rect key="frame" x="8" y="8" width="137" height="155"/>
->>>>>>> Michael
+
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ndW-0H-Khk" secondAttribute="height" multiplier="137:155" id="3UC-uc-Olz"/>
                                             <constraint firstAttribute="width" constant="137" id="pFc-iF-GvV"/>
                                         </constraints>
-<<<<<<< HEAD
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J11-Mc-f6b">
-                                        <rect key="frame" x="0.0" y="171.33333333333331" width="414" height="171.33333333333331"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-jt-xo9">
-                                                <rect key="frame" x="8" y="8" width="137" height="155.33333333333334"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="137" id="lLn-pW-TE9"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8j7-Sy-ikZ">
-                                                <rect key="frame" x="289.66666666666669" y="70.999999999999972" width="116.33333333333331" height="29.333333333333329"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="8j7-Sy-ikZ" secondAttribute="height" multiplier="4:1" id="bq4-0h-xyY"/>
-                                                    <constraint firstAttribute="width" constant="120" id="h4R-8Q-gdV"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
+
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD2-fl-ewy">
                                         <rect key="frame" x="288" y="70" width="118" height="31"/>
->>>>>>> Michael
                                         <constraints>
                                             <constraint firstAttribute="width" constant="118" id="EWx-4P-gTy"/>
                                             <constraint firstAttribute="width" secondItem="CD2-fl-ewy" secondAttribute="height" multiplier="118:31" id="Eme-Hf-9BC"/>
                                         </constraints>
-<<<<<<< HEAD
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFP-Se-b8p">
-                                        <rect key="frame" x="0.0" y="343" width="414" height="171"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uy-RN-ViM">
-                                                <rect key="frame" x="8" y="8" width="137" height="155"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="137" id="GzA-xQ-hmw"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Adw-9J-SBH">
-                                                <rect key="frame" x="281.66666666666669" y="70" width="124.33333333333331" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="1uy-r8-XlH"/>
-                                                    <constraint firstAttribute="width" secondItem="Adw-9J-SBH" secondAttribute="height" multiplier="4:1" id="gM0-u9-QTv"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
+
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -799,7 +717,6 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8j7-Sy-ikZ">
                                         <rect key="frame" x="290" y="71" width="116" height="29"/>
->>>>>>> Michael
                                         <constraints>
                                             <constraint firstAttribute="width" constant="116" id="PCh-Z4-QGf"/>
                                             <constraint firstAttribute="width" secondItem="8j7-Sy-ikZ" secondAttribute="height" multiplier="4:1" id="YoH-on-Tpg"/>
