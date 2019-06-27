@@ -243,12 +243,18 @@ class Account
         mainUser.StoreInFirebase()
     }
     
-    func EditTransaction(newTransaction: Transaction)
+    func EditTransaction(newTransaction: Transaction, oldAmount: Double)
     {
         var indexString = newTransaction.transactionNum
         indexString = String(indexString.dropFirst(11))
-        let index = Int(indexString)
+        let index = Int(indexString)!
         
+        balance -= oldAmount
+        balance += newTransaction.amount
+        
+        mainUser.accounts[0].transactions[index] = newTransaction
+        
+        mainUser.StoreInFirebase()
     }
     
     func getCategoryTotal(categoryNum: Int) -> Double

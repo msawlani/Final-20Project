@@ -170,8 +170,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
 
 
-            home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
-            mainUser.accounts[0].AddTransaction(transaction: transaction)
+        home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+        
+        if  transaction.transactionNum != ""{
+            mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: existingPayment!.amount)
+        }
+        else {
+        mainUser.accounts[0].AddTransaction(transaction: transaction)
+        }
 
         self.navigationController?.popViewController(animated: true)
     }
