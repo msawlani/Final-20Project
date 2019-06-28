@@ -37,6 +37,35 @@ class AddBillViewController: UIViewController {
         amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
     }
 
+    override func willMove(toParent parent: UIViewController?)
+    {
+        super.willMove(toParent: parent)
+        if parent == nil
+        {
+            //TODO:
+            //CHECK IF USER INPUT ANYTHING SIMILAR TO CheckInputFields
+            
+            //If you want to show modal
+            // IF == true {
+            // Show modal.
+           //https://stackoverflow.com/questions/4988564/how-to-implement-a-pop-up-dialog-box-in-ios
+            let alert = UIAlertController(title: "Hello!", message: "Message", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "Go Back!", style: UIAlertAction.Style.default) { (UIAlertAction) -> Void in
+                
+                
+            }
+            let okayAction = UIAlertAction(title: "Ok!", style: UIAlertAction.Style.default) { (UIAlertAction) -> Void in
+                
+                
+            }
+            alert.addAction(alertAction)
+            alert.addAction(okayAction)
+            present(alert, animated: true) { () -> Void in
+                
+            }
+        }
+    }
+    
     private func installView() {
 
         showDatePicker()
@@ -88,7 +117,9 @@ class AddBillViewController: UIViewController {
             return
         }
 
-        let bill = createBill()
+        guard let bill = createBill() else {
+            return
+        }
 
         guard let home = self.navigationController?.viewControllers.first as? SecondViewController else {
             return
@@ -106,10 +137,13 @@ class AddBillViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    func createBill() -> Bill {
+    func createBill() -> Bill? {
        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let date = dateFormatter.date(from: dateTextField.text ?? "") ?? Date()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        guard let date = dateFormatter.date(from: dateTextField.text ?? "") else {
+            assertionFailure("Error on date parsers")
+            return nil
+        }
 
         let calendar = Calendar.current
         let customDate = DateStruct(month: calendar.component(.month, from: date),
@@ -128,7 +162,6 @@ class AddBillViewController: UIViewController {
         return bill
     }
 
-
     func checkInputFields() -> Bool {
          let alert = UIAlertController()
         var check = true
@@ -136,6 +169,17 @@ class AddBillViewController: UIViewController {
             alert.title = "Amount is Empty"
             alert.message = "Please Fill the Amount to add a Bill"
             check = false
+        }
+        else if let amount = amountTextField.text {
+            var amountFormatted: String = amount
+            amountFormatted = amountFormatted.replacingOccurrences(of: ",", with: "")
+            amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
+            //amountFormatted = amount.replacingOccurrences(of: ".", with: "")
+            if let value = Double(amountFormatted), value > 100000.00 {
+                alert.title = "Name is Empty"
+                alert.message = "Please Fill the Name to add a Bill"
+                check = false
+            }
         }
         else if nameTextField.text?.isEmpty ?? true{
             alert.title = "Name is Empty"
@@ -180,7 +224,7 @@ class AddBillViewController: UIViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
 
-        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneCategoryPicker))
+        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneRepeatPicker))
         toolbar.setItems([donePickerButton], animated: true)
 
         repeatCategoryTextField.inputView = repeatCategoryPickerView
@@ -210,8 +254,17 @@ class AddBillViewController: UIViewController {
     }
 
     @objc func doneCategoryPicker() {
+        let row =  categoryPickerView.selectedRow(inComponent: 0)
+        pickerView(categoryPickerView, didSelectRow: row, inComponent: 0)
         self.view.endEditing(true)
     }
+    
+    @objc func doneRepeatPicker() {
+        let row =  repeatCategoryPickerView.selectedRow(inComponent: 0)
+        pickerView(repeatCategoryPickerView, didSelectRow: row, inComponent: 0)
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension AddBillViewController: UITextFieldDelegate {
