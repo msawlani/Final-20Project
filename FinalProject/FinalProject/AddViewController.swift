@@ -99,6 +99,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     @objc func Done(){
         section.text = selectedSection
+        let row = sectionPicker.selectedRow(inComponent: 0)
+        pickerView(sectionPicker, didSelectRow: row, inComponent: 0)
         self.view.endEditing(true)
     }
 
@@ -129,35 +131,15 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
     }
 
-
-    func checkInputFields() -> Bool {
-        let alert = UIAlertView()
-        var check = true
-        if paymentPrice.text?.isEmpty ?? true {
-            alert.title = "Price is Empty"
-            alert.message = "Please Fill the Price to Add Transaction"
-            check = false
-        }
-        else if paymentName.text?.isEmpty ?? true {
-            alert.title = "Name is Empty"
-            alert.message = "Please Fill in the Name of Transaction"
-            check = false
-        }
-        if check == false {
-            alert.addButton(withTitle: "OK")
-            alert.show()
-        }
-        return check
-    }
-
     @objc func DoneButton(){
         var priceString = String((paymentPrice.text?.dropFirst())!)
         priceString = priceString.replacingOccurrences(of: ",", with: "")
-        if checkInputFields() == false{
+        
+        if checkInput() == false{
             return
         }
 
-        var transaction = createTransaction()
+        let transaction = createTransaction()
 
 
         guard let home = self.navigationController?.viewControllers.first as? FirstViewController else {
@@ -188,6 +170,48 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func checkInput() -> Bool{
+        var check = true
+        if paymentPrice.text?.isEmpty ?? true {
+            let alert = UIAlertController(title: "Failed to add transaction", message: "Price is empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            check = false
+
+            
+        }
+        else if paymentName.text?.isEmpty ?? true {
+            let alert = UIAlertController(title: "Failed to add transaction", message: "Name is empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            check = false
+
+        }
+        else if section.text?.isEmpty ?? true {
+            let alert = UIAlertController(title: "Failed to add transaction", message: "Section is empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            check = false
+
+        }
+        else if dateTextField.text?.isEmpty ?? true {
+            let alert = UIAlertController(title: "Failed to add transaction", message: "Date is empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            check = false
+
+        }
+        else if section.text != "Housing" && section.text != "Food" && section.text != "Transportation" &&
+            section.text != "Lifestyle" && section.text != "Debts" && section.text != "Miscellanous" && section.text != "Income"{
+            
+            let alert = UIAlertController(title: "Failed to add transaction", message: "Please select a section that is listed ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            check = false
+        }
+        return check
+    }
 
     func showDatePicker() {
 
@@ -208,6 +232,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         dateTextField.text = formatter.string(from: datePicker.date)
+        
         self.view.endEditing(true)
     }
 
