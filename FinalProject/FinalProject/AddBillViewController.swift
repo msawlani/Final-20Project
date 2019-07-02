@@ -44,7 +44,6 @@ class AddBillViewController: UIViewController {
         {
             //TODO:
             //CHECK IF USER INPUT ANYTHING SIMILAR TO CheckInputFields
-            
             //If you want to show modal
             // IF == true {
             // Show modal.
@@ -176,8 +175,8 @@ class AddBillViewController: UIViewController {
             amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
             //amountFormatted = amount.replacingOccurrences(of: ".", with: "")
             if let value = Double(amountFormatted), value > 100000.00 {
-                alert.title = "Name is Empty"
-                alert.message = "Please Fill the Name to add a Bill"
+                alert.title = "Amount is over limit"
+                alert.message = "The limit is 100000.00, Please fill within the range"
                 check = false
             }
         }
