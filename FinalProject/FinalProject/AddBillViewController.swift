@@ -34,35 +34,71 @@ class AddBillViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         installView()
+        overrideBackButton()
         amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
     }
-
-    override func willMove(toParent parent: UIViewController?)
-    {
-        super.willMove(toParent: parent)
-        if parent == nil
-        {
-            //TODO:
-            //CHECK IF USER INPUT ANYTHING SIMILAR TO CheckInputFields
-            //If you want to show modal
-            // IF == true {
-            // Show modal.
-           //https://stackoverflow.com/questions/4988564/how-to-implement-a-pop-up-dialog-box-in-ios
-            let alert = UIAlertController(title: "Hello!", message: "Message", preferredStyle: UIAlertController.Style.alert)
-            let alertAction = UIAlertAction(title: "Go Back!", style: UIAlertAction.Style.default) { (UIAlertAction) -> Void in
-                
-                
+    
+    func overrideBackButton() {
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonAction))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    
+    @objc func backButtonAction() {
+        
+        
+        if isFieldsEmpty() == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Are you sure?", message: "If you proceed, all the data on this page will be lost", preferredStyle: UIAlertController.Style.alert)
+            
+            let alertAction = UIAlertAction(title: "Go", style: .default) { [weak self] (action) in
+                self?.navigationController?.popViewController(animated: true)
             }
-            let okayAction = UIAlertAction(title: "Ok!", style: UIAlertAction.Style.default) { (UIAlertAction) -> Void in
-                
-                
-            }
+            
+            let goBackAction = UIAlertAction(title: "Stay", style: .default)
+            
             alert.addAction(alertAction)
-            alert.addAction(okayAction)
-            present(alert, animated: true) { () -> Void in
-                
-            }
+            alert.addAction(goBackAction)
+            
+            present(alert, animated: true)
         }
+    }
+
+    func isFieldsEmpty() -> Bool {
+        
+        var isEmpty = true
+        
+        if amountTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+//        if let amount = amountTextField.text {
+//            var amountFormatted: String = amount
+//            amountFormatted = amountFormatted.replacingOccurrences(of: ",", with: "")
+//            amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
+//            if let _ = Double(amountFormatted) {
+//                isEmpty = false
+//            }
+//        }
+        
+        if nameTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        if dateTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        if categoryTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        if repeatCategoryTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        return isEmpty
     }
     
     private func installView() {
