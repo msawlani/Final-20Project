@@ -119,6 +119,22 @@ class User: NSObject
 
     func StoreInFirebase()
     {
+        self.accounts[0].transactions.sort {
+            if $0.date.date == $1.date.date {
+                return $0.amount < $1.amount
+            }
+            
+            return $0.date.date > $1.date.date
+        }
+        
+        self.bills.sort {
+            if $0.date.date == $1.date.date {
+                return $0.amount < $1.amount
+            }
+            
+            return $0.date.date < $1.date.date
+        }
+        
         let ref = Database.database().reference()
         ref.child("users").child(self.userId).removeValue()
         ref.child("users").child(self.userId).child("userId").setValue(self.userId)
@@ -173,6 +189,7 @@ class User: NSObject
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("recurring").setValue(self.bills[i].recurring)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("monthly").setValue(self.bills[i].monthly)
             ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("yearly").setValue(self.bills[i].yearly)
+            ref.child("users").child(self.userId).child("bills").child("billNum" + "\(i)").child("paymentRepeat").setValue(self.bills[i].paymentRepeat)
 
             let date = self.bills[i].date
             let dateString = date.asString()
@@ -239,6 +256,20 @@ class Account
         self.balance = self.balance - self.transactions[index].amount
         self.transactions.remove(at: index)
         self.numTransactions-=1
+        
+        mainUser.StoreInFirebase()
+    }
+    
+    func EditTransaction(newTransaction: Transaction, oldAmount: Double)
+    {
+        var indexString = newTransaction.transactionNum
+        indexString = String(indexString.dropFirst(11))
+        let index = Int(indexString)!
+        
+        balance -= oldAmount
+        balance += newTransaction.amount
+        
+        mainUser.accounts[0].transactions[index] = newTransaction
         
         mainUser.StoreInFirebase()
     }
@@ -476,6 +507,9 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                             }
                             if let temp = billDict["yearly"] as? Bool {
                                 bill.yearly = temp
+                            }
+                            if let temp = billDict["paymentRepeat"] as? String {
+                                bill.paymentRepeat = temp
                             }
                             if let temp = billDict["date"] as? String {
                                 let dateArr = temp.components(separatedBy: "/")

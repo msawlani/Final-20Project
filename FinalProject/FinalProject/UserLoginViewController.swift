@@ -31,6 +31,7 @@ class UserLoginViewController: UIViewController {
             {
                 mainUser.userId = Auth.auth().currentUser!.uid
                 userEmail = email
+                signedInWithGoogle = false
 
                 self.performSegue(withIdentifier: "Main", sender: self)
             }

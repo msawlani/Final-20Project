@@ -27,8 +27,8 @@ class AddBillViewController: UIViewController {
     private let repeatCategoryPickerView = UIPickerView()
 
     enum Constants {
-        static let categories = mainUser.categories.dropLast()
-        static let repeatCategories = ["None","On the day", "1 day before", "2 days before", "1 week before"]
+        static let categories = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous"]
+        static let repeatCategories = ["None", "On the day", "1 day before", "2 days before", "1 week before"]
     }
 
     override func viewDidLoad() {
@@ -87,11 +87,11 @@ class AddBillViewController: UIViewController {
     func editBillInicialData() {
         if let bill = editBill {
             nameTextField.text = bill.billName
-            let amount = String(describing: (bill.amount))
+            let amount = String(describing: (bill.amount * 10))
             let amountString = amount.CurrencyInputFormatting()
             amountTextField.text = amountString
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
+            formatter.dateFormat = "MM/dd/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
             autoPaySwitch.isOn = bill.autoPay
             categoryTextField.text = bill.category
@@ -139,6 +139,7 @@ class AddBillViewController: UIViewController {
     func createBill() -> Bill? {
        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
+        
         guard let date = dateFormatter.date(from: dateTextField.text ?? "") else {
             assertionFailure("Error on date parsers")
             return nil
@@ -150,7 +151,8 @@ class AddBillViewController: UIViewController {
                               year: calendar.component(.year, from: date))
 
         amountTextField.text?.removeFirst()
-
+        amountTextField.text = amountTextField.text?.replacingOccurrences(of: ",", with: "")
+        
         let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
