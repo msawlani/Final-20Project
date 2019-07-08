@@ -35,7 +35,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var addButton: UIBarButtonItem!
-
+    
+    @IBOutlet weak var Edit: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,6 +45,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.delegate = self
         self.Table.dataSource = self
         self.Table.reloadData()
+        
 
 
         transactionArray = [Transactions(sectionName: "Income", TransactionList: []),
@@ -140,6 +143,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 //        return label
 //    }
 
+    
+    @IBAction func EditButton(_ sender: Any) {
+        if Edit.currentTitle == "Edit"{
+            Edit.setTitle("Done", for: .normal)
+            self.Table.setEditing(true, animated: true)
+
+        }else{
+            Edit.setTitle("Edit", for: .normal)
+            self.Table.setEditing(false, animated: true)
+
+        }
+
+    }
     //Gets the bills for the table view - Michael
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactionArray[section].TransactionList.count
@@ -187,7 +203,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     //populates the cells using the data - Michael
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TransactionListViewCell
-
+        
         let transaction = transactionArray[indexPath.section].TransactionList[indexPath.row]
         //let test = testList[indexPath.row]
 
@@ -212,6 +228,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        Edit.setTitle("Done", for: .normal)
+        
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
 
             let transaction = self.transactionArray[indexPath.section].TransactionList[indexPath.row]
@@ -238,10 +256,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 var indexString = self.transactionArray[indexPath.section].TransactionList[indexPath.row].transactionNum
                 indexString = String(indexString.dropFirst(11))
                 let index = Int(indexString)
-                mainUser.accounts[0].RemoveTransaction(index: index!)
 
 
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
+                mainUser.accounts[0].RemoveTransaction(index: index!)
+
                 self.Table.reloadData()
                 
                 self.viewWillAppear(true)
