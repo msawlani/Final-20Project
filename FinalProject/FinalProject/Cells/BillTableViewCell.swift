@@ -46,7 +46,7 @@ class BillTableViewCell: UITableViewCell {
         let miscellaneousImage =  UIImage(named: "MiscellaneousC")
         
         nameLabel.text = bill.billName
-        amountLabel.text = "$\(String(describing: bill.amount))"
+        amountLabel.text = String(format: "$%.02f", bill.amount)
         categoryLabel.text = bill.category
         dateLabel.text = dateToString(date: bill.date.createDate())
         

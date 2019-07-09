@@ -27,16 +27,80 @@ class AddBillViewController: UIViewController {
     private let repeatCategoryPickerView = UIPickerView()
 
     enum Constants {
-        static let categories = mainUser.categories.dropLast()
-        static let repeatCategories = ["On the day", "1 day before", "2 days before", "1 week before"]
+        static let categories = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous"]
+        static let repeatCategories = ["None", "On the day", "1 day before", "2 days before", "1 week before"]
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         installView()
+        overrideBackButton()
         amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
     }
+    
+    func overrideBackButton() {
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonAction))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    
+    @objc func backButtonAction() {
+        
+        
+        if isFieldsEmpty() == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Are you sure?", message: "If you proceed, all the data on this page will be lost", preferredStyle: UIAlertController.Style.alert)
+            
+            let alertAction = UIAlertAction(title: "Go", style: .default) { [weak self] (action) in
+                self?.navigationController?.popViewController(animated: true)
+            }
+            
+            let goBackAction = UIAlertAction(title: "Stay", style: .default)
+            
+            alert.addAction(alertAction)
+            alert.addAction(goBackAction)
+            
+            present(alert, animated: true)
+        }
+    }
 
+    func isFieldsEmpty() -> Bool {
+        
+        var isEmpty = true
+        
+        if amountTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+//        if let amount = amountTextField.text {
+//            var amountFormatted: String = amount
+//            amountFormatted = amountFormatted.replacingOccurrences(of: ",", with: "")
+//            amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
+//            if let _ = Double(amountFormatted) {
+//                isEmpty = false
+//            }
+//        }
+        
+        if nameTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        if dateTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        if categoryTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        if repeatCategoryTextField.text?.isEmpty == false {
+            isEmpty = false
+        }
+        
+        return isEmpty
+    }
+    
     private func installView() {
 
         showDatePicker()
@@ -59,11 +123,11 @@ class AddBillViewController: UIViewController {
     func editBillInicialData() {
         if let bill = editBill {
             nameTextField.text = bill.billName
-            let amount = String(describing: (bill.amount))
+            let amount = String(describing: (bill.amount * 10))
             let amountString = amount.CurrencyInputFormatting()
             amountTextField.text = amountString
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
+            formatter.dateFormat = "MM/dd/yyyy"
             dateTextField.text = formatter.string(from: bill.date.createDate())
             autoPaySwitch.isOn = bill.autoPay
             categoryTextField.text = bill.category
@@ -88,7 +152,9 @@ class AddBillViewController: UIViewController {
             return
         }
 
-        let bill = createBill()
+        guard let bill = createBill() else {
+            return
+        }
 
         guard let home = self.navigationController?.viewControllers.first as? SecondViewController else {
             return
@@ -106,10 +172,14 @@ class AddBillViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    func createBill() -> Bill {
+    func createBill() -> Bill? {
        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let date = dateFormatter.date(from: dateTextField.text ?? "") ?? Date()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        guard let date = dateFormatter.date(from: dateTextField.text ?? "") else {
+            assertionFailure("Error on date parsers")
+            return nil
+        }
 
         let calendar = Calendar.current
         let customDate = DateStruct(month: calendar.component(.month, from: date),
@@ -117,7 +187,8 @@ class AddBillViewController: UIViewController {
                               year: calendar.component(.year, from: date))
 
         amountTextField.text?.removeFirst()
-
+        amountTextField.text = amountTextField.text?.replacingOccurrences(of: ",", with: "")
+        
         let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
@@ -128,14 +199,24 @@ class AddBillViewController: UIViewController {
         return bill
     }
 
-
     func checkInputFields() -> Bool {
-         let alert = UIAlertView()
+         let alert = UIAlertController()
         var check = true
         if amountTextField.text?.isEmpty ?? true {
             alert.title = "Amount is Empty"
             alert.message = "Please Fill the Amount to add a Bill"
             check = false
+        }
+        else if let amount = amountTextField.text {
+            var amountFormatted: String = amount
+            amountFormatted = amountFormatted.replacingOccurrences(of: ",", with: "")
+            amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
+            //amountFormatted = amount.replacingOccurrences(of: ".", with: "")
+            if let value = Double(amountFormatted), value > 100000.00 {
+                alert.title = "Amount is over limit"
+                alert.message = "The limit is 100000.00, Please fill within the range"
+                check = false
+            }
         }
         else if nameTextField.text?.isEmpty ?? true{
             alert.title = "Name is Empty"
@@ -158,8 +239,8 @@ class AddBillViewController: UIViewController {
             check = false
         }
         if check == false {
-        alert.addButton(withTitle: "OK")
-            alert.show()
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
         return check
     }
@@ -180,7 +261,7 @@ class AddBillViewController: UIViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
 
-        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneCategoryPicker))
+        let donePickerButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneRepeatPicker))
         toolbar.setItems([donePickerButton], animated: true)
 
         repeatCategoryTextField.inputView = repeatCategoryPickerView
@@ -204,14 +285,23 @@ class AddBillViewController: UIViewController {
     @objc func doneDatePicker() {
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         dateTextField.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
 
     @objc func doneCategoryPicker() {
+        let row =  categoryPickerView.selectedRow(inComponent: 0)
+        pickerView(categoryPickerView, didSelectRow: row, inComponent: 0)
         self.view.endEditing(true)
     }
+    
+    @objc func doneRepeatPicker() {
+        let row =  repeatCategoryPickerView.selectedRow(inComponent: 0)
+        pickerView(repeatCategoryPickerView, didSelectRow: row, inComponent: 0)
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension AddBillViewController: UITextFieldDelegate {
