@@ -385,6 +385,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDb-a1-opd" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="20" y="387" width="374" height="258"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6ik-c5-lIF" appends="YES" id="gLT-c4-rvm"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -473,6 +477,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hry-Ri-h11" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6ik-c5-lIF">
+                    <connections>
+                        <action selector="myGesture:" destination="QMq-cc-rQb" id="VdR-BW-RWD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2637.68115942029" y="-1280.3571428571429"/>
         </scene>

@@ -36,6 +36,9 @@ class VCChart: UIViewController {
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
+        
+        
+        
         //draw circle
         var center = view.center
         center.y = 250
@@ -109,6 +112,20 @@ class VCChart: UIViewController {
     }
 
 
+    
+    
+    
+    @IBAction func myGesture(_ sender: UITapGestureRecognizer) {
+        guard sender.view != nil else { return }
+        let lStyle = pieChart.needsHighlight(index: 3)
+        
+        if sender.state == .ended {
+            if(lStyle == true) {
+                print("Life Style selected")
+            }
+        }
+    }
+    
     func updateChartData(){
         
         //animation for percentage progress bar
@@ -121,11 +138,7 @@ class VCChart: UIViewController {
         
         shapeLayer.add(basicAnimation, forKey: "aniBasic")
         
-        
-        
-        
-        
-        
+   
         
         pieChart.data?.clearValues()
     
@@ -143,9 +156,10 @@ class VCChart: UIViewController {
         pieChart.data?.setDrawValues(false)
         pieChart.legend.enabled = false
         pieChart.drawHoleEnabled = true
+       // pieChart.rotationEnabled = false
         
-        
-        
+       
+
     }
 
 
