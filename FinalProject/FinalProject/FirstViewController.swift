@@ -21,6 +21,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
     struct Transactions {
+        var isExpanded: Bool
         var sectionName: String!
         var TransactionList: [Transaction] = []
     }
@@ -48,13 +49,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
 
 
-        transactionArray = [Transactions(sectionName: "Income", TransactionList: []),
-                            Transactions(sectionName: "Housing", TransactionList: []),
-                            Transactions(sectionName: "Food", TransactionList: []),
-                            Transactions(sectionName: "Transportation", TransactionList: []),
-                            Transactions(sectionName: "Lifestyle", TransactionList: []),
-                            Transactions(sectionName: "Debts", TransactionList: []),
-                            Transactions(sectionName: "Miscellaneous", TransactionList: [])
+        transactionArray = [Transactions(isExpanded: true, sectionName: "Income", TransactionList: []),
+                            Transactions(isExpanded: true, sectionName: "Housing", TransactionList: []),
+                            Transactions(isExpanded: true, sectionName: "Food", TransactionList: []),
+                            Transactions(isExpanded: true, sectionName: "Transportation", TransactionList: []),
+                            Transactions(isExpanded: true, sectionName: "Lifestyle", TransactionList: []),
+                            Transactions(isExpanded: true, sectionName: "Debts", TransactionList: []),
+                            Transactions(isExpanded: true, sectionName: "Miscellaneous", TransactionList: [])
                             ]
         
         
@@ -149,32 +150,67 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
 
     }
-    //Gets the bills for the table view - Michael
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactionArray[section].TransactionList.count
-    }
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let header = view as? UITableViewHeaderFooterView {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let button = UIButton(type: .system)
+        button.setTitle(transactionArray[section].sectionName, for: .normal)
+        button.tintColor = UIColor.black
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        
             if section == 0{
-            header.backgroundView?.backgroundColor = UIColor.green
-            }else if section == 1{
-                header.backgroundView?.backgroundColor = UIColor(red:0.45, green:0.73, blue:1.00, alpha:1.0)
-            }else if section == 2{
-                header.backgroundView?.backgroundColor = UIColor(red:0.33, green:0.94, blue:0.77, alpha:1.0)
-            }else if section == 3{
-                header.backgroundView?.backgroundColor = UIColor(red:0.63, green:0.50, blue:0.23, alpha:1.0)
-            }else if section == 4{
-                header.backgroundView?.backgroundColor = UIColor(red:0.99, green:0.47, blue:0.66, alpha:1.0)
-            }else if section == 5{
-                header.backgroundView?.backgroundColor = UIColor(red:0.84, green:0.19, blue:0.19, alpha:1.0)
-            }else if section == 6{
-                header.backgroundView?.backgroundColor = UIColor(red:0.70, green:0.75, blue:0.76, alpha:1.0)
+                button.backgroundColor = UIColor.green
             }
-            
+            else if section == 1{
+                button.backgroundColor = UIColor(named: "Housing")
+            }else if section == 2{
+                button.backgroundColor = UIColor(named: "Food")
+            }else if section == 3{
+                button.backgroundColor = UIColor(named: "Transportation")
+            }else if section == 4{
+                button.backgroundColor = UIColor(named: "LifeS")
+            }else if section == 5{
+                button.backgroundColor = UIColor(named: "Debt")
+            }else if section == 6{
+                button.backgroundColor = UIColor(named: "Miscellaneous")
+            }
+        
+        button.addTarget(self, action: #selector(handleExpand), for: .touchUpInside)
+        button.tag = section
+        return button
+    }
+    
+    @objc func handleExpand(button: UIButton){
+        let section = button.tag
+        
+        var indexPaths = [IndexPath]()
+        for row in transactionArray[section].TransactionList.indices{
+            let indexPath = IndexPath(row: row, section: section)
+            indexPaths.append(indexPath)
+        }
+        
+        let isExpanded = transactionArray[section].isExpanded
+        transactionArray[section].isExpanded = !isExpanded
+        //transactionArray[section].TransactionList.removeAll()
+        if isExpanded{
+            self.Table.deleteRows(at: indexPaths, with: .fade)
+            button.tintColor = UIColor.gray
+        }
+        else{
+            self.Table.insertRows(at: indexPaths, with: .fade)
+            button.tintColor = UIColor.black
+
         }
     }
-
     
+    //Gets the bills for the table view - Michael
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !transactionArray[section].isExpanded{
+            return 0
+        }
+        
+        return transactionArray[section].TransactionList.count
+    }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 
         if section < transactionArray.count {
@@ -218,6 +254,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell!
     }
 
+    
 
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
