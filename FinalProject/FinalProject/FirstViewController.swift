@@ -134,14 +134,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         //Justin
 
 
-}
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let label = UILabel()
-//        label.text = "Header"
-//        label.backgroundColor = .cyan
-//        return label
-//    }
+    }
 
     
     @IBAction func EditButton(_ sender: Any) {
@@ -203,7 +196,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     //populates the cells using the data - Michael
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TransactionListViewCell
-        
+
         let transaction = transactionArray[indexPath.section].TransactionList[indexPath.row]
         //let test = testList[indexPath.row]
 
@@ -260,11 +253,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
                 self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
                 mainUser.accounts[0].RemoveTransaction(index: index!)
+                print(indexPath.section)
+                print(indexPath.row)
 
                 self.Table.reloadData()
                 
-                self.viewWillAppear(true)
-                self.viewDidLoad()
+               self.viewWillAppear(true)
             }))
 
 
