@@ -648,9 +648,19 @@
                     <tabBarItem key="tabBarItem" title="Balance" image="first" selectedImage="first" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="gHt-ug-gcd">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" style="plain" id="5im-XZ-P4g">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xBr-kg-gA1">
+                            <barButtonItem title="Delete" style="plain" id="45y-ac-0yr">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3Q-Qr-vjJ">
                                     <rect key="frame" x="302" y="4" width="92" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Delete">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" style="plain" id="5im-XZ-P4g">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xBr-kg-gA1">
+                                    <rect key="frame" x="202" y="4" width="92" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="Edit">
@@ -663,7 +673,7 @@
                             </barButtonItem>
                             <barButtonItem title="Add" id="3Y9-CG-5Yr">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2RQ-9U-4Zl">
-                                    <rect key="frame" x="202" y="3" width="92" height="38"/>
+                                    <rect key="frame" x="102" y="3" width="92" height="38"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="tintColor" red="0.0" green="0.40531929100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -678,6 +688,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="Delete" destination="f3Q-Qr-vjJ" id="b4r-j0-8fB"/>
                         <outlet property="Edit" destination="xBr-kg-gA1" id="DQz-sf-xG7"/>
                         <outlet property="Table" destination="haK-Vc-d8i" id="kQJ-5N-NNP"/>
                         <outlet property="addButton" destination="3Y9-CG-5Yr" id="Mqu-Zw-apx"/>

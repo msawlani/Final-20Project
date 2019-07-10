@@ -38,6 +38,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     @IBOutlet weak var Edit: UIButton!
+    @IBOutlet weak var Delete: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.delegate = self
         self.Table.dataSource = self
         self.Table.reloadData()
-        
+        self.Table.allowsMultipleSelectionDuringEditing = true
+        self.Delete.isHidden = true
+
 
 
         transactionArray = [Transactions(isExpanded: true, sectionName: "Income", TransactionList: []),
@@ -66,7 +69,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         self.Table.reloadData()
         addButton.tintColor = UIColor.white
-        
+        self.Delete.isHidden = true
+
 
         GetUser(userId: mainUser.userId, callback: { tempUser in
             mainUser = tempUser
@@ -137,20 +141,23 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
 
-    
+    // allows selecting of cells and unswiping when editing or deleting a cell - Michael
     @IBAction func EditButton(_ sender: Any) {
         if Edit.currentTitle == "Edit"{
             Edit.setTitle("Done", for: .normal)
+            self.Delete.isHidden = false
             self.Table.setEditing(true, animated: true)
 
         }else{
             Edit.setTitle("Edit", for: .normal)
+            self.Delete.isHidden = true
             self.Table.setEditing(false, animated: true)
 
         }
 
     }
     
+    // allows for sections to have a name and color - michael
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton(type: .system)
         button.setTitle(transactionArray[section].sectionName, for: .normal)
@@ -179,6 +186,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         return button
     }
     
+    // allows to expand and collapse each section - michael
     @objc func handleExpand(button: UIButton){
         let section = button.tag
         
@@ -190,7 +198,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let isExpanded = transactionArray[section].isExpanded
         transactionArray[section].isExpanded = !isExpanded
-        //transactionArray[section].TransactionList.removeAll()
         if isExpanded{
             self.Table.deleteRows(at: indexPaths, with: .fade)
             button.tintColor = UIColor.gray
@@ -202,7 +209,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    //Gets the bills for the table view - Michael
+    //Gets the transactions for each section - michael
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !transactionArray[section].isExpanded{
             return 0
@@ -224,6 +231,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
 
+    //gets the amount of sections needed for the table - michael
     func numberOfSections(in tableView: UITableView) -> Int {
 
         return transactionArray.count
