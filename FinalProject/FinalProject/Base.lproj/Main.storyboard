@@ -1507,12 +1507,7 @@
         <image name="useimgplaceholder" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
         <segue reference="v8B-T4-TqX"/>
         <segue reference="l9r-D7-xG4"/>
-=======
-        <segue reference="BDU-sr-Zxf"/>
-        <segue reference="gUK-VQ-dnK"/>
->>>>>>> MasterBranch
     </inferredMetricsTieBreakers>
 </document>
