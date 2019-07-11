@@ -288,7 +288,31 @@ class Account
             i+=1
         }
         
+        if total < 0
+        {
+            total *= -1
+        }
+        
         return total
+    }
+    
+    func getPercentage() -> Int
+    {
+        let income = getCategoryTotal(categoryNum: 0)
+        var expenses = 0.0
+        var i = 1
+        
+        while i < NUMDEFAULTCATS
+        {
+            expenses += getCategoryTotal(categoryNum: i)
+            i += 1
+        }
+        
+        var percentage = expenses / income
+        percentage = percentage * 100
+        percentage.round(.toNearestOrAwayFromZero)
+        let percentInt = Int(percentage)
+        return percentInt
     }
 }
 

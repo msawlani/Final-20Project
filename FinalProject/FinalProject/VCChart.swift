@@ -80,17 +80,17 @@ class VCChart: UIViewController {
 
         
      
-    let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 0)
+    let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
         HousingVal.text = String(format: "$%.02f", housing)
-    let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
+    let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
         FoodVal.text = String(format: "$%.02f", food)
-    let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
+    let transportation = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
         TransportVal.text = String(format: "$%.02f", transportation)
-    let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 3)
+    let lifeStyle = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
         LifeStyleVal.text = String(format: "$%.02f", lifeStyle)
-    let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 4)
+    let debts = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
         DebtsVal.text = String(format: "$%.02f", debts)
-    let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 5)
+    let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 6)
         MiscVal.text = String(format: "$%.02f", misc)
             
             
@@ -110,22 +110,8 @@ class VCChart: UIViewController {
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
         updateChartData()
     }
-
-
     
-    
-    
-    @IBAction func myGesture(_ sender: UITapGestureRecognizer) {
-        guard sender.view != nil else { return }
-        let lStyle = pieChart.needsHighlight(index: 3)
         
-        if sender.state == .ended {
-            if(lStyle == true) {
-                print("Life Style selected")
-            }
-        }
-    }
-    
     func updateChartData(){
         
         //animation for percentage progress bar
