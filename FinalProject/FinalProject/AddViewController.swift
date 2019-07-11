@@ -205,7 +205,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         }
         else if section.text != "Housing" && section.text != "Food" && section.text != "Transportation" &&
-            section.text != "Lifestyle" && section.text != "Debts" && section.text != "Miscellanous" && section.text != "Income"{
+            section.text != "Lifestyle" && section.text != "Debts" && section.text != "Miscellaneous" && section.text != "Income"{
             
             let alert = UIAlertController(title: "Failed to add transaction", message: "Please select a section that is listed ", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
