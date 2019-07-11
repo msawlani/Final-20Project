@@ -20,14 +20,14 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
 
-    struct Transactions {
+    public struct Transactions {
         var isExpanded: Bool
         var sectionName: String!
         var TransactionList: [Transaction] = []
     }
 
     var transactionArray = [Transactions]()
-
+    var transactionArrayDelete = [Transactions]()
 
     @IBOutlet weak var Table: UITableView!
 
@@ -60,8 +60,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                             Transactions(isExpanded: true, sectionName: "Debts", TransactionList: []),
                             Transactions(isExpanded: true, sectionName: "Miscellaneous", TransactionList: [])
                             ]
-        
-        
+
+        transactionArrayDelete = []
 }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -141,12 +141,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
 
+    @IBAction func Delete(_ sender: Any) {
+        
+    }
     // allows selecting of cells and unswiping when editing or deleting a cell - Michael
     @IBAction func EditButton(_ sender: Any) {
         if Edit.currentTitle == "Edit"{
             Edit.setTitle("Done", for: .normal)
             self.Delete.isHidden = false
             self.Table.setEditing(true, animated: true)
+            
 
         }else{
             Edit.setTitle("Edit", for: .normal)
@@ -157,17 +161,24 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     // allows for sections to have a name and color - michael
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton(type: .system)
         button.setTitle(transactionArray[section].sectionName, for: .normal)
         button.tintColor = UIColor.black
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         if transactionArray[section].TransactionList.count == 0 {
-            button.isEnabled = false
+            button.isHidden = true
+            
+            
         }
         else{
-            button.isEnabled = true
+            button.isHidden = false
+            
         }
         
             if section == 0{
