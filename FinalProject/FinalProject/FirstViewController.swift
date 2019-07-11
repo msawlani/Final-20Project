@@ -163,6 +163,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         button.setTitle(transactionArray[section].sectionName, for: .normal)
         button.tintColor = UIColor.black
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        if transactionArray[section].TransactionList.count == 0 {
+            button.isEnabled = false
+        }
+        else{
+            button.isEnabled = true
+        }
         
             if section == 0{
                 button.backgroundColor = UIColor.green
@@ -200,11 +206,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         transactionArray[section].isExpanded = !isExpanded
         if isExpanded{
             self.Table.deleteRows(at: indexPaths, with: .fade)
-            button.tintColor = UIColor.gray
+            
         }
         else{
             self.Table.insertRows(at: indexPaths, with: .fade)
-            button.tintColor = UIColor.black
 
         }
     }

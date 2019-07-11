@@ -35,10 +35,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UN5-r2-sQe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UN5-r2-sQe">
                                 <rect key="frame" x="20" y="365" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aNV-hJ-3ks"/>
+                                    <constraint firstAttribute="width" secondItem="UN5-r2-sQe" secondAttribute="height" multiplier="187:25" id="mFT-as-9EH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Logout"/>
@@ -46,10 +49,12 @@
                                     <action selector="Logout:" destination="Opz-d5-0tq" eventType="touchUpInside" id="aaE-9d-Rgj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HO2-AF-hEp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HO2-AF-hEp">
                                 <rect key="frame" x="20" y="423" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HO2-AF-hEp" secondAttribute="height" multiplier="187:25" id="lfK-MR-2cp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Change Email"/>
@@ -58,10 +63,13 @@
                                     <segue destination="mXe-9N-yhu" kind="show" identifier="ChangeEmail" id="lZG-qZ-T02"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqJ-fJ-DPz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqJ-fJ-DPz">
                                 <rect key="frame" x="20" y="481" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8Ar-AP-lRN"/>
+                                    <constraint firstAttribute="width" secondItem="KqJ-fJ-DPz" secondAttribute="height" multiplier="187:25" id="w4y-c3-tMY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Change Password"/>
@@ -72,6 +80,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KqJ-fJ-DPz" firstAttribute="leading" secondItem="m4I-kw-See" secondAttribute="leadingMargin" id="3Gb-4c-hdY"/>
+                            <constraint firstItem="TAb-8T-197" firstAttribute="bottom" secondItem="KqJ-fJ-DPz" secondAttribute="bottom" constant="282" id="ALK-ow-nVP"/>
+                            <constraint firstItem="KqJ-fJ-DPz" firstAttribute="leading" secondItem="HO2-AF-hEp" secondAttribute="leading" id="D43-CN-CQV"/>
+                            <constraint firstItem="KqJ-fJ-DPz" firstAttribute="top" secondItem="HO2-AF-hEp" secondAttribute="bottom" constant="8" symbolic="YES" id="G4s-YX-Qsj"/>
+                            <constraint firstItem="KqJ-fJ-DPz" firstAttribute="trailing" secondItem="m4I-kw-See" secondAttribute="trailingMargin" id="Lza-jy-fwM"/>
+                            <constraint firstItem="KqJ-fJ-DPz" firstAttribute="leading" secondItem="UN5-r2-sQe" secondAttribute="leading" id="RYo-oM-CcO"/>
+                            <constraint firstItem="KqJ-fJ-DPz" firstAttribute="trailing" secondItem="UN5-r2-sQe" secondAttribute="trailing" id="c2R-Xx-QKk"/>
+                            <constraint firstItem="HO2-AF-hEp" firstAttribute="top" secondItem="UN5-r2-sQe" secondAttribute="bottom" constant="8" symbolic="YES" id="ukW-uZ-YCP"/>
+                            <constraint firstItem="KqJ-fJ-DPz" firstAttribute="trailing" secondItem="HO2-AF-hEp" secondAttribute="trailing" id="yJy-bf-3Zb"/>
+                            <constraint firstItem="UN5-r2-sQe" firstAttribute="top" secondItem="TAb-8T-197" secondAttribute="top" constant="277" id="yNv-Mr-CcV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TAb-8T-197"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="E6L-AC-Dmp"/>
@@ -580,7 +600,7 @@
                                                     <rect key="frame" x="20" y="19" width="110" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bcr-s2-OKS" secondAttribute="height" multiplier="9:2" constant="20" id="c6x-kM-OaA"/>
-                                                        <constraint firstAttribute="width" constant="110" id="p4R-bW-YKG"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="p4R-bW-YKG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -590,7 +610,7 @@
                                                     <rect key="frame" x="138" y="19" width="110" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Gj6-hf-78J" secondAttribute="height" multiplier="9:2" constant="20" id="HSn-Oz-NGu"/>
-                                                        <constraint firstAttribute="width" constant="110" id="i76-Kn-lO2"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="i76-Kn-lO2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -649,7 +669,7 @@
                     <navigationItem key="navigationItem" id="gHt-ug-gcd">
                         <rightBarButtonItems>
                             <barButtonItem title="Delete" style="plain" id="45y-ac-0yr">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3Q-Qr-vjJ">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3Q-Qr-vjJ">
                                     <rect key="frame" x="302" y="4" width="92" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1006,9 +1026,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6kP-dV-lnG" firstAttribute="trailing" secondItem="5e7-Rg-CSQ" secondAttribute="trailing" constant="18" id="08E-l4-eDW"/>
+                            <constraint firstItem="6kP-dV-lnG" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="5e7-Rg-CSQ" secondAttribute="trailing" constant="18" id="08E-l4-eDW"/>
                             <constraint firstItem="5e7-Rg-CSQ" firstAttribute="centerX" secondItem="4gg-tg-ph2" secondAttribute="centerX" id="5g5-1B-Ocm"/>
-                            <constraint firstItem="5e7-Rg-CSQ" firstAttribute="leading" secondItem="6kP-dV-lnG" secondAttribute="leading" constant="18" id="AFS-9Y-xCC"/>
+                            <constraint firstItem="5e7-Rg-CSQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6kP-dV-lnG" secondAttribute="leading" constant="18" id="AFS-9Y-xCC"/>
                             <constraint firstItem="wPG-ry-Jrb" firstAttribute="top" secondItem="8jW-PL-yyD" secondAttribute="bottom" constant="35" id="Adt-fm-fT3"/>
                             <constraint firstItem="pi2-hY-GcF" firstAttribute="leading" secondItem="6kP-dV-lnG" secondAttribute="leading" constant="20" id="BGF-Ge-h66"/>
                             <constraint firstItem="bLQ-UF-ruL" firstAttribute="leading" secondItem="8jW-PL-yyD" secondAttribute="trailing" constant="55" id="FXr-m7-8AJ"/>
