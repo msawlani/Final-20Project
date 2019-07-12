@@ -27,7 +27,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     var transactionArray = [Transactions]()
-    var transactionArrayDelete = [Transactions]()
+    var transactionArrayDelete = [Transaction]()
 
     @IBOutlet weak var Table: UITableView!
 
@@ -142,7 +142,14 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     @IBAction func Delete(_ sender: Any) {
-        
+        //        if transactionArrayDelete.count{
+        //            for id in transactionArrayDelete{
+        //                transactionArray.remove(at: id)
+        //            }
+        //
+        //        transactionArrayDelete.removeAll()
+        //        }
+        transactionArrayDelete.removeAll()
     }
     // allows selecting of cells and unswiping when editing or deleting a cell - Michael
     @IBAction func EditButton(_ sender: Any) {
@@ -163,6 +170,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if Edit.currentTitle == "Done"{
+            transactionArrayDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if Edit.currentTitle == "Done" {
+            transactionArrayDelete.remove(at: indexPath.row)
+            
+        }
     }
     
     // allows for sections to have a name and color - michael
