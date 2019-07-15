@@ -27,7 +27,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     var transactionArray = [Transactions]()
-    var transactionArrayDelete = [Transaction]()
 
     @IBOutlet weak var Table: UITableView!
 
@@ -61,7 +60,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                             Transactions(isExpanded: true, sectionName: "Miscellaneous", TransactionList: [])
                             ]
 
-        transactionArrayDelete = []
 }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -142,18 +140,41 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     @IBAction func Delete(_ sender: Any) {
-        //        if transactionArrayDelete.count{
-        //            for id in transactionArrayDelete{
-        //                transactionArray.remove(at: id)
-        //            }
-        //
-        //        transactionArrayDelete.removeAll()
-        //        }
-        transactionArrayDelete.removeAll()
+     if let selectedRow = Table.indexPathsForSelectedRows
+        {
+            
+            
+            var transactionsToDelete = [Transaction]()
+            for indexPath in selectedRow{
+                transactionsToDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
+            }
+            for indexPath in selectedRow{
+            var indexString = self.transactionArray[indexPath.section].TransactionList[indexPath.row].transactionNum
+            indexString = String(indexString.dropFirst(11))
+                let index = Int(indexString)
+
+            
+            self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
+            mainUser.accounts[0].RemoveTransaction(index: index!)
+   
+            }
+            Table.beginUpdates()
+            Table.deleteRows(at: selectedRow, with: .automatic)
+            Table.endUpdates()
+            Table.reloadData()
+            if Table.isEditing == true{
+                Edit.setTitle("Edit", for: .normal)
+                self.Delete.isHidden = true
+                self.Table.setEditing(false, animated: true)
+
+            }
+        }
+        
+        
     }
     // allows selecting of cells and unswiping when editing or deleting a cell - Michael
     @IBAction func EditButton(_ sender: Any) {
-        if Edit.currentTitle == "Edit"{
+        if Table.isEditing == false{
             Edit.setTitle("Done", for: .normal)
             self.Delete.isHidden = false
             self.Table.setEditing(true, animated: true)
@@ -168,19 +189,20 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if Edit.currentTitle == "Done"{
-            transactionArrayDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if Edit.currentTitle == "Done" {
-            transactionArrayDelete.remove(at: indexPath.row)
-            
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        if Edit.currentTitle == "Done"{
+//            transactionArrayDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        if Edit.currentTitle == "Done" {
+//            transactionArrayDelete.remove(at: indexPath.row)
+//
+//        }
+//    }
+//
     
     // allows for sections to have a name and color - michael
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -190,8 +212,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         if transactionArray[section].TransactionList.count == 0 {
             button.isHidden = true
-            
-            
         }
         else{
             button.isHidden = false
