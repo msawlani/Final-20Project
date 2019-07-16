@@ -169,6 +169,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
 
         home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+        
 
         if  transaction.transactionNum != ""{
             mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: oldAmount!)
