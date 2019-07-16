@@ -16,7 +16,6 @@
                 <navigationController id="VBT-5z-Bkw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" id="H88-ZC-hJR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="3pt-5c-CyX">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -491,7 +490,6 @@
                 <navigationController id="Gvv-aX-feW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Balance" id="oNe-Bz-w0R"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="MbQ-CL-5Ax">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -649,7 +647,7 @@
                     <navigationItem key="navigationItem" id="gHt-ug-gcd">
                         <rightBarButtonItems>
                             <barButtonItem title="Delete" style="plain" id="45y-ac-0yr">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3Q-Qr-vjJ">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3Q-Qr-vjJ">
                                     <rect key="frame" x="302" y="4" width="92" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>

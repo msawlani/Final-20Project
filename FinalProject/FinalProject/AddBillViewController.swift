@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+enum RepeatEnum: String {
+    case None = "None"
+    case OnTheDay = "On The Day"
+    case OneDayBefore = "One Day Before"
+    case TwoDaysBefore = "Two Days Before"
+    case OneWeekBefore = "One Week Before"
+}
+
 class AddBillViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
@@ -28,7 +36,7 @@ class AddBillViewController: UIViewController {
 
     enum Constants {
         static let categories = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous"]
-        static let repeatCategories = ["None", "On the day", "1 day before", "2 days before", "1 week before"]
+        static let repeatCategories: [RepeatEnum] = [.None, .OnTheDay, .OneDayBefore, .TwoDaysBefore, .OneWeekBefore]
     }
 
     override func viewDidLoad() {
@@ -72,15 +80,6 @@ class AddBillViewController: UIViewController {
         if amountTextField.text?.isEmpty == false {
             isEmpty = false
         }
-        
-//        if let amount = amountTextField.text {
-//            var amountFormatted: String = amount
-//            amountFormatted = amountFormatted.replacingOccurrences(of: ",", with: "")
-//            amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
-//            if let _ = Double(amountFormatted) {
-//                isEmpty = false
-//            }
-//        }
         
         if nameTextField.text?.isEmpty == false {
             isEmpty = false
@@ -161,13 +160,13 @@ class AddBillViewController: UIViewController {
         }
 
         if let indexPathRow = editIndexPathRow {
-            home.billsContainer[editIndexPathRow!] = bill
-            mainUser.bills[editIndexPathRow!] = bill
+            home.billsContainer[indexPathRow] = bill
+            mainUser.bills[indexPathRow] = bill
             mainUser.StoreInFirebase()
         }
         else {
             home.billsContainer.append(bill)
-            mainUser.AddBill(bill: bill)
+            _ = mainUser.AddBill(bill: bill)
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -194,9 +193,52 @@ class AddBillViewController: UIViewController {
                         date: customDate,
                         autoPay: autoPaySwitch.isOn,
                         category: categoryTextField.text!,
-                        paymentRepeat: repeatCategoryTextField.text!)
+                        paymentRepeat: repeatCategoryTextField.text!,
+                        uuid: UUID())
 
+        scheduleNotification(for: bill)
         return bill
+    }
+    
+    func scheduleNotification(for bill: Bill) {
+       
+        guard let paymentRepeat = RepeatEnum(rawValue: bill.paymentRepeat) else {
+            print("[ERROR] - Failing to Parse Repeat Type")
+            return
+        }
+        
+        var notificationDate: Date?
+    
+        switch paymentRepeat {
+        case .None:
+            return
+        case .OnTheDay:
+            notificationDate = bill.date.date
+            break
+        case .OneDayBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -1, to: bill.date.date)
+            break
+        case .TwoDaysBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -2, to: bill.date.date)
+            break
+        case .OneWeekBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: bill.date.date)
+            break
+        }
+        
+        guard let date = notificationDate else {
+            return
+        }
+        
+        if date.timeIntervalSinceNow.sign == .minus {
+           print("[WARNING] - Notication is past current date, skipping creation")
+        }
+        
+        if isEditing == false {
+            NotificationManager.shared.createNotification(for: date, billName: bill.billName, uuid: bill.uuid)
+        } else if isEditing == true {
+            NotificationManager.shared.editPendingNotification(for: date, billName: bill.billName, uuid: bill.uuid)
+        }
     }
 
     func checkInputFields() -> Bool {
@@ -360,7 +402,7 @@ extension AddBillViewController: UIPickerViewDataSource {
             return Constants.categories[row]
         }
         else if pickerView == repeatCategoryPickerView{
-            return Constants.repeatCategories[row]
+            return Constants.repeatCategories[row].rawValue
         }
         return " "
     }
@@ -373,7 +415,7 @@ extension AddBillViewController: UIPickerViewDelegate {
             return  categoryTextField.text = Constants.categories[row]
         }
         else if pickerView == repeatCategoryPickerView{
-            return repeatCategoryTextField.text = Constants.repeatCategories[row]
+            return repeatCategoryTextField.text = Constants.repeatCategories[row].rawValue
         }
     }
 }

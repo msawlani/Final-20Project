@@ -318,10 +318,11 @@ class Bill
     var autoPay: Bool
     var category: String
     var paymentRepeat: String
+    var uuid: UUID
 
     init(billName: String = "", description: String = "", amount: Double = 0.0, accountName:String = "",
          recurring: Bool = false, monthly: Bool = false, yearly: Bool = false,
-         date:DateStruct = DateStruct(), autoPay: Bool, category:String, paymentRepeat: String  )
+         date:DateStruct = DateStruct(), autoPay: Bool, category:String, paymentRepeat: String, uuid: UUID)
     {
         self.billName = billName
         self.description = description
@@ -335,6 +336,7 @@ class Bill
         self.autoPay = autoPay
         self.category = category
         self.paymentRepeat = paymentRepeat
+        self.uuid = uuid
     }
 
     func setDate(date: DateStruct)
@@ -481,7 +483,7 @@ func GetUser(userId: String, callback: @escaping ((_ data:User) -> Void)) {
                         if let temp = dictionary["bills"]?["billNum" + "\(i)"] as? [String: AnyObject] {
                             var billDict = temp
 
-                            let bill = Bill(autoPay: false, category: "", paymentRepeat: "")
+                            let bill = Bill(autoPay: false, category: "", paymentRepeat: "", uuid: UUID())
                             bill.billNum = "bill" + "\(i)"
 
                             if let temp = billDict["billName"] as? String {
