@@ -13,18 +13,18 @@ import CoreData
 
 //var testList: [String] = ["test"]
 var TransactionListCell: TransactionListViewCell?
-
+struct Transactions {
+    var isExpanded: Bool
+    var sectionName: String!
+    var TransactionList: [Transaction] = []
+}
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 
 
 
-    public struct Transactions {
-        var isExpanded: Bool
-        var sectionName: String!
-        var TransactionList: [Transaction] = []
-    }
+
 
     var transactionArray = [Transactions]()
 
@@ -139,24 +139,23 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
 
+    //deletes selected transactions - Michael
     @IBAction func Delete(_ sender: Any) {
      if let selectedRow = Table.indexPathsForSelectedRows
         {
-            
+        
             
             var transactionsToDelete = [Transaction]()
             for indexPath in selectedRow{
                 transactionsToDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
             }
             for indexPath in selectedRow{
-            var indexString = self.transactionArray[indexPath.section].TransactionList[indexPath.row].transactionNum
-            indexString = String(indexString.dropFirst(11))
-                let index = Int(indexString)
-
-            
-            self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
-            mainUser.accounts[0].RemoveTransaction(index: index!)
-   
+           
+           
+                    self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
+                    mainUser.accounts[0].RemoveTransaction(index: indexPath.row)
+                
+                
             }
             Table.beginUpdates()
             Table.deleteRows(at: selectedRow, with: .automatic)
@@ -168,6 +167,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.Table.setEditing(false, animated: true)
 
             }
+            self.viewWillAppear(true)
+
         }
         
         
@@ -188,21 +189,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
 
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        if Edit.currentTitle == "Done"{
-//            transactionArrayDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        if Edit.currentTitle == "Done" {
-//            transactionArrayDelete.remove(at: indexPath.row)
-//
-//        }
-//    }
-//
     
     // allows for sections to have a name and color - michael
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -319,7 +305,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        Edit.setTitle("Done", for: .normal)
+        
+        if isEditing == false{
+            Edit.setTitle("Done", for: .normal)
+            
+        }else{
+            Edit.setTitle("Edit", for: .normal)
+        }
         
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
 
@@ -366,6 +358,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         deleteAction.backgroundColor = .red
         editAction.backgroundColor = .blue
+        
         return[deleteAction, editAction]
     }
 
