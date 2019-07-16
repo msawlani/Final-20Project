@@ -26,7 +26,7 @@ class AddBillViewController: UIViewController {
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var repeatCategoryTextField: UITextField!
     @IBOutlet weak var autoPaySwitch: UISwitch!
-
+    
     public var editBill: Bill?
     public var editIndexPathRow: Int?
 
@@ -44,12 +44,14 @@ class AddBillViewController: UIViewController {
         installView()
         overrideBackButton()
         amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
+        doneButton.tintColor = .white 
     }
     
     func overrideBackButton() {
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.leftBarButtonItem = newBackButton
+        newBackButton.tintColor = UIColor.white
     }
     
     @objc func backButtonAction() {
@@ -60,11 +62,11 @@ class AddBillViewController: UIViewController {
         } else {
             let alert = UIAlertController(title: "Are you sure?", message: "If you proceed, all the data on this page will be lost", preferredStyle: UIAlertController.Style.alert)
             
-            let alertAction = UIAlertAction(title: "Go", style: .default) { [weak self] (action) in
+            let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action) in
                 self?.navigationController?.popViewController(animated: true)
             }
             
-            let goBackAction = UIAlertAction(title: "Stay", style: .default)
+            let goBackAction = UIAlertAction(title: "No", style: .default)
             
             alert.addAction(alertAction)
             alert.addAction(goBackAction)
