@@ -408,6 +408,49 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rI1-PJ-ZYX" customClass="MBCircularProgressBarView">
+                                <rect key="frame" x="20" y="125" width="374" height="230"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="decimalPlaces">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.83921568629999999" green="0.18823529410000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyLineColor">
+                                        <color key="value" red="0.1756991617" green="1" blue="0.26563320150000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyLineStrokeColor">
+                                        <color key="value" red="0.1756991617" green="1" blue="0.26563320150000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="emptyLineWidth">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" red="0.83921568629999999" green="0.18823529410000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="unitFontSize">
+                                        <real key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="valueFontSize">
+                                        <real key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showValueString" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -423,11 +466,14 @@
                             <constraint firstItem="LDb-a1-opd" firstAttribute="centerX" secondItem="Od7-f9-46h" secondAttribute="centerX" id="6JP-dG-cZN"/>
                             <constraint firstItem="2Gl-nx-4AX" firstAttribute="leading" secondItem="d4N-4i-0ZY" secondAttribute="trailing" constant="80" id="6ta-5V-4ZE"/>
                             <constraint firstItem="hY1-iB-Jn6" firstAttribute="top" secondItem="84e-fr-RtN" secondAttribute="bottom" constant="24" id="7ei-dr-6WV"/>
+                            <constraint firstItem="LDb-a1-opd" firstAttribute="top" secondItem="rI1-PJ-ZYX" secondAttribute="bottom" constant="32" id="7i1-8F-Dy0"/>
                             <constraint firstItem="EGN-H0-YfO" firstAttribute="leading" secondItem="0LQ-X1-OcQ" secondAttribute="leading" id="8ht-OD-b7z"/>
                             <constraint firstItem="Jm7-t9-pBg" firstAttribute="leading" secondItem="Xbm-gI-CQg" secondAttribute="leading" id="92d-uF-KI0"/>
                             <constraint firstItem="Cad-Xa-qZX" firstAttribute="leading" secondItem="Xbm-gI-CQg" secondAttribute="trailing" constant="8" symbolic="YES" id="940-9s-uIR"/>
+                            <constraint firstItem="rI1-PJ-ZYX" firstAttribute="leading" secondItem="Wmj-D9-gAf" secondAttribute="leading" constant="20" id="9Hy-Wh-haV"/>
                             <constraint firstItem="LDb-a1-opd" firstAttribute="top" secondItem="9nf-6i-fMw" secondAttribute="top" constant="387" id="AZb-WM-VOL"/>
                             <constraint firstItem="ZBd-U6-FFM" firstAttribute="leading" secondItem="d4N-4i-0ZY" secondAttribute="trailing" constant="8" symbolic="YES" id="BbS-Z3-EYC"/>
+                            <constraint firstItem="Wmj-D9-gAf" firstAttribute="trailing" secondItem="rI1-PJ-ZYX" secondAttribute="trailing" constant="20" id="C1j-60-AId"/>
                             <constraint firstItem="Qbg-ur-b5i" firstAttribute="top" secondItem="DRa-6C-vaF" secondAttribute="bottom" constant="27" id="FYn-Of-kZU"/>
                             <constraint firstItem="ZBd-U6-FFM" firstAttribute="leading" secondItem="84e-fr-RtN" secondAttribute="leading" id="FwV-IA-Bza"/>
                             <constraint firstItem="kZU-ok-VNj" firstAttribute="top" secondItem="Xbm-gI-CQg" secondAttribute="top" id="H5K-cn-1lv"/>
@@ -446,6 +492,7 @@
                             <constraint firstItem="opv-d7-puQ" firstAttribute="leading" secondItem="DRa-6C-vaF" secondAttribute="trailing" constant="15" id="OxL-Yf-geo"/>
                             <constraint firstItem="Qbg-ur-b5i" firstAttribute="leading" secondItem="Cad-Xa-qZX" secondAttribute="leading" id="PGR-Hq-NSK"/>
                             <constraint firstItem="d4N-4i-0ZY" firstAttribute="top" secondItem="LDb-a1-opd" secondAttribute="bottom" constant="41" id="PN0-Ia-fkj"/>
+                            <constraint firstItem="rI1-PJ-ZYX" firstAttribute="top" secondItem="6eY-Cs-QnD" secondAttribute="bottom" constant="8" id="TCh-aG-BZe"/>
                             <constraint firstItem="ZBd-U6-FFM" firstAttribute="trailing" secondItem="hY1-iB-Jn6" secondAttribute="trailing" id="U6t-dD-BEA"/>
                             <constraint firstItem="hY1-iB-Jn6" firstAttribute="leading" secondItem="kZU-ok-VNj" secondAttribute="trailing" constant="8" symbolic="YES" id="UDd-Jo-cMb"/>
                             <constraint firstItem="Xbm-gI-CQg" firstAttribute="top" secondItem="Cad-Xa-qZX" secondAttribute="top" id="VfI-tF-3in"/>
@@ -485,6 +532,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Graphs" id="a8a-tF-sSB"/>
                     <connections>
+                        <outlet property="CPB" destination="rI1-PJ-ZYX" id="efo-cb-oPY"/>
                         <outlet property="DebtsVal" destination="EGN-H0-YfO" id="h8w-qF-8zZ"/>
                         <outlet property="FoodVal" destination="ALZ-XE-o5m" id="7f4-ts-hUG"/>
                         <outlet property="HousingVal" destination="2Gl-nx-4AX" id="8HW-Fu-p1l"/>
