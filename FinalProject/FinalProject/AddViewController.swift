@@ -36,6 +36,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         editBillInicialData()
 
+        
+
+        
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -72,8 +75,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
 
     @objc func back(sender: UIBarButtonItem) {
-        if paymentName.text?.isEmpty != true && paymentPrice.text?.isEmpty != true &&
-            section.text?.isEmpty != true && dateTextField.text?.isEmpty != true{
+        if paymentName.text?.isEmpty != true || paymentPrice.text?.isEmpty != true ||
+            section.text?.isEmpty != true || dateTextField.text?.isEmpty != true{
         let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
 
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
