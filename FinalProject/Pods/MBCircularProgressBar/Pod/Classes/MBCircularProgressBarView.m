@@ -11,7 +11,8 @@
 
 @implementation MBCircularProgressBarView
 
--(instancetype)initWithCoder:(NSCoder *)coder{
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
     self = [super initWithCoder:coder];
     if (self) {
         [self initView:[self frame]];
@@ -27,7 +28,8 @@
     return self;
 }
 
--(instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
         [self initView:frame];
@@ -38,15 +40,10 @@
 -(void)initView:(CGRect)frame{
     //Without setting the content scale factor the layer would be pixelated
     [self setContentScaleFactor:[[UIScreen mainScreen] scale]];
-    
-    //This mode forces redrawing when bounds change (e.g. bounds change in animation)
-    [self setContentMode:UIViewContentModeRedraw];
-    
+  
     [self setUnitString:@"%"];
     [self setValue:0.f];
     [self setMaxValue:100.f];
-    [self setBorderPadding:1.f];
-    [self setProgressAppearanceType:0];
     [self setProgressRotationAngle:0.f];
     [self setProgressStrokeColor:[UIColor orangeColor]];
     [self setProgressColor:[UIColor orangeColor]];
@@ -104,14 +101,6 @@
 
 -(CGFloat)maxValue{
     return self.progressLayer.maxValue;
-}
-
--(void)setBorderPadding:(CGFloat)borderPadding{
-    self.progressLayer.borderPadding = borderPadding;
-}
-
--(CGFloat)borderPadding{
-    return self.progressLayer.borderPadding;
 }
 
 -(void)setProgressLineWidth:(CGFloat)width{
@@ -202,27 +191,11 @@
     return self.progressLayer.progressAngle;
 }
 
--(void)setProgressAppearanceType:(NSInteger)progressAppearanceType{
-    self.progressLayer.progressAppearanceType = [self safeProgressAppearanceType:progressAppearanceType];
-}
-
--(NSInteger)progressAppearanceType{
-    return self.progressLayer.progressAppearanceType;
-}
-
--(MBCircularProgressBarAppearanceType)safeProgressAppearanceType:(NSInteger)progressAppearanceType{
-    if(MBCircularProgressBarAppearanceTypeOverlaysEmptyLine <= progressAppearanceType  && progressAppearanceType <= MBCircularProgressBarAppearanceTypeUnderEmptyLine){
-        return (MBCircularProgressBarAppearanceType)progressAppearanceType;
-    }
-    
-    return MBCircularProgressBarAppearanceTypeOverlaysEmptyLine;
-}
-
 -(void)setProgressRotationAngle:(CGFloat)progressRootationAngle{
     self.progressLayer.progressRotationAngle = progressRootationAngle;
 }
 
--(CGFloat)progressRotationAngle{
+-(CGFloat)progressRootationAngle{
     return self.progressLayer.progressRotationAngle;
 }
 
@@ -238,7 +211,7 @@
     self.progressLayer.emptyCapType = [self safeCapType:emptyCapType];
 }
 
--(NSInteger)emptyCapType{
+-(NSInteger)EmptyCapType{
     return self.progressLayer.emptyCapType;
 }
 
@@ -312,7 +285,8 @@
     return layer;
 }
 
-+ (Class) layerClass {
++ (Class) layerClass
+{
     return [MBCircularProgressBarLayer class];
 }
 

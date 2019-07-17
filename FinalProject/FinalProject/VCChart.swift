@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import MBCircularProgressBar
 class VCChart: UIViewController {
 
     @IBOutlet weak var pieChart: PieChartView!
@@ -33,53 +34,22 @@ class VCChart: UIViewController {
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
     
+    
+    
     override func viewWillAppear(_ animated: Bool){
-        super.viewWillAppear(animated)
+     
+        //reset progres bar value
+        self.CPB.value = 0
         
-        
-        
-//
-//        //draw circle
-//        var center = view.center
-//        center.y = 250
-//
-//        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
-//
-//        trackLayer.path = circularPath.cgPath
-//
-//        trackLayer.strokeColor = UIColor.lightGray.cgColor
-//        trackLayer.lineWidth = 10
-//        trackLayer.lineCap = CAShapeLayerLineCap.round
-//        trackLayer.fillColor = UIColor.clear.cgColor
-//
-//        view.layer.addSublayer(trackLayer)
-//
-//
-//
-//
-//
-//       // let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
-//
-//        shapeLayer.path = circularPath.cgPath
-//
-//        shapeLayer.strokeColor = UIColor.red.cgColor
-//        shapeLayer.lineWidth = 10
-//        shapeLayer.strokeEnd = 0
-//        shapeLayer.lineCap = CAShapeLayerLineCap.round
-//        shapeLayer.fillColor = UIColor.clear.cgColor
-//
-//        view.layer.addSublayer(shapeLayer)
-//
-        
-        
-        
+
+    
         
         //Pie Chart Configuration
         pieChart.chartDescription?.text = "Expenses Overview"
-       //setting values of the data entries
-
+       
         
-     
+        //setting values of the data entries
+
     let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
         HousingVal.text = String(format: "$%.02f", housing)
     let food = mainUser.accounts[0].getCategoryTotal(categoryNum: 2)
@@ -113,6 +83,7 @@ class VCChart: UIViewController {
     
     
     //Progress bar
+    @IBOutlet weak var CPB: MBCircularProgressBarView!
     
     
     
@@ -120,16 +91,11 @@ class VCChart: UIViewController {
         
     func updateChartData(){
         
-        //animation for percentage progress bar
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        basicAnimation.toValue = 1
-        basicAnimation.duration = 2
         
-        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
-        basicAnimation.isRemovedOnCompletion = false
-        
-        shapeLayer.add(basicAnimation, forKey: "aniBasic")
-        
+        //progress animation
+        UIView.animate(withDuration: 2.0){
+            self.CPB.value = CGFloat(mainUser.accounts[0].getPercentage())
+        }
    
         
         pieChart.data?.clearValues()
@@ -148,10 +114,8 @@ class VCChart: UIViewController {
         pieChart.data?.setDrawValues(false)
         pieChart.legend.enabled = false
         pieChart.drawHoleEnabled = true
-       // pieChart.rotationEnabled = false
+        pieChart.rotationEnabled = false
         
-       
-
     }
 
 
