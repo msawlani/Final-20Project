@@ -13,21 +13,20 @@ import CoreData
 
 //var testList: [String] = ["test"]
 var TransactionListCell: TransactionListViewCell?
-
+struct Transactions {
+    var isExpanded: Bool
+    var sectionName: String!
+    var TransactionList: [Transaction] = []
+}
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 
 
 
-    struct Transactions {
-        var isExpanded: Bool
-        var sectionName: String!
-        var TransactionList: [Transaction] = []
-    }
+
 
     var transactionArray = [Transactions]()
-
 
     @IBOutlet weak var Table: UITableView!
 
@@ -60,8 +59,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                             Transactions(isExpanded: true, sectionName: "Debts", TransactionList: []),
                             Transactions(isExpanded: true, sectionName: "Miscellaneous", TransactionList: [])
                             ]
-        
-        
+
 }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -141,12 +139,47 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
 
+    //deletes selected transactions - Michael
+    @IBAction func Delete(_ sender: Any) {
+     if let selectedRow = Table.indexPathsForSelectedRows
+        {
+        
+            
+            var transactionsToDelete = [Transaction]()
+            for indexPath in selectedRow{
+                transactionsToDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
+            }
+            for indexPath in selectedRow{
+           
+           
+                    self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
+                    mainUser.accounts[0].RemoveTransaction(index: indexPath.row)
+                
+                
+            }
+            Table.beginUpdates()
+            Table.deleteRows(at: selectedRow, with: .automatic)
+            Table.endUpdates()
+            Table.reloadData()
+            if Table.isEditing == true{
+                Edit.setTitle("Edit", for: .normal)
+                self.Delete.isHidden = true
+                self.Table.setEditing(false, animated: true)
+
+            }
+            self.viewWillAppear(true)
+
+        }
+        
+        
+    }
     // allows selecting of cells and unswiping when editing or deleting a cell - Michael
     @IBAction func EditButton(_ sender: Any) {
-        if Edit.currentTitle == "Edit"{
+        if Table.isEditing == false{
             Edit.setTitle("Done", for: .normal)
             self.Delete.isHidden = false
             self.Table.setEditing(true, animated: true)
+            
 
         }else{
             Edit.setTitle("Edit", for: .normal)
@@ -162,7 +195,14 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let button = UIButton(type: .system)
         button.setTitle(transactionArray[section].sectionName, for: .normal)
         button.tintColor = UIColor.black
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        if transactionArray[section].TransactionList.count == 0 {
+            button.isHidden = true
+        }
+        else{
+            button.isHidden = false
+            
+        }
         
             if section == 0{
                 button.backgroundColor = UIColor.green
@@ -200,11 +240,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         transactionArray[section].isExpanded = !isExpanded
         if isExpanded{
             self.Table.deleteRows(at: indexPaths, with: .fade)
-            button.tintColor = UIColor.gray
+            
         }
         else{
             self.Table.insertRows(at: indexPaths, with: .fade)
-            button.tintColor = UIColor.black
 
         }
     }
@@ -266,7 +305,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        Edit.setTitle("Done", for: .normal)
+        
+        if isEditing == false{
+            Edit.setTitle("Done", for: .normal)
+            
+        }else{
+            Edit.setTitle("Edit", for: .normal)
+        }
         
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
 
@@ -313,6 +358,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         deleteAction.backgroundColor = .red
         editAction.backgroundColor = .blue
+        
         return[deleteAction, editAction]
     }
 
