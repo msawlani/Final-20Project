@@ -33,6 +33,8 @@ class SignupViewController: UIViewController {
        
     }
     @objc func back(sender: UIBarButtonItem) {
+        
+        if emailFieldText.text?.isEmpty != true || passwordFieldText.text?.isEmpty != true || reenterpasswordFieldText.text?.isEmpty != true{
         let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -43,6 +45,10 @@ class SignupViewController: UIViewController {
         
         
         self.present(alertController, animated: true)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     //registers the user with firebase  and checks for errors - Michael Sawlani
     @IBAction func Regi(_ sender: Any){
