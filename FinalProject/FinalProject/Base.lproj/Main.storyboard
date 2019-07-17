@@ -1540,13 +1540,9 @@
         </scene>
     </scenes>
     <resources>
-<<<<<<< HEAD
-        <image name="Information_Icon_Button" width="18.90461540222168" height="18.90461540222168"/>
-=======
         <image name="Information_Icon_Button" width="512" height="512"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
->>>>>>> MasterBranch
         <image name="useimgplaceholder" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>

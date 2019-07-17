@@ -309,8 +309,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         if isEditing == false{
             Edit.setTitle("Done", for: .normal)
             
-        }else{
-            Edit.setTitle("Edit", for: .normal)
         }
         
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
