@@ -1673,10 +1673,6 @@
 		E0FB9C5840AD27EED5DDBB9A39557CDA /* hi.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D92A6D512DC2BA013B9F7AE5B5BBC5EF /* hi.lproj */; };
 		E10657D81F352FD2451BA354535AFDAB /* Pods-FinalProject-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F99B87B86CD5306AA72941B76D9D1B73 /* Pods-FinalProject-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E177781F059AC12C2EB9F36408EC6692 /* DefaultValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98167AF40074A5D00B6A6D3084CDE7C6 /* DefaultValueFormatter.swift */; };
-		E19AFA9422DF778E00F2F297 /* MBCircularProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = E19AFA9022DF778A00F2F297 /* MBCircularProgressBarView.h */; };
-		E19AFA9522DF778E00F2F297 /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E19AFA9122DF778B00F2F297 /* MBCircularProgressBarView.m */; };
-		E19AFA9622DF778E00F2F297 /* MBCircularProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E19AFA9222DF778C00F2F297 /* MBCircularProgressBarLayer.h */; };
-		E19AFA9722DF778E00F2F297 /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E19AFA9322DF778D00F2F297 /* MBCircularProgressBarLayer.m */; };
 		E1A6833D92DC3E36D866DACA7B8AD832 /* PFFilePersistenceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B10CA079049379173DA806F07C1CC08 /* PFFilePersistenceGroup.m */; };
 		E1A6B1AE4615503AE81D285390032E9F /* FBSDKButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B305443FD4140D121E079D7C7F79A074 /* FBSDKButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1B1CC16773101348E79E7F3061E3D35 /* LineScatterCandleRadarRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84A4AAF471233FD65E6B1CBA7593605 /* LineScatterCandleRadarRenderer.swift */; };
@@ -4009,10 +4005,6 @@
 		E0F4668A904382A8CCD7AE76381B0604 /* hash.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = hash.cc; path = util/hash.cc; sourceTree = "<group>"; };
 		E114B9B429BEC1FF3402F5FF89E38C86 /* PFURLSessionJSONDataTaskDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFURLSessionJSONDataTaskDelegate.h; path = Parse/Parse/Internal/Commands/CommandRunner/URLSession/Session/TaskDelegate/PFURLSessionJSONDataTaskDelegate.h; sourceTree = "<group>"; };
 		E15974B517D9DA82DB1734095340097B /* PFFieldOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFFieldOperation.h; path = Parse/Parse/Internal/FieldOperation/PFFieldOperation.h; sourceTree = "<group>"; };
-		E19AFA9022DF778A00F2F297 /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCircularProgressBarView.h; sourceTree = "<group>"; };
-		E19AFA9122DF778B00F2F297 /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarView.m; sourceTree = "<group>"; };
-		E19AFA9222DF778C00F2F297 /* MBCircularProgressBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCircularProgressBarLayer.h; sourceTree = "<group>"; };
-		E19AFA9322DF778D00F2F297 /* MBCircularProgressBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarLayer.m; sourceTree = "<group>"; };
 		E1E1EE84E8726874A28F7396867A163E /* Pods-FinalProject.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FinalProject.modulemap"; sourceTree = "<group>"; };
 		E1E65918C1ED0E11FCF856A15B14F1DA /* IValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IValueFormatter.swift; path = Source/Charts/Formatters/IValueFormatter.swift; sourceTree = "<group>"; };
 		E211D44AB2A39BF1D4775BA3D7CF8BD9 /* FUIPrivacyAndTermsOfServiceView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FUIPrivacyAndTermsOfServiceView.m; path = Auth/FirebaseAuthUI/FUIPrivacyAndTermsOfServiceView.m; sourceTree = "<group>"; };
@@ -5644,10 +5636,6 @@
 		6F405BB383A24E2BDDC7E378DA9CA844 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E19AFA9222DF778C00F2F297 /* MBCircularProgressBarLayer.h */,
-				E19AFA9322DF778D00F2F297 /* MBCircularProgressBarLayer.m */,
-				E19AFA9022DF778A00F2F297 /* MBCircularProgressBarView.h */,
-				E19AFA9122DF778B00F2F297 /* MBCircularProgressBarView.m */,
 				AE17EC72A397628BAF6323AB54CB606D /* Bolts */,
 				930F25585CA05FC7B31D176F4C357071 /* Charts */,
 				BFE053887976F8EC4A9CFF5427053DD0 /* FBSDKCoreKit */,
@@ -6990,8 +6978,6 @@
 				C232CE566FD3D87AA30ABA0815788879 /* BFCancellationTokenRegistration.h in Headers */,
 				BFC80EAB462D0BBE02AB1D9C2D88F43A /* BFCancellationTokenSource.h in Headers */,
 				2D42B1CBE5F10656F518910636CB9A3E /* BFExecutor.h in Headers */,
-				E19AFA9622DF778E00F2F297 /* MBCircularProgressBarLayer.h in Headers */,
-				E19AFA9422DF778E00F2F297 /* MBCircularProgressBarView.h in Headers */,
 				31DF541C847CF68BCCD56C55316D94FC /* BFGeneric.h in Headers */,
 				FC0A8A7CBD92756C9AFC0CAF62411DA3 /* BFTask.h in Headers */,
 				DBDCB666843F21B4B56D10FADA004E1D /* BFTaskCompletionSource.h in Headers */,
@@ -9392,10 +9378,8 @@
 				EE518E40EB5BD6F5512520C5EDBD3B92 /* BFExecutor.m in Sources */,
 				8565892ABACFE618A9FA1DDCFD0CD16E /* BFTask.m in Sources */,
 				D54B9A0552773417A13708E7B1821524 /* BFTaskCompletionSource.m in Sources */,
-				E19AFA9722DF778E00F2F297 /* MBCircularProgressBarLayer.m in Sources */,
 				0D0EEBC6C185B0C918E5AFC28159B859 /* Bolts-dummy.m in Sources */,
 				CF6528F7919059EA4C796EA7F20E1A4A /* Bolts.m in Sources */,
-				E19AFA9522DF778E00F2F297 /* MBCircularProgressBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
