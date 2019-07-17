@@ -111,6 +111,12 @@ class VCChart: UIViewController {
         updateChartData()
     }
     
+    
+    //Progress bar
+    
+    
+    
+    
         
     func updateChartData(){
         
