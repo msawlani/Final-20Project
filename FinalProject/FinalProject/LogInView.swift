@@ -17,6 +17,8 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        view.backgroundColor = UIColor.gray
+
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
         
