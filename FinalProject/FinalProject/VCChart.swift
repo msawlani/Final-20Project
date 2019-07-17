@@ -38,38 +38,38 @@ class VCChart: UIViewController {
         
         
         
-        
-        //draw circle
-        var center = view.center
-        center.y = 250
-      
-        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
-        
-        trackLayer.path = circularPath.cgPath
-        
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
-        trackLayer.lineWidth = 10
-        trackLayer.lineCap = CAShapeLayerLineCap.round
-        trackLayer.fillColor = UIColor.clear.cgColor
-        
-        view.layer.addSublayer(trackLayer)
-        
-        
-        
-        
-        
-       // let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
-        
-        shapeLayer.path = circularPath.cgPath
-            
-        shapeLayer.strokeColor = UIColor.red.cgColor
-        shapeLayer.lineWidth = 10
-        shapeLayer.strokeEnd = 0
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        
-        view.layer.addSublayer(shapeLayer)
-        
+//
+//        //draw circle
+//        var center = view.center
+//        center.y = 250
+//
+//        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
+//
+//        trackLayer.path = circularPath.cgPath
+//
+//        trackLayer.strokeColor = UIColor.lightGray.cgColor
+//        trackLayer.lineWidth = 10
+//        trackLayer.lineCap = CAShapeLayerLineCap.round
+//        trackLayer.fillColor = UIColor.clear.cgColor
+//
+//        view.layer.addSublayer(trackLayer)
+//
+//
+//
+//
+//
+//       // let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
+//
+//        shapeLayer.path = circularPath.cgPath
+//
+//        shapeLayer.strokeColor = UIColor.red.cgColor
+//        shapeLayer.lineWidth = 10
+//        shapeLayer.strokeEnd = 0
+//        shapeLayer.lineCap = CAShapeLayerLineCap.round
+//        shapeLayer.fillColor = UIColor.clear.cgColor
+//
+//        view.layer.addSublayer(shapeLayer)
+//
         
         
         
@@ -110,6 +110,12 @@ class VCChart: UIViewController {
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
         updateChartData()
     }
+    
+    
+    //Progress bar
+    
+    
+    
     
         
     func updateChartData(){

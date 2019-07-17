@@ -16,7 +16,7 @@ target 'FinalProject' do
 
   pod 'FirebaseUI/Google'
   pod 'FirebaseUI/Facebook'
-
+  pod 'MBCircularProgressBar'
   pod 'Charts'
 
 pod'Parse'
