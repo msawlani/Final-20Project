@@ -175,6 +175,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     // allows selecting of cells and unswiping when editing or deleting a cell - Michael
     @IBAction func EditButton(_ sender: Any) {
+        if transactionArray[0].TransactionList.count != 0{
         if Table.isEditing == false{
             Edit.setTitle("Done", for: .normal)
             self.Delete.isHidden = false
@@ -186,6 +187,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.Delete.isHidden = true
             self.Table.setEditing(false, animated: true)
 
+        }
         }
 
     }

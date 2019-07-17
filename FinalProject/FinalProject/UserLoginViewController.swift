@@ -19,7 +19,7 @@ class UserLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
 //logs the user in on pressed using the firebase account - Michael Sawlani
     @IBAction func Login(_ sender: Any) {
@@ -93,7 +93,7 @@ class UserLoginViewController: UIViewController {
         
         //self.push(viewController, animated: false, completion: nil)
         self.navigationController?.pushViewController(viewController, animated: true)
-        
+
     }
     
     /*
