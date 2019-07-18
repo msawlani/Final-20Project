@@ -311,7 +311,11 @@ class Account
         var percentage = expenses / income
         percentage = percentage * 100
         percentage.round(.toNearestOrAwayFromZero)
+        guard !(percentage.isNaN || percentage.isInfinite) else {
+            return 0 // or do some error handling
+        }
         let percentInt = Int(percentage)
+        
         return percentInt
     }
 }
