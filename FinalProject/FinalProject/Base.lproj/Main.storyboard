@@ -540,6 +540,7 @@
                         <outlet property="MiscVal" destination="0LQ-X1-OcQ" id="1hj-vf-nG4"/>
                         <outlet property="TransportVal" destination="EEp-kd-GTc" id="W9u-Gr-z6m"/>
                         <outlet property="pieChart" destination="LDb-a1-opd" id="aTq-MO-SVA"/>
+                        <segue destination="Gvv-aX-feW" kind="show" identifier="test" id="pvS-tP-9Ks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hry-Ri-h11" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1562,5 +1563,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="v8B-T4-TqX"/>
         <segue reference="l9r-D7-xG4"/>
+        <segue reference="pvS-tP-9Ks"/>
     </inferredMetricsTieBreakers>
 </document>
