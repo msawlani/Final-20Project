@@ -33,16 +33,22 @@ class VCChart: UIViewController {
 
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
-    
-    
+    var timer = Timer()
+
+   
     
     override func viewWillAppear(_ animated: Bool){
-     
+        
+        
+        //Timer for update function
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateChartData), userInfo: nil, repeats: true)
+        
+        //timer for segue function
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.segWue), userInfo: nil, repeats: true)
+        
         //reset progres bar value
         self.CPB.value = 0
         
-
-    
         
         //Pie Chart Configuration
         pieChart.chartDescription?.text = "Expenses Overview"
@@ -78,28 +84,64 @@ class VCChart: UIViewController {
         
 
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
-        updateChartData()
     }
     
     
     //Progress bar
     @IBOutlet weak var CPB: MBCircularProgressBarView!
     
+    //Seway triggered by pie's slices
+    @objc func segWue(){
     
+        let housingSelected = pieChart.needsHighlight(index: 0)
+        let foodselected = pieChart.needsHighlight(index: 1)
+        let transpSelected = pieChart.needsHighlight(index: 2)
+        let lifeSelected = pieChart.needsHighlight(index: 3)
+        let debtSelected = pieChart.needsHighlight(index: 4)
+        let miscSelected = pieChart.needsHighlight(index: 5)
+        
+        
+        if(housingSelected == true){
+            performSegue(withIdentifier: "test", sender: self)
+            timer.invalidate()
+        }
+        else if(foodselected == true)
+        {
+            performSegue(withIdentifier: "", sender: self)
+        }
+        else if(transpSelected == true)
+        {
+            performSegue(withIdentifier: "", sender: self)
+        }
+        else if(lifeSelected == true)
+        {
+            performSegue(withIdentifier: "", sender: self)
+        }
+        else if(debtSelected == true)
+        {
+            performSegue(withIdentifier: "", sender: self)
+        }
+        else if(miscSelected == true)
+        {
+            performSegue(withIdentifier: "", sender: self)
+        }
+
+        
+        
+    }
     
     
         
-    func updateChartData(){
+    @objc func updateChartData(){
         
         
         //progress animation
         UIView.animate(withDuration: 2.0){
             self.CPB.value = CGFloat(mainUser.accounts[0].getPercentage())
         }
-   
         
         pieChart.data?.clearValues()
-    
+       
         //set up chart
         let chartDataSet = PieChartDataSet(entries:dataEntriesArray,label:nil)
         
