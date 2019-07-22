@@ -40,9 +40,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
 
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 

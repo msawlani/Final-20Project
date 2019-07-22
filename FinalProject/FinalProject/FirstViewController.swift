@@ -49,7 +49,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.allowsMultipleSelectionDuringEditing = true
         self.Delete.isHidden = true
 
-
+//        let indexPath = NSIndexPath(item: , section: transactionArray.count)
+//        self.Table.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.middle, animated: true)
 
         transactionArray = [Transactions(isExpanded: true, sectionName: "Income", TransactionList: []),
                             Transactions(isExpanded: true, sectionName: "Housing", TransactionList: []),
