@@ -108,22 +108,27 @@ class VCChart: UIViewController {
         else if(foodselected == true)
         {
             performSegue(withIdentifier: "", sender: self)
+            timer.invalidate()
         }
         else if(transpSelected == true)
         {
             performSegue(withIdentifier: "", sender: self)
+            timer.invalidate()
         }
         else if(lifeSelected == true)
         {
             performSegue(withIdentifier: "", sender: self)
+            timer.invalidate()
         }
         else if(debtSelected == true)
         {
             performSegue(withIdentifier: "", sender: self)
+            timer.invalidate()
         }
         else if(miscSelected == true)
         {
             performSegue(withIdentifier: "", sender: self)
+            timer.invalidate()
         }
 
         
