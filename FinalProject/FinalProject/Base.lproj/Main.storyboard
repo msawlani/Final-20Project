@@ -1559,8 +1559,6 @@
     </scenes>
     <resources>
         <image name="Information_Icon_Button" width="512" height="512"/>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
         <image name="useimgplaceholder" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
