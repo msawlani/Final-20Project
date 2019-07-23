@@ -281,6 +281,21 @@
             </objects>
             <point key="canvasLocation" x="4521.739130434783" y="1704.9107142857142"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="kXa-aE-BIL">
+            <objects>
+                <viewController id="XWb-mv-r3z" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xej-z9-3GP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qlL-Bv-4KS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4d2-fg-cW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2626" y="-2097"/>
+        </scene>
         <!--Graphs-->
         <scene sceneID="VtR-AO-8b4">
             <objects>
@@ -541,6 +556,7 @@
                         <outlet property="TransportVal" destination="EEp-kd-GTc" id="W9u-Gr-z6m"/>
                         <outlet property="pieChart" destination="LDb-a1-opd" id="aTq-MO-SVA"/>
                         <segue destination="Gvv-aX-feW" kind="show" identifier="test" id="pvS-tP-9Ks"/>
+                        <segue destination="XWb-mv-r3z" kind="showDetail" identifier="Housing" id="RlW-OS-uVE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hry-Ri-h11" userLabel="First Responder" sceneMemberID="firstResponder"/>
