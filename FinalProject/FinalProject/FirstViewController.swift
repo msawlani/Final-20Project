@@ -41,6 +41,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         //Retrieve user data from Firebase and store it in user variable
         self.Table.delegate = self

@@ -19,12 +19,14 @@ class UserLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
     }
 //logs the user in on pressed using the firebase account - Michael Sawlani
     @IBAction func Login(_ sender: Any) {
         guard let email = emailFieldText.text else {return}
         guard let password = passwordFieldText.text else {return}
+        
         
         Auth.auth().signIn(withEmail: email, password: password) {user, error in
             if error == nil && user != nil && self.passwordFieldText.text != nil

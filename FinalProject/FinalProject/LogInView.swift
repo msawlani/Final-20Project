@@ -16,6 +16,7 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
 
         view.backgroundColor = UIColor.gray
 
@@ -52,6 +53,13 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
 
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "tutorialViewController") as? TutorialViewController else {
+            return
+        }
+        
+        //self.push(viewController, animated: false, completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     //Checking if thers is a log in error
