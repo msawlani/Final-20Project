@@ -20,7 +20,7 @@ class VCChart: UIViewController {
     @IBOutlet weak var LifeStyleVal: UILabel!
     @IBOutlet weak var DebtsVal: UILabel!
     @IBOutlet weak var MiscVal: UILabel!
-    
+
 
 //Initialize data entries
     var dataEntryHousing = PieChartDataEntry(value: 0)
@@ -35,25 +35,25 @@ class VCChart: UIViewController {
     let trackLayer = CAShapeLayer()
     var timer = Timer()
 
-   
-    
+
+
     override func viewWillAppear(_ animated: Bool){
-        
-        
+
+
         //Timer for update function
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateChartData), userInfo: nil, repeats: true)
-        
+
         //timer for segue function
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.segWue), userInfo: nil, repeats: true)
-        
+
         //reset progres bar value
         self.CPB.value = 0
-        
-        
+
+
         //Pie Chart Configuration
         pieChart.chartDescription?.text = "Expenses Overview"
-       
-        
+
+
         //setting values of the data entries
 
     let housing = mainUser.accounts[0].getCategoryTotal(categoryNum: 1)
@@ -68,53 +68,49 @@ class VCChart: UIViewController {
         DebtsVal.text = String(format: "$%.02f", debts)
     let misc = mainUser.accounts[0].getCategoryTotal(categoryNum: 6)
         MiscVal.text = String(format: "$%.02f", misc)
-            
-            
+
+
         dataEntryHousing.value = housing
-        
+
         dataEntryFood.value = food
-   
+
         dataEntryTransportation.value = transportation
-        
+
         dataEntryLifeS.value = lifeStyle
- 
+
         dataEntryDebts.value = debts
-  
+
         dataEntryMiscellaneous.value = misc
-        
+
 
         dataEntriesArray = [dataEntryHousing,dataEntryFood,dataEntryTransportation,dataEntryLifeS,dataEntryDebts,dataEntryMiscellaneous]
     }
-    
-    
+
+
     //Progress bar
     @IBOutlet weak var CPB: MBCircularProgressBarView!
-    
+
     //Seway triggered by pie's slices
     @objc func segWue(){
-    
+
         let housingSelected = pieChart.needsHighlight(index: 0)
         let foodselected = pieChart.needsHighlight(index: 1)
         let transpSelected = pieChart.needsHighlight(index: 2)
         let lifeSelected = pieChart.needsHighlight(index: 3)
         let debtSelected = pieChart.needsHighlight(index: 4)
         let miscSelected = pieChart.needsHighlight(index: 5)
-        
+
         //Story board
         let storyboard = UIStoryboard(name: "Graphs", bundle: nil)
 
         if(housingSelected == true){
-<<<<<<< HEAD
-            performSegue(withIdentifier: "Housing", sender: self)
-=======
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
-            
->>>>>>> MasterBranch
+
             timer.invalidate()
         }
         else if(foodselected == true)
@@ -122,10 +118,10 @@ class VCChart: UIViewController {
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
-            
+
             timer.invalidate()
         }
         else if(transpSelected == true)
@@ -133,10 +129,10 @@ class VCChart: UIViewController {
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
-            
+
             timer.invalidate()
         }
         else if(lifeSelected == true)
@@ -144,8 +140,8 @@ class VCChart: UIViewController {
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
 
             timer.invalidate()
@@ -155,8 +151,8 @@ class VCChart: UIViewController {
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
             timer.invalidate()
         }
@@ -165,33 +161,33 @@ class VCChart: UIViewController {
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
             timer.invalidate()
         }
 
-        
-        
+
+
     }
-    
-    
-        
+
+
+
     @objc func updateChartData(){
-        
-        
+
+
         //progress animation
         UIView.animate(withDuration: 2.0){
             self.CPB.value = CGFloat(mainUser.accounts[0].getPercentage())
         }
-        
+
         pieChart.data?.clearValues()
-       
+
         //set up chart
         let chartDataSet = PieChartDataSet(entries:dataEntriesArray,label:nil)
-        
+
         let chartData = PieChartData(dataSet: chartDataSet)
-        
+
         //color array for the different sections of the pie chart
         let colors = [UIColor(named:"Housing"),UIColor(named:"Food"),UIColor(named:"Transportation"),UIColor(named:"LifeS"),UIColor(named:"Debt"),UIColor(named:"Miscellaneous")]
 
@@ -202,11 +198,9 @@ class VCChart: UIViewController {
         pieChart.legend.enabled = false
         pieChart.drawHoleEnabled = true
         pieChart.rotationEnabled = false
-        
+
     }
 
 
 
 }
-
-
