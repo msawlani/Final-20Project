@@ -100,34 +100,74 @@ class VCChart: UIViewController {
         let debtSelected = pieChart.needsHighlight(index: 4)
         let miscSelected = pieChart.needsHighlight(index: 5)
         
-        
+        //Story board
+        let storyboard = UIStoryboard(name: "Graphs", bundle: nil)
+
         if(housingSelected == true){
+<<<<<<< HEAD
             performSegue(withIdentifier: "Housing", sender: self)
+=======
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+                return
+            }
+            
+            
+            self.navigationController?.pushViewController(viewController, animated:true)
+            
+>>>>>>> MasterBranch
             timer.invalidate()
         }
         else if(foodselected == true)
         {
-            performSegue(withIdentifier: "", sender: self)
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+                return
+            }
+            
+            
+            self.navigationController?.pushViewController(viewController, animated:true)
+            
             timer.invalidate()
         }
         else if(transpSelected == true)
         {
-            performSegue(withIdentifier: "", sender: self)
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+                return
+            }
+            
+            
+            self.navigationController?.pushViewController(viewController, animated:true)
+            
             timer.invalidate()
         }
         else if(lifeSelected == true)
         {
-            performSegue(withIdentifier: "", sender: self)
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+                return
+            }
+            
+            
+            self.navigationController?.pushViewController(viewController, animated:true)
+
             timer.invalidate()
         }
         else if(debtSelected == true)
         {
-            performSegue(withIdentifier: "", sender: self)
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+                return
+            }
+            
+            
+            self.navigationController?.pushViewController(viewController, animated:true)
             timer.invalidate()
         }
         else if(miscSelected == true)
         {
-            performSegue(withIdentifier: "", sender: self)
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+                return
+            }
+            
+            
+            self.navigationController?.pushViewController(viewController, animated:true)
             timer.invalidate()
         }
 
