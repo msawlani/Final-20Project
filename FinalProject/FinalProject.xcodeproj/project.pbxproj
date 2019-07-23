@@ -25,6 +25,7 @@
 		F204D84D22B01479002E541E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84C22B01479002E541E /* AddViewController.swift */; };
 		F204D84F22B01481002E541E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84E22B01481002E541E /* FirstViewController.swift */; };
 		F21364ED228F046F00800435 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21364EC228F046F00800435 /* SignupViewController.swift */; };
+		F23E825D22E762BD00A6E872 /* HousingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E825C22E762BD00A6E872 /* HousingViewController.swift */; };
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
 		F2816D1822B725580083C2C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2816D1722B725580083C2C0 /* Assets.xcassets */; };
 		F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */; };
@@ -55,6 +56,7 @@
 		F204D84C22B01479002E541E /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F204D84E22B01481002E541E /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		F21364EC228F046F00800435 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F23E825C22E762BD00A6E872 /* HousingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingViewController.swift; sourceTree = "<group>"; };
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		F2816D1722B725580083C2C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */,
 				F295864D22976FAE001BEC17 /* ChangePassViewController.swift */,
 				A85E9B5922A6C68F004E2372 /* CheckBox.swift */,
+				F23E825C22E762BD00A6E872 /* HousingViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23E825D22E762BD00A6E872 /* HousingViewController.swift in Sources */,
 				A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */,
 				A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */,
 				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,

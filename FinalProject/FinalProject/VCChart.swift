@@ -102,7 +102,7 @@ class VCChart: UIViewController {
         
         
         if(housingSelected == true){
-            performSegue(withIdentifier: "test", sender: self)
+            performSegue(withIdentifier: "Housing", sender: self)
             timer.invalidate()
         }
         else if(foodselected == true)
