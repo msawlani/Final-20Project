@@ -1,28 +1,23 @@
 //
-//  HousingViewController.swift
+//  TransportViewController.swift
 //  FinalProject
 //
-//  Created by Michael Sawlani on 7/23/19.
+//  Created by Michael Sawlani on 7/24/19.
 //  Copyright © 2019 FullSailUniversity. All rights reserved.
 //
 
 import UIKit
 
-
-
-class HousingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    
-    
+class TransportViewController: UIViewController, UITableViewDataSource, UITableViewDelegate   {
     
     var transactionArray = [Transactions]()
     var transactions = [Transaction]()
-
+    
     @IBOutlet weak var Table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.Table.delegate = self
         self.Table.dataSource = self
         self.Table.reloadData()
@@ -36,10 +31,9 @@ class HousingViewController: UIViewController, UITableViewDataSource, UITableVie
                             Transactions(isExpanded: true, sectionName: "Miscellaneous", TransactionList: [])
         ]
         
-        navigationItem.title = "Housing"
-        
+        navigationItem.title = "Transportation"
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(HousingViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(TransportViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
         let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
@@ -47,18 +41,18 @@ class HousingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //mainUser.accounts[0].transactions[1]
         
-
-
+        
+        
         
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         var i = 0
-
+        
         while i < mainUser.accounts[0].transactions.count
         {
             if mainUser.accounts[0].transactions[i].category == navigationItem.title{
-            transactions.append(mainUser.accounts[0].transactions[i])
+                transactions.append(mainUser.accounts[0].transactions[i])
             }
             i+=1
         }
@@ -66,11 +60,10 @@ class HousingViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @objc func back(sender: UIBarButtonItem) {
-
+        
         self.navigationController?.popViewController(animated: true)
-
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
@@ -97,5 +90,4 @@ class HousingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell!
     }
-
 }

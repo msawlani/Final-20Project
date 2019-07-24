@@ -119,8 +119,9 @@ class VCChart: UIViewController {
         }
         else if(foodselected == true)
         {
+            pieChart.highlightValue(nil)
 
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "foodViewController") as? FoodViewController else {
                 return
             }
 
@@ -131,9 +132,9 @@ class VCChart: UIViewController {
         }
         else if(transpSelected == true)
         {
-            let storyboard = UIStoryboard(name: "Graphs", bundle: nil)
+            pieChart.highlightValue(nil)
 
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "transportViewController") as? TransportViewController else {
                 return
             }
 
@@ -144,8 +145,9 @@ class VCChart: UIViewController {
         }
         else if(lifeSelected == true)
         {
+            pieChart.highlightValue(nil)
 
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "lifestyleViewController") as? LifestyleViewController else {
                 return
             }
 
@@ -156,8 +158,9 @@ class VCChart: UIViewController {
         }
         else if(debtSelected == true)
         {
+            pieChart.highlightValue(nil)
 
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "debtsViewController") as? DebtsViewController else {
                 return
             }
 
@@ -167,8 +170,9 @@ class VCChart: UIViewController {
         }
         else if(miscSelected == true)
         {
+            pieChart.highlightValue(nil)
 
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "miscViewController") as? MiscViewController else {
                 return
             }
 
