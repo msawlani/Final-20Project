@@ -101,69 +101,38 @@ class VCChart: UIViewController {
         let miscSelected = pieChart.needsHighlight(index: 5)
         
         //Story board
-        let storyboard = UIStoryboard(name: "Graphs", bundle: nil)
+       // let storyboard = UIStoryboard(name: "Graphs", bundle: nil)
 
         if(housingSelected == true){
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
-                return
-            }
-            
-            
-            self.navigationController?.pushViewController(viewController, animated:true)
-            
+   performSegue(withIdentifier: "housing", sender: self)
             timer.invalidate()
         }
         else if(foodselected == true)
         {
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
-                return
-            }
-            
-            
-            self.navigationController?.pushViewController(viewController, animated:true)
+           
             
             timer.invalidate()
         }
         else if(transpSelected == true)
         {
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
-                return
-            }
             
-            
-            self.navigationController?.pushViewController(viewController, animated:true)
             
             timer.invalidate()
         }
         else if(lifeSelected == true)
         {
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
-                return
-            }
-            
-            
-            self.navigationController?.pushViewController(viewController, animated:true)
+           
 
             timer.invalidate()
         }
         else if(debtSelected == true)
         {
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
-                return
-            }
-            
-            
-            self.navigationController?.pushViewController(viewController, animated:true)
+           
             timer.invalidate()
         }
         else if(miscSelected == true)
         {
-            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "addViewController") as? AddViewController else {
-                return
-            }
             
-            
-            self.navigationController?.pushViewController(viewController, animated:true)
             timer.invalidate()
         }
 
