@@ -32,6 +32,9 @@ class LifestyleViewController: UIViewController, UITableViewDataSource, UITableV
         ]
         
         navigationItem.title = "Lifestyle"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(named: "LifeS")]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
+
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LifestyleViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton

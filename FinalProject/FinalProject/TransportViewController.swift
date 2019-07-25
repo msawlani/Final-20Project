@@ -32,6 +32,9 @@ class TransportViewController: UIViewController, UITableViewDataSource, UITableV
         ]
         
         navigationItem.title = "Transportation"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(named: navigationItem.title!)]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
+
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(TransportViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton

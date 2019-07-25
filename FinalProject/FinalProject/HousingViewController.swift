@@ -37,7 +37,8 @@ class HousingViewController: UIViewController, UITableViewDataSource, UITableVie
         ]
         
         navigationItem.title = "Housing"
-        
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(named: navigationItem.title!)]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(HousingViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton

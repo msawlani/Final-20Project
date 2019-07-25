@@ -32,6 +32,9 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         ]
         
         navigationItem.title = "Debts"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(named: "Debt")]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
+
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(DebtsViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
