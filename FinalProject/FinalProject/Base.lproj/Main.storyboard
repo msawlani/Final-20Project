@@ -746,7 +746,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcr-s2-OKS">
-                                                    <rect key="frame" x="20" y="19" width="110" height="20"/>
+                                                    <rect key="frame" x="19.999999999999993" y="19" width="122.33333333333331" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bcr-s2-OKS" secondAttribute="height" multiplier="9:2" constant="20" id="c6x-kM-OaA"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="p4R-bW-YKG"/>
@@ -756,7 +756,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gj6-hf-78J">
-                                                    <rect key="frame" x="138" y="19" width="110" height="20"/>
+                                                    <rect key="frame" x="150.33333333333334" y="19" width="122.33333333333334" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Gj6-hf-78J" secondAttribute="height" multiplier="9:2" constant="20" id="HSn-Oz-NGu"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="i76-Kn-lO2"/>
@@ -766,7 +766,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ze5-hh-rdj">
-                                                    <rect key="frame" x="256" y="19" width="110" height="20"/>
+                                                    <rect key="frame" x="280.66666666666669" y="19" width="122.33333333333331" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Ze5-hh-rdj" secondAttribute="height" multiplier="9:2" constant="20" id="dQG-5k-roH"/>
                                                     </constraints>
@@ -1079,7 +1079,18 @@
                     <view key="view" contentMode="scaleToFill" id="rj7-qd-0K9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="49N-zK-G5e">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <constraints>
+                            <constraint firstItem="49N-zK-G5e" firstAttribute="trailing" secondItem="Czb-Oq-8dg" secondAttribute="trailing" id="1oz-3X-naT"/>
+                            <constraint firstItem="49N-zK-G5e" firstAttribute="leading" secondItem="Czb-Oq-8dg" secondAttribute="leading" id="5K6-vQ-1bq"/>
+                            <constraint firstItem="49N-zK-G5e" firstAttribute="bottom" secondItem="Czb-Oq-8dg" secondAttribute="bottom" id="x84-nT-jvk"/>
+                            <constraint firstItem="49N-zK-G5e" firstAttribute="top" secondItem="Czb-Oq-8dg" secondAttribute="top" id="zrf-bM-519"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Czb-Oq-8dg"/>
                     </view>
                     <connections>
@@ -1089,7 +1100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7X-cp-eCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2" y="0.0"/>
+            <point key="canvasLocation" x="1.4492753623188408" y="0.0"/>
         </scene>
         <!--Firebase Login-->
         <scene sceneID="cBb-Ta-agm">
@@ -2093,7 +2104,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Information_Icon_Button" width="18.90461540222168" height="18.90461540222168"/>
+        <image name="Image" width="1725" height="3733"/>
+        <image name="Information_Icon_Button" width="512" height="512"/>
         <image name="useimgplaceholder" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>

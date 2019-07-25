@@ -107,14 +107,14 @@ class VCChart: UIViewController {
             timer.invalidate()
             pieChart.highlightValue(nil)
 
-            
+
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "housingViewController") as? HousingViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
-            
+
             timer.invalidate()
         }
         else if(foodselected == true)
