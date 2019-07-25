@@ -99,14 +99,6 @@ class VCChart: UIViewController {
         let lifeSelected = pieChart.needsHighlight(index: 3)
         let debtSelected = pieChart.needsHighlight(index: 4)
         let miscSelected = pieChart.needsHighlight(index: 5)
-<<<<<<< HEAD
-        
-        //Story board
-       // let storyboard = UIStoryboard(name: "Graphs", bundle: nil)
-
-        if(housingSelected == true){
-   performSegue(withIdentifier: "housing", sender: self)
-=======
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 
@@ -115,23 +107,18 @@ class VCChart: UIViewController {
             timer.invalidate()
             pieChart.highlightValue(nil)
 
-            
+
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "housingViewController") as? HousingViewController else {
                 return
             }
-            
-            
+
+
             self.navigationController?.pushViewController(viewController, animated:true)
-            
->>>>>>> MasterBranch
+
             timer.invalidate()
         }
         else if(foodselected == true)
         {
-<<<<<<< HEAD
-           
-            
-=======
             pieChart.highlightValue(nil)
 
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "foodViewController") as? FoodViewController else {
@@ -141,15 +128,10 @@ class VCChart: UIViewController {
 
             self.navigationController?.pushViewController(viewController, animated:true)
 
->>>>>>> MasterBranch
             timer.invalidate()
         }
         else if(transpSelected == true)
         {
-<<<<<<< HEAD
-            
-            
-=======
             pieChart.highlightValue(nil)
 
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "transportViewController") as? TransportViewController else {
@@ -159,14 +141,10 @@ class VCChart: UIViewController {
 
             self.navigationController?.pushViewController(viewController, animated:true)
 
->>>>>>> MasterBranch
             timer.invalidate()
         }
         else if(lifeSelected == true)
         {
-<<<<<<< HEAD
-           
-=======
             pieChart.highlightValue(nil)
 
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "lifestyleViewController") as? LifestyleViewController else {
@@ -175,15 +153,11 @@ class VCChart: UIViewController {
 
 
             self.navigationController?.pushViewController(viewController, animated:true)
->>>>>>> MasterBranch
 
             timer.invalidate()
         }
         else if(debtSelected == true)
         {
-<<<<<<< HEAD
-           
-=======
             pieChart.highlightValue(nil)
 
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "debtsViewController") as? DebtsViewController else {
@@ -192,14 +166,10 @@ class VCChart: UIViewController {
 
 
             self.navigationController?.pushViewController(viewController, animated:true)
->>>>>>> MasterBranch
             timer.invalidate()
         }
         else if(miscSelected == true)
         {
-<<<<<<< HEAD
-            
-=======
             pieChart.highlightValue(nil)
 
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "miscViewController") as? MiscViewController else {
@@ -208,7 +178,6 @@ class VCChart: UIViewController {
 
 
             self.navigationController?.pushViewController(viewController, animated:true)
->>>>>>> MasterBranch
             timer.invalidate()
         }
 

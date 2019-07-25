@@ -645,11 +645,6 @@
                         <outlet property="MiscVal" destination="0LQ-X1-OcQ" id="1hj-vf-nG4"/>
                         <outlet property="TransportVal" destination="EEp-kd-GTc" id="W9u-Gr-z6m"/>
                         <outlet property="pieChart" destination="LDb-a1-opd" id="aTq-MO-SVA"/>
-<<<<<<< HEAD
-                        <segue destination="Gvv-aX-feW" kind="show" identifier="test" id="pvS-tP-9Ks"/>
-                        <segue destination="9RQ-Rp-SrH" kind="show" identifier="housing" id="4IE-9W-aWK"/>
-=======
->>>>>>> MasterBranch
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hry-Ri-h11" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -685,16 +680,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnd-FB-uNH">
-                                <rect key="frame" x="0.0" y="87.999999999999986" width="451" height="191.66666666666663"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="176"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="useimgplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="5yk-ZP-6Nt">
-                                        <rect key="frame" x="8" y="8" width="112" height="175.66666666666666"/>
+                                        <rect key="frame" x="8" y="8" width="112" height="160"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="112" id="twH-Qo-JBG"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-R3-7tb">
-                                        <rect key="frame" x="155" y="8" width="288" height="21"/>
+                                        <rect key="frame" x="155" y="8" width="251" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="cbx-GG-4Y7"/>
                                         </constraints>
@@ -703,13 +698,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$43,556.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzM-AJ-dmM">
-                                        <rect key="frame" x="169" y="66" width="260" height="105.66666666666669"/>
+                                        <rect key="frame" x="169" y="66" width="223" height="90"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XId-4K-8ci">
-                                        <rect key="frame" x="155" y="37" width="288" height="21"/>
+                                        <rect key="frame" x="155" y="37" width="251" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="U6c-NS-b0g"/>
                                         </constraints>
@@ -737,17 +732,17 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="haK-Vc-d8i">
-                                <rect key="frame" x="0.0" y="263" width="451" height="599"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="550"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="haK-Vc-d8i" secondAttribute="height" multiplier="207:275" id="tlU-c1-eZV"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="kVT-ul-eHC" customClass="TransactionListViewCell" customModule="FinalProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333333333333343" width="451" height="60"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kVT-ul-eHC" id="lqY-3N-uyQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="451" height="59.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcr-s2-OKS">
@@ -771,11 +766,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ze5-hh-rdj">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="280.66666666666669" y="19" width="112.33333333333331" height="23"/>
-=======
-                                                    <rect key="frame" x="256" y="19" width="110" height="20"/>
->>>>>>> MasterBranch
+                                                    <rect key="frame" x="280.66666666666669" y="19" width="122.33333333333331" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Ze5-hh-rdj" secondAttribute="height" multiplier="9:2" constant="20" id="dQG-5k-roH"/>
                                                     </constraints>
@@ -2113,20 +2104,12 @@
         </scene>
     </scenes>
     <resources>
-<<<<<<< HEAD
         <image name="Image" width="1725" height="3733"/>
         <image name="Information_Icon_Button" width="512" height="512"/>
-=======
-        <image name="Information_Icon_Button" width="18.90461540222168" height="18.90461540222168"/>
->>>>>>> MasterBranch
         <image name="useimgplaceholder" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BDU-sr-Zxf"/>
-<<<<<<< HEAD
-        <segue reference="4IE-9W-aWK"/>
-=======
->>>>>>> MasterBranch
         <segue reference="l9r-D7-xG4"/>
     </inferredMetricsTieBreakers>
 </document>
