@@ -48,6 +48,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.reloadData()
         self.Table.allowsMultipleSelectionDuringEditing = true
         self.Delete.isHidden = true
+        //navigationItem.title = "Transactions"
 
         
         

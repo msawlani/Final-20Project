@@ -26,6 +26,8 @@ class SettingsViewController: UIViewController {
             ChangePass.isEnabled = false
         }
         
+        navigationItem.title = "Settings"
+
 //        //Example income
 //        let tempIncome = Transaction()
 //        tempIncome.amount = 100

@@ -816,23 +816,37 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Balance" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="gHt-ug-gcd">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Edit" style="plain" id="5im-XZ-P4g">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xBr-kg-gA1">
-                                    <rect key="frame" x="20" y="4" width="92" height="36"/>
+                        <barButtonItem key="leftBarButtonItem" title="Edit" style="plain" id="5im-XZ-P4g">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xBr-kg-gA1">
+                                <rect key="frame" x="20" y="4" width="92" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="EditButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="2JN-yT-dmZ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" id="3Y9-CG-5Yr">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2RQ-9U-4Zl">
+                                    <rect key="frame" x="302" y="3" width="92" height="38"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="Edit">
+                                    <color key="tintColor" red="0.0" green="0.40531929100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Add">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="EditButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="2JN-yT-dmZ"/>
+                                        <action selector="AddBill:" destination="9pv-A4-QxB" eventType="touchUpInside" id="yhS-c5-Tu8"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
                             <barButtonItem title="Delete" style="plain" id="45y-ac-0yr">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3Q-Qr-vjJ">
-                                    <rect key="frame" x="120" y="4" width="92" height="36"/>
+                                    <rect key="frame" x="202" y="4" width="92" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="Delete">
@@ -843,21 +857,7 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="3Y9-CG-5Yr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2RQ-9U-4Zl">
-                                <rect key="frame" x="302" y="3" width="92" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" red="0.0" green="0.40531929100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="AddBill:" destination="9pv-A4-QxB" eventType="touchUpInside" id="yhS-c5-Tu8"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="Delete" destination="f3Q-Qr-vjJ" id="b4r-j0-8fB"/>
