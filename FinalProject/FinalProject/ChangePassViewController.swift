@@ -23,6 +23,8 @@ class ChangePassViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
+        navigationItem.title = "Change Password"
+
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ChangePassViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white

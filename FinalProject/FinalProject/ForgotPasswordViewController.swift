@@ -17,6 +17,8 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.hidesBackButton = true
+        navigationItem.title = "Forgot Password"
+
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ForgotPasswordViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white

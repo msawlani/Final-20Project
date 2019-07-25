@@ -32,7 +32,8 @@ class SignupViewController: UIViewController {
         newBackButton.tintColor = UIColor.white
         let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
         newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
-       
+        
+        navigationItem.title = "Firebase Signup"
     }
     @objc func back(sender: UIBarButtonItem) {
         

@@ -19,6 +19,8 @@ class ChangeEmailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
+        navigationItem.title = "Change Email"
+
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ChangeEmailViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
