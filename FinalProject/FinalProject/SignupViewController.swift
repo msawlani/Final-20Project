@@ -27,9 +27,11 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SignupViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SignupViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
        
     }
     @objc func back(sender: UIBarButtonItem) {
@@ -140,9 +142,7 @@ class SignupViewController: UIViewController {
         
         self.present(alert, animated: true)
     }
-    @IBAction func Back(_ sender: Any) {
-        self.performSegue(withIdentifier: "Login", sender: self)
-    }
+
     
     /*
      // MARK: - Navigation

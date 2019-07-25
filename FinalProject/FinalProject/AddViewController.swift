@@ -27,6 +27,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var selectedSection: String = ""
     var oldAmount: Double?
     var Sections = mainUser.categories
+    var count = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +39,13 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         
 
-        
+        navigationItem.title = "Add Transactions"
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
 
         paymentPrice.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 
@@ -76,7 +79,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     @objc func back(sender: UIBarButtonItem) {
         if paymentName.text?.isEmpty != true || paymentPrice.text?.isEmpty != true ||
-            section.text?.isEmpty != true || dateTextField.text?.isEmpty != true{
+            section.text?.isEmpty != true || dateTextField.text?.isEmpty != true || self.count > 0{
         let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
 
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -170,18 +173,43 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
 
 
-
-        home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+        let alert = UIAlertController(title: "Add more?", message: "Do you want to add more transactions?", preferredStyle: .alert)
         
-
-        if  transaction.transactionNum != ""{
-            mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: oldAmount!)
-        }
-        else {
-        mainUser.accounts[0].AddTransaction(transaction: transaction)
-        }
-
-        self.navigationController?.popViewController(animated: true)
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: {(action) in
+            home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+            
+            
+            if  transaction.transactionNum != ""{
+                mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: self.oldAmount!)
+            }
+            else {
+                mainUser.accounts[0].AddTransaction(transaction: transaction)
+            }
+            
+            self.count = 0
+            
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(ACTION) in
+            home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+            
+            
+            if  transaction.transactionNum != ""{
+                mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: self.oldAmount!)
+            }
+            else {
+                mainUser.accounts[0].AddTransaction(transaction: transaction)
+            }
+            
+            self.paymentName.text = ""
+            self.paymentPrice.text = ""
+            self.section.text = ""
+            self.dateTextField.text = ""
+            self.count += 1
+        }))
+ 
+        self.present(alert, animated: true)
     }
     
     func checkInput() -> Bool{

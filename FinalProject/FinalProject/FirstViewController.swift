@@ -48,8 +48,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.reloadData()
         self.Table.allowsMultipleSelectionDuringEditing = true
         self.Delete.isHidden = true
+        //navigationItem.title = "Transactions"
 
-
+        
+        
+//        let indexPath = NSIndexPath(item: , section: transactionArray.count)
+//        self.Table.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.middle, animated: true)
 
         transactionArray = [Transactions(isExpanded: true, sectionName: "Income", TransactionList: []),
                             Transactions(isExpanded: true, sectionName: "Housing", TransactionList: []),
@@ -308,11 +312,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     //allows to swipe left on cells to edit and delete them - michael
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        if isEditing == false{
-            Edit.setTitle("Done", for: .normal)
-            
-        }
-        
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) in
 
             let transaction = self.transactionArray[indexPath.section].TransactionList[indexPath.row]
@@ -333,8 +332,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
-//                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-//                let context = appDelegate.persistentContainer.viewContext
+
 
                 var indexString = self.transactionArray[indexPath.section].TransactionList[indexPath.row].transactionNum
                 indexString = String(indexString.dropFirst(11))
