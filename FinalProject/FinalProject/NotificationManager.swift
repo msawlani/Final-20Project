@@ -49,7 +49,7 @@ class NotificationManager {
         var triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
         triggerDate.hour = 9
         triggerDate.minute = 0
-        triggerDate.second = 0
+        //triggerDate.second = 0
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         let request = UNNotificationRequest(identifier: uuid.uuidString, content: content, trigger: trigger)

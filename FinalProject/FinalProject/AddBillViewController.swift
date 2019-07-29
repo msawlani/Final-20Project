@@ -174,7 +174,7 @@ class AddBillViewController: UIViewController {
     }
 
     func createBill() -> Bill? {
-       let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
         guard let date = dateFormatter.date(from: dateTextField.text ?? "") else {
@@ -190,6 +190,9 @@ class AddBillViewController: UIViewController {
         amountTextField.text?.removeFirst()
         amountTextField.text = amountTextField.text?.replacingOccurrences(of: ",", with: "")
         
+       let uuid = UUID()
+      
+        
         let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
@@ -197,8 +200,9 @@ class AddBillViewController: UIViewController {
                         category: categoryTextField.text!,
                         paymentRepeat: repeatCategoryTextField.text!,
                         uuid: UUID())
-
-        scheduleNotification(for: bill)
+        
+         scheduleNotification(for: bill)
+        
         return bill
     }
     
@@ -206,11 +210,12 @@ class AddBillViewController: UIViewController {
        
         guard let paymentRepeat = RepeatEnum(rawValue: bill.paymentRepeat) else {
             print("[ERROR] - Failing to Parse Repeat Type")
+            assertionFailure()
             return
         }
-        
+
         var notificationDate: Date?
-    
+
         switch paymentRepeat {
         case .None:
             return
@@ -227,13 +232,9 @@ class AddBillViewController: UIViewController {
             notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: bill.date.date)
             break
         }
-        
+
         guard let date = notificationDate else {
             return
-        }
-        
-        if date.timeIntervalSinceNow.sign == .minus {
-           print("[WARNING] - Notication is past current date, skipping creation")
         }
         
         if isEditing == false {
@@ -241,6 +242,38 @@ class AddBillViewController: UIViewController {
         } else if isEditing == true {
             NotificationManager.shared.editPendingNotification(for: date, billName: bill.billName, uuid: bill.uuid)
         }
+    }
+    
+    func isNotificationDatePastDate(type: RepeatEnum, date: Date) -> Bool {
+        var notificationDate: Date?
+        
+        switch type {
+        case .None:
+            return false
+        case .OnTheDay:
+            notificationDate = date
+            break
+        case .OneDayBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -1, to: date)
+            break
+        case .TwoDaysBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -2, to: date)
+            break
+        case .OneWeekBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: date)
+            break
+        }
+        
+        guard let date = notificationDate else {
+            return false
+        }
+        
+        if date.timeIntervalSinceNow.sign == .minus {
+            print("[WARNING] - Notication is past current date, skipping creation")
+            return true
+        }
+        
+        return false
     }
 
     func checkInputFields() -> Bool {
@@ -282,6 +315,19 @@ class AddBillViewController: UIViewController {
             alert.message = "Please Select a Repeat Option to add a Bill"
             check = false
         }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        if let date = dateFormatter.date(from: dateTextField.text ?? ""),
+         let repeatCategory =  RepeatEnum(rawValue: repeatCategoryTextField.text ?? "None") {
+            
+            if isNotificationDatePastDate(type: repeatCategory, date: date) {
+                alert.title = "Reminder is not Available"
+                alert.message = "Please Select a Reminder Option that is not past date."
+                check = false
+            }
+        }
+       
         if check == false {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
