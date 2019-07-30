@@ -17,9 +17,17 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard  let statusBar = (UIApplication.shared.value(forKey: "statusBarWindow") as AnyObject).value(forKey: "statusBar") as? UIView else {
+            return
+        }
+        
+        //statusBar.backgroundColor = .darkGray
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
 
         scrollView.delegate = self
-        self.scrollView.contentSize.height = 1.0
+        //self.scrollView.contentSize.height = 1.0
         
         slides = createSlides()
         setupSlideScrollView(slides: slides)
@@ -33,20 +41,20 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     func createSlides() -> [Slide] {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.imageView.image = UIImage(named: "MainScreenTest")
+        slide1.imageView.image = UIImage(named: "MainScreenAdd")
         
         let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide2.imageView.image = UIImage(named: "AddTransaction")
+        slide2.imageView.image = UIImage(named: "Income")
         
         let slide3:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide3.imageView.image = UIImage(named: "Income")
+        slide3.imageView.image = UIImage(named: "MainScreenChangeScreen")
         
         let slide4:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide4.imageView.image = UIImage(named: "Graphs")
+        slide4.imageView.image = UIImage(named: "Bills")
         
         
         let slide5:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide5.imageView.image = UIImage(named: "Settings")
+        slide5.imageView.image = UIImage(named: "Graphs")
         
         return [slide1, slide2, slide3, slide4, slide5]
     }
@@ -68,8 +76,20 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
      * slideScrollView.delegate = self or
      */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0 || scrollView.contentOffset.y < 0 {
+            scrollView.contentOffset.y = 0
+        }
+        
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControl.currentPage = Int(pageIndex)
+        
+        if Int(pageIndex) == 4
+        {
+            self.navigationController?.isNavigationBarHidden = false
+        }
+        else{
+            self.navigationController?.isNavigationBarHidden = true
+        }
         
         let maximumHorizontalOffset: CGFloat = scrollView.contentSize.width - scrollView.frame.width
         let currentHorizontalOffset: CGFloat = scrollView.contentOffset.x

@@ -17,7 +17,6 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
         view.backgroundColor = UIColor.gray
 
         self.navigationController?.isNavigationBarHidden = true
@@ -52,14 +51,6 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "tutorialViewController") as? TutorialViewController else {
-            return
-        }
-        
-        //self.push(viewController, animated: false, completion: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     //Checking if thers is a log in error
@@ -85,16 +76,7 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
                 signedInWithGoogle = true
                 //Retrieve user data from Firebase and store it in user variable
                 mainUser.userId = Auth.auth().currentUser!.uid
-
-//                GetUser(userId: mainUser.userId, callback: { mainUser in
-//                    mainUser.email = googleUser.profile.email
-//                    mainUser.imageURL = googleUser.profile.imageURL(withDimension: 112)
-//                    mainUser.firstName = googleUser.profile.givenName
-//                    mainUser.lastName = googleUser.profile.familyName
-//                    mainUser.StoreInFirebase()
-//                    self.performSegue(withIdentifier: "toMain", sender: nil)
-//                })
-                //Justin
+                
 
                 self.performSegue(withIdentifier: "toMain", sender: nil)
             }

@@ -42,6 +42,22 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //if !(UserDefaults.standard.bool(forKey: "notFirstLogin"))
+        //{
+            //UserDefaults.standard.set(true, forKey: "notFirstLogin")
+            // App Open First time
+            // Show Alert
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "tutorialViewController") as? TutorialViewController else {
+            return
+            }
+            self.navigationController?.pushViewController(viewController, animated: true)
+        //}
+        
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+
+        
         // Do any additional setup after loading the view, typically from a nib.
         //Retrieve user data from Firebase and store it in user variable
         self.Table.delegate = self
@@ -69,6 +85,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.Table.reloadData()
         addButton.tintColor = UIColor.white
         self.Delete.isHidden = true
+        
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
 
 
         GetUser(userId: mainUser.userId, callback: { tempUser in
