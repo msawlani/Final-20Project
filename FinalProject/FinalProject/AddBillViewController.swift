@@ -36,6 +36,7 @@ class AddBillViewController: UIViewController {
         installView()
         overrideBackButton()
         amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
+
     }
     
     func overrideBackButton() {

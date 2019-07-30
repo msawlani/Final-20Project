@@ -10,16 +10,16 @@ import UIKit
 import FirebaseAuth
 
 class UserLoginViewController: UIViewController {
-    
+
 
     @IBOutlet var emailFieldText: UITextField!
     @IBOutlet var passwordFieldText: UITextField!
-    
+
     @IBOutlet weak var showPasswordButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(UserLoginViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -27,27 +27,27 @@ class UserLoginViewController: UIViewController {
         let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
         newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
     }
-    
+
     @objc func back(sender: UIBarButtonItem) {
-        
+
         if emailFieldText.text?.isEmpty != true || passwordFieldText.text?.isEmpty != true{
             let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
-            
+
             alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-            
+
             alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as? LogInView else {
                     return
                 }
-                
-                
+
+
                 //self.push(viewController, animated: false, completion: nil)
                 self.navigationController?.pushViewController(viewController, animated: true)
 
             }))
-            
-            
+
+
             self.present(alertController, animated: true)
         }
         else{
@@ -55,18 +55,19 @@ class UserLoginViewController: UIViewController {
             guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as? LogInView else {
                 return
             }
-            
-            
+
+
             //self.push(viewController, animated: false, completion: nil)
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
+
 //logs the user in on pressed using the firebase account - Michael Sawlani
     @IBAction func Login(_ sender: Any) {
         guard let email = emailFieldText.text else {return}
         guard let password = passwordFieldText.text else {return}
-        
+
+
         Auth.auth().signIn(withEmail: email, password: password) {user, error in
             if error == nil && user != nil && self.passwordFieldText.text != nil
             {
@@ -78,33 +79,33 @@ class UserLoginViewController: UIViewController {
             }
             else if self.passwordFieldText.text == nil{
                 let alert = UIAlertController(title: "Failed to Login", message: "Please Enter Password", preferredStyle: .alert)
-                
+
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
+
                 self.present(alert, animated: true)
             }
             else{
                 let alert = UIAlertController(title: "Failed to Login", message: "Email and/or password is incorrect", preferredStyle: .alert)
-                
+
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
+
                 self.present(alert, animated: true)
             }
-            
-            
+
+
         }
     }
-    
+
     //takes the user to signup page on pressed - Michael Sawlani
     @IBAction func Signup(_ sender: Any) {
         performSegue(withIdentifier: "Signup", sender: self)
     }
-    
+
     //takes the user to fogot password on pressed - Michael Sawlani
     @IBAction func ForgotPassword(_ sender: Any) {
          performSegue(withIdentifier: "ForgotPass", sender: self)
     }
-    
+
     //shows and hides the password on pressed - Michael Sawlani
     @IBAction func ShowPassword(_ sender: Any) {
         if showPasswordButton.titleLabel?.text == "Show"{
@@ -116,16 +117,16 @@ class UserLoginViewController: UIViewController {
             showPasswordButton.setTitle("Show", for: .normal)
         }
     }
-    
-    
+
+
     @IBAction func PasswordHint(_ sender: Any) {
         let alert = UIAlertController(title: "Password Hint", message: "Password has to be 8 - 16 characters", preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
+
         self.present(alert, animated: true)
     }
-    
+
     /*
     // MARK: - Navigation
 
