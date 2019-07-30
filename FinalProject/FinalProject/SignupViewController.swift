@@ -66,6 +66,8 @@ class SignupViewController: UIViewController {
                 
                 let alert = UIAlertController(title: "Register Successful", message: "Successfully made an Account with Firebase", preferredStyle: .alert)
                 
+                signedInWithGoogle = false
+                
                 
                 let regiAction = UIAlertAction(title: "OK", style: .default) { [unowned self] action in
                     self.performSegue(withIdentifier: "Main", sender: self)
