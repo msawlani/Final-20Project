@@ -18,18 +18,20 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBSDKBridgeAPIRequest.h"
+NS_ASSUME_NONNULL_BEGIN
 
-NS_SWIFT_NAME(BridgeAPICrypto)
-@interface FBSDKBridgeAPICrypto : NSObject
+@interface FBSDKRestrictiveDataFilterManager : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
-+ (void)addCipherKeyToQueryParameters:(NSMutableDictionary *)queryParameters;
-+ (NSDictionary *)decryptResponseForRequest:(FBSDKBridgeAPIRequest *)request
-                            queryParameters:(NSDictionary *)queryParameters
-                                      error:(NSError *__autoreleasing *)errorRef;
-+ (void)reset;
++ (void)updateFilters:(nullable NSArray<NSDictionary<NSString *, id> *> *)restrictiveRules
+    restrictiveParams:(nullable NSDictionary<NSString *, id> *)restrictiveParams;
++ (nullable NSString *)getMatchedDataTypeWithEventName:(NSString *)eventName
+                                              paramKey:(NSString *)paramKey
+                                            paramValue:(id)paramValue;
++ (BOOL)isDeprecatedEvent:(NSString *)eventName;
 
 @end
+
+NS_ASSUME_NONNULL_END

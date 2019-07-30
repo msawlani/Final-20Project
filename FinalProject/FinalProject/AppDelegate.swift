@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
          //GIDSignIn.sharedInstance().delegate = self
         NotificationManager.shared.requestAuthorization()
         
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        UITabBarItem.appearance().setTitleTextAttributes(systemFontAttributes, for: .normal)
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

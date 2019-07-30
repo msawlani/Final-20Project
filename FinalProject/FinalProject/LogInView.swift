@@ -17,12 +17,14 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        view.backgroundColor = UIColor.gray
+
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
         
         //Add Signin Button
         let googleButton = GIDSignInButton()
-        googleButton.frame =  CGRect(x:16,y:650,width: view.frame.width - 32,height:50)
+        googleButton.frame =  CGRect(x:16,y:670,width: view.frame.width - 32,height:50)
         view.addSubview(googleButton)
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -30,7 +32,7 @@ class LogInView: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.uiDelegate = self
 
         let loginButton = UIButton.init()
-        loginButton.frame = CGRect(x: 16, y: 590, width: view.frame.width - 32, height: 50)
+        loginButton.frame = CGRect(x: 16, y: 600, width: view.frame.width - 32, height: 50)
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = UIColor.black
         loginButton.tintColor = UIColor.white

@@ -18,14 +18,19 @@ class ChangePassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ChangePassViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ChangePassViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
     }
     @objc func back(sender: UIBarButtonItem) {
+        if passwordFieldText.text?.isEmpty != true && reenterpasswordFieldText.text?.isEmpty != true{
         let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -36,6 +41,10 @@ class ChangePassViewController: UIViewController {
         
         
         self.present(alertController, animated: true)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     @IBAction func ChangPass(_ sender: Any) {
         guard let password = passwordFieldText.text else {

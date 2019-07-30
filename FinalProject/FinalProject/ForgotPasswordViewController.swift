@@ -17,11 +17,15 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ForgotPasswordViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ForgotPasswordViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
     }
     @objc func back(sender: UIBarButtonItem) {
+        
+        if emailFieldText.text?.isEmpty != true{
         let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -32,6 +36,9 @@ class ForgotPasswordViewController: UIViewController {
         
         
         self.present(alertController, animated: true)
+        }else{
+        self.navigationController?.popViewController(animated: true)
+        }
     }
     @IBAction func Reset(_ sender:Any){
         guard let email = emailFieldText.text else {return}

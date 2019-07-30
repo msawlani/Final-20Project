@@ -13,7 +13,6 @@
 		A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */; };
 		A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5922A6C68F004E2372 /* CheckBox.swift */; };
 		A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */; };
-		A884597E22DA5F4F00EF53FB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A884597D22DA5F4F00EF53FB /* NotificationManager.swift */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BFB7222AFF809008AFE79 /* VCChart.swift */; };
@@ -25,7 +24,13 @@
 		F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */; };
 		F204D84D22B01479002E541E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84C22B01479002E541E /* AddViewController.swift */; };
 		F204D84F22B01481002E541E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204D84E22B01481002E541E /* FirstViewController.swift */; };
+		F20644A622E8E35A001782E9 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20644A522E8E35A001782E9 /* FoodViewController.swift */; };
+		F20644A822E8E6B2001782E9 /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20644A722E8E6B2001782E9 /* TransportViewController.swift */; };
+		F20644AA22E8E8B6001782E9 /* LifestyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20644A922E8E8B6001782E9 /* LifestyleViewController.swift */; };
+		F20644AC22E8E9D4001782E9 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20644AB22E8E9D4001782E9 /* DebtsViewController.swift */; };
+		F20644AE22E8EAE8001782E9 /* MiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20644AD22E8EAE8001782E9 /* MiscViewController.swift */; };
 		F21364ED228F046F00800435 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21364EC228F046F00800435 /* SignupViewController.swift */; };
+		F23E825D22E762BD00A6E872 /* HousingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E825C22E762BD00A6E872 /* HousingViewController.swift */; };
 		F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */; };
 		F2816D1822B725580083C2C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2816D1722B725580083C2C0 /* Assets.xcassets */; };
 		F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */; };
@@ -41,7 +46,6 @@
 		A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableViewCell.xib; sourceTree = "<group>"; };
 		A85E9B5922A6C68F004E2372 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		A884597D22DA5F4F00EF53FB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -56,7 +60,13 @@
 		F2049A0122832DB100A275E0 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F204D84C22B01479002E541E /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F204D84E22B01481002E541E /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		F20644A522E8E35A001782E9 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		F20644A722E8E6B2001782E9 /* TransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
+		F20644A922E8E8B6001782E9 /* LifestyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifestyleViewController.swift; sourceTree = "<group>"; };
+		F20644AB22E8E9D4001782E9 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
+		F20644AD22E8EAE8001782E9 /* MiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscViewController.swift; sourceTree = "<group>"; };
 		F21364EC228F046F00800435 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F23E825C22E762BD00A6E872 /* HousingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingViewController.swift; sourceTree = "<group>"; };
 		F259DB322280AE7400C76EC8 /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		F2816D1722B725580083C2C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
@@ -149,7 +159,12 @@
 				F295864B22976F9B001BEC17 /* ChangeEmailViewController.swift */,
 				F295864D22976FAE001BEC17 /* ChangePassViewController.swift */,
 				A85E9B5922A6C68F004E2372 /* CheckBox.swift */,
-				A884597D22DA5F4F00EF53FB /* NotificationManager.swift */,
+				F23E825C22E762BD00A6E872 /* HousingViewController.swift */,
+				F20644A522E8E35A001782E9 /* FoodViewController.swift */,
+				F20644A722E8E6B2001782E9 /* TransportViewController.swift */,
+				F20644A922E8E8B6001782E9 /* LifestyleViewController.swift */,
+				F20644AB22E8E9D4001782E9 /* DebtsViewController.swift */,
+				F20644AD22E8EAE8001782E9 /* MiscViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -237,11 +252,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FinalProject/Pods-FinalProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -251,11 +268,13 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBCircularProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -322,21 +341,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F20644A622E8E35A001782E9 /* FoodViewController.swift in Sources */,
+				F23E825D22E762BD00A6E872 /* HousingViewController.swift in Sources */,
 				A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */,
 				A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */,
 				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,
 				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
+				F20644AA22E8E8B6001782E9 /* LifestyleViewController.swift in Sources */,
 				F21364ED228F046F00800435 /* SignupViewController.swift in Sources */,
 				A85E9B5722A6C61A004E2372 /* BillTableViewCell.swift in Sources */,
+				F20644AC22E8E9D4001782E9 /* DebtsViewController.swift in Sources */,
+				F20644AE22E8EAE8001782E9 /* MiscViewController.swift in Sources */,
 				F295864C22976F9B001BEC17 /* ChangeEmailViewController.swift in Sources */,
 				F204D84D22B01479002E541E /* AddViewController.swift in Sources */,
 				F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
 				A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
-				A884597E22DA5F4F00EF53FB /* NotificationManager.swift in Sources */,
 				F2C6B60322B160E700E02FD4 /* TransactionListViewCell.swift in Sources */,
 				E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */,
+				F20644A822E8E6B2001782E9 /* TransportViewController.swift in Sources */,
 				F204D84F22B01481002E541E /* FirstViewController.swift in Sources */,
 				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,

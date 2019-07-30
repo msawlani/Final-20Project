@@ -20,7 +20,48 @@ class UserLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(UserLoginViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
     }
+    
+    @objc func back(sender: UIBarButtonItem) {
+        
+        if emailFieldText.text?.isEmpty != true || passwordFieldText.text?.isEmpty != true{
+            let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+            
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as? LogInView else {
+                    return
+                }
+                
+                
+                //self.push(viewController, animated: false, completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: true)
+
+            }))
+            
+            
+            self.present(alertController, animated: true)
+        }
+        else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as? LogInView else {
+                return
+            }
+            
+            
+            //self.push(viewController, animated: false, completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
 //logs the user in on pressed using the firebase account - Michael Sawlani
     @IBAction func Login(_ sender: Any) {
         guard let email = emailFieldText.text else {return}
@@ -83,17 +124,6 @@ class UserLoginViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(alert, animated: true)
-    }
-    @IBAction func Back(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as? LogInView else {
-            return
-        }
-        
-        
-        //self.push(viewController, animated: false, completion: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
     
     /*

@@ -27,12 +27,16 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SignupViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SignupViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
        
     }
     @objc func back(sender: UIBarButtonItem) {
+        
+        if emailFieldText.text?.isEmpty != true || passwordFieldText.text?.isEmpty != true || reenterpasswordFieldText.text?.isEmpty != true{
         let alertController = UIAlertController(title: "Are You Sure?", message: "If You Proceed, All Data On This Page Will Be Lost", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -43,6 +47,10 @@ class SignupViewController: UIViewController {
         
         
         self.present(alertController, animated: true)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     //registers the user with firebase  and checks for errors - Michael Sawlani
     @IBAction func Regi(_ sender: Any){
@@ -134,9 +142,7 @@ class SignupViewController: UIViewController {
         
         self.present(alert, animated: true)
     }
-    @IBAction func Back(_ sender: Any) {
-        self.performSegue(withIdentifier: "Login", sender: self)
-    }
+
     
     /*
      // MARK: - Navigation
