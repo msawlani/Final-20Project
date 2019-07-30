@@ -13,6 +13,7 @@
 		A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */; };
 		A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5922A6C68F004E2372 /* CheckBox.swift */; };
 		A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */; };
+		A8BCD4C822F09A38006CA5EA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCD4C722F09A38006CA5EA /* NotificationManager.swift */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BFB7222AFF809008AFE79 /* VCChart.swift */; };
@@ -46,6 +47,7 @@
 		A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableViewCell.xib; sourceTree = "<group>"; };
 		A85E9B5922A6C68F004E2372 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		A8BCD4C722F09A38006CA5EA /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		E15AE3B822565CE1007C345F /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				A8BCD4C722F09A38006CA5EA /* NotificationManager.swift */,
 				F2816D1722B725580083C2C0 /* Assets.xcassets */,
 				F21364EC228F046F00800435 /* SignupViewController.swift */,
 				E15AE3B922565CE1007C345F /* AppDelegate.swift */,
@@ -347,6 +350,7 @@
 				A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */,
 				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,
 				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
+				A8BCD4C822F09A38006CA5EA /* NotificationManager.swift in Sources */,
 				F20644AA22E8E8B6001782E9 /* LifestyleViewController.swift in Sources */,
 				F21364ED228F046F00800435 /* SignupViewController.swift in Sources */,
 				A85E9B5722A6C61A004E2372 /* BillTableViewCell.swift in Sources */,
