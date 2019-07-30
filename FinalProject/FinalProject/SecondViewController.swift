@@ -43,11 +43,12 @@ class SecondViewController: UIViewController {
     }
 
     func createNavigationButton() {
-        let barButtonItem = UIBarButtonItem(title: "+",
+        let barButtonItem = UIBarButtonItem(title: "Add",
                                             style: .done,
                                             target: self,
                                             action: #selector(addTapped))
         self.navigationItem.setRightBarButton(barButtonItem, animated: true)
+        barButtonItem.tintColor = UIColor.white
 
     }
 
