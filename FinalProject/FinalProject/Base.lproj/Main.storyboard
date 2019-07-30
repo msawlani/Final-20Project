@@ -2106,6 +2106,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZs-fu-soK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8506" y="-1308"/>
+        </scene>
         <!--Tutorial-->
         <scene sceneID="IzK-hO-ZvJ">
             <objects>
