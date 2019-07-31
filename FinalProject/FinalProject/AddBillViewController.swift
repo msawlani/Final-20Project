@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+enum RepeatEnum: String {
+    case None = "None"
+    case OnTheDay = "On The Day"
+    case OneDayBefore = "One Day Before"
+    case TwoDaysBefore = "Two Days Before"
+    case OneWeekBefore = "One Week Before"
+}
+
 class AddBillViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
@@ -28,7 +36,7 @@ class AddBillViewController: UIViewController {
 
     enum Constants {
         static let categories = ["Housing", "Food", "Transportation", "Lifestyle", "Debts", "Miscellaneous"]
-        static let repeatCategories = ["None", "On the day", "1 day before", "2 days before", "1 week before"]
+        static let repeatCategories: [RepeatEnum] = [.None, .OnTheDay, .OneDayBefore, .TwoDaysBefore, .OneWeekBefore]
     }
 
     override func viewDidLoad() {
@@ -36,71 +44,64 @@ class AddBillViewController: UIViewController {
         installView()
         overrideBackButton()
         amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
+        doneButton.tintColor = .white
     }
-    
+
     func overrideBackButton() {
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.leftBarButtonItem = newBackButton
+        newBackButton.tintColor = UIColor.white
     }
-    
+
     @objc func backButtonAction() {
-        
-        
+
+
         if isFieldsEmpty() == true {
             self.navigationController?.popViewController(animated: true)
         } else {
             let alert = UIAlertController(title: "Are you sure?", message: "If you proceed, all the data on this page will be lost", preferredStyle: UIAlertController.Style.alert)
-            
-            let alertAction = UIAlertAction(title: "Go", style: .default) { [weak self] (action) in
+
+            let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action) in
                 self?.navigationController?.popViewController(animated: true)
             }
-            
-            let goBackAction = UIAlertAction(title: "Stay", style: .default)
-            
+
+            let goBackAction = UIAlertAction(title: "No", style: .default)
+
             alert.addAction(alertAction)
             alert.addAction(goBackAction)
-            
+
             present(alert, animated: true)
         }
     }
 
     func isFieldsEmpty() -> Bool {
-        
+
         var isEmpty = true
-        
+
         if amountTextField.text?.isEmpty == false {
             isEmpty = false
         }
-        
-//        if let amount = amountTextField.text {
-//            var amountFormatted: String = amount
-//            amountFormatted = amountFormatted.replacingOccurrences(of: ",", with: "")
-//            amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
-//            if let _ = Double(amountFormatted) {
-//                isEmpty = false
-//            }
-//        }
-        
+
         if nameTextField.text?.isEmpty == false {
             isEmpty = false
         }
-        
+
         if dateTextField.text?.isEmpty == false {
             isEmpty = false
         }
-        
+
         if categoryTextField.text?.isEmpty == false {
             isEmpty = false
         }
-        
+
         if repeatCategoryTextField.text?.isEmpty == false {
             isEmpty = false
         }
-        
+
         return isEmpty
     }
-    
+
     private func installView() {
 
         showDatePicker()
@@ -160,22 +161,28 @@ class AddBillViewController: UIViewController {
             return
         }
 
+<<<<<<< HEAD
         if editIndexPathRow != nil {
             home.billsContainer[editIndexPathRow!] = bill
             mainUser.bills[editIndexPathRow!] = bill
+=======
+        if let indexPathRow = editIndexPathRow {
+            home.billsContainer[indexPathRow] = bill
+            mainUser.bills[indexPathRow] = bill
+>>>>>>> MasterBranch
             mainUser.StoreInFirebase()
         }
         else {
             home.billsContainer.append(bill)
-            mainUser.AddBill(bill: bill)
+            _ = mainUser.AddBill(bill: bill)
         }
         self.navigationController?.popViewController(animated: true)
     }
 
     func createBill() -> Bill? {
-       let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        
+
         guard let date = dateFormatter.date(from: dateTextField.text ?? "") else {
             assertionFailure("Error on date parsers")
             return nil
@@ -188,15 +195,91 @@ class AddBillViewController: UIViewController {
 
         amountTextField.text?.removeFirst()
         amountTextField.text = amountTextField.text?.replacingOccurrences(of: ",", with: "")
-        
+
+       let uuid = UUID()
+
+
         let bill = Bill(billName: nameTextField.text ?? "",
                         description: "test", amount: Double(amountTextField.text!) ?? 0,
                         date: customDate,
                         autoPay: autoPaySwitch.isOn,
                         category: categoryTextField.text!,
-                        paymentRepeat: repeatCategoryTextField.text!)
+                        paymentRepeat: repeatCategoryTextField.text!,
+                        uuid: UUID())
+
+         scheduleNotification(for: bill)
 
         return bill
+    }
+
+    func scheduleNotification(for bill: Bill) {
+
+        guard let paymentRepeat = RepeatEnum(rawValue: bill.paymentRepeat) else {
+            print("[ERROR] - Failing to Parse Repeat Type")
+            assertionFailure()
+            return
+        }
+
+        var notificationDate: Date?
+
+        switch paymentRepeat {
+        case .None:
+            return
+        case .OnTheDay:
+            notificationDate = bill.date.date
+            break
+        case .OneDayBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -1, to: bill.date.date)
+            break
+        case .TwoDaysBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -2, to: bill.date.date)
+            break
+        case .OneWeekBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: bill.date.date)
+            break
+        }
+
+        guard let date = notificationDate else {
+            return
+        }
+
+        if isEditing == false {
+            NotificationManager.shared.createNotification(for: date, billName: bill.billName, uuid: bill.uuid)
+        } else if isEditing == true {
+            NotificationManager.shared.editPendingNotification(for: date, billName: bill.billName, uuid: bill.uuid)
+        }
+    }
+
+    func isNotificationDatePastDate(type: RepeatEnum, date: Date) -> Bool {
+        var notificationDate: Date?
+
+        switch type {
+        case .None:
+            return false
+        case .OnTheDay:
+            notificationDate = date
+            break
+        case .OneDayBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -1, to: date)
+            break
+        case .TwoDaysBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -2, to: date)
+            break
+        case .OneWeekBefore:
+            notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: date)
+            break
+        }
+
+        guard let date = notificationDate else {
+            return false
+        }
+
+        if date.timeIntervalSinceNow.sign == .minus {
+            print("[WARNING] - Notication is past current date, skipping creation")
+            return true
+        }
+
+        return false
     }
 
     func checkInputFields() -> Bool {
@@ -238,6 +321,19 @@ class AddBillViewController: UIViewController {
             alert.message = "Please Select a Repeat Option to add a Bill"
             check = false
         }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        if let date = dateFormatter.date(from: dateTextField.text ?? ""),
+         let repeatCategory =  RepeatEnum(rawValue: repeatCategoryTextField.text ?? "None") {
+
+            if isNotificationDatePastDate(type: repeatCategory, date: date) {
+                alert.title = "Reminder is not Available"
+                alert.message = "Please Select a Reminder Option that is not past date."
+                check = false
+            }
+        }
+
         if check == false {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -295,13 +391,13 @@ class AddBillViewController: UIViewController {
         pickerView(categoryPickerView, didSelectRow: row, inComponent: 0)
         self.view.endEditing(true)
     }
-    
+
     @objc func doneRepeatPicker() {
         let row =  repeatCategoryPickerView.selectedRow(inComponent: 0)
         pickerView(repeatCategoryPickerView, didSelectRow: row, inComponent: 0)
         self.view.endEditing(true)
     }
-    
+
 }
 
 extension AddBillViewController: UITextFieldDelegate {
@@ -360,7 +456,7 @@ extension AddBillViewController: UIPickerViewDataSource {
             return Constants.categories[row]
         }
         else if pickerView == repeatCategoryPickerView{
-            return Constants.repeatCategories[row]
+            return Constants.repeatCategories[row].rawValue
         }
         return " "
     }
@@ -373,7 +469,7 @@ extension AddBillViewController: UIPickerViewDelegate {
             return  categoryTextField.text = Constants.categories[row]
         }
         else if pickerView == repeatCategoryPickerView{
-            return repeatCategoryTextField.text = Constants.repeatCategories[row]
+            return repeatCategoryTextField.text = Constants.repeatCategories[row].rawValue
         }
     }
 }

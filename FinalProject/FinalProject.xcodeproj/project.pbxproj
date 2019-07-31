@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		422A296E22566833008A2564 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A296D22566833008A2564 /* Classes.swift */; };
+		429C2FE422E6B0DE00977D06 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C2FE322E6B0DE00977D06 /* TutorialViewController.swift */; };
+		429C2FE622E6B8B600977D06 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C2FE522E6B8B600977D06 /* Slide.swift */; };
+		429C2FE822E6B8F400977D06 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 429C2FE722E6B8F400977D06 /* Slide.xib */; };
 		A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B4922A6C288004E2372 /* AddBillViewController.swift */; };
 		A85E9B5722A6C61A004E2372 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5522A6C619004E2372 /* BillTableViewCell.swift */; };
 		A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */; };
 		A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5922A6C68F004E2372 /* CheckBox.swift */; };
 		A85E9B5C22A6D7DC004E2372 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */; };
+		A8BCD4C822F09A38006CA5EA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCD4C722F09A38006CA5EA /* NotificationManager.swift */; };
 		B72901752EC56E6002BD612F /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */; };
 		E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E132CC48226611E0002EAD3D /* GoogleService-Info.plist */; };
 		E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BFB7222AFF809008AFE79 /* VCChart.swift */; };
@@ -41,11 +45,15 @@
 
 /* Begin PBXFileReference section */
 		422A296D22566833008A2564 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		429C2FE322E6B0DE00977D06 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		429C2FE522E6B8B600977D06 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		429C2FE722E6B8F400977D06 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		A85E9B4922A6C288004E2372 /* AddBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBillViewController.swift; sourceTree = "<group>"; };
 		A85E9B5522A6C619004E2372 /* BillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
 		A85E9B5622A6C61A004E2372 /* BillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableViewCell.xib; sourceTree = "<group>"; };
 		A85E9B5922A6C68F004E2372 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		A85E9B5B22A6D7DC004E2372 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		A8BCD4C722F09A38006CA5EA /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		ABBA41284C71D9E44F413947 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C80ACE1E344496EFC51EF411 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132CC48226611E0002EAD3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 		E15AE3B822565CE1007C345F /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				A8BCD4C722F09A38006CA5EA /* NotificationManager.swift */,
 				F2816D1722B725580083C2C0 /* Assets.xcassets */,
 				F21364EC228F046F00800435 /* SignupViewController.swift */,
 				E15AE3B922565CE1007C345F /* AppDelegate.swift */,
@@ -147,6 +156,7 @@
 				A85E9B4922A6C288004E2372 /* AddBillViewController.swift */,
 				E13BFB7222AFF809008AFE79 /* VCChart.swift */,
 				E15AE3BF22565CE1007C345F /* Main.storyboard */,
+				429C2FE522E6B8B600977D06 /* Slide.swift */,
 				F204D84C22B01479002E541E /* AddViewController.swift */,
 				E132CC48226611E0002EAD3D /* GoogleService-Info.plist */,
 				E15AE3C422565CE2007C345F /* LaunchScreen.storyboard */,
@@ -165,6 +175,8 @@
 				F20644A922E8E8B6001782E9 /* LifestyleViewController.swift */,
 				F20644AB22E8E9D4001782E9 /* DebtsViewController.swift */,
 				F20644AD22E8EAE8001782E9 /* MiscViewController.swift */,
+				429C2FE322E6B0DE00977D06 /* TutorialViewController.swift */,
+				429C2FE722E6B8F400977D06 /* Slide.xib */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -230,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429C2FE822E6B8F400977D06 /* Slide.xib in Resources */,
 				E15AE3C622565CE2007C345F /* LaunchScreen.storyboard in Resources */,
 				E132CC49226611E0002EAD3D /* GoogleService-Info.plist in Resources */,
 				A85E9B5822A6C61A004E2372 /* BillTableViewCell.xib in Resources */,
@@ -347,6 +360,7 @@
 				A85E9B5A22A6C68F004E2372 /* CheckBox.swift in Sources */,
 				F2049A0222832DB100A275E0 /* ForgotPasswordViewController.swift in Sources */,
 				F259DB332280AE7400C76EC8 /* UserLoginViewController.swift in Sources */,
+				A8BCD4C822F09A38006CA5EA /* NotificationManager.swift in Sources */,
 				F20644AA22E8E8B6001782E9 /* LifestyleViewController.swift in Sources */,
 				F21364ED228F046F00800435 /* SignupViewController.swift in Sources */,
 				A85E9B5722A6C61A004E2372 /* BillTableViewCell.swift in Sources */,
@@ -356,12 +370,14 @@
 				F204D84D22B01479002E541E /* AddViewController.swift in Sources */,
 				F2CA4C272284957A00072E8E /* SettingsViewController.swift in Sources */,
 				E1E067D7225FB566004A2EC9 /* LogInView.swift in Sources */,
+				429C2FE422E6B0DE00977D06 /* TutorialViewController.swift in Sources */,
 				A85E9B4A22A6C288004E2372 /* AddBillViewController.swift in Sources */,
 				422A296E22566833008A2564 /* Classes.swift in Sources */,
 				F2C6B60322B160E700E02FD4 /* TransactionListViewCell.swift in Sources */,
 				E13BFB7322AFF809008AFE79 /* VCChart.swift in Sources */,
 				F20644A822E8E6B2001782E9 /* TransportViewController.swift in Sources */,
 				F204D84F22B01481002E541E /* FirstViewController.swift in Sources */,
+				429C2FE622E6B8B600977D06 /* Slide.swift in Sources */,
 				F295864E22976FAE001BEC17 /* ChangePassViewController.swift in Sources */,
 				E15AE3BA22565CE1007C345F /* AppDelegate.swift in Sources */,
 			);
@@ -511,7 +527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VQN5Q7Y77;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -530,7 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VQN5Q7Y77;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
