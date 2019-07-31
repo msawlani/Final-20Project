@@ -66,7 +66,7 @@ class SecondViewController: UIViewController {
 
     private func customizeView() {
 
-        tableView.delegate = self as! UITableViewDelegate
+        tableView.delegate = self as UITableViewDelegate
         tableView.dataSource = self
 
         let billNib = UINib(nibName: BillTableViewCell.reuseIdentifier, bundle: nil)

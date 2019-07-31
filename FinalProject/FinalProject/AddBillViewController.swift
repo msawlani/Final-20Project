@@ -160,7 +160,7 @@ class AddBillViewController: UIViewController {
             return
         }
 
-        if let indexPathRow = editIndexPathRow {
+        if editIndexPathRow != nil {
             home.billsContainer[editIndexPathRow!] = bill
             mainUser.bills[editIndexPathRow!] = bill
             mainUser.StoreInFirebase()
