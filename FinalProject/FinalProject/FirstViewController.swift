@@ -149,15 +149,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         {
         
             
+            
             var transactionsToDelete = [Transaction]()
             for indexPath in selectedRow{
                 transactionsToDelete.append(transactionArray[indexPath.section].TransactionList[indexPath.row])
             }
             for indexPath in selectedRow{
            
+                var indexString = self.transactionArray[indexPath.section].TransactionList[indexPath.row].transactionNum
+                indexString = String(indexString.dropFirst(11))
+                let index = Int(indexString)
            
                     self.transactionArray[indexPath.section].TransactionList.remove(at: indexPath.row)
-                    mainUser.accounts[0].RemoveTransaction(index: indexPath.row)
+                mainUser.accounts[0].RemoveTransaction(index: index!)
                 
                 
             }
