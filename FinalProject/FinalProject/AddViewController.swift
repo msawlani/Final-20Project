@@ -172,7 +172,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             transaction.amount = ((Double(priceString) ?? 0) * -1)
         }
 
-
+        if existingPayment == nil{
+            
         let alert = UIAlertController(title: "Add more?", message: "Do you want to add more transactions?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: {(action) in
@@ -208,9 +209,26 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             self.dateTextField.text = ""
             self.count += 1
         }))
+            self.present(alert, animated: true)
+
+        }
+        if existingPayment != nil && self.count == 0
+        {
+            home.transactionArray[mainUser.categories.index(of:transaction.category)!].TransactionList.append(transaction)
+            
+            
+            if  transaction.transactionNum != ""{
+                mainUser.accounts[0].EditTransaction(newTransaction: transaction, oldAmount: self.oldAmount!)
+            }
+            else {
+                mainUser.accounts[0].AddTransaction(transaction: transaction)
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+        }
  
-        self.present(alert, animated: true)
     }
+        
     
     func checkInput() -> Bool{
         var check = true
