@@ -36,7 +36,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
 
         editBillInicialData()
-
         
 
         navigationItem.title = "Add Transactions"
@@ -240,6 +239,22 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
             
         }
+        else if let amount = paymentPrice.text{
+            var amountFormatted: String = amount
+            amountFormatted = amountFormatted.replacingOccurrences(of: ",", with: "")
+            amountFormatted = amountFormatted.replacingOccurrences(of: "$", with: "")
+            
+            
+            if let value = Double(amountFormatted), value > 100000.00{
+                let alert = UIAlertController(title: "Failed to Edit/Add transaction", message: "Amount is over 100000.00, please enter a vaild amount", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                check = false
+            }
+        }
+            
+            
+            
         else if paymentName.text?.isEmpty ?? true {
             let alert = UIAlertController(title: "Failed to add transaction", message: "Name is empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -316,10 +331,13 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         var transaction = Transaction(vendorName: paymentName.text!, category: section.text!, description: "test", amount: (Double(priceString) ?? 0), date: customDate)
 
         if  let existingTransaction = existingPayment{
+            
             existingTransaction.vendorName = paymentName.text!
             existingTransaction.amount = (Double(paymentPrice.text!) ?? 0 )
             existingTransaction.category = section.text!
             transaction = existingTransaction
+
+            
             return transaction
         }
         else{
