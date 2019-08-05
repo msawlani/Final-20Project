@@ -42,7 +42,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !(UserDefaults.standard.bool(forKey: "notFirstLogin"))
+        if !(UserDefaults.standard.bool(forKey: "notFirstLogin")) && signedInWithGoogle == false
         {
             UserDefaults.standard.set(true, forKey: "notFirstLogin")
 //             App Open First time
@@ -53,6 +53,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+        
+        
+        
+        
         
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false

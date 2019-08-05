@@ -12,7 +12,7 @@ import GoogleSignIn
 import CoreData
 
 var mainUser = User(userId: "")
-var sigedIn = true
+var signedIn = true
 var signedInWithGoogle = false
 var googleUser: GIDGoogleUser!
 var userEmail: String!

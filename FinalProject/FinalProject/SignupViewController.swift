@@ -59,16 +59,19 @@ class SignupViewController: UIViewController {
         guard let email = emailFieldText.text else {return}
         guard let password = passwordFieldText.text else {return}
         
+        if checkInput() == false{
+            return
+        }
+        
         //creates the user using firebase - Michael Sawlani
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if  error == nil && user != nil && self.emailFieldText.text != nil &&
-                self.passwordFieldText.text == self.reenterpasswordFieldText.text
-            {
+                self.passwordFieldText.text == self.reenterpasswordFieldText.text             {
                 
                 let alert = UIAlertController(title: "Register Successful", message: "Successfully made an Account with Firebase", preferredStyle: .alert)
                 
                 signedInWithGoogle = false
-                
+                signedIn = true
                 
                 let regiAction = UIAlertAction(title: "OK", style: .default) { [unowned self] action in
                     self.performSegue(withIdentifier: "Main", sender: self)
@@ -79,26 +82,43 @@ class SignupViewController: UIViewController {
                 
                 
             }
-            else if self.passwordFieldText.text != self.reenterpasswordFieldText.text{
-                let alert = UIAlertController(title: "Failed to Register User", message: "Passwords Don't Match!", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.present(alert, animated: true)
-            }else{
-                let alert = UIAlertController(title: "Failed to Register User", message: "Please Fill out the Information Needed", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.present(alert, animated: true)
-                
-                
-                
-            }
         }
         
         
         
+    }
+    
+    func checkInput() -> Bool{
+        var check = true
+      
+        if self.passwordFieldText.text != self.reenterpasswordFieldText.text{
+            let alert = UIAlertController(title: "Failed to Register User", message: "Passwords Don't Match!", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            check = false
+        }
+        if (self.emailFieldText.text?.isEmpty)! &&
+            (self.passwordFieldText.text?.isEmpty)! &&
+            (self.reenterpasswordFieldText.text?.isEmpty)!{
+            let alert = UIAlertController(title: "Failed to Register User", message: "Please Fill out the Information Needed", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            check = false
+        }
+        if (self.passwordFieldText.text?.count)! < 8{
+            let alert = UIAlertController(title: "Failed to Register User", message: "Password is too short", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            check = false
+        }
+        return check
     }
     
     //shows and hides the password that user enters - Michael Sawlani
