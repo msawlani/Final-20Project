@@ -42,7 +42,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !(UserDefaults.standard.bool(forKey: "notFirstLogin")) && signedInWithGoogle == false
+        if !(UserDefaults.standard.bool(forKey: "notFirstLogin"))
         {
             UserDefaults.standard.set(true, forKey: "notFirstLogin")
 //             App Open First time

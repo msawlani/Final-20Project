@@ -39,6 +39,13 @@ class SettingsViewController: UIViewController {
 //        mainUser.accounts[0].AddTransaction(transaction: tempExpense)
 //        //Justin 
     }
+    @IBAction func Tutorial(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "tutorialViewController") as? TutorialViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
     @IBAction func Logout(_ sender: Any) {
             let alert = UIAlertController(title: "Logging Out? ", message: "Are you Sure you Want to Logout?", preferredStyle: .alert)
         

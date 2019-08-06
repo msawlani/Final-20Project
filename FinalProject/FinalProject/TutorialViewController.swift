@@ -20,11 +20,18 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         
         guard  let statusBar = (UIApplication.shared.value(forKey: "statusBarWindow") as AnyObject).value(forKey: "statusBar") as? UIView else {
             return
+        
         }
         
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(TutorialViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        newBackButton.tintColor = UIColor.white
+        let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)]
+        newBackButton.setTitleTextAttributes(systemFontAttributes, for: .normal)
+        
         //statusBar.backgroundColor = .darkGray
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
+
 
         scrollView.delegate = self
         //self.scrollView.contentSize.height = 1.0
@@ -37,7 +44,11 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubviewToFront(pageControl)
         // Do any additional setup after loading the view.
     }
-    
+    @objc func back(sender: UIBarButtonItem) {
+
+            self.navigationController?.popViewController(animated: true)
+        
+    }
     func createSlides() -> [Slide] {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
